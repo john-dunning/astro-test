@@ -1,0 +1,48 @@
+---
+interface Props {
+	title: string;
+	href: string;
+	addMore?: boolean;
+}
+
+const { title, href, addMore } = Astro.props;
+---
+
+<li>
+	<h3>
+	  <a href={href}>{title}</a>
+	</h3>
+
+	<p>
+		<slot />
+		{ addMore && <a class="more-info" href={href}>more&hellip;</a> }
+	</p>
+
+	<p class="extra">
+		<slot name="extra" />
+	</p>
+</li>
+
+<style>
+	li {
+		margin-bottom: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1rem;
+		margin-bottom: .5rem;
+	}
+
+	p {
+		padding: 0 2rem;
+	}
+
+	a.more-info {
+		font-size: smaller;
+		padding-left: .25rem;
+	}
+
+	p.extra {
+	  color: red;
+	}
+</style>

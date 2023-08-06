@@ -1,0 +1,41 @@
+---
+interface Props {
+	title: string;
+	href: string;
+}
+
+const { title, href } = Astro.props;
+---
+
+<article>
+	<h2>
+		<a href={href}>{title}</a>
+	</h2>
+
+	<div class="container">
+		<slot name="description" />
+
+		<ul role="list">
+			<slot />
+		</ul>
+	</div>
+</article>
+
+<style>
+	article {
+		margin-top: 6rem;
+	}
+
+	h2 {
+		font-size: 1.75rem;
+		margin-bottom: .75rem;
+	}
+
+	h2 a:visited {
+		color: var(--highlight);
+	}
+
+	ul {
+		margin-top: 1.5rem;
+	}
+</style>
