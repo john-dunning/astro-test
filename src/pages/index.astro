@@ -1,34 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-import Section from "../components/Section.astro";
-import SectionItem from "../components/SectionItem.astro";
-
-const commands = await getCollection("commands");
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/Section.astro";
+import SectionItem from "@/components/SectionItem.astro";
+import RecentCommands from "../components/RecentCommands.astro";
 ---
 
 <Layout title="John Dunning">
-	<Section
-		title="fireworks"
-		href="fireworks/"
-	>
-		<p slot="description">
-			A collection of free productivity-enhancing extensions that I've
-			built for <a href="https://www.adobe.com/products/fireworks/">Adobe
-			Fireworks</a> using JavaScript, ActionScript and Flex. The most
-			recent ones include:
-		</p>
-
-		{commands.map(({ data: { name, summary } }) => (
-			<SectionItem
-				title={name}
-				href={`fireworks/about/${name}.html`}
-				addMore=true
-			>
-				{summary}
-			</SectionItem>
-		))}
-	</Section>
+	<RecentCommands />
 
 	<Section
 		title="fireworks"

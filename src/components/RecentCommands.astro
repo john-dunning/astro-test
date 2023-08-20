@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import SectionItem from "@/components/SectionItem.astro";
+import Section from "@/components/Section.astro";
+
+const commands = await getCollection("commands");
+
+commands.sort((a, b) => {
+	const { data: { date: dateA } } = a;
+	const { data: { date: dateB } } = b;
+
+	return dateA > dateB
+		? -1
+		: dateB < dateA
+			? 1
+			: 0;
+});
+---
+
+<Section
+	title="fireworks"
+	href="fireworks/"
+>
+	<p slot="description">
+		A collection of free productivity-enhancing extensions that I've
+		built for <a href="https://www.adobe.com/products/fireworks/">Adobe
+		Fireworks</a> using JavaScript, ActionScript and Flex. The most
+		recent ones include:
+	</p>
+
+	{commands.slice(0, 3).map(({ data: { name, summary } }) => (
+		<SectionItem
+			title={name}
+			href={`fireworks/about/${name}.html`}
+			addMore=true
+		>
+			{summary}
+		</SectionItem>
+	))}
+
+	<li>
+		<a href="fireworks/">See all the extensions</a>
+	</li>
+</Section>
