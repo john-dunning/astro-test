@@ -1,5 +1,6 @@
 # build output
 dist/
+src/content/commands
 
 # generated types
 .astro/

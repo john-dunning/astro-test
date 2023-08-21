@@ -7,7 +7,7 @@ import glob from "fast-glob";
 const BRPattern = /<br>/g;
 const CommandsPath = "src/content/commands";
 
-function nameVersion(
+function slugVersion(
 	mxiPath)
 {
 	const [name, version] = path.basename(mxiPath, ".mxi").split("-");
@@ -25,18 +25,6 @@ ${dump(data)}---
 `;
 }
 
-function packageContents(
-	files)
-{
-	const list = files.map((file) => `  * ${file["@"].source}`).join("\n");
-
-	return `# Package contents
-
-${list}
-`;
-}
-
-
 const parser = new XMLParser({
 	attributesGroupName: "@",
 	attributeNamePrefix: "",
@@ -46,31 +34,43 @@ const parser = new XMLParser({
 });
 const mxiFiles = glob.sync("src/dl/*.mxi");
 const pathsByName = mxiFiles.reduce((result, mxiPath) => {
-	const [name, version] = nameVersion(mxiPath);
-	const currentPath = result[name];
+	const [slug, version] = slugVersion(mxiPath);
+	const currentPath = result[slug];
 
 	if (!currentPath) {
-		result[name] = mxiPath;
+		result[slug] = mxiPath;
 	} else {
-		const [, currentVersion] = nameVersion(currentPath);
+		const [, currentVersion] = slugVersion(currentPath);
 
 		if (version > currentVersion) {
-			result[name] = mxiPath;
+			result[slug] = mxiPath;
 		}
 	}
 
 	return result;
 }, {});
 
-Object.entries(pathsByName).forEach(([name, mxiPath]) => {
+Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 	const xml = fs.readFileSync(mxiPath, "utf8");
 	const mxi = parser.parse(xml);
 	const { "macromedia-extension": extension } = mxi;
-	const { "@": metadata, description: { "#text": description }, files, summary } = extension;
+	const {
+		"@": metadata,
+		files,
+		summary,
+		description: {
+			"#text": description
+		},
+	} = extension;
 	const filePaths = files.file.map((file) => file["@"].source);
-	const keyValues = { ...metadata, summary, files: filePaths };
-	const mdPath = path.join(CommandsPath, name + ".md");
+	const mdPath = path.join(CommandsPath, slug + ".md");
 	const md = description.replace(BRPattern, "");
+	const keyValues = {
+		slug,
+		...metadata,
+		summary,
+		files: filePaths
+	};
 
 	fs.ensureDirSync(path.dirname(mdPath));
 	fs.writeFileSync(mdPath, frontmatter(keyValues) + md, "utf8");

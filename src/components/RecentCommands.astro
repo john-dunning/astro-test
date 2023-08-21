@@ -5,6 +5,7 @@ import Section from "@/components/Section.astro";
 
 const commands = await getCollection("commands");
 
+	// sort the commands in descending order
 commands.sort((a, b) => {
 	const { data: { date: dateA } } = a;
 	const { data: { date: dateB } } = b;
@@ -28,10 +29,10 @@ commands.sort((a, b) => {
 		recent ones include:
 	</p>
 
-	{commands.slice(0, 3).map(({ data: { name, summary } }) => (
+	{commands.slice(0, 3).map(({ slug, data: { name, summary } }) => (
 		<SectionItem
 			title={name}
-			href={`fireworks/about/${name}.html`}
+			href={`fireworks/about/${slug}.html`}
 			addMore=true
 		>
 			{summary}

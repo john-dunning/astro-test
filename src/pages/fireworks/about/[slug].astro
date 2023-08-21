@@ -1,0 +1,117 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+export async function getStaticPaths()
+{
+	const commands = await getCollection("commands");
+
+	return commands.map((entry) => ({
+		params: {
+			slug: entry.slug
+		},
+		props: {
+			entry
+		},
+	}));
+}
+
+const { entry: { render, data: { name, files } } } = Astro.props;
+const { Content } = await render();
+const title = `${name} - Adobe Fireworks Extensions, Commands and Panels - johndunning.com`;
+---
+
+<Layout title={title}>
+	<h1>{name}</h1>
+
+	<Content />
+
+	<h1>Package contents</h1>
+
+	<ul role="list">
+		{files.map((file) => <li>{file}</li>)}
+	</ul>
+</Layout>
+
+<style>
+	h1, h2 {
+		font-weight: bold;
+		color: #666;
+	}
+
+	h1 {
+		font-size: 2em;
+		margin: 2em 0 0.5em 0;
+	}
+
+	h2 {
+		font-size: 1em;
+		margin: 1em 0 0.25em 0;
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	em {
+		font-style: italic;
+	}
+
+	blockquote {
+		margin: 2em 2em 0 2em;
+		font-size: smaller;
+	}
+
+	ol {
+		margin-left: 2.5em;
+		margin-bottom: 1em;
+	}
+
+	ol li {
+		list-style: decimal outside;
+	}
+
+	code {
+		font-weight: normal;
+		font-family: monospace;
+		font-size: 1.25em;
+		color: #333;
+	}
+
+	blockquote {
+		margin: 1em 0 1em 2.5em;
+		font-size: inherit;
+	}
+
+	table {
+		margin: 1em 0;
+	}
+
+	td {
+		vertical-align: top;
+		padding: 0 1em .5em 0;
+	}
+
+	dt {
+		font-weight: bold;
+		color: #666;
+	}
+
+	dd {
+		margin: 0 0 1em 0;
+	}
+
+	pre {
+		color: #1C1D1F;
+		background: #f3f3f3;
+		border-left: 3px solid #ccc;
+		line-height: 1.3;
+		padding: 1em 1em 1em 2em;
+		margin: 1em 0 1em 2.5em;
+	}
+
+	pre code {
+		line-height: 1.3;
+		font-size: 1.05em;
+	}
+</style>
