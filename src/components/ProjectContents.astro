@@ -1,0 +1,19 @@
+---
+interface Props {
+	files: string[];
+}
+
+	// only .jsf and .swf files show up in the Commands menu, which is what we
+	// want to list here
+const AllowedFilesPattern = /\.(jsf|swf)$/;
+
+const { files } = Astro.props;
+const names = files
+	.filter(path => AllowedFilesPattern.test(path))
+	.map(path => path.split("/").pop().replace(/\.[^.]+$/, ""));
+const uniqueNames = [...new Set(names)].sort(Intl.Collator().compare);
+---
+
+<ul role="list">
+	{uniqueNames.map((name) => <li>{name}</li>)}
+</ul>

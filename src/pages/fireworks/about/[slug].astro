@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import ProjectContents from "@/components/ProjectContents.astro";
 
 export async function getStaticPaths()
 {
@@ -22,31 +23,19 @@ const title = `${name} - Adobe Fireworks Extensions, Commands and Panels - johnd
 ---
 
 <Layout title={title}>
-	<h1>{name}</h1>
+	<h1 class="command-name">{name}</h1>
 
 	<Content />
 
 	<h1>Package contents</h1>
 
-	<ul role="list">
-		{files.map((file) => <li>{file}</li>)}
-	</ul>
+	<ProjectContents files={files} />
 </Layout>
 
 <style>
-	h1, h2 {
-		font-weight: bold;
-		color: #666;
-	}
-
-	h1 {
-		font-size: 2em;
-		margin: 2em 0 0.5em 0;
-	}
-
-	h2 {
-		font-size: 1em;
-		margin: 1em 0 0.25em 0;
+	h1.command-name {
+		font-size: 2rem;
+		margin-bottom: 3rem;
 	}
 
 	strong {
