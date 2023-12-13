@@ -3,7 +3,8 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
 	markdown: {
 		remarkPlugins: [
-			"remark-heading-id"
+			"remark-heading-id",
+			"remark-deflist",
 		],
 	},
 	vite: {
