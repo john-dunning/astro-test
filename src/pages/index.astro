@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import SectionItem from "@/components/SectionItem.astro";
-import RecentCommands from "../components/RecentCommands.astro";
+import RecentCommands from "@/components/RecentCommands.astro";
 ---
 
 <Layout>
@@ -42,6 +42,33 @@ import RecentCommands from "../components/RecentCommands.astro";
 				<a href="https://fwextensions.github.io/quick-score-demo/">Demo</a>
 				&nbsp;&nbsp;&nbsp;
 				<a href="https://www.npmjs.com/package/quick-score">npm package</a>
+			</span>
+		</SectionItem>
+
+		<SectionItem
+			title="fwidgets"
+			href="https://github.com/fwextensions/fwidgets"
+		>
+			A library for adding basic UI functionality to a Figma plugin without
+			writing any UI code. Think of it like adding a series of interactive
+			prompts to a command line tool, similar to the wizard structure of
+			something like <code>create-react-app</code>. fwidgets lets you show one
+			UI element at a time to the user, awaiting their input and then responding
+			to it, while keeping all of your code in the main thread.
+
+			<span slot="extra">
+				<a href="https://www.npmjs.com/package/fwidgets">npm package</a>
+			</span>
+		</SectionItem>
+
+		<SectionItem
+			title="figma-await-ipc"
+			href="https://github.com/fwextensions/figma-await-ipc"
+		>
+			A simple <code>await</code>-able replacement for <code>postMessage()</code> in Figma plugins.
+
+			<span slot="extra">
+				<a href="https://www.npmjs.com/package/figma-await-ipc">npm package</a>
 			</span>
 		</SectionItem>
 	</Section>

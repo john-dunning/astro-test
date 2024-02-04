@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import PackageContents from "@/components/PackageContents.astro";
+import CommandsNavList from "@/components/CommandsNavList.astro";
 
 export async function getStaticPaths()
 {
@@ -30,6 +31,8 @@ const title = `${name} - Adobe Fireworks Extensions, Commands and Panels`;
 	</article>
 
 	<PackageContents files={files} />
+
+	<CommandsNavList />
 </Layout>
 
 <style>
@@ -44,6 +47,16 @@ const title = `${name} - Adobe Fireworks Extensions, Commands and Panels`;
 
 	em {
 		font-style: italic;
+	}
+
+	article :global(h2) {
+		font-size: 1.5rem;
+		margin: 3rem 0 0.75rem 0;
+	}
+
+	article :global(h3) {
+		font-size: 1.25rem;
+		margin: 1rem 0 0.25rem 0;
 	}
 
 	article :global(blockquote) {

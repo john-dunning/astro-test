@@ -4,6 +4,7 @@ import { XMLParser } from "fast-xml-parser";
 import { dump } from "js-yaml";
 import glob from "fast-glob";
 
+const HashPattern = /^#/gm;
 const IncPathMXI = "http://johndunning.com/fireworks/inc";
 const IncPathLocal = "/src/assets/inc";
 const CommandsPath = "src/content/commands";
@@ -65,7 +66,10 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 	} = extension;
 	const filePaths = files.file.map((file) => file["@"].source);
 	const mdPath = path.join(CommandsPath, slug + ".md");
-	const md = description.replaceAll("<br>", "").replaceAll(IncPathMXI, IncPathLocal);
+	const md = description
+		.replace(HashPattern, "##")
+		.replaceAll("<br>", "")
+		.replaceAll(IncPathMXI, IncPathLocal);
 	const keyValues = {
 		slug,
 		...metadata,

@@ -15,7 +15,11 @@ body {
 	max-width: 50rem;
 }
 
-h1, h2 {
+main {
+	position: relative;
+}
+
+h1, h2, h3, h4 {
 	font-weight: bold;
 	color: #666;
 }

@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+
+const commands = await getCollection("commands");
+
+	// sort the commands alphabetically
+commands.sort((a, b) => {
+	return Intl.Collator().compare(a.data.name, b.data.name);
+});
+
+const fullPath = Astro.url.pathname.replace(/\/$/, "");
+const currentPage = fullPath.slice(fullPath.lastIndexOf("/") + 1);
+---
+
+<nav>
+	<ul role="list">
+		{commands.map(({ slug, data: { name, summary } }) => (
+			<li>
+				<a
+					href={`/fireworks/about/${slug}`}
+					title={summary}
+					aria-current={currentPage === slug ? "page" : undefined}
+				>{name}</a>
+			</li>
+		))}
+	</ul>
+</nav>
+
+<style>
+	nav {
+		width: fit-content;
+		padding-right: 3em;
+		top: 0;
+		position: absolute;
+		display: inline-block;
+	}
+
+	ul {
+		padding: 0 5rem 0 0;
+		margin: 5.5rem 0 0 -100%;
+	}
+
+	li {
+		font-size: smaller;
+		line-height: 1.75;
+	}
+
+	li a[aria-current] {
+		color: #666;
+		font-weight: bold;
+		pointer-events: none;
+	}
+</style>

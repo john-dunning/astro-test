@@ -32,7 +32,7 @@ commands.sort((a, b) => {
 	{commands.slice(0, 3).map(({ slug, data: { name, summary } }) => (
 		<SectionItem
 			title={name}
-			href={`fireworks/about/${slug}.html`}
+			href={`/fireworks/about/${slug}`}
 			addMore=true
 		>
 			{summary}

@@ -14,8 +14,15 @@ const names = files
 const uniqueNames = [...new Set(names)].sort(Intl.Collator().compare);
 ---
 
-<h1>Package contents</h1>
+<h2>Package contents</h2>
 
 <ul role="list">
 	{uniqueNames.map((name) => <li>{name}</li>)}
 </ul>
+
+<style>
+	h2 {
+		font-size: 1.5rem;
+		margin: 3rem 0 0.75rem 0;
+	}
+</style>
