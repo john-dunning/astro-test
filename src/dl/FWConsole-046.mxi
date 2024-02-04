@@ -1,0 +1,452 @@
+<macromedia-extension name="Fireworks Console" version="0.4.6" id="com.johndunning.fireworks.FWConsole" type="command" requires-restart="false" date="2013-04-07 18:39:11 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="9" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/FWConsole"/>
+	<description href="http://johndunning.com/fireworks/description/FWConsole">
+<![CDATA[Fireworks has a dauntingly powerful JavaScript API, and understanding it all can take some time.  To try out a new function, you have to write a little command script that uses it, put the script in the Commands folder, run it, tweak it, run it again, etc.  I used to find myself writing a lot of commands in the form of `alert(Files.getDirectory(dom.filePathForSave))` just to explore the API calls.<br>
+<br>
+The *Fireworks Console* simplifies the process of learning the JavaScript API considerably.  Instead of writing and running an entire command, you can simply type code snippets into a panel and immediately see their output.  It's a little like having a command line prompt for Fireworks.  You could even ignore the GUI altogether and create your graphics via JavaScript (not that I'd recommend it).  Additionally, the console can help you debug your own `.jsf` commands and Flash panels. <br>
+<br>
+<br>
+# Executing JavaScript<br>
+<br>
+Using the console is straightforward.  Type some JavaScript in the upper field, click the *Eval* button or press enter, and then the code's result is displayed in the lower field.  Pretty much any JavaScript is valid, including comments, if-then's, for-loops, etc.  If you want to enter a newline rather than execute the statements, press shift-enter.  To execute the code while keepping it visible in the input field, press ctrl-enter.  You can drag the divider to make the entry field larger.<br>
+<br>
+Be careful not to write code that might return a lot of information, such as evaluating just `dom`.  It may take several seconds to transfer all the data from Fireworks to the Flash panel (if it doesn't hang Fireworks).  And don't do something silly like writing an infinite loop...<br>
+<br>
+The output of your JavaScript statements is maintained across Fireworks sessions, and you can copy the text to paste it somewhere else.  The output is also saved in a `Fireworks Console.txt` file in the *Command Panels* directory.  If the output history becomes too long, you can click the *Clear* button to reset it, which will also delete the log file.  If you ctrl-click the *Clear* button, then the log file is renamed to a time-stamped file, like `Fireworks Console 2013-04-06 14.23.42.txt`, which lets you keep the output around for further use.  <br>
+<br>
+A history of the recently entered statements is maintained so you can go back and re-execute something.  To access older statements, click the left-pointing arrow button next to the *Clear* button.  Click the right arrow to display newer statements.  When the keyboard focus is in the code area, you can also press ctrl-up-arrow or ctrl-down-arrow to access the previous statements.<br>
+<br>
+<br>
+## Predefined variables and functions<br>
+<br>
+When executing JavaScript, there are several predefined variables that provide quick access to commonly used Fireworks objects:<br>
+<br>
+dom<br>
+  : The result of calling `fw.getDocumentDOM()`.<br>
+ <br>
+sel<br>
+  : A reference to `fw.selection`.  <br>
+<br>
+el<br>
+  : A reference to the first selected element, i.e., `fw.selection[0]`.  This makes it a little easier to do things like inspecting, say, the selected object's width by just entering `el.width`.<br>
+<br>
+global<br>
+  : A reference to the global context in the JavaSCript environment, which would be `window` in a browser.<br>
+<br>
+There are also a number of utility functions available:<br>
+<br>
+> |	|	|	|	|	|<br>
+> |----- |----- |----- |----- |----- |<br>
+> | `after` | `find` | `isArray` | `max` | `some`<br>
+> | `all` | `first` | `isBoolean` | `memoize` | `sortBy`<br>
+> | `any` | `flatten` | `isDate` | `methods` | `sortedIndex`<br>
+> | `bind` | `foldl` | `isElement` | `min` | `tail`<br>
+> | `bindAll` | `foldr` | `isEmpty` | `object` | `take`<br>
+> | `clone` | `forEach` | `isEqual` | `omit` | `tap`<br>
+> | `collect` | `functions` | `isFinite` | `once` | `times`<br>
+> | `compact` | `groupBy` | `isFunction` | `pairs` | `toArray`<br>
+> | `compose` | `has` | `isNaN` | `pick` | `union`<br>
+> | `contains` | `head` | `isNull` | `pluck` | `uniq`<br>
+> | `countBy` | `identity` | `isNumber` | `random` | `unique`<br>
+> | `defaults` | `include` | `isObject` | `range` | `values`<br>
+> | `detect` | `indexOf` | `isRegExp` | `reduce` | `where`<br>
+> | `difference` | `initial` | `isString` | `reduceRight` | `without`<br>
+> | `drop` | `inject` | `isUndefined` | `reject` | `wrap`<br>
+> | `each` | `intersection` | `keys` | `rest` | `zip`<br>
+> | `every` | `invert` | `last` | `select` | <br>
+> | `extend` | `invoke` | `lastIndexOf` | `shuffle` | <br>
+> | `filter` | `isArguments` | `map` | `size` | <br>
+<br>
+These are implemented by a slightly modified version of [Underscore.js][4], a very useful library for functional programming.  See the [Underscore documentation][3] for more information about how they work.  Note that these functions can be treated as globals when executing code in the console, so you don't need to call them through the `_` object, e.g. you can write `forEach()` instead of `_.forEach()`.<br>
+<br>
+A few of these functions are worth highlighting.  Calling `keys(el)` is handy for dumping just the property names of the first selected Fireworks element:<br>
+<br>
+	>>> keys(el): ["blendMode", "customData", "effectList", "height", "isLayer", <br>
+	"isSmartShape", "javascriptString", "left", "locked", "mask", "mode", <br>
+	"name", "opacity", "originalSides", "pathAttributes", "pathOperation", <br>
+	"pixelRect", "roundness", "top", "transform", "visible", "width"]<br>
+<br>
+By default, `keys()` will return the keys in sorted order.  You can pass `true` as the second element to return them in the same order that a `for in` loop does (this is different behavior than the standard `keys()` method in Underscore):<br>
+<br>
+	>>> keys(el, true): ["pathOperation", "transform", "originalSides", <br>
+	"pathAttributes", "mode", "roundness", "isSmartShape", "customData", <br>
+	"effectList", "locked", "mask", "name", "blendMode", "opacity", "visible", <br>
+	"pixelRect", "height", "left", "width", "top", "isLayer", <br>
+	"javascriptString"]<br>
+<br>
+Calling `pluck()` can pick out the values for one property across an array of objects and return them.  This example returns an array of the names of the selected elements:<br>
+<br>
+	>>> pluck(sel, "name"): ["Label", "Background"]<br>
+<br>
+Similar to the Underscore functions like `isArray()`, there are "is" functions for all of the native Fireworks object types.  So `isImage(el)` returns `true` if an image is selected, and `isSmartShape(el)` returns `true` if an auto shape is selected:<br>
+<br>
+> |	|	|	|	<br>
+> |----- |----- |----- |<br>
+> | `is$` | `isExportDocClass` | `isImagemapList`<br>
+> | `isBehavior` | `isExportOptions` | `isInstance`<br>
+> | `isBehaviorInfo` | `isExportSettings` | `isLayer`<br>
+> | `isBehaviorsList` | `isFileRef` | `isPath`<br>
+> | `isBrush` | `isFilesClass` | `isPathAttrs`<br>
+> | `isCJsDomObject` | `isFill` | `isPattern`<br>
+> | `isCachedList` | `isFind` | `isPixelAdjustTable`<br>
+> | `isColumnHelper` | `isFireworks` | `isPopupMenuItem`<br>
+> | `isCompoundShape` | `isFrame` | `isRectanglePrimitive`<br>
+> | `isContour` | `isFrameNLayerIntersection` | `isRegisterMoveParms`<br>
+> | `isContourNode` | `isFwArray` | `isSetCurrentPage`<br>
+> | `isContourNodeDynamicInfo` | `isFwDict` | `isSliceHotspot`<br>
+> | `isControlPoint` | `isFwMatrix` | `isSliceInfo`<br>
+> | `isDialogsClass` | `isGradient` | `isSlices`<br>
+> | `isDocumentClass` | `isGradientNode` | `isSmartShapeClass`<br>
+> | `isDocumentFw2StaticMethods` | `isGroup` | `isStyle`<br>
+> | `isEffect` | `isGuides` | `isSystemClass`<br>
+> | `isEffectList` | `isHistoryPalette` | `isText`<br>
+> | `isElement` | `isHotspot` | `isTexture`<br>
+> | `isElementMask` | `isImage` | `isToolsClass`<br>
+> | `isErrorsClass` | `isImageMap` | `isWidgetSymbol`<br>
+<br>
+Passing an array or "array-like" object to `_()` will return that array with all of the Underscore methods on it.  This is particularly useful for `fw.selection`, which is an `FwArray` object, not a real `Array` object, so it doesn't have `Array` methods like `slice()`.  Calling `_(sel).slice(1)` will therefore return everything but the first selected element.  However, trying to modify the selection object itself, like `_(sel).pop()`, will throw an error.<br>
+<br>
+<br>
+# Debugging .jsf commands<br>
+<br>
+Debugging a Fireworks command can be a real pain, since the only way to see what's going on while it executes is to sprinkle your code with `alert()` calls.  Sort of like web development circa 1998.<br>
+<br>
+The *Fireworks Console* can make this debugging process much less painful.  The first time it loads, a global `console` object is added to the Fireworks JS environment, which provides many of the same API methods as the consoles in web browsers, such as `console.log()`.  So instead of writing something like `alert(fw.selection[0].width)` to show the selection's current width, you can write `console.log(fw.selection[0].width)`.  <br>
+<br>
+This approach has several advantages: unlike `alert()`, the `console` methods don't block the execution of your command; their output is displayed as a scrolling list in the Fireworks Console panel; and you can pass in multiple parameters, which will be separated by spaces.  Better still, insted of seeing `[object RectanglePrimitive]` as the output of `alert(fw.selection[0])` (since that's the default string representation of a rectangle primitive), calling `console.log(fw.selection[0])` will actually print all of the object's attributes in an alphabetized list:<br>
+<br>
+	{<br>
+		blendMode: "normal",<br>
+		customData: { },<br>
+		effectList: null,<br>
+		height: 49,<br>
+		isLayer: false,<br>
+		isSmartShape: false,<br>
+		left: 14,<br>
+		mask: null,<br>
+		name: null,<br>
+		opacity: 100,<br>
+		originalSides: { bottom: 135, left: 14, right: 206, top: 86 },<br>
+		pathAttributes: {<br>
+			brush: {<br>
+				alphaRemap: "none",<br>
+	...<br>
+<br>
+It's not quite as convenient as the browsable tree that Firebug provides, but it's a lot better than what you get with an `alert()`.  However, make sure you remove any references to `console` before sharing your extension with other users, as they're unlikely to have the console installed and without it, calling `console.log()` in your code will throw an exception.<br>
+<br>
+The `console` object currently supports these methods for printing values to the panel:<br>
+<br>
+  * `log()`<br>
+  * `warn()`<br>
+  * `info()`<br>
+  * `debug()`<br>
+  * `error()`<br>
+<br>
+However, the output of all these methods looks the same in the console and there's no way to display only certain types, so for now, it's probably simplest to use just `console.log()` (or the global `log()` convenience function).  Also, the `%s` string replacement functionality that Firebug provides is not currently supported.  <br>
+<br>
+If you call these methods from a function, the function's name is prepended to the output, which can make it easier to keep track of where the log calls are coming from.  If the caller is an anonymous function expression, the name will simply be `anonymous()`.<br>
+<br>
+These other `console` methods are also supported:<br>
+<br>
+count(counterName, [suppressDisplay])<br>
+countDisplay(counterName, [resetCount])<br>
+countReset(counterName)<br>
+  : Each time you call `count()` with the same counter name, e.g., `console.count("found rect")`, it will increment that counter and print its current value, e.g. `found rect: 1`,  `found rect: 2`, etc.  You can pass `true` as the second parameter to increment the count but not display it, which can be useful in a loop where you only want to print the final count.  To display the current count without incrementing it, call `console.countDisplay("found rect")`.  You can also pass `true` as the second parameter to clear the counter after it's been displayed.  <br>
+  <br>
+  Unlike a webpage, the only way to reset the JavaScript environment in Fireworks is to quit and restart it, so if you want to reset the counter back to zero, call `console.countReset("found rect")`.<br>
+<br>
+dir(object, [message], ...)<br>
+  : Displays an array of the object's enumerable properties.  Unlike Firebug, the list is not interactive.  Passing a `message` parameter will display that string before the array of properties, which can help you identify which call to `console.dir()` you're seeing in the log.  Any additional arguments after `message` are displayed after the array of properties.<br>
+<br>
+time(timerName)<br>
+timeEnd(timerName)<br>
+  : You can easily track the time a section of your code takes to execute by calling the `time()` method at the beginning, and then `timeEnd()` at the end, using the same name in both calls.  For instance:<br>
+<br>
+		console.time("loop");<br>
+		for (var i = 0; i < 100; i++) {<br>
+			// do something time-consuming<br>
+		}<br>
+		console.timeEnd("loop"); // prints "loop: 3.2 sec"<br>
+<br>
+clear([keepLogFile])<br>
+  : Clears the current log entries in the console.  It can be helpful to call this at the beginning of your script to clear out the results from the last iteration.  Note that it can take a couple of seconds before the console is cleared, due to the polling that's described below.<br>
+<br>
+  You can pass a truthy value to `console.clear()` to keep the current contents of the console in a new, time-stamped file.  By default, the new filename is `Fireworks Console` followed by the current time and date, like `Fireworks Console 2013-04-06 14.23.42.txt`.  If you pass a string to the method, like `console.clear("My Command Output")`, then the filename will be `My Command Output 2013-04-06 14.23.42.txt`, which can be useful for keeping logs of the output of a command you're developing. <br>
+<br>
+line([characters], [length])<br>
+  : Displays a line of 60 hyphens, which can help break the console output into sections.  Pass a string in the optional `characters` parameter to output different characters.  Pass a number in the optional `length` parameter to change the length of the line.  For instance, `console.line("-=")` will output this:<br>
+<br>
+		>>> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br>
+<br>
+retention<br>
+  : Set this to the number of lines that should be retained in the console between polls from the panel.  By default, only the last 100 messages passed to `console.log()` are retained, so that if your code starts spewing out lots of long messages, the memory usage doesn't get out of control.  <br>
+<br>
+<br>
+## Watching object properties<br>
+<br>
+The Fireworks JavaScript engine provides a `watch()` method on all objects that will call you back when a given property of that object is assigned a value.  Although you can't watch the properties of native Fireworks objects, `watch()` can still be useful for debugging the pure JS aspects of your extension.<br>
+<br>
+Mozilla has [documentation][5] on using `watch()` directly, but the *Fireworks Console* provides some convenience methods to make tracking property changes a little easier:<br>
+<br>
+watch(object, properties, [objectName])<br>
+  : Displays the old and new value of the object properties in the console whenever they change, along with the name of the function where the change happened.  The `properties` parameter can be a single string or an array of strings, to watch multiple properties on the same object.  To watch all of an object's properties, pass `"*"` as the `properties` parameter, or leave out the parameter altogether.<br>
+<br>
+  You can pass an optional `objectName` string, which will be displayed before the name of the property, which can be helpful in distinguishing which object's `width` property changed.  <br>
+<br>
+  This code watches for changes to any properties on `foo`:<br>
+<br>
+	~~~<br>
+  	var foo = { <br>
+		bar: 0,<br>
+		baz: 42<br>
+	};<br>
+<br>
+	console.watch(foo, "*", "foo");<br>
+<br>
+	function f()<br>
+	{<br>
+		foo.bar++;<br>
+	}<br>
+	<br>
+	f();<br>
+	~~~<br>
+<br>
+  Calling `f()` will display:<br>
+<br>
+	~~~<br>
+	>>> f(): foo.bar: 0 => 1<br>
+	~~~<br>
+<br>
+  Note that only the properties on the object at the time you called `console.watch(myObject, "*")` will be tracked.  If you subsequently add a new property to `myObject`, you will need to call `console.watch()` on that new property to track its changes. <br>
+<br>
+unwatch(object, properties)<br>
+  : Turns off change-tracking for the properties specified in the `properties` parameter, which can be a single string or an array of strings.  To unwatch all of an object's properties, pass `"*"` as the `properties` parameter, or leave out the parameter altogether.<br>
+<br>
+unwatchAll()<br>
+  : Turns off change-tracking for all objects that have been passed to `console.watch()`.  Since watching properties can slow things down a bit, it's a good idea to call `console.unwatchAll()` at the end of your command, to avoid leaving any watched globals behind.<br>
+<br>
+Note that you can watch only object properties, not local variables.  <br>
+<br>
+<br>
+## Showing the stack trace<br>
+<br>
+Since Fireworks doesn't have a JavaScript debugger, the console provides a couple of methods to display the current call stack, giving you a glimpse into how your code is executing.<br>
+<br>
+showStackPrefix(enabled)<br>
+  : Pass `true` to display the current call stack before each `console.log()` call, and `false` to turn off the display.  Up to 5 levels of calls will be shown.  As an example, this code:<br>
+<br>
+	~~~<br>
+	(function() {<br>
+		function f(a)<br>
+		{<br>
+			a *= 2;<br>
+			g(a);<br>
+		}<br>
+		<br>
+		function g(x)<br>
+		{<br>
+			console.log(x);<br>
+		}<br>
+		<br>
+		f(42);<br>
+	})();<br>
+	~~~<br>
+<br>
+  will show:<br>
+<br>
+	~~~<br>
+	>>> . > f > g(): 42<br>
+	~~~<br>
+<br>
+  A `.` in the stack prefix represents an anonymous function.<br>
+<br>
+showStack([message])<br>
+  : Displays the current call stack along with the values of each function call's parameters.  An optional message can be displayed with the call stack.  For example, this code:<br>
+<br>
+	~~~<br>
+	(function() {<br>
+		var o = { <br>
+			g: function(x) { console.showStack("in o.g()"); }<br>
+		};<br>
+		<br>
+		function f(a)<br>
+		{<br>
+			a *= 2;<br>
+			o.g(a);<br>
+		}<br>
+		<br>
+		f(42);<br>
+	})();<br>
+	~~~<br>
+<br>
+  will show:<br>
+<br>
+	~~~<br>
+	>>> Call stack [in o.g()]:<br>
+	  anonymous()<br>
+		f(a: 84)<br>
+		  anonymous(x: 84)<br>
+	~~~<br>
+<br>
+  The values of the function parameters are shown as they are at the time of the `showStack()` call, which may be different than the values that were initially passed to the function.  Since `f()` in the example above multiplies its `a` parameter by two, the call stack shows `84` as the value for `a`, rather than the `42` that was initially passed in.  The console isn't able to access the original parameter values.  To avoid dumping too much text to the console, a simple string representation of the value is shown.  So you'll see `FwArray` if you pass `fw.selection` to a function. <br>
+<br>
+Note that the stack display won't be correct inside a recursive function, since the call chain that JavaScript provides in that situation is a loop.<br>
+<br>
+<br>
+## Showing assertions<br>
+<br>
+To reduce noise in the console, it's often useful to display a message only when something is wrong.  By calling `console.assert()`, you can log a message when an expression evaluates to false.<br>
+<br>
+assert(expression, message, [objects])<br>
+  : If the `expression` parameter evaluates to a falsy value, the `message` string is shown, along with an "ASSERTION FAILED" label.  To make it clear which assertion failed, it's often simplest to duplicate the expression as a string value in the `message` parameter:<br>
+<br>
+	~~~<br>
+	(function() {<br>
+		console.assert(fw.selection.length > 0, "fw.selection.length > 0");<br>
+	})();<br>
+	~~~<br>
+	<br>
+  If nothing is selected, this will display:<br>
+<br>
+	~~~<br>
+	>>> anonymous(): ASSERTION FAILED: fw.selection.length > 0<br>
+	~~~<br>
+<br>
+  Any parameters that are passed after `message` will be logged to the console.  This can be useful to display the current state of variables whose values are being asserted. <br>
+<br>
+<br>
+## Tracing function execution <br>
+<br>
+When you're trying to track down a bug, adding lots of `console.log()` calls to your code can be tedious, especially since you'll need to go back and remove them.  In addition to the `console` global object, the *Fireworks Console* also loads a global `trace()` function that can help you understand how each line in a function is executed.<br>
+<br>
+Imagine you've written the following (not very useful) script:<br>
+<br>
+	function myBuggyFunc(count)<br>
+	{<br>
+		var dom = fw.getDocumentDOM();<br>
+		dom.selectAll();<br>
+		dom.clipCopy();<br>
+		dom.deleteSelection();<br>
+		<br>
+		for (var i = 0; i < count; i++) {<br>
+			dom.clipPaste();<br>
+			dom.moveSelectionTo({ x: i * 10, y: i * 10 });<br>
+		}<br>
+	}<br>
+<br>
+	myBuggyFunc();<br>
+<br>
+It's supposed to select everything on the current state, copy it, delete it, then paste it multiple times, each time positioning the copy 10px away from the previous copy (like I said, not terribly useful).  When you run the code, Fireworks just says "Could not run the script. A parameter was incorrect".  But which API call is wrong?<br>
+<br>
+Instead of manually adding `log()` calls to the code to try to figure out where it fails, you can use the trace library to do it for you.  Just add `return trace(this);` at the top of the function you want to trace.  In the example above, it would look like this:<br>
+<br>
+	function myBuggyFunc(count)<br>
+	{<br>
+		return trace(this);<br>
+		<br>
+		var dom = fw.getDocumentDOM();<br>
+		dom.selectAll();<br>
+		dom.clipCopy();<br>
+		dom.deleteSelection();<br>
+		<br>
+		for (var i = 0; i < count; i++) {<br>
+			dom.clipPaste();<br>
+			dom.moveSelectionTo({ x: i * 10, y: i * 10 });<br>
+		}<br>
+	}<br>
+<br>
+	myBuggyFunc();<br>
+<br>
+When you run the script, you should see the following lines in the *Fireworks Console* panel:<br>
+<br>
+	>>> myBuggyFunc: ( count: undefined )<br>
+	>>> myBuggyFunc:     var dom = fw.getDocumentDOM();<br>
+	>>> myBuggyFunc:     dom.selectAll();<br>
+	>>> myBuggyFunc:     dom.clipCopy();<br>
+	>>> myBuggyFunc:     dom.deleteSelection();<br>
+<br>
+Each line of the trace is prefixed with the name of the function you're tracing, along with any leading whitespace on the line.  The first line shows the function's parameters and the values that were passed in.  After the parameter list, each line in the console displays one line of code from the function.  You can see that the last line that executed was `dom.deleteSelection()`, which means that it likely contains a bug.  The [Extending Fireworks][6] docs say that `deleteSelection()` has a `bFillDeletedArea` parameter which is ignored if Fireworks is not in bitmap editing mode.  Unfortunately, it's still required, even if it's being ignored.  (A lot of Fireworks API calls are like that.)  When you're finished tracing the function, just delete the `return trace(this);` line.  <br>
+<br>
+See the `trace()` library's [readme file][7] for information on additional trace functionality and a detailed explanation of how it works. <br>
+<br>
+<br>
+## Polling for console updates <br>
+<br>
+You'll notice that after calling `console.log()`, it will take a couple of seconds for the output to appear in the panel.  This is due to a limitation in Fireworks that makes it impossible for JavaScript to call into a Flash panel's ActionScript.  The *Fireworks Console* panel must therefore poll the JS every couple of seconds to see if something new has been logged.  <br>
+<br>
+If you're impatient (and quick), you can click the *Print .jsf Logs* button to immediately print whatever your JS code has logged.  If you want to temporarily disable the polling, you can uncheck the *Auto* checkbox; this setting will be remembered across sessions.  <br>
+<br>
+Note that because calls from Flash to JavaScript will interfere with the text, crop, scale, skew, distort and 9-slice tools, polling is automatically stopped if one those tools is selected.  To print the logs in that situation, either switch to a different tool or click the *Print .jsf Logs* button.  Polling is also suspended while Fireworks is in the background.  <br>
+<br>
+Unfortunately, Fireworks sometimes does not deliver the necessary events that the panel uses to disable polling.  If you notice that a scaling operation, say, seems to get canceled in the middle of dragging a control point, try collapsing the *Fireworks Console* panel by double-clicking its tab and then expanding it by single-clicking the tab again.  If that doesn't work, you'll need to uncheck the *Auto* checkbox to disable polling while using those tools. <br>
+<br>
+<br>
+# Debugging Flash panels<br>
+<br>
+Since not being able to see the output of `trace()` calls makes developing Flash panels a pain, the console provides a way to display messages from your ActionScript code.  To enable your panel to talk to the console, add the `console.swc` file to your Flex or Flash library path; you can find the file in the *Command Panels* folder after installing the extension.  Then add `import com.johndunning.fw.console;` to the top of your ActionScript code.  <br>
+<br>
+Once that's done, you can print strings to the console by calling `console.log()` from your code, e.g., `console.log("the current time is", (new Date()).toString())`.  You can pass as many string, number or boolean parameters as you like; they'll be separated by spaces in the console output.  It's pretty basic functionality, but it can be extremely helpful when debugging ActionScript.  Note that passing an object to `console.log()` will print the string representation of that object, not its pretty-printed attributes.  Also, if you use some of my other Fireworks panels, like [*Adjustments*][1] or [*QuickFire*][2], debugging messages from them may appear in the console, since they may still contain some console.log() calls.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.4.6<br>
+  : 2013-04-07: Save the evaluated code to the log file.<br>
+<br>
+0.4.5<br>
+  : 2013-04-06: The console output is now saved to a `Fireworks Console.txt` file.<br>
+<br>
+0.4.4<br>
+  : 2013-01-08: Updated underscore.js to 1.4.3.  Added `is()` functions for all of the native Fireworks types.  Added ctrl-enter to execute the code but keep it in the input field.<br>
+<br>
+0.4.3<br>
+  : 2012-06-18: Fixed a bug with `console.log()`.<br>
+<br>
+0.4.2<br>
+  : 2012-06-17: Added `console.line()` method.  Console now works when no documents are open.  Included latest trace library, which now handles if/else branches correctly.<br>
+<br>
+0.4.1<br>
+  : 2012-05-19: Added new trace library, which now correctly handles `arguments` and `this` in the traced function.  Calling `console.log(arguments)` now works.  Additional arguments can be passed to `console.dir()`.<br>
+<br>
+0.4.0<br>
+  : 2012-05-11: Added clear, dir, watch, unwatch, unwatchAll, assert, showStack, showStackPrefix methods to `console`.  Added lots of utility functions to the scope in which entered JS is executed.  Added trace library.  Updated UI skin.<br>
+<br>
+0.3.1<br>
+  : 2010-05-11: Fixed bug where polling wasn't suspended for some tools.  Added sticky polling setting.<br>
+<br>
+0.3.0<br>
+  : 2010-05-03: Added `console` API functions.<br>
+<br>
+0.2.0<br>
+  : 2010-03-26: Completely rewrote the console in Flex 3.  Added .swc library for easily adding logging to Flash panels.<br>
+<br>
+0.1.0<br>
+  : 2002-06-17: Initial release.<br>
+<br>
+<br>
+[1]: http://johndunning.com/fireworks/about/AdjPanel<br>
+[2]: http://johndunning.com/fireworks/about/QuickFire<br>
+[3]: http://documentcloud.github.com/underscore/<br>
+[4]: http://github.com/documentcloud/underscore/<br>
+[5]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/watch<br>
+[6]: http://help.adobe.com/en_US/fireworks/cs/extend/WS5b3ccc516d4fbf351e63e3d1183c94856c-7e3f.html<br>
+[7]: https://github.com/fwextensions/trace/blob/master/README.md<br>
+]]></description>
+	<ui-access>
+<![CDATA[To open the Fireworks Console panel, choose Window > Fireworks Console.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Fireworks Console.swf" destination="$fireworks/configuration/command panels/"/>
+	</files>
+	<summary>
+<![CDATA[The Fireworks Console simplifies the process of learning the JavaScript API considerably.  Instead of writing and running an entire command, you can simply type code snippets into a panel and immediately see the output.  It's a little like having a command line prompt for Fireworks.  You can also use the console to debug and trace your own .jsf commands and Flash panels. <br>
+<br>
+This panel will be of interest only to developers of Fireworks extensions.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

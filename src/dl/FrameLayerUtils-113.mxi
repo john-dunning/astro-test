@@ -1,0 +1,134 @@
+<macromedia-extension name="Frame and Layer Utilities" version="1.1.3" type="command" requires-restart="false" date="2012-03-23 18:24:43 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/FrameLayerUtils">
+<![CDATA[Working with lots of frames and layers can be tedious, because many frame and layer menu commands that you perform over and over again don't have keyboard shortcuts.  And other actions, like hiding a layer on every frame, aren't supported at all by Fireworks' built-in tools.<br>
+<br>
+The scripts in this extension are intended to remedy this situation.  Many of them, such as *L - Rename* (rename the current layer) or *F - Duplicate* (duplicate the current frame), simply replicate existing functionality.  Their only advantage is that they enable you to create shortcuts for these actions through the Keyboard Shortcuts dialog, which doesn't list their built-in equivalents.<br>
+<br>
+Other commands offer completely new functionality:<br>
+<br>
+L - Hide in Other Frames<br>
+  : Hides the current layer in every frame except the current one.  In a document with many frames, this is an otherwise very tedious process.<br>
+<br>
+L - Copy to Next Doc <br>
+L - Copy Visible to Next Doc <br>
+  : Copy the contents of either the current layer or all visible layers to another document.  If the target document doesn't have layers with the same names as those in the source document, then new layers will be created in the target.  Only the contents on the current frame will get copied, not every frame in the document.  Also, it's best to have just two documents open when running this command, in order to avoid ambiguity as to which document will be the target.<br>
+<br>
+L - Move Selection to New Sublayer<br>
+  : Cuts the currently selected objects from the document and pastes them into a new sub-layer, which is handy if you want to quickly make a sub-layer.  *L - Move Selection to New Named Sublayer* does the same thing but prompts you for a name for the sub-layer.<br>
+<br>
+L - Move Top Layer Up/Down <br>
+  : Shift the current top-layer and all of its sub-layers up or down in the stack, which is useful for rearranging the layers without having to drag within the Layers panel.  <br>
+<br>
+F - Stack Left to Right <br>
+  : Takes the contents from each frame in the document and arranges it from left to right on the first frame, resizing the document so it's wide enough to accommodate all of the frames.  This is useful if you've created, say, a different button state on each frame and want to export a sprite containing all of the states as a single image.<br>
+<br>
+Many of the commands will be more convenient if you assign keyboard shortcuts to them.  Here are suggested shortcuts for some of the commands: <br>
+<br>
+  * alt-1 for F - Go to 1<br>
+  * alt-2 for F - Go to 2<br>
+  * ...<br>
+  * alt-0 for F - Go to 10<br>
+  * Home for F - Go to First<br>
+  * End for F - Go to Last<br>
+  * ctrl-PageUp for F - Go Back 10<br>
+  * ctrl-PageDown for F - Go Forward 10<br>
+  * alt-Num2 for L - Go Up<br>
+  * alt-Num8 for L - Go down<br>
+  * alt-ctrl-shift-Insert for F - Duplicate<br>
+  * alt-shift-Insert for L - Duplicate<br>
+  * alt-ctrl-shift-Delete for F - Delete<br>
+  * alt-shift-Delete for L - Delete<br>
+  * alt-ctrl-shift-K for F - Rename<br>
+  * alt-shift-K for L - Rename<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+1.1.3<br>
+  : Fixed an error in the L - Go Up/Down commands.<br>
+<br>
+1.1.2<br>
+  : Small fix to make the extension work better when other commands also use the dojo library.<br>
+<br>
+1.1.1<br>
+  : Revamped JS code so it wouldn't interfere with other commands.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the layer commands, look under Commands > Layers. To access the frame commands, look under Commands > Frames.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Frames/F - Delete.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Duplicate.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Export = Off.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Export = On.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go Back 10.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go Forward 10.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  1.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  2.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  3.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  4.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  5.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  6.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  7.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  8.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to  9.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to 10.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to By Number.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to First.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Go to Last.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Merge Back to Front.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Merge Front to Back.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Rename.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Set Delay.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Stack Left to Right.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/F - Stack Top to Bottom.jsf" destination="$fireworks/Configuration/Commands/Frames"/>
+					<file name="src/Frames/lib/Merge.js" destination="$fireworks/Configuration/Commands/Frames/lib"/>
+					<file name="src/Layers/L - Copy to Next Doc.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Copy Visible to Next Doc.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Delete Hidden.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Delete Visible.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Delete.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Duplicate.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Go Down.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Go Up.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Hide in All Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Hide in Other Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Hide.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Insert New Below.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Insert New.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Lock in All Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Lock in Other Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Lock.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Move Selection to New Named Sublayer.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Move Selection to New Sublayer.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Move Top Layer Down.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Move Top Layer Up.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Rename.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Sharing = Off.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Sharing = On.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Show in All Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Show in Other Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Toggle Slice Visibility.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/L - Unlock in All Frames.jsf" destination="$fireworks/Configuration/Commands/Layers"/>
+					<file name="src/Layers/lib/module.js" destination="$fireworks/Configuration/Commands/Layers/lib"/>
+					<file name="src/Layers/lib/dojo/dojo.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo"/>
+					<file name="src/Layers/lib/dojo/_base.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo"/>
+					<file name="src/Layers/lib/dojo/_base/array.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo/_base"/>
+					<file name="src/Layers/lib/dojo/_base/lang.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo/_base"/>
+					<file name="src/Layers/lib/dojo/_base/_loader/bootstrap.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo/_base/_loader"/>
+					<file name="src/Layers/lib/dojo/_base/_loader/bootstrap_fireworks.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo/_base/_loader"/>
+					<file name="src/Layers/lib/dojo/_base/_loader/hostenv_fireworks.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo/_base/_loader"/>
+					<file name="src/Layers/lib/dojo/_base/_loader/loader.js" destination="$fireworks/Configuration/Commands/Layers/lib/dojo/_base/_loader"/>
+					<file name="src/Layers/lib/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Layers/lib/fwlib"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/FrameLayerUtils"/>
+	<summary>
+<![CDATA[Working with lots of frames and layers can be tedious, because many frame and layer menu commands that you perform over and over again don't have keyboard shortcuts.  And other actions, like hiding a layer on every frame, aren't supported at all by Fireworks' built-in tools. The scripts in this extension are intended to remedy this situation. ]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

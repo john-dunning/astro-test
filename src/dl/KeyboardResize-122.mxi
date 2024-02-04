@@ -1,0 +1,97 @@
+<macromedia-extension name="Keyboard Resize" version="1.2.2" type="command" requires-restart="false" date="2009-10-11 21:00:21">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[I first wrote these commands almost 8 years ago, and still use them constantly.  When working on user interface mockups, I frequently find myself resizing elements a few pixels at a time.  The Scale tool is a little awkward for making many fine adjustments, since you have to drag a side of the selected object at least a few pixels for the movement to even register.  And the Info panel doesn't display the pixel size of the selection in realtime (only the percentage change is shown).  To address these issues, the commands in this extension let you resize the selection in any direction using just a keyboard shortcut, which is much more convenient.  <br>
+<br>
+There are 16 commands, each which is intended to have its own keyboard shortcut.  You can pick whichever shortcuts you like, but running the "Add Keyboard Resize Shortcuts" command will automatically add a default set of shortcuts to your currently selected keyboard set.  These default shortcuts are:<br>
+<br>
+- alt+any arrow key expands the selection out from the center by 1 pixel in the direction of the arrow<br>
+- alt+shift+any arrow key expands the selection by 10 pixels<br>
+- ctrl+alt+any arrow key contracts the selection towards its center by 1 pixel in the direction of the arrow<br>
+- ctrl+alt+shift+any arrow key contracts the selection by 10 pixels<br>
+<br>
+The equivalents on the Mac are option+arrow to expand and option+command+arrow to contract. <br>
+<br>
+As an example, if you select a rectangle that's 100px wide and tall, situated at (50, 50), and then press alt+left arrow, the selection will get one pixel wider (101px) and its X position will shift one pixel to the left (to 49), thereby keeping its right edge in the same location.  If you then press ctrl+alt+shfit+up arrow, the rectangle gets 10px shorter (to 40px), but its Y position stays the same, since it's contracting from the bottom.<br>
+<br>
+Besides the convenience of keyboard access, these extensions provide an important additional benefit over the Scale tool: each element in the selection is scaled individually.  Say you have a red 100px X 50px rectangle with a blue 80px X 30px rectangle centered on top of it, so the smaller rectangle is 10px away from each edge of the larger.  If you select both elements, then press alt+shift+right arrow, the red rectangle will be 110px x 50px while the blue one will be 90px X 30px.  That way, the 10px relationship between the two rectangles is maintained.  On the other hand, if you use the Scale tool to resize the selection by 10px, the larger one will end up 110px wide while the smaller will be 98px, since the two are being scaled proportionally.  When resizing UI elements, this is rarely what you want. <br>
+<br>
+In addition to basic shapes like rectangles, the commands have special handling for other element types:<br>
+<br>
+Text blocks<br>
+: The text container is resized without scaling the text itself.  This will cause the text to reflow as you change the width of the text box.<br>
+<br>
+Rounded rectangles<br>
+: The corners are kept round as it's resized.  This works with either the primitive rectangle or the Rounded Rectangle auto shape.<br>
+<br>
+Paths<br>
+: Complex paths, such as a rectangle with a quarter-circle punched out of one corner, are resized by subselecting the points on the side that you're expanding or contracting and then moving them.  This generally keeps the overall shape of the path undistorted.<br>
+<br>
+Groups<br>
+: Each sub-element in the group is resized individually.  For instance, if you select a group that contains two text blocks and press alt+shift+left arrow, each text block will get 10px wider, rather than being distorted by getting scaled.  Sub-groups, sub-sub-groups, etc. are also handled.<br>
+<br>
+Paint mode<br>
+: When you've made a selection in paint mode, the selected pixels are not resized; instead, the rectangular marquee selection itself is resized.  This makes it easier to select a precise set of pixels.  Unfortunately, the standard keyboard shortcuts for these commands are ignored in paint mode, since they conflict with the "clone and nudge" operations.  If you want to use the keyboard resize commands in paint mode, you'll need to specify different shortcuts for them.<br>
+<br>
+Note that if you'd like to customize the number of pixels by which each command expands or contracts an object, you can change the command's file name in C:\Program Files\Adobe\Adobe Fireworks CS4\Configuration\Commands\Keyboard Resize.  For instance, if you change "KB Resize - Expand Top 10.jsf" to "KB Resize - Expand Top 20.jsf", then running it will expand the top of the selection by 20px. <br>
+<br>
+<br>
+# Release history:<br>
+<br>
+1.2.2<br>
+: The "add shortcuts" command will now work even if there are no existing shortcuts for any extensions, and will also work correctly on the Mac. <br>
+<br>
+1.2.1<br>
+: Fixed the handling of rounded rectangle primitives, so that gradient positions aren't lost.  In bitmap mode, resizing now changes the marquee selection.<br>
+<br>
+1.2.0<br>
+: Fixed the handling of rounded rect auto shapes, so the corner type doesn't change while resizing.  Added support for resizing groups.<br>
+<br>
+1.1.0<br>
+: Enabled "add shortcuts" command for the Mac.  Revamped JS code so it wouldn't interfere with other commands.  Fixed paint mode handling and added support for smartshapes and complex paths.<br>
+<br>
+1.0.0<br>
+: Initial release. 2001-11-21.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the page commands, look under Commands > Keyboard Resize.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Add Keyboard Resize Shortcuts.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Bottom 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Bottom 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Left 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Left 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Right 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Right 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Top 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Contract Top 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Bottom 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Bottom 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Left 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Left 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Right 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Right 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Top 1.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/KB Resize - Expand Top 10.jsf" destination="$fireworks/Configuration/Commands/Keyboard Resize/"/>
+					<file name="src/lib/Keyboard Resize.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib"/>
+					<file name="src/lib/lib.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib"/>
+					<file name="src/lib/dojo/dojo.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo"/>
+					<file name="src/lib/dojo/string.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo"/>
+					<file name="src/lib/dojo/_base.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo"/>
+					<file name="src/lib/dojo/_base/array.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/lang.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap_fireworks.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/hostenv_fireworks.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/loader.js" destination="$fireworks/Configuration/Commands/Keyboard Resize/lib/dojo/_base/_loader"/>
+	</files>
+	<summary>
+<![CDATA[This extension makes it easy to resize selected elements in any direction using just the keyboard, which can be much more convenient than dragging the Scale tool with the mouse.  And unlike the Scale tool, text blocks are resized without being distorted.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

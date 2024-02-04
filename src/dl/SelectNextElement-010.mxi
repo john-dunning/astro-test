@@ -1,0 +1,31 @@
+<macromedia-extension name="Select Next Element" version="0.1.0" id="com.johndunning.fireworks.SelectNextElement" type="command" requires-restart="false" date="2013-02-26 17:13:58 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/SelectNextElement"/>
+	<description href="http://johndunning.com/fireworks/description/SelectNextElement">
+<![CDATA[The *Select Next Element* commmand makes it easy to naviagate your document via the keyboard.  Each time you run the command, the next element below the currently selected one is selected.  This can be particularly helpful for cycling among the elements underneath the selection, which are otherwise hard to access without going to the *Layers* panel or using the *Select Behind* tool.  The *Select Previous Element* command does the same thing in the reverse direction.  The commands are available in the *Commands > Selection* submenu.<br>
+<br>
+Elements and layers that are locked or hidden are skipped over.  The *Web Layer* is also skipped, since bugs in the Fireworks API make it impossible to reliably switch between slices or hotspots.  <br>
+<br>
+These commands are really only useful if you assign them to an easily accessible keyboard shortcut, preferably one that you can use with one hand while your other stays on the mouse.  That way, you can select an element with one hand, then use the mouse to change one of its properties in the *Properties* panel, select the next element, change its properties, and so on.  <br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the command, look under Commands > Selection.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Select Next Element/Select Next Element.jsf" destination="$fireworks/Configuration/Commands/Selection/Select Next Element"/>
+					<file source="src/Select Next Element/Select Previous Element.jsf" destination="$fireworks/Configuration/Commands/Selection/Select Next Element"/>
+					<file source="src/Select Next Element/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Selection/Select Next Element/lib"/>
+					<file source="src/Select Next Element/lib/require.js" destination="$fireworks/Configuration/Commands/Selection/Select Next Element/lib"/>
+					<file source="src/Select Next Element/lib/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Selection/Select Next Element/lib/fwlib"/>
+					<file source="src/Select Next Element/lib/fwlib/selection.js" destination="$fireworks/Configuration/Commands/Selection/Select Next Element/lib/fwlib"/>
+					<file source="src/Select Next Element/lib/fwlib/underscore.js" destination="$fireworks/Configuration/Commands/Selection/Select Next Element/lib/fwlib"/>
+	</files>
+	<summary>
+<![CDATA[The Select Next Element commmand makes it easy to naviagate your document via the keyboard.  Each time you run the command, the next element below the currently selected one is selected.  This can be particularly helpful for cycling among the elements underneath the selection, which are otherwise hard to access without going to the Layers panel or using the Select Behind tool.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

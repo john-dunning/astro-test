@@ -1,0 +1,56 @@
+<macromedia-extension name="Copy Paste WHXY" version="1.1.0" type="command" requires-restart="false" date="2009-07-26 20:56:11">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The Paste Attributes command is handy for quickly giving the same appearance to a bunch of objects.  But it would also be helpful to give objects the same size or position.  You can use the Properties panel to do that, but then you have to type in the size or position values each time you want to apply them, and you have to select each element one at a time.  The commands in this extension make that process much more convenient.<br>
+<br>
+To use the commands, first selelct an object and run Commands > WHXY > WHXY - Copy.  This stores the object's size and position for later use.  Now select one or more other objects and then run one of the WHXY - Paste commands.  If you run "WHXY - Paste Size", for example, all of the selected objects will be scaled to the same size as the object you ran "WHXY - Copy" on, while maintaing their current locations.  Or "WHXY - Paste X" will position the selected elements at the same X value as the original element.  <br>
+<br>
+When resizing bitmaps, you typically want to maintain their proportions to avoid distorting the images.  The "WHXY - Paste Width Porportionally" command will apply the same width to each selected element, but it will scale each element's height proportionally to its width.  The selection will then end up with the same width as the copied element but with selected elements' heights scaled proportionally to maintain the same aspect ratio.  The "WHXY - Paste Height Porportionally" command does the same thing but in the vertical direction.  <br>
+<br>
+The "WHXY - Paste Size Porportionally" command scales each selected element to fit inside the bounding box of the copied element.  For instance, if you run "WHXY - Copy" on an element that's 100x100 pixels, running "WHXY - Paste Size Porportionally" will then resize each selected element proportionally so that it fits within that 100x100 bounding box.  Running "WHXY - Paste Size", on the other hand, would just make each element 100x100.<br>
+<br>
+The commands will be more convenient if you assign keyboard shortcuts to them.  Here are some suggested shortcuts: <br>
+<br>
+    alt-shift-C for WHXY - Copy<br>
+    alt-shift-V for WHXY - Paste Size<br>
+    alt-shift-W for WHXY - Paste Width<br>
+    alt-shift-H for WHXY - Paste Height<br>
+    ctrl-alt-shift-S for WHXY - Paste Size Porportionally<br>
+    ctrl-alt-shift-W for WHXY - Paste Width Porportionally<br>
+    ctrl-alt-shift-H for WHXY - Paste Height Porportionally<br>
+    alt-shift-P for WHXY - Paste Position<br>
+    alt-shift-X for WHXY - Paste X<br>
+    alt-shift-Y for WHXY - Paste Y<br>
+<br>
+<br>
+Release history:<br>
+<br>
+1.1.0: Added proportional resizing options.<br>
+<br>
+1.0.0: Initial release.  2002-09-02.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access these commands, look under Commands > WHXY.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/WHXY - Copy.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Height Proportionally.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Height.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Position.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Size Proportionally.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Size.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Width Proportionally.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Width.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste X.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY - Paste Y.jsf" destination="$fireworks/configuration/commands/WHXY/"/>
+					<file name="src/WHXY.js" destination="$fireworks/configuration/commands/WHXY/"/>
+	</files>
+	<summary>
+<![CDATA[The Paste Attributes command is handy for quickly giving the same appearance to a bunch of objects.  But it would also be helpful to give objects the same size or position.  You can use the Properties panel to do that, but then you have to type in the size or position values each time you want to apply them, and you have to select each element one at a time.  The commands in this extension make that process much more convenient.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

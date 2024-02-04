@@ -1,0 +1,34 @@
+<macromedia-extension name="Paste In Place" version="1.2.2" type="command" requires-restart="false" date="2012-04-30 20:15:19 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/PasteInPlace">
+<![CDATA[*Paste In Place* is an update to a classic Kleanthis Economou command.  It lets you quickly replace a bunch of existing elements with a different element, without having to carefully position each one.  Simply copy the replacement to the clipboard, select the elements you want to replace, and run *Commands > Objects > Paste In Place*.  The clipboard contents will be inserted at the same XY position, layer, and group level as the selected elements.<br>
+<br>
+Note that the upper-left corner of the replacement is positioned at the same location as the original element.  If the replacements have a different size than the originals, you might need to adjust their positions.  All of the replacement elements will remain selected after running the command so that you can use the arrow keys to move them around.<br>
+<br>
+Thanks to some clever hacking by [Aaron Beall](http://fireworks.abeall.com/), you can now replace deeply-nested sub-elements without having to ungroup anything.  The only exception to this is the replacement of an element inside a group with a symbol: the selected element will be replaced, but the symbol doesn't get inserted into the group.  There doesn't seem to be any way to work around this, unfortunately. <br>
+<br>
+<br>
+# Release history <br>
+<br>
+1.2.2<br>
+  : 2012-04-30: Fixed bug where using a symbol as the replacement element didn't work at all.<br>
+<br>
+1.2.1<br>
+  : 2007-08-25: Used the *Aaron Beall Sub-group Paste as Mask Technique(tm)* to maintain deeply nested groups.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the group commands, look under Commands > Objects.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Paste In Place.jsf" destination="$fireworks/Configuration/Commands/Objects/"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/PasteInPlace"/>
+	<summary>
+<![CDATA["Paste In Place" is an update to a classic Kleanthis Economou command.  It lets you quickly replace a bunch of existing elements with a different element, without having to carefully position each one.  Simply copy the replacement to the clipboard, select the elements you want to replace, and run this command.  The clipboard contents will be inserted at the same XY position, layer, and group level as the selected elements.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

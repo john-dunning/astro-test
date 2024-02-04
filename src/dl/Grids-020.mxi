@@ -1,0 +1,120 @@
+<macromedia-extension name="Grids" version="0.2.0" id="com.johndunning.fireworks.Grids" type="command" requires-restart="false" date="2013-01-20 18:02:42 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/Grids"/>
+	<description href="http://johndunning.com/fireworks/description/Grids">
+<![CDATA[The *Insert Grids* commmand makes it easy to create modular grids for laying out web content, similar to the [Modular Grid Pattern][1] generator or the [960.gs][2] CSS framework.  Select the desired number of columns, their widths, gutters, and so on, then click OK to insert a visual grid to help lay out your page elements.<br>
+<br>
+<br>
+# Insert Grid dialog<br>
+<br>
+When you run the *Commands > Grids > Insert Grid* command, a dialog will open, which lets you specify the grid properties that are described below.  If you click OK, a layer called *Grid* will be created at the top of the layer stack, if necessary, and a bitmap representing the grid will be inserted on that layer.<br>
+<br>
+You can drag the *Grid* layer to another location in the *Layers* panel if you'd like the grid to be below your content.  This layer will be reused the next time you update the grid on the current page.  If desired, you can share this layer to the other states on the page. <br>
+<br>
+Note that any existing grid will be deleted and replaced the next time you open *Insert Grid*.  If you'd like to have multiple grids on your page, insert one, change the name of its layer to something other than *Grid*, and then run the command again.<br>
+<br>
+The name of the grid bitmap indicates the settings that were used to create it.  So a bitmap named `Grid: 10 col, 60/20/20/4` is 10 columns wide, with 60px columns, 20px gutters, a 20px baseline and 4 baselines per vertical module.  Those settings are also stored on that grid bitmap, so the next time you reopen the dialog, you'll see the last settings you used on that page.  <br>
+<br>
+<br>
+# Measurements<br>
+<br>
+In the *Measurements* section of the dialog, you can control the column layout by entering the desired column width and gutter (the space between columns), in pixels.  Then you can specify the number of columns.  The non-editable *Page width* field will update to show the calculated width of the grid you've specified.  <br>
+<br>
+Note that the *Insert Grid* command creates only as many whole columns as will fit in the document at its current width, so you may end up with fewer columns than specified in the *Columns* field.<br>
+<br>
+The *Baseline* field controls the spacing between the horizontal red lines.  Enter 0 here to not draw any horizontal lines.  <br>
+<br>
+The *Baselines/mod* field specifies the number of baseline rows per vertical module.  If you enter 4, for instance, then every 4th row will be drawn with a light pink color.  Enter 0 to not draw any such rows. <br>
+<br>
+In any of the numeric entry fields, you can press *up-arrow* to increment the value by one, or press *shift-up-arrow* to increment by 10.  Pressing *down-arrow* does the reverse. <br>
+<br>
+<br>
+# Grid Bitmap<br>
+<br>
+By default, the grid starts at the document's origin.  If you'd like to have some blank space on either side of the grid, you can change the *X-origin* field.  To leave space above the grid, enter a non-zero value in the *Y-origin* field.  Note that the grid always extends all the way to the bottom of the document. <br>
+<br>
+The grid bitmap is semi-transparent by default, but you can make it more transparent by reducing the value in the *Opacity* field.<br>
+<br>
+![Grid opacity](http://johndunning.com/fireworks/inc/grids/grid-opacity.png)<br>
+<br>
+Normally, the grid starts and ends with a column.  If you'd like to start and end with a gutter instead, click the *Start/end with gutter* checkbox.<br>
+<br>
+<br>
+# Guides<br>
+<br>
+The bitmap that the *Insert Grid* dialog creates makes it easier to visually align your elements, but it doesn't help you snap the elements to the grid while dragging.  To add guides that correspond to the columns and rows of the grid, select the *Vertical guides* and *Horizontal guides* options.  You can hide and show these guides using the *View > Guides > Show Guides* menu option.<br>
+<br>
+<br>
+# Presets<br>
+<br>
+The last settings you used are always remembered the next time you open the *Insert Grid* dialog, represented by *<Last Settings>* in the *Presets* menu.  You can also save these settings out to a file and switch between multiple presets.  Click the + button next to the menu to save the current settings as a new preset.  Click the - button to delete the selected preset.<br>
+<br>
+The presets are stored as `.json` files in *\Users\<yourID>\Adobe\Fireworks CS6\Commands\Grid Presets* on Windows, or the equivalent user path on OS X.  To move a preset to another computer, just copy these files to the corresponding folder on the other machine. <br>
+<br>
+<br>
+# Previewing the grid<br>
+<br>
+In Fireworks CS6, a *Preview* button will appear at the bottom of the dialog.  Clicking this button hides the current grid, if any, and renders a new one with the current settings.  You can also press *shift-enter* when a field has keyboard focus to preview the grid.  <br>
+<br>
+If you click *Cancel* after previewing a grid, the previous grid is restored.  <br>
+<br>
+This button is not shown in earlier versions of Fireworks due to an application bug that would cause a modal dialog to pop on top of the *Insert Grid* dialog, rendering Fireworks unresponsive. <br>
+<br>
+<br>
+# Toggling the grid layer<br>
+<br>
+To easily show or hide the layer that contains the grid bitmap, you can run the *Commands > Grids > Toggle Grid Layer* command.  Adding a keyboard shortcut to this command will make it more convenient.<br>
+<br>
+Note that you can actually use this command to toggle the visibility of any named layer.  Just make a copy of the `Toggle Grid Layer.jsf` file and rename it.  You'll need to replace *Grid* with the name of the layer to toggle, such as `Toggle Background Layer.jsf` to affect a layer named *Background*.<br>
+<br>
+<br>
+# Changing the grid's color<br>
+<br>
+By default, the grid bitmap is a semi-transparent red color.  You can easily change the base color to something else by applying some filters.  Unlock the *Grid* layer and select the grid bitmap.  In the *Properties* panel, first apply a *Convert to Alpha* filter.  Then add a *Color Fill* filter and choose a new color in that filter's properties dialog.  The next time you update the grid settings, those filters will be applied to the new grid bitmap.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.2.0<br>
+  : 2013-01-20: Added the option to start and end with a gutter.  Added shift-arrow handling to increment/decrement by 10.  The grid settings are now stored on the grid element.<br>
+<br>
+0.1.1<br>
+  : 2011-05-04: Increased the maximum allowed value for the numeric fields. <br>
+<br>
+0.1.0<br>
+  : 2011-04-23: Initial release.<br>
+<br>
+<br>
+[1]: http://modulargrid.org/#app<br>
+[2]: http://960.gs<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the command, look under Commands > Grids.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Insert Grid.jsf" destination="$fireworks/Configuration/Commands/Grids/"/>
+					<file source="src/Toggle Grid Layer.jsf" destination="$fireworks/Configuration/Commands/Grids/"/>
+					<file source="src/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Grids/lib"/>
+					<file source="src/lib/require.js" destination="$fireworks/Configuration/Commands/Grids/lib"/>
+					<file source="src/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/Grids/lib/dojo"/>
+					<file source="src/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/Grids/lib/dojo"/>
+					<file source="src/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib"/>
+					<file source="src/lib/fwlib/files.js" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib"/>
+					<file source="src/lib/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib"/>
+					<file source="src/lib/fwlib/prefs.js" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib"/>
+					<file source="src/lib/fwlib/underscore.js" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib"/>
+					<file source="src/lib/fwlib/dialog-swfs/Insert Grid.swf" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/fwlib/dialog-swfs/JSMLDialog.swf" destination="$fireworks/Configuration/Commands/Grids/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/img/add-icon.png" destination="$fireworks/Configuration/Commands/Grids/lib/img"/>
+					<file source="src/lib/img/delete-icon-disabled.png" destination="$fireworks/Configuration/Commands/Grids/lib/img"/>
+					<file source="src/lib/img/delete-icon.png" destination="$fireworks/Configuration/Commands/Grids/lib/img"/>
+	</files>
+	<summary>
+<![CDATA[The Insert Grids commmand makes it easy to create modular grids for laying out web content.  Select the desired number of columns, their widths, gutters, and so on, then click OK to insert a visual grid to help lay out your page elements.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

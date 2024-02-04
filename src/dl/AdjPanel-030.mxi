@@ -1,0 +1,53 @@
+<macromedia-extension name="Adjustments Panel" version="0.3.0" id="com.johndunning.fireworks.AdjPanel" type="command" requires-restart="false" date="2012-10-03 17:14:01 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/AdjPanel"/>
+	<description href="http://johndunning.com/fireworks/description/AdjPanel">
+<![CDATA[If you want to make the fill color of an element darker, you can select it, open the *Color Mixer* panel, switch to HSB mode, and then drag the brightness slider.  But what if you have two differently colored elements and want to make them both slightly darker?  You can't use the *Color Mixer* panel because it will set both elements to the same color.  A similar problem occurs when you have two elements with different opacities and you want to make them relatively more opaque.  Using the Opacity menu in the Properties panel will set them both to the same transparency.  <br>
+<br>
+The *Adjustments* panel makes these and other tasks easier.  When you open the panel from the *Windows* menu you'll see three rows of buttons.  Pressing a button in the top row will perform the adjustment, incrementing or decrementing each element's attribute by either 1 or 10 points.<br>
+<br>
+You select which attribute to adjust by clicking in the middle row.  The buttons are labeled **H** (hue), **S** (saturation), **B** (brightness), **A** (fill or stroke alpha channel), **O** (opacity) and **St** (stroke width).  Only one attribute can be selected at a time.  <br>
+<br>
+The bottom row of buttons are labeled **Fill**, **Stroke** and **Both**.  This setting lets you control the hue, saturation or brightness of the fill and stroke colors independently.  This selection does not apply to the opacity and stroke width settings. <br>
+<br>
+The HSBA adjustments can affect any vector shape, path, text, auto shape or bitmap, or a group of those elements.  The colors of nodes in gradient fills will be adjusted, shifting the overall effect of the gradient.  <br>
+<br>
+The HSBA colors of symbol instances cannot be adjusted with the panel, but their element opacity can be.  The stroke width setting works with any element that has a stroke.  Reducing the stroke width all the way to 0 will remove the stroke, but trying to increment the stroke from 0 will not work.  You must first apply a stroke and then adjust its width via the panel. <br>
+<br>
+Note that adjusting bitmaps with the HSB options is "destructive" in that reducing a bitmap's brigtness by 10 and then increasing it by 10 does not result in precisely the same image.  With the **A** and **Fill** options set and a bitmap element selected, clicking the adjust buttons will change its element opacity, since bitmaps don't have a fill color.<br>
+<br>
+You may sometimes see the HSBA values change by 9 or 11 points, due to rounding errors.  <br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.3.0<br>
+  : 2012-10-03: Added support for adjusting the fill and stroke opacity settings in CS6.  Fixed bug where elements with a transparent fill or stroke would shift color when adjusted.<br>
+<br>
+0.2.1<br>
+  : 2010-01-05: Added icons for the collapsed panel state.<br>
+<br>
+0.2.0<br>
+  : 2009-12-21: Added support for adjusting gradient fills. <br>
+<br>
+0.1.0<br>
+  : 2009-10-14: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the panel, look under the Windows menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Adjustments.js" destination="$fireworks/Configuration/Command Panels/"/>
+					<file source="src/Adjustments.png" destination="$fireworks/Configuration/Command Panels/"/>
+					<file source="src/Adjustments.swf" destination="$fireworks/Configuration/Command Panels/"/>
+					<file source="src/Adjustments_over.png" destination="$fireworks/Configuration/Command Panels/"/>
+	</files>
+	<summary>
+<![CDATA[If you want to make the fill color of an element darker, you can select it, open the Color Mixer panel, switch to HSB mode, and then drag the brightness slider.  But what if you have two differently colored elements and want to make them both slightly darker?  You can't use the Color Mixer panel because it will set both elements to the same color.  The Adjustments panel makes this and other tasks easier.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

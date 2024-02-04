@@ -1,0 +1,84 @@
+<macromedia-extension name="Copy Merged" version="1.5.1" id="com.johndunning.fireworks.CopyMerged" type="command" requires-restart="false" date="2012-12-06 15:59:27 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/CopyMerged"/>
+	<description href="http://johndunning.com/fireworks/description/CopyMerged">
+<![CDATA[Fireworks is great because you can create lots of individual objects on multiple layers and then easily export a single merged image.  But what if you want to simply copy the flattened pixels onto the clipboard and then paste them into another application?<br>
+<br>
+You could export the image, open the file, select all, and then do the copy, but that's not very convenient if you're modifying your image a lot and have to copy each change.  Or, you could select all the objects in your document and then copy, but only objects on unlocked layers get copied that way, forcing you to unlock every layer first.<br>
+<br>
+<br>
+# Easily copying flattened pixels<br>
+<br>
+With just one step, the *Copy Merged* command copies onto the clipboard the entire document as a flattened image.  It even copies the objects on locked layers, without affecting their locked state.<br>
+<br>
+If you want to copy just a portion of your image, first select an object that encompasses the rectangular area you want to copy, and then run the command.  Slices work well for this purpose, or you might select the background element in a dialog to copy the dialog's content (the pixels from the selected element will be included in copied bitmap).  You can also make a marquee bitmap selection over part of the canvas.  <br>
+<br>
+*Copy Merged* will copy only the area covered by the selected object or marquee.  If the marquee selection has an anti-aliased or feathered edge, that edge will be applied to the merged pixels as well.<br>
+<br>
+*Copy Merged into New Document* will make a flattened copy of the pixels under the selection and then paste that bitmap into a new document that has the same size as your original selection.  <br>
+<br>
+<br>
+# Using the selection to mask the merged bitmap<br>
+<br>
+*Copy Merged into Selection* gives you even more control.  If you draw, say, an ellipse with a feathered fill over your document, select it, and then run *Copy Merged into Selection*, the ellipse will be replaced with a flattened bitmap of whatever pixels were under it; the feathered edge will also be applied to the bitmap.  Text blocks work, too.  Just select a text object and run the command; the opaque pixels of the text will be replaced with the pixels underneath.  Open paths work as well; the visible pixels of the path serve as the mask.<br>
+<br>
+Things get more interesting if multiple objects are selected.  The bottom-most selected object serves as the pixel source for the rest of the selection.  Say you have a screenshot of a toolbar and you want to extract each 16X16 icon into its own bitmap.  Place a 16X16 rectangle over each of the icons, select all of the rectangles and the screenshot, and then run *Copy Merged into Selection*.  The rectangles will be replaced with the pixels from the screenshot, which will remain unaffected.<br>
+<br>
+<br>
+# Handling locked elements<br>
+<br>
+Note that by default, elements on locked layers (with a lock icon next to the folder icon) are copied as part of the merged bitmap, but locked elements (with a lock icon next to the element itself) are not.  If you tend to use lots of locked elements rather than locked layers, you should use the commands that have *Locked Elements* in their name, e.g., *Copy Merged - Locked Elements* rather than *Copy Merged*.  These commands are slightly slower than the regular commands, since they have to export the image and load it back in to flatten the locked elements.<br>
+<br>
+You will probably find the *Copy Merged* command more convenient if you assign a keyboard shortcut to it.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+1.5.1<br>
+  : 2012-12-06: Now any kind of element, including auto shapes, groups, etc., can be used as a target for the copied pixels.  Fixed a bug where elements on a sub-layer of a hidden layer would be included in the merged bitmap.<br>
+<br>
+1.5.0<br>
+  : 2010-03-12: Added commands that support copying merged pixels from locked elements, not just locked layers. <br>
+<br>
+1.4.0<br>
+  : 2009-03-22: Fixed bug that would cause pixels to be copied from the wrong portion of the bitmap when the document is zoomed in or when elements extended off the edges of the canvas.<br>
+<br>
+1.3.2<br>
+  : 2007-10-10: Added warning to Copy Merged into Selection when objects don't intersect with the source bitmap.  Supported locked sublayers.<br>
+<br>
+1.3.1<br>
+  : 2007-10-08: Fixed bug with Copy Merged into Selection when destination path had no fill.<br>
+<br>
+1.3.0<br>
+  : 2007-10-07: Added support for marquee selections.  Added Copy Merged into Selection.<br>
+<br>
+1.2.0<br>
+  : 2007-10-04: Added Copy Merged into New Document.<br>
+<br>
+1.1.0<br>
+  : 2007-08-30: Added some error handling.<br>
+<br>
+1.0.0<br>
+  : 2003-04-09: Initial release.  <br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Copy Merged.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Copy Merged - Locked Elements.jsf" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+					<file source="src/Copy Merged into New Document - Locked Elements.jsf" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+					<file source="src/Copy Merged into New Document.jsf" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+					<file source="src/Copy Merged into Selection - Locked Elements.jsf" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+					<file source="src/Copy Merged into Selection.jsf" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+					<file source="src/Copy Merged Utilities.js" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+					<file source="src/Copy Merged.jsf" destination="$fireworks/Configuration/Commands/Copy Merged/"/>
+	</files>
+	<summary>
+<![CDATA[With just one step, the Copy Merged command copies onto the clipboard the entire document as a flattened image.  It even copies the objects on locked layers, without affecting their locked state.  Copy Merged into New Document does the same thing but pastes the flattened image into a new document.  Copy Merged into Selection copies the merged pixels into the selected objects while respecting their alpha channels, which is a quick way to copy a row of icons out of a screenshot and into individual bitmap elements.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

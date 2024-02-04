@@ -1,0 +1,65 @@
+<macromedia-extension name="Script Runner" version="0.1.0" type="command" requires-restart="false" date="2010-10-31 11:56:15 -0700">
+	<products>
+		<product name="Fireworks" version="10" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[When writing Fireworks extensions, I often find myself writing little snippets of JavaScript code to inspect attributes or run commands on whatever elements are selected.  I usually enter these snippets in the [Fireworks Console][1] panel, but having to constantly reload and rerun the code each time the selection changes is awkward.  The _Script Runner_ panel makes it easy to automatically run JavaScript whenever the selection changes.<br>
+<br>
+To use it, simply enter some JavaScript in the top field and then select an element.  As you change the selection or modify the selected element, your code will be run again and its results will be added to the history field at the bottom of the panel.  <br>
+<br>
+<br>
+# Writing code snippets<br>
+<br>
+A few variables are predefined for your code snippets:<br>
+<br>
+  * `dom = fw.getDocumentDOM()`<br>
+  * `sel = fw.selection`<br>
+  * `el = fw.selection[0]`<br>
+<br>
+So to print the first selected element's `pixelRect` property, you can simply write `el.pixelRect` rather than `fw.selection[0].pixelRect`.<br>
+<br>
+If you want to execute your code immediately, without changing the selection, click the _Run_ button.  To disable the automatic execution of the JavaScript, uncheck the _Auto_ checkbox next to the _Run_ button.<br>
+<br>
+Code snippets that you had previously entered can be accessed via the buttons in the upper-right corner.  Click the left-arrow to step back in the code history and click the right-arrow to step forward.<br>
+<br>
+The _Script Runner_ panel retains the code entries and history across sessions.  Click the _Clear_ button to clear the lower history display.<br>
+<br>
+<br>
+# Modifying the selection<br>
+<br>
+In addition to simply displaying a particular property of the selected element, your code can modify the selection as well.  Entering `el.visible = false`, for instance, would hide each element as you select it.  <br>
+<br>
+Any of the Fireworks API methods can be called from your code snippets, variables can be defined and multiple statements can be strung together.  For example, this code would copy the width and height of the selection to the clipboard in CSS format, which might be useful for then pasting into a stylesheet:<br>
+<br>
+	b = dom.getSelectionBounds();<br>
+	dom.clipCopyJsToExecute("{ width: " + <br>
+		(b.right - b.left) + "px; height: " + <br>
+		(b.bottom - b.top) + "px; }");<br>
+<br>
+Of course, with great API power comes great responsibility: it's easy to mess up your Fireworks document if you're not careful.  For instance, entering `dom.deleteSelection(false)` would automatically delete each element that you select, which probably isn't what you want.  And if you undo the delete operation, the undeleted element will be selected, so the script will run again, which in turn will delete it again.  So be careful out there.<br>
+<br>
+<br>
+# Implementation notes <br>
+<br>
+The _Script Runner_ panel is built using the [JSON Panel][2] library, which lets you create Flex panels using only JavaScript.  All of the code that implements the _Script Runner_ panel is in the `Script Runner.js` file.  The UI layout is specified by a JavaScript object that has a similar structure to MXML.  The `Script Runner.swf` Flash file provides the Flex rendering engine.  It interprets the JS structure and builds the Flex UI from it, then passes events back into the JS for handling. <br>
+<br>
+You can modify the code in the `Script Runner.js` file to change how the panel behaves.  After making the change, simply click in the panel and press F5 to update it.<br>
+<br>
+<br>
+[1]: http://johndunning.com/fireworks/about/FWConsole<br>
+[2]: http://johndunning.com/fireworks/about/JSONPanel<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the panel, look under the Windows menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Script Runner.js" destination="$fireworks/Configuration/Command Panels/"/>
+					<file name="src/Script Runner.swf" destination="$fireworks/Configuration/Command Panels/"/>
+	</files>
+	<summary>
+<![CDATA[When writing Fireworks extensions, I often find myself writing little snippets of JavaScript code to inspect attributes or run commands on whatever elements are selected.  I usually enter these snippets in the Fireworks Console panel, but having to constantly reload and rerun the code each time the selection changes is awkward.  The Script Runner panel makes it easy to automatically run JavaScript whenever the selection changes.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

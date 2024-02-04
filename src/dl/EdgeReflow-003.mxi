@@ -1,0 +1,122 @@
+<macromedia-extension name="Edge Reflow" version="0.0.3" id="com.johndunning.fireworks.EdgeReflow" type="command" requires-restart="false" date="2013-08-15 09:41:20 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="12" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/EdgeReflow"/>
+	<description href="http://johndunning.com/fireworks/description/EdgeReflow">
+<![CDATA[The *Edge Reflow* extension lets you export a Fireworks layout to [Edge Reflow](http://html.adobe.com/edge/reflow/), where you can test the responsiveness of the design.  All of the elements on the current state of the current page will appear in Reflow with more or less the same size, position, color, etc. that they have in Fireworks.<br>
+<br>
+<br>
+# Exporting to Edge Reflow<br>
+<br>
+When you run the *Edge Reflow > Generate Project* command, it will ask you to choose a folder and name for the Edge Reflow project.  A sub-folder with that name will be created in that location, and the contents of the current state of the current page will be exported there as a Reflow project.  Double-click the `.rflw` file to open it in Edge Reflow.<br>
+<br>
+The last-used export folder is remembered across invocations, so the next time you run the command, it will re-export the files to the same folder.  To export an already exported Fireworks document to a new location, run the *Change Export Folder* command.  This command opens a save dialog where you can enter a new name and location, and then immediately exports the Reflow files.<br>
+<br>
+Note that exporting a Fireworks document to a folder that already contains Edge Reflow files will completely replace those files.  You will lose any changes you had made to the files in Reflow.  <br>
+<br>
+<br>
+# Supported elements<br>
+<br>
+Many Fireworks elements will remain fully editable in the exported Edge Reflow project, but not everything can be converted with full fidelity:<br>
+<br>
+* **Rectangles** should maintain their basic fills, strokes and corner roundness, including opacity and gradients.  Any patterns or textures on the rectangle will be lost.  <br>
+<br>
+* **Text** elements maintain their color, font, weight, alignment, and line spacing settings.  Text may appear slightly different in Reflow, as the Fireworks text engine is different than the browser's.  Styles on individual words or phrases in a text block should also be maintained.  Gradients on text are not supported.<br>
+<br>
+  Single-line text elements will have their width set to `auto` in Reflow, so they take up as much as necessary to fit the text.  Text blocks have their width set to enable word wrapping.<br>
+<br>
+* **Bitmaps** are exported as 32-bit PNGs in the `assets/img ` sub-folder of the Edge Reflow project folder, which is where images are normally stored.  An image whose opacity has been adjusted in the *Properties* panel is exported as a fully opaque bitmap, and then the transparency is reapplied via the `opacity` CSS attribute in Edge Reflow.  This lets you further modify the opacity even after you've exported the Fireworks file.<br>
+<br>
+* **Symbol** instances are exported as flattened images.  Since there's no easy way to tell if two symbol instances look identical, each one is exported as a separate image.<br>
+<br>
+* **Groups** are exported as box elements containing the nested elements in the group.  The same hierarchy in the Fireworks group should be maintained in Reflow. <br>
+<br>
+* **Invisible elements** are ignored, while elements on locked layers are exported.<br>
+<br>
+* **Linked images**, inserted using the [Linked Images](http://johndunning.com/fireworks/about/LinkedImages) extension, are exported by copying the source image to the Edge Reflow project folder.  So if the source file for the linked image was larger than the element in Fireworks, you can resize it in Reflow while maintaining the original resolution.  <br>
+<br>
+All other types of elements and auto shapes are exported as images.  <br>
+<br>
+Each element should have the same name in Reflow as it does in Fireworks, as long as it's unique.  Unnamed elements are named automatically based on their type.<br>
+<br>
+The widths of non-image elements are calculated as a percentage of the overall canvas width, so their width will scale as the available space changes in Reflow.  Images are exported as their actual size in Fireworks, so they won't scale by default. <br>
+<br>
+<br>
+# Exporting elements as images<br>
+<br>
+In addition to exporting editable objects to Reflow, you can export non-bitmap elements, or even whole layers or sub-layers, as an image.  To specify the image type, just change the element's name to include an image file extension, like `header.png`.  The command will look for elements whose names end in `.png`, `.gif`, or `.jpg`.  <br>
+<br>
+It also looks for layers or sub-layers whose names end in an extension.  So if you have several button elements on a sub-layer called `toolbar.png`, all of the button elements will be exported as a single, flattened PNG.  Unlike a slice, which you have to resize each time the elements below it change size, the PNG that's exported for the named sub-layer will always be the exact size of all the child elements.  <br>
+<br>
+![Image export example](http://johndunning.com/fireworks/inc/reflow/image-export.png)<br>
+<br>
+PNGs are exported as 32-bit PNGs, JPEGs are exported using the *JPEG - Better Quality* export settings, and GIFs are exported with the *GIF Adaptive 256* settings and alpha transparency.  <br>
+<br>
+Note that if a layer name ends in an image extension, all of the children of that layer are exported as a single image.  Any file extensions on the children or sub-layers of that layer will be ignored. <br>
+<br>
+<br>
+# Limitations <br>
+<br>
+While useful for transferring the basics of a design from Fireworks to Edge Reflow, the command does have a number of limitations currently:<br>
+<br>
+* Each element is positioned horizontally using a percentage-based `margin-left` from the right side of the next lower element in the layer.  The vertical position is set via a pixel value for `margin-top` calculated from the top of the document.  These layout settings may not be exactly what you want in order to test the responsiveness of the design, so you may need to change how elements relate to each other using the tools within Reflow.<br>
+<br>
+* Since the elements are laid out horizontally using percentage values, the layout in Reflow won't exactly match Fireworks unless the breakpoint is resized to the same width as the source Fireworks document.  <br>
+<br>
+* Shadows, glows, textures, and other effects are lost when exported.  If you want to maintain them, name the element with an image extension to force it to export as an image. <br>
+<br>
+* Gradient colors and opacities are maintained, but their appearance may be different in Reflow vs. Fireworks, as the position and size of the element's fill handles are ignored.  Gradients are always treated as if the fill handles stretch across the full extent of the element.<br>
+<br>
+* Transformations on elements are lost, so a rotated rectangle, for instance, may end up being larger than it was in Fireworks. <br>
+<br>
+* Only the first state of the current page is exported.  Creating a multi-page Reflow document is not supported.  <br>
+<br>
+<br>
+# Acknowledgements<br>
+<br>
+Thanks to [Dave Hogue](http://davehogue.com/) for the webpage layout example, which looks a lot better than anything I would have created.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.0.3<br>
+  : 2013-08-14: Fixed path to the font info folder on OS X.<br>
+<br>
+0.0.2<br>
+  : 2013-08-11: Initial public release.<br>
+<br>
+0.0.1<br>
+  : 2013-06-25: Initial limited release.<br>
+<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Edge Reflow.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Change Export Location.jsf" destination="$fireworks/Configuration/Commands/Edge Reflow/"/>
+					<file source="src/Generate Project.jsf" destination="$fireworks/Configuration/Commands/Edge Reflow/"/>
+					<file source="src/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib"/>
+					<file source="src/lib/require.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib"/>
+					<file source="src/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/dojo"/>
+					<file source="src/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/dojo"/>
+					<file source="src/lib/fwlib/DomStorage.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/fwlib/files.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/fwlib/fonts.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/fwlib/lodash.min.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/fwlib/prefs.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/fwlib/underscore.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/fwlib"/>
+					<file source="src/lib/reflow/elements.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/reflow"/>
+					<file source="src/lib/reflow/export-options.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/reflow"/>
+					<file source="src/lib/reflow/reflow-project.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/reflow"/>
+					<file source="src/lib/reflow/reflow.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/reflow"/>
+					<file source="src/lib/reflow/utils.js" destination="$fireworks/Configuration/Commands/Edge Reflow/lib/reflow"/>
+	</files>
+	<summary>
+<![CDATA[The Edge Reflow extension lets you export a Fireworks layout to Edge Reflow, where you can test the responsiveness of the design.  All of the elements on the first state of the current page will appear in Reflow with more or less the same size, position, color, etc. that they have in Fireworks.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

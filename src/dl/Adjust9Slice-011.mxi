@@ -1,0 +1,44 @@
+<macromedia-extension name="Adjust 9-Slice" version="0.1.1" type="command" requires-restart="false" date="2011-09-25 13:43:57 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/Adjust9Slice">
+<![CDATA[Tweaking the 9-slice guides in a symbol can be a pain, since you have to keep going into symbol editing mode to make a change, and then back out to the canvas to see the effect on the symbol instances.  The *Adjust 9-Slice* panel lets you move the guides while seeing the effects in realtime.<br>
+<br>
+To use it, select an instance of a symbol that has 9-slice scaling enabled.  Then click any of the arrow buttons to move the the top, right, bottom or left guides by 1 pixel.  All of the instances of that symbol will immediately update to reflect the change in the position of that guide.  <br>
+<br>
+To move the guides by 10 pixels in any direction, just shift-click the arrow button.  To move the opposite guide by the same amount in the opposite direction, ctrl-click the button.  This can be useful when the top and bottom guides of, say, a button are off by the same amount.  Ctrl-clicking the top guide's down arrow will move the top guide 1 pixel down, closer to the center of the button, and will also move the bottom guide 1 pixel up, closer to the center.<br>
+<br>
+The *Adjust 9-Slice* panel will also be enabled when in symbol editing mode, as it can sometimes be easier to click the buttons in the panel than drag the guides by very small amounts. <br>
+<br>
+The panel is the same height as as the *Properties* panel, so they can be conveniently docked together. <br>
+<br>
+<br>
+# Limitations <br>
+<br>
+Would it be nice if the *Adjust 9-Slice* panel displayed the current positions of the symbol's guides?  It sure would, but the Fireworks API doesn't provide any way to get that information, unfortunately.  <br>
+<br>
+Note that the panel will be enabled when a symbol without 9-slice scaling is selected, since it can't tell whether the guides are on or off.  Also, only one symbol can be edited at a time. <br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the panel, look under the Windows menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Adjust 9-Slice.js" destination="$fireworks/Configuration/Command Panels/"/>
+					<file name="src/Adjust 9-Slice.png" destination="$fireworks/Configuration/Command Panels/"/>
+					<file name="src/Adjust 9-Slice.swf" destination="$fireworks/Configuration/Command Panels/"/>
+					<file name="src/Adjust 9-Slice_over.png" destination="$fireworks/Configuration/Command Panels/"/>
+					<file name="src/Adjust 9-Slice/arrow-down.png" destination="$fireworks/Configuration/Command Panels/Adjust 9-Slice"/>
+					<file name="src/Adjust 9-Slice/arrow-left.png" destination="$fireworks/Configuration/Command Panels/Adjust 9-Slice"/>
+					<file name="src/Adjust 9-Slice/arrow-right.png" destination="$fireworks/Configuration/Command Panels/Adjust 9-Slice"/>
+					<file name="src/Adjust 9-Slice/arrow-up.png" destination="$fireworks/Configuration/Command Panels/Adjust 9-Slice"/>
+					<file name="src/Adjust 9-Slice/grid.png" destination="$fireworks/Configuration/Command Panels/Adjust 9-Slice"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/Adjust9Slice"/>
+	<summary>
+<![CDATA[Tweaking the 9-slice guides in a symbol can be a pain, since you have to keep going into symbol editing mode to make a change, and then back out to the canvas to see the effect on the symbol instances.  The Adjust 9-Slice panel lets you move the guides while seeing the effects in realtime.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

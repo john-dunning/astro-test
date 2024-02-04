@@ -1,0 +1,20 @@
+<macromedia-extension name="Document Templates" version="0.1.0" type="command" requires-restart="false" date="2007-08-27 8:19:10">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[This command lets you quickly turn an existing document into a template, which then serves as a starting point for new, untitled documents.  Run "Document Templates - New" and enter a name for the template.  A copy of the current file will be saved out and will then be available in the Commands > Document Templates menu.  <br>
+<br>
+To create a new, untitled document from a template, select it from Commands > Document Templates.  The copy will be the same size and will have the same contents as the original.  You can make as many copies as you like.<br>
+<br>
+To edit a previously saved template, find its .png file in C:\Program Files\Adobe\Adobe Fireworks CS3\Configuration\Commands\Document Templates (or the Mac equivalent). Open, edit and save it like any other Fireworks document. Leave the template's associated .jsf file alone. To delete a template, remove both its .png and .jsf files.]]></description>
+	<ui-access>
+<![CDATA[To access the templates, look under Commands > Document Templates.]]></ui-access>
+	<files>
+					<file name="src/Document Templates - New.jsf" destination="$fireworks/configuration/commands/"/>
+	</files>
+	<summary>
+<![CDATA[This command lets you quickly turn an existing document into a template, which then serves as a starting point for new, untitled documents.  Run "Document Templates - New" and enter a name for the template.  A copy of the current file will be saved out and will then be available in the Commands > Document Templates menu.  You can then make as many copies as you like.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

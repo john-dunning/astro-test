@@ -1,0 +1,95 @@
+<macromedia-extension name="Placeholder" version="0.4.0" id="com.johndunning.fireworks.Placeholder" type="command" requires-restart="false" date="2013-01-11 00:13:59 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/Placeholder"/>
+	<description href="http://johndunning.com/fireworks/description/Placeholder">
+<![CDATA[When creating sketches and early mockups, it's often useful to draw image placeholders instead of including actual photos, icons, ads, etc. in the layout.  The Placeholder auto shape makes this a snap.<br>
+<br>
+To create a Placeholder shape, find it in the *Auto Shapes* panel and drag it to the canvas.  The shape's default size is 100 x 100 pixels, but you can drag any of the 8 yellow control points along its perimeter to resize it from that edge or corner.  After dragging a control point, the new size will be displayed in the center of the shape, so you always know exactly how big each placeholder in your layout is.  <br>
+<br>
+Note that you should use only the control points to resize the placeholder.  Changing its size with the scale tool or the Properties panel will distort the shape.  <br>
+<br>
+<br>
+# Changing the size numerically<br>
+<br>
+Click the crosshair in the center of the placeholder to open the shape's properties dialog:<br>
+<br>
+![Placeholder Properties Dialog](http://johndunning.com/fireworks/inc/placeholder/properties-dialog.png)<br>
+<br>
+You can then enter the desired width and height of the placeholder.  The shape will resize itself to the new dimensions, anchored at the top-left corner.  You can also change the placeholder's position numerically.<br>
+<br>
+<br>
+# Changing the display options<br>
+<br>
+By default, the placeholder shape has a solid light grey fill.  If you'd prefer a more traditional outlined white box with an "X" from corner to corner, just select the *Solid fill* radio button.  <br>
+<br>
+You can select a different colors for the solid fill or the lines used on the white background.  You can also change the color of any text that is displayed in the placeholder. <br>
+<br>
+There are also different options for what information to display in the center of the placeholder.  You can show an arbitrary string, the current size, the current position, or nothing at all.<br>
+<br>
+![Display options](http://johndunning.com/fireworks/inc/placeholder/display-options.png)<br>
+<br>
+**Note:** due to limitations in the Fireworks API, you must click a yellow control point to update the position display after dragging a placeholder to a new location.  Otherwise, the placeholder won't know it's been moved and will continue to display the previous location.  Resizing the placeholder or changing a property in the dialog will also cause the position display to update. <br>
+<br>
+These display settings are stored in the Fireworks preferences, so the next time you drag a placeholder auto shape from the *Auto Shapes* panel, it will inherit the settings of the last shape to be edited.<br>
+<br>
+<br>
+# Resizing multiple placeholders <br>
+<br>
+When you have several placeholders in a layout, you may want to make all of them, say, 20px wider.  Just select the shapes you want to resize and then drag a control point on one of them to make it wider.  When you release the mouse, all of the placeholders will be widened by the same amount.  Note that if you undo this action, the yellow control points on the placeholders may be out of position.  Just click one of the control points to snap them back to their correct location.<br>
+<br>
+If several placeholders are selected and you open the properties dialog of one of them and then click OK, those settings will be applied to all of the selected objects. <br>
+<br>
+<br>
+# Placeholder tool<br>
+<br>
+In addition to dragging a Placeholder auto shape from the *Auto Shapes* panel, you can also use the Placeholder tool in the *Tools* panel to create a rectangle.  Click and hold the Rectangle button in the panel to show a list of other shape tools, then select *Placeholder tool*.  With the tool selected, dragging out a rectangle and then releasing the mouse will insert a placeholder with the same display settings as the last shape you edited. <br>
+<br>
+![Placeholder tool](http://johndunning.com/fireworks/inc/placeholder/placeholder-tool.png)<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.4.0<br>
+  : 2013-01-11: Added an option to change the color of the label and the border.  Updated the dialog box.<br>
+<br>
+0.3.2<br>
+  : 2012-06-08: Renamed the shape in the Auto Shape Tools folder to work around a Fireworks bug.<br>
+<br>
+0.3.1<br>
+  : 2011-04-19: Fixed a problem with the paths for some icons in the properties dialog pointing to the wrong folder.  Fixed the resizing control points from sliding around.<br>
+<br>
+0.3.0<br>
+  : 2011-04-17: Added a dialog for setting the placeholder properties.  Added a Placeholder tool to the Tools panel.<br>
+<br>
+0.2.0<br>
+  : 2010-12-09: Shifted the position of the resizing controls and fixed a few bugs.  <br>
+<br>
+0.1.0<br>
+  : 2010-10-10: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To add a Placeholder auto shape to your document, drag it from the Shapes panel.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="auto/Placeholder.gif" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file source="auto/Placeholder.jsf" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file source="auto/Placeholder/Placeholder.js" destination="$fireworks/Configuration/Auto Shapes/Placeholder"/>
+					<file source="auto/Placeholder/lib/fwrequire.js" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib"/>
+					<file source="auto/Placeholder/lib/require.js" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib"/>
+					<file source="auto/Placeholder/lib/dojo/has.js" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib/dojo"/>
+					<file source="auto/Placeholder/lib/dojo/json.js" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib/dojo"/>
+					<file source="auto/Placeholder/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib/fwlib"/>
+					<file source="auto/Placeholder/lib/fwlib/dialog-swfs/JSMLDialog.swf" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib/fwlib/dialog-swfs"/>
+					<file source="auto/Placeholder/lib/fwlib/dialog-swfs/Placeholder.swf" destination="$fireworks/Configuration/Auto Shapes/Placeholder/lib/fwlib/dialog-swfs"/>
+					<file source="tool/Placeholder tool.jsf" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+					<file source="tool/Placeholder tool.png" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+	</files>
+	<summary>
+<![CDATA[When creating sketches and early mockups, it's often useful to draw image placeholders instead of including actual photos, icons, ads, etc. in the layout.  The Placeholder auto shape makes this a snap.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

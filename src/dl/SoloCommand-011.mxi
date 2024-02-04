@@ -1,0 +1,20 @@
+<macromedia-extension name="Solo Command" version="0.1.1" type="command" requires-restart="false" date="2007-10-16 23:04:27">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The "Solo Selection" command hides everything except the currently selected elements. If all of the visible elements are selected, running the command displays everything. This lets you toggle the solo effect on and off: select one or more elements, run "Solo Selection", look at the elements by themselves, then run "Solo Selection" again to make everything visible.<br>
+<br>
+After soloing the selection, you can use the Subselection tool to select some of the points on the object(s).  This subselection is maintained if you run "Solo Selection" again, which makes it easier to drag-select the points on an object: select the object, run the command, subselect some of the points, then run the command again.<br>
+<br>
+Note that if you've hidden some elements before running this command, their hidden state will not be maintained if you run this command multiple times.]]></description>
+	<ui-access>
+<![CDATA[To access the solo command, look under Commands > Solo.]]></ui-access>
+	<files>
+					<file name="src/Solo Selection.jsf" destination="$fireworks/configuration/commands/Solo/"/>
+	</files>
+	<summary>
+<![CDATA[The "Solo Selection" command hides everything except the currently selected elements. If all of the visible elements are selected, running the command displays everything. This lets you quickly toggle the solo effect on and off: select one or more elements, run the command, look at the elements by themselves, then run it again to make everything visible.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

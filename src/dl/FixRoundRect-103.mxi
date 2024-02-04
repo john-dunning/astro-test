@@ -1,0 +1,41 @@
+<macromedia-extension name="Fix Rounded Rect Corners" version="1.0.3" type="command" requires-restart="false" date="2010-07-18 13:21:06 -0700">
+	<products>
+		<product name="Fireworks" version="5" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[While the Roundness option of the rectangle tool is handy, it's not very flexible.  Once you've created a rectangle with rounded corners, you can't easily resize the rectangle without distorting the roundness of the corners.  You can scale the rectangle proportionally, but then the corners will have a different radius, which is generally not the desired effect.  Or you can sub-select the corner points and drag them to a new position, but that's also an awkward solution.<br>
+<br>
+This command eliminates these problems by fixing rounded corners that have been distorted.  After you create a rectangle, adjust the Roundness setting to the desired value.  Then use the Scale tool to freely resize the rectangle, or use the Info panel to change the size numerically. (Just don't subselect the corners and move them; that will cause this command to stop working.)<br>
+<br>
+After resizing the rounded rectangle (and thereby distorting its rounded corners), select it and run the *Fix Rounded Rect Corners* command.  The rectangle's corners will be re-rounded according to their original pixel radius (the Roundness percentage will be different, however, since the rectangle's size has changed).  You can select more than one rectangle and run the command on all of them.  You may find it convenient to assign a keyboard shortcut to quickly invoke the command.<br>
+<br>
+<br>
+# Rounded Rectangle tool is not supported<br>
+<br>
+Confusingly, Fireworks has two ways to create a rounded rectangle: you can use the Rectangle tool and then adjust the corners via the Roundness setting in the Properties panel, or you can use the Rounded Rectangle tool and then adjust the corners via the shape's yellow control points.  Note that this command works only on rectangles created with the standard Rectangle tool, not the Rounded Rectangle tool.  It will display an alert if run on a rectangle created with the latter tool.  To resize these rectangles without distorting their corners, drag the yellow control point just below their lower-right corner.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+1.0.3<br>
+  : Changed minimum version back to 5 to support really old versions of Fireworks.<br>
+<br>
+1.0.2<br>
+  : Now maintains the position of the gradient fill when fixing a rounded rectangle. <br>
+<br>
+1.0.1<br>
+  : Initial release. 2002-07-08.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the command, look under Commands > Objects.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Fix Rounded Rect Corners.jsf" destination="$fireworks/Configuration/Commands/Objects/"/>
+	</files>
+	<summary>
+<![CDATA[After you create a rectangle, adjust the Roundness value to set the corners to the desired pixel radius.  Then use the Scale tool to freely resize the rectangle, or use the Info panel to change the size numerically.  Finally, run the Fix Rounded Rect Corners command to fix the corner distortion introduced by the Scale tool.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

@@ -1,0 +1,105 @@
+<macromedia-extension name="TweetFire" version="0.2.1" id="com.johndunning.fireworks.TweetFire" type="command" requires-restart="false" date="2013-08-17 19:01:48 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/TweetFire"/>
+	<description href="http://johndunning.com/fireworks/description/TweetFire">
+<![CDATA[TweetFire lets you easily tweet the image you're currently working on, without ever leaving Fireworks.  The command posts a flattened copy of your image to Twitter and attaches its URL to your tweet.<br>
+<br>
+<br>
+# Authorizing *TweetFire*<br>
+<br>
+*TweetFire* needs your authorization to post tweets on your behalf, so the first time you run the command, your default browser will display an authorization page.  Make sure you're logged into the account you want to use with *TweetFire* (listed by Twitter as "TwFw", because "TweetFire" was already taken), and then click the *Authorize* button.  <br>
+<br>
+Twitter should then display a PIN number.  Copy the number and switch back to Fireworks, where a dialog will be waiting.  Paste the PIN into the dialog and click *Authorize*.  *TweetFire* should now be able to send tweets on your behalf.  The authorization token that *TweetFire* receives from Twitter is stored in the Fireworks preferences file, so you should need to go through this flow only once per computer. <br>
+<br>
+> ![Authorize dialog](http://johndunning.com/fireworks/inc/tweetfire/authorize-dialog.png)<br>
+<br>
+<br>
+# Sending a tweet<br>
+<br>
+After authorization is complete, the main *TweetFire* dialog will open, where you can start typing your tweet.  The number of remaining characters counts down from 115, rather than the typical 140, to leave some room for Twitter image URLs.  Anything beyond 115 characters will be clipped.<br>
+<br>
+If your current document is saved, its filename will be used as the default text for the tweet.  The text is pre-selected, so you can just start typing to enter something else.  The current page and state names will also be included, if they're something other than the defaults. <br>
+<br>
+When you're ready, just click the *Tweet* button.  Another dialog will open with a progress bar, and will remain open until your image is exported and posted to Twitter.  Once your tweet is live, a dialog will display the URL to your image.  This URL is also automatically copied to the clipboard, so you can easily paste it into a browser to view the page.<br>
+<br>
+<br>
+# Exporting part of the image<br>
+<br>
+By default, your entire image will be uploaded to Twitter.  If you'd prefer to tweet only a portion of your image, select the elements you want to include and then choose *Selection With Background* in the *Export* combobox.  This will crop the image to the bounds of the selection and export just that area (which might be larger than the current canvas).<br>
+<br>
+If you don't want to include the background pixels, then choose *Selection Without Background*.  The selected elements will be copied to a new document and exported on a plain white background, which can be useful if you want to tweet just a logo or icon that's part of a larger design.<br>
+<br>
+You can also use a slice to define the portion of the image to export.  Just select the slice and choose either of the *Selection With/Without Background* options in the *Export* menu.  The selected elements, or the entire image if nothing but the slice is selected, will be cropped to the bounds of the slice.<br>
+<br>
+<br>
+# Managing Twitter accounts<br>
+<br>
+When you go through the authorization flow, *TweetFire* stores an access token in the Fireworks preferences file.  If you no longer want to tweet from that account on your computer, just click the delete button next to the *Account* menu.<br>
+<br>
+To add another Twitter account, click the add button to the right of delete.  This will close the *TweetFire* dialog and open a browser to the Twitter site.  If you complete the authorization flow with the new account, the *TweetFire* dialog will reopen with the new account selected.  You can switch between any number of accounts using the *Account* menu.<br>
+<br>
+<br>
+# Notes<br>
+<br>
+The document's current export settings are used to create the image that is sent to Twitter, which supports only GIF, JPG and PNG files.  If your current document is set to export as a TIFF, say, you'll need to change the export format before tweeting it.<br>
+<br>
+*TweetFire* used to use the old TwitPic API that sent your password in the clear, but version 0.2.0 has been rewritten to support OAuth.  It no longer stores your password, and you can revoke its access at any time by going into the settings page on Twitter.  <br>
+<br>
+*TweetFire* uses the [FWXHR][1] library to post images and tweets to *TweetFire*.  It also uses the [JSML Library][2] library to create the Flex dialogs using only JavaScript.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.2.1<br>
+  : 2013-08-17: Updated the APIs to 1.1, since 1.0 is no longer supported.<br>
+<br>
+0.2.0<br>
+  : 2012-09-10: Revamped the extension to use OAuth to communicate with Twitter.  Added support for storing and deleting tokens for multiple Twitter accounts.<br>
+<br>
+0.1.4<br>
+  : 2010-09-22: Fixed bug that prevented extension from running on OS X.<br>
+<br>
+0.1.3<br>
+  : 2010-09-19: Thanks to some rapid-response QA from David Hogue, fixed a bug that prevented *TweetFire* from running if the Fireworks Console wasn't open.<br>
+<br>
+0.1.2<br>
+  : 2010-09-19: Added option to export only part of the image.  Included updated fwlib.dialog library to show the command name in the dialog title.  Fixed bug where it could interfere with other commands.<br>
+<br>
+0.1.1<br>
+  : 2010-09-04: Initial release. <br>
+<br>
+<br>
+[1]: http://johndunning.com/fireworks/about/FWXHR<br>
+[2]: http://johndunning.com/fireworks/about/JSMLLibrary<br>
+]]></description>
+	<ui-access>
+<![CDATA[To use this command, look under Commands > TweetFire.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/TweetFire.jsf" destination="$fireworks/Configuration/Commands/TweetFire/"/>
+					<file source="src/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/TweetFire/lib"/>
+					<file source="src/lib/jsOAuth.js" destination="$fireworks/Configuration/Commands/TweetFire/lib"/>
+					<file source="src/lib/require.js" destination="$fireworks/Configuration/Commands/TweetFire/lib"/>
+					<file source="src/lib/underscore.js" destination="$fireworks/Configuration/Commands/TweetFire/lib"/>
+					<file source="src/lib/xhr.js" destination="$fireworks/Configuration/Commands/TweetFire/lib"/>
+					<file source="src/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/TweetFire/lib/dojo"/>
+					<file source="src/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/TweetFire/lib/dojo"/>
+					<file source="src/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib"/>
+					<file source="src/lib/fwlib/FWXHR.swf" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib"/>
+					<file source="src/lib/fwlib/io.js" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib"/>
+					<file source="src/lib/fwlib/prefs.js" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib"/>
+					<file source="src/lib/fwlib/simple-dialog.js" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib"/>
+					<file source="src/lib/fwlib/dialog-swfs/JSMLDialog.swf" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/fwlib/dialog-swfs/TweetFire.swf" destination="$fireworks/Configuration/Commands/TweetFire/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/img/add-icon.png" destination="$fireworks/Configuration/Commands/TweetFire/lib/img"/>
+					<file source="src/lib/img/delete-icon.png" destination="$fireworks/Configuration/Commands/TweetFire/lib/img"/>
+	</files>
+	<summary>
+<![CDATA[TweetFire lets you easily tweet the image you're currently working on, without ever leaving Fireworks.  Just enter a short message, click Tweet, and a flattened copy of your image will be posted to Twitter.  The URL to the image is automatically added to your tweet.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

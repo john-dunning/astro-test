@@ -1,0 +1,19 @@
+<macromedia-extension name="Insert Copies Between Selection" version="0.1.0" type="command" requires-restart="false" date="2007-09-30 11:23:03">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The "Insert Copies Between Selection" command takes 2 selected, identical objects and inserts evenly-spaced copies between them.  This can be quite handy when you need to insert a row or column of repeating elements without having to create each one manually.<br>
+<br>
+To use the command, take an element and drag a copy of it somewhere.  These two elements serve as the start and end points of the copying process.  Select both elements and run the command.  Enter the number of copies you want to have inserted, and click OK.  The specified number of copies will be inserted between the original elements at regular intervals.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the group commands, look under Commands > Objects.]]></ui-access>
+	<files>
+					<file name="src/Insert Copies Between Selection.jsf" destination="$fireworks/configuration/commands/Objects/"/>
+	</files>
+	<summary>
+<![CDATA[The "Insert Copies Between Selection" command takes 2 selected, identical objects and inserts evenly-spaced copies between them.  This can be quite handy when you need to insert a row or column of repeating elements without having to create each one manually.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

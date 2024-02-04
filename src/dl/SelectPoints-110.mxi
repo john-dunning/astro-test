@@ -1,0 +1,40 @@
+<macromedia-extension name="Select Points" version="1.1.0" type="command" requires-restart="false" date="2009-02-27 19:40:24">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[To manipulate vectors with a high degree of control it's often necessary to subselect individual points on the path.  But selecting lots of individual points on a complicated path can be awkward, especially if it's hard to use a rectangular marquee to select them.  The commands in this extension can reduce the amount of clicking required to select those points.<br>
+<br>
+Four of the commands will select all the points on the top, bottom, left or right half of the path: Select Points - Side - Top, Select Points - Side - Bottom, etc.  This can be helpful when you want to resize the path in one dimension by moving half of its points.<br>
+<br>
+Compound paths with interior holes present a special challenge.  It's possible to move an interior hole by selecting all the points on it, but doing this over and over becomes tiresome.  The Select Points - All command simplifies matters.  If you subselect just one of the points on the interior hole's path and run the command, all the other points on the path will be selected as well.  You can do this with multiple objects at the same time.<br>
+<br>
+The commands will be more convenient if you assign keyboard shortcuts to them.  Here are some suggested shortcuts: <br>
+<br>
+	ctrl-num 8 for Select Points - Side - Top<br>
+	ctrl-num 6 for Select Points - Side - Right<br>
+	ctrl-num 2 for Select Points - Side - Bottom<br>
+	ctrl-num 4 for Select Points - Side - Left<br>
+	ctrl-num 5 for Select Points - All<br>
+	ctrl-alt-num 5 for Select Points - None<br>
+<br>
+The Select Points - Selection - Save command stores the current selection of points on an object, so you can restore it later.  Select one or more paths, select some points on each path, and then run the command.  Later, when you want to restore that selection, just select the objects and run Select Points - Selection - Restore.  The saved point selection is maintained when you save the document or copy the paths to a new document.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access these commands, look under Commands > Path.]]></ui-access>
+	<files>
+					<file name="src/Select Points/Select Points - All.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - None.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - Selection - Restore.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - Selection - Save.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - Side - Bottom.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - Side - Left.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - Side - Right.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/Select Points - Side - Top.jsf" destination="$fireworks/configuration/commands/Path/Select Points"/>
+					<file name="src/Select Points/lib/Select Points.js" destination="$fireworks/configuration/commands/Path/Select Points/lib"/>
+	</files>
+	<summary>
+<![CDATA[To manipulate vectors with a high degree of control it's often necessary to subselect individual points on the path.  But selecting lots of individual points on a complicated path can be awkward, especially if it's hard to use a rectangular marquee to select them.  The commands in this extension can reduce the amount of clicking required to select those points.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

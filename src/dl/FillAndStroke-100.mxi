@@ -1,0 +1,50 @@
+<macromedia-extension name="Fill and Stroke" version="1.0.0" type="command" requires-restart="false" date="2002-09-02 20:15:51">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[Have you ever wanted to select several objects, each with a different stroke color, and change all of their stroke widths to a new value? If you try this with the Properties panel, you'll find that all of the selected objects get the same stroke width, but also that their other stroke properties are changed to identical values as well. This is generally not what you want, but unfortunately, the only way to avoid this bug is to change each object's stroke width invidually.<br>
+<br>
+That's where the Fill and Stroke Utilities come in. Choose Commands > Stroke > S - Width, enter a new stroke width in the dialog box, and each selected object's stroke width will be set to that value&mdash;without affecting the other stroke attributes. This package contains a separate command for each stroke and fill attribute in the Properties panel. There are also shortcuts to some of the commonly used stroke types, like Soft Rounded and Hard Line.]]></description>
+	<ui-access>
+<![CDATA[To access the commands for setting fill attributes, choose one of the items under Commands > Fill.  To access the stroke commands, look in Commands > Stroke.]]></ui-access>
+	<files>
+					<file name="src/Fill/F -  None.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Color.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Edge = Anti-Alias.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Edge = Feather.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Edge = Hard.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Texture = Off.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Texture = Opaque.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Texture = Transparent.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Texture Amount.jsf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/F - Texture Name.swf" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Fill/SetFillAttributes.js" destination="$fireworks/configuration/commands/Fill"/>
+					<file name="src/Stroke/S -    None.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S -  1-pixel Hard.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S -  1-pixel Soft.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S -  Hard Line.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S -  Hard Rounded.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S -  Soft Line.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S -  Soft Rounded.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Color.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Edge = Anti-Alias.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Edge = No Anti-Alias.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Edge Softness.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Fill Over Stroke.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Fill Under Stroke.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Placement = Center.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Placement = Inside.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Placement = Outside.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Texture Amount.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Texture Name.swf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Type.swf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/S - Width.jsf" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/SetBrushByIndex.js" destination="$fireworks/configuration/commands/Stroke"/>
+					<file name="src/Stroke/SetStrokeAttributes.js" destination="$fireworks/configuration/commands/Stroke"/>
+	</files>
+	<summary>
+<![CDATA[Have you ever wanted to select several objects, each with a different stroke color, and change all of their stroke widths to a new value? If you try this with the Properties panel, you'll find that all of the selected objects get the same stroke width, but also that their other stroke properties are changed to identical values as well. The commands in this extension help you avoid this problem.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

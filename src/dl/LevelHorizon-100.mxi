@@ -1,0 +1,23 @@
+<macromedia-extension name="Level Horizon" version="1.0.0" type="command" requires-restart="false" date="2007-08-31 14:49:17">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The "Level Horizon" command helps you, um, level the horizon in crooked photos.  Simply open the photo, draw a straight line along a part of the image that should be perfectly horizontal, and run the command.  The photo will be rotated so that the line is horizontal and the now crooked corners of the image will be cropped to keep it rectangular.<br>
+<br>
+You can also draw a line along part of the image that should be perfectly vertical.  Running the command will rotate the image to make that line vertical.<br>
+<br>
+Note that the resulting image will always be smaller than the one you start with, and the aspect ratio is unlikely to be the same, so you might need to do some further cropping to get the shape you want.<br>
+<br>
+Special thanks to the mighty Jonathan Korman for solving the simultaneous equations that enable the command to figure out how much of the rotated picture must be cropped off to make it rectangular again.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Document.]]></ui-access>
+	<files>
+					<file name="src/Level Horizon.jsf" destination="$fireworks/configuration/commands/Document/"/>
+	</files>
+	<summary>
+<![CDATA[The "Level Horizon" command helps you, um, level the horizon in crooked photos.  Simply open the photo, draw a straight line along a part of the image that should be perfectly horizontal, and run the command.  The photo will be rotated so that the line is horizontal and the now crooked corners of the image will be cropped to keep it rectangular.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

@@ -1,0 +1,33 @@
+<macromedia-extension name="Smart Knife" version="0.2.0" type="command" requires-restart="false" date="2009-07-21 20:12:59">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The Smart Knife command lets you split one or more shapes in half using an open path.  The built-in knife tool lets you split a path, but only in a straight line, and it doesn't work with text, auto shapes or bitmaps.  Smart Knife lets you cut across multiple paths, bitmaps, auto shapes and text blocks with an arbitrarily complex open path.<br>
+<br>
+First, arrange the elements you want to cut.  The elements may be stacked on top of each other; Smart Knife can cut through multiple layers just fine.  Then use the pen or line tool to draw an open path across those elements.  Make sure the ends of the path extend beyond the edges of the shapes you want to cut.  Finally, select the elements you want to cut along with the cutting path, and then run the Smart Knife command.  The selected objects will be cut into two parts wherever the path intersects them.  The cut pieces above or to the left of the cutting path will be grouped and selected after the command is run, to make them easier to pull apart from the pieces below or to the right of the path.  <br>
+<br>
+If you are cutting a bitmap with a cutting path that is antialised, the resulting bitmaps have an antialiased edge where they were cut.  If the path is hard-edged, the bitmaps will have a hard edge where they were cut (the two halves will mesh perfectly when next to each other).  The path's anti-aliasing setting doesn't matter when slicing paths.  <br>
+<br>
+Note that Smart Knife always cuts a shape into two pieces, no matter how many times the path cuts across it.  Therefore, the resulting pieces may be compound paths that consist of several non-intersecting shapes.  You can break these into separate elements using the Modify > Combine Paths > Split menu command.  Also, remember that the cutting path is deleted in the process of using Smart Knife, so make a copy of it before running the command if you want to keep it around.<br>
+<br>
+<br>
+Release history:<br>
+<br>
+0.2.0: The cut halves of the elements are separated into two different groups, to make them easier to pull apart.<br>
+<br>
+0.1.0: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the command, look under Commands > Objects.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Smart Knife.jsf" destination="$fireworks/configuration/commands/Objects/"/>
+	</files>
+	<summary>
+<![CDATA[The Smart Knife command lets you split one or more shapes in half using an open path.  The built-in knife tool lets you split a path, but only in a straight line, and it doesn't work with text, auto shapes or bitmaps.  Smart Knife lets you cut across multiple paths, bitmaps, auto shapes and text blocks with an arbitrarily complex open path.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

@@ -1,0 +1,163 @@
+<macromedia-extension name="Page Commands" version="0.4.0" id="com.johndunning.fireworks.PageCommands" type="command" requires-restart="false" date="2013-03-08 10:37:40 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="9" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/PageCommands"/>
+	<description href="http://johndunning.com/fireworks/description/PageCommands">
+<![CDATA[The commands in this extension make working with pages in Fireworks more efficient and convenient.  The *New Page* dialog makes it easy to create a new page while simultaneously changing its size or background color and giving it a name.  The *Adjust Page Size* command lets you make relative adjustments to the size of multiple pages at once, such as moving the left and right sides in by 10px on each page.  Some of the commands, like *Delete* and *Rename*, replicate existing functionality but are useful if you want to assign a keyboard shortcut to that operation. <br>
+<br>
+<br>
+# *New Page* dialog<br>
+<br>
+![New Page dialog](http://johndunning.com/fireworks/inc/pages/new-page-dialog.png)<br>
+<br>
+To create a new page, you have to switch to the *Pages* panel and click the new icon.  Then you have to double-click the new page to change its name.  To resize it or change the background color, you have to switch the *Properties* panel and make the change there.  <br>
+<br>
+The *New Page* dialog centralizes all of this functionality so that you can make any necessary changes right when you add the new page.  Run the *Pages > New Page* command to open the dialog.  <br>
+<br>
+At the top of the dialog you can set the name and size for the new page.  By default, it will be the same size as the current page.  <br>
+<br>
+If you select the *Insert clipboard contents* option, then the contents of the clipboard will be pasted into the new page and the canvas will be resized to fit that content.  This gives you a quick way to cut some elements from the current page and move them to a new one sized exactly to fit.  The *Width* and *Height* fields are disabled when this option is selected, since the size will come from the clipboard contents. <br>
+<br>
+The new page will default to the current page's canvas color, but you can select a white, transparent, or custom background color by clicking the radio buttons and using the color picker.  <br>
+<br>
+![location callouts](http://johndunning.com/fireworks/inc/pages/location-callouts.png)<br>
+<br>
+By default, the new page is inserted immediately after the current one.  You can change this by selecting a different option in the *Location* button bar.  Select the left-most button to make the new page a master page.  <br>
+<br>
+If the *Copy from current page* option for guides is selected, all of the guides from the current page will be copied to the new one, which normally is inserted without any guides.  <br>
+<br>
+The current page's export options are also automatically applied to the new one.  <br>
+<br>
+<br>
+## Inserting a page template<br>
+<br>
+The new templates feature in Fireworks CS6 is useful for starting a new document with a pre-configured size, background color, layer structure, etc.  But what if you want to use one of these templates on a new page in an existing document? <br>
+<br>
+When the *New Page* dialog is open, you can click the *Templates...* button at the bottom of the dialog to select a template to insert into the new page.  A file selection dialog will open to let you choose a template to insert.  The new page's size and background color will be set to those of the template file, as will its name, if you hadn't specified one in the dialog.  The contents and guides on the first page of the template will be imported; any subsequent pages in the template will be ignored.   <br>
+<br>
+Note that you aren't limited to importing only template files.  You can navigate to any Fireworks document on your drive via the file selection dialog and import the document's first page.  <br>
+<br>
+The *Templates* button won't appear in versions older than Fireworks CS6.<br>
+<br>
+<br>
+# *Adjust Page Size* dialog<br>
+<br>
+The *Canvas Size* dialog lets you apply a new size to every page in the document.  But if your pages are different sizes and you want to just add 100px to the bottom of every page, you'd have to change each page manually.<br>
+<br>
+<br>
+## Making relative size adjustments <br>
+<br>
+![Adjust Page Size dialog](http://johndunning.com/fireworks/inc/pages/adjust-page-size-dialog.png)<br>
+<br>
+The *Adjust Page Size* dialog lets you make relative changes to one or more pages in your document.  The four numeric fields in the upper portion of the dialog specify the amount to move each page's top, right, bottom and left sides.  In the middle of that group is a control to toggle between treating the values as pixels or percentages.<br>
+<br>
+A negative value in a numeric field will cause that side of the page to move in towards the center of the page, while a positive value will push it out.  For instance, if you enter `-10` in the bottom field and the units selector is set to `px`, then the bottom edge of the page will move up 10px, reducing its height.  On the other hand, if you enter `10` in the top field, 10px of extra space will be added to the top of the page. <br>
+<br>
+If the units selector is set to percent, then the amount by which each side of the page is adjusted will depend on the page's height (for top and bottom) and width (for left and right).  This lets you, say, expand each page by 25% on the left and right sides, which will translate into a 300px increase for a 600px-wide page and a 400px increase for an 800px-wide page.<br>
+<br>
+When a numeric field has keyboard focus, pressing up/down-arrow will adjust the values by 1 in either direction and pressing shift-up/down-arrow will adjust it by 10 in either direction.<br>
+<br>
+<br>
+## Selecting pages to resize<br>
+<br>
+The lower portion of the *Adjust Page Size* dialog lists the pages in the current document.  The current one is selected by default, but you can select any combination of pages to apply the size changes to.  Just ctrl/command-click multiple pages to pick individual ones, or click the *Select All* link to select the whole document.  <br>
+<br>
+<br>
+# More page commands<br>
+<br>
+The other commands in the extension include:<br>
+<br>
+Distribute Frames to Pages<br>
+  : This command moves the content from each frame in a document to a new page, named the same as the frame. <br>
+<br>
+Distribute Layers to Pages<br>
+  : This command moves each top-level layer on the current page to a new page, named the same as the layer.  The original page is left intact.<br>
+<br>
+Import Files into Pages<br>
+  : This command is useful for combining several existing files as pages in a new document. When the command is run, it displays a dialog in which you can select the files you want to combine. Select one or more PNG files and click OK. A new document will be created and each file will be imported into a new page that has the same dimensions as the original file. Note that because Fireworks requires layer names to be unique across pages, the layers from the source files may be renamed.<br>
+<br>
+Apply Export Settings to All Pages<br>
+  : This command takes the export settings on the current page and applies them to all pages in the document.<br>
+<br>
+Crop All Pages to Selection<br>
+  : This command makes it easy to apply the same cropping area to all pages in the document. To specify the crop area, select some elements whose bounding box will be used for the crop, or else make a selection with the bitmap marquee tool. When you then run the command, all the pages will be cropped to that area. <br>
+<br>
+Go to <1 - 10><br>
+  : These commands are useful for creating keyboard shortcuts to jump directly to the first through tenth pages. *Go to First* jumps to the first page in the document, and *Go to Last* jumps to the last.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.4.0<br>
+  : 2013-03-08: Added New Page and Adjust Page Size commands.<br>
+<br>
+0.3.0 <br>
+  : 2012-07-13: Distribute Frames to Pages now supports sublayers.  Added Distribute Layers to Pages command.<br>
+<br>
+0.2.3<br>
+  : 2010-02-20: Added Crop All Pages to Selection command. <br>
+<br>
+0.2.2<br>
+  : 2009-02-22: Revamped JS code so it wouldn't interfere with other commands.<br>
+<br>
+0.2.1<br>
+  : 2008-10-07: Fixed a stray alert() in layers_1.5.js.<br>
+<br>
+0.2.0<br>
+  : 2008-10-07: Fixed issues with visibility state of layers not being copied between pages.  Maintain frame info when applying export settings to all pages.  Allow any image type to be imported into pages. <br>
+<br>
+0.1.0<br>
+  : 2007-03-17: Initial release. <br>
+<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the page commands, look under Commands > Pages.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Adjust Page Size.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Apply Export Settings to All Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Crop All Pages to Selection.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Delete.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Distribute Frames to Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Distribute Layers to Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Duplicate.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  1.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  2.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  3.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  4.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  5.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  6.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  7.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  8.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  9.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to 10.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to First.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to Last.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Import Files into Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/New Page.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Rename.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Pages/lib"/>
+					<file source="src/lib/require.js" destination="$fireworks/Configuration/Commands/Pages/lib"/>
+					<file source="src/lib/utils.js" destination="$fireworks/Configuration/Commands/Pages/lib"/>
+					<file source="src/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/Pages/lib/dojo"/>
+					<file source="src/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/Pages/lib/dojo"/>
+					<file source="src/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib"/>
+					<file source="src/lib/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib"/>
+					<file source="src/lib/fwlib/prefs.js" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib"/>
+					<file source="src/lib/fwlib/dialog-swfs/Adjust Page Size.swf" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/fwlib/dialog-swfs/JSMLDialog.swf" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/fwlib/dialog-swfs/New Page.swf" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib/dialog-swfs"/>
+					<file source="src/lib/img/after-icon.png" destination="$fireworks/Configuration/Commands/Pages/lib/img"/>
+					<file source="src/lib/img/before-icon.png" destination="$fireworks/Configuration/Commands/Pages/lib/img"/>
+					<file source="src/lib/img/beginning-icon.png" destination="$fireworks/Configuration/Commands/Pages/lib/img"/>
+					<file source="src/lib/img/end-icon.png" destination="$fireworks/Configuration/Commands/Pages/lib/img"/>
+					<file source="src/lib/img/master-page-icon.png" destination="$fireworks/Configuration/Commands/Pages/lib/img"/>
+	</files>
+	<summary>
+<![CDATA[The commands in this extension make working with pages in Fireworks more efficient and convenient.  The "New Page" dialog makes it easy to create a new page while simultaneously changing its size or background color and giving it a name.  The "Adjust Page Size" command lets you make relative adjustments to the size of multiple pages at once, such as moving the left and right sides in by 10px on each page.  The "Distribute Layers to Pages" command does the same for top-level layers. The "Import Files into Pages" command is useful for combining several existing files as pages in a new document. The "Apply Export Settings to All Pages" command takes the export settings on the current page and applies them to all pages in the document.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

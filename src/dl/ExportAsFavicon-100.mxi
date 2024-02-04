@@ -1,0 +1,71 @@
+<macromedia-extension name="Favicon" version="1.0.0" type="command" requires-restart="false" date="2010-05-06 22:42:22 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The *Export as Favicon* command creates a favicon file from the current document, which must be 16px by 16px.  You can create a document of this size with the *New Favicon - 16X16* command.  If you want to create a favicon that also contains a 32px version of the icon, the document must have a second page with a size of 32px by 32px.  The easiest way to create this is with the *New Favicon - 16X16 and 32X32* command, which will create a new document with the appropriately sized pages.  The *New Favicon - 16X16, 32X32 and 64X64* command will do the same thing, but adds a 64px by 64px page.  Larger sizes (128x128, 256x256, etc.) are also supported, but adding these creates a favicon file that's unnecessarily large for a webpage icon. <br>
+<br>
+When you run the *Export as Favicon* command, it will ask you to select the folder where the favicon should be created.  This will default to the last place you exported the file to, or the last place you saved it.  After you click the Select button, the document will be exported to the selected folder in favicon format.  The file will be called "favicon.ico"; if a favicon file already exists in the folder, the command will confirm that you want to overwrite it.<br>
+<br>
+<br>
+# Note to Mac users<br>
+<br>
+On the Mac, this extension works reliably only in Fireworks CS5 or later.  It may export the favicon in earlier versions, but the Fireworks app will likely become unresponsive, requiring a force quit.  <br>
+<br>
+<br>
+# Credits<br>
+<br>
+Thanks to Matthias Benkmann for creating the [png2ico][1] utility that this command uses to create the favicon.  Thanks also to Ale Mu&ntilde;oz at [Bomber Studios][2] for compiling a universal binary of png2ico for the Mac.  And thanks to Bruce Bowman for lending me a Mac to get the extension working on OS X. <br>
+<br>
+[1]: http://www.winterdrache.de/freeware/png2ico/index.html<br>
+[2]: http://bomberstudios.com/<br>
+<br>
+<br>
+# Release history<br>
+<br>
+1.0.0<br>
+  : Finally got the Mac version of png2ico working.  Added command for creating 64x64 states in the favicon. <br>
+<br>
+0.9.0<br>
+  : Create temp files in the system's temp directory to avoid UAC problems on Vista.<br>
+<br>
+0.8.1<br>
+  : Tried adding support for the Mac.<br>
+<br>
+0.8.0<br>
+  : Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the favicon commands, look under Commands > Favicon.  To export the current file as a favicon, select "Export as Favicon".<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Export as Favicon.jsf" destination="$fireworks/Configuration/Commands/Favicon/"/>
+					<file name="src/New Favicon - 16X16 and 32X32.jsf" destination="$fireworks/Configuration/Commands/Favicon/"/>
+					<file name="src/New Favicon - 16X16, 32X32 and 64X64.jsf" destination="$fireworks/Configuration/Commands/Favicon/"/>
+					<file name="src/New Favicon - 16X16.jsf" destination="$fireworks/Configuration/Commands/Favicon/"/>
+					<file name="win/png2ico/LICENSE" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="win"/>
+					<file name="win/png2ico/png2ico.exe" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="win"/>
+					<file name="win/png2ico/README" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="win"/>
+					<file name="win/png2ico/VERSION" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="win"/>
+					<file name="win/png2ico/doc/png2ico.txt" destination="$fireworks/Configuration/Commands/Favicon/png2ico/doc" platform="win"/>
+					<file name="mac/png2ico/export.sh" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="mac"/>
+					<file name="mac/png2ico/LICENSE" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="mac"/>
+					<file name="mac/png2ico/png2ico" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="mac"/>
+					<file name="mac/png2ico/README" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="mac"/>
+					<file name="mac/png2ico/VERSION" destination="$fireworks/Configuration/Commands/Favicon/png2ico" platform="mac"/>
+					<file name="mac/png2ico/doc/png2ico.txt" destination="$fireworks/Configuration/Commands/Favicon/png2ico/doc" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/Info.plist" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/PkgInfo" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/MacOS/applet" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents/MacOS" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/Resources/applet.icns" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents/Resources" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/Resources/applet.rsrc" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents/Resources" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/Resources/description.rtfd/TXT.rtf" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents/Resources/description.rtfd" platform="mac"/>
+					<file name="mac/png2ico/export.app/Contents/Resources/Scripts/main.scpt" destination="$fireworks/Configuration/Commands/Favicon/png2ico/export.app/Contents/Resources/Scripts" platform="mac"/>
+	</files>
+	<summary>
+<![CDATA[The "Export as Favicon" command creates a favicon file from the current document, which must be 16px by 16px.  Using multiple pages, the favicon can also include a 32px or 64px version of the icon.  From Fireworks CS5 onwards, the command now works on both Windows and Mac.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

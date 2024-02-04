@@ -1,0 +1,62 @@
+<macromedia-extension name="Document Commands" version="1.0.3" type="command" requires-restart="false" date="2011-06-25 20:52:09 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/DocCommands">
+<![CDATA[These commands make it a little easier to manage your Fireworks documents.<br>
+<br>
+*New Document from Clipboard*<br>
+  : Creates a new document the same size as the clipboard contents and then pastes in those contents, saving a step.  It also sets the new document to the same DPI resolution as the current document.<br>
+<br>
+*New Document from Selection*<br>
+  : Creates a new document the same size as the current selection and then copies and pastes that selection.  It also sets the new document to the same DPI resolution as the source document.<br>
+<br>
+*New Document from Slice*<br>
+  : For each selected slice, this command copies the elements that intersect the slice and pastes them into a new Fireworks document.  The new document has the same dimensions as the slice and the copied elements have the same relative position to the new document as they did to the slice.  The new document is then saved in the same folder as the original document, using the slice's name as the filename.  Unlike the flattened image that results from exporting a slice, this new document remains fully editable.<br>
+  <br>
+  Note that locked elements and layers are not copied.  Also, the Command will not run if the current document has not already been saved, as it needs to know where to save the new files. <br>
+<br>
+*Close All Documents*<br>
+*Close Other Documents*<br>
+  : These commands help you quickly get rid of open documents you no longer need.<br>
+<br>
+*Swap Document Dimensions*<br>
+  : Swaps the width and height of the canvas, without rotating the elements on the canvas.  This is useful if you want to switch between landscape and portrait versions of a design.  The swapped dimensions are applied to all pages in the document. <br>
+<br>
+*Save New Version*<br>
+  : Saves a new copy of the document with an incremented version number.  For instance, if your document is called "Login Screen 001.png", this command saves a new version in the same folder called "Login Screen 002.png".  This can be useful as a quick and dirty form of version control.<br>
+<br>
+  If the current document has not been saved, the command will first open a Save As dialog to let you specify a name and location for it, and then appends a version number to the filename.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+1.0.3<br>
+  : Added Swap Document Dimensions and Save New Version commands. <br>
+<br>
+1.0.2<br>
+  : Added commands for creating a new document from a slice or the selection.<br>
+<br>
+1.0.1<br>
+  : Initial release.  2007-08-26.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Document.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Close All Documents.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+					<file name="src/Close Other Documents.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+					<file name="src/New Document from Clipboard.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+					<file name="src/New Document from Selection.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+					<file name="src/New Document from Slice.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+					<file name="src/Save New Version.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+					<file name="src/Swap Document Dimensions.jsf" destination="$fireworks/Configuration/Commands/Document/"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/DocCommands"/>
+	<summary>
+<![CDATA[These commands make it a little easier to manage your Fireworks documents.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

@@ -1,0 +1,112 @@
+<macromedia-extension name="Lorem Ipsum" version="0.1.2" type="autoshape" requires-restart="false" date="2012-06-08 21:16:28 -0700">
+	<products>
+		<product name="Fireworks" version="10" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/LoremIpsum">
+<![CDATA[Although the [Greeked Text][1] auto shape generally suffices for making sketches and early mockups, sometimes you want to display actual formatted text before the final content has been decided.  People typically use some form of "[lorem ipsum][2]" for this purpose, and the Lorem Ipsum auto shape makes inserting any amount of dummy text a breeze.<br>
+<br>
+There are a number of other Fireworks extensions that work well for initially inserting placeholder text.  The problem comes when you need to adjust the amount of text.  Perhaps the layout has changed, or the font size has increased so the text is now too long.  If all you have is a regular text element, you'll have to manually edit it to add or remove words in order to make it fit the new layout.  <br>
+<br>
+Instead of manual editing, the Lorem Ipsum auto shape lets you simply grab one of its yellow handles to resize it in any direction.  If more words are needed to fill the resized text block, the Lorem Ipsum shape automatically adds words.  If fewer are needed, it removes words until the text fits.<br>
+<br>
+<br>
+![Lorem Ipsum control points](http://johndunning.com/fireworks/inc/loremipsum/control-point-callouts.png)<br>
+<br>
+<br>
+# Resizing the auto shape<br>
+<br>
+In addition to resizing the auto shape by dragging its yellow handles, you can specify the size numerically.  Click the crosshair icon in the middle of the shape to display a dialog in which you can enter the desired width and height, in pixels. <br>
+<br>
+Note that you should not use the width and height fields in the Properties panel to resize the auto shape, as that will simply stretch the text rather than adding or removing words.  Also, the height reported in the Properties panel will be slightly different from the height shown in the tooltips on the shape's control points whenever the shape isn't an exact multiple of the line height.<br>
+<br>
+After resizing the auto shape, you may occasionally find that it does not completely fill the area with text, leaving a blank space at the bottom.  If this happens, just click any of the resize handles to force it to redraw.<br>
+<br>
+<br>
+# Randomizing the text<br>
+<br>
+If you duplicate an existing Lorem Ipsum auto shape, the duplicate will have the same text as the original.  To produce a more realistic look for the dummy text, you can randomize the duplicate's sentences.  Just ctrl-click (command-click on the Mac) the crosshair icon in the center of the shape whose text you want to change.  This will fill the shape with a different set of sentences.<br>
+<br>
+<br>
+# Changing text alignment<br>
+<br>
+There is a group of 4 yellow/blue control points just above the upper-left corner of the auto shape.  Clicking one of the first three points will set the alignment of the dummy text to left, center, or right, respectively.  The blue dot indicates which text alignment option is currently selected.<br>
+<br>
+<br>
+# Toggling paragraphs<br>
+<br>
+To the right of the 3 text alignment control points is a fourth point.  Clicking it will toggle paragraphs on (the control point turns blue) or off (the point turns yellow).  When paragraphs are on, a return is inserted into the text every 4 sentences.  Since the sentences are of different lengths, this should give some variety to the height of each paragraph.<br>
+<br>
+Turning on paragraphs will also set the text block's "space after paragraph" value to 6, if it is currently 0.  This ensures that the paragraphs are visually separated.  If you want to change that value to something else, you can style the text block using the Properties panel, as described below.<br>
+<br>
+If you want to change the number of sentences per paragraph, ctrl-click (command-click on the Mac) the paragraph control point to display a dialog in which you can enter a different value.  The text will immediately update to show different paragraph breaks.  This can be useful when the width of the text block or the font size changes.  Showing more sentences per paragraph when the text block is wider or the font is smaller usually looks better. <br>
+<br>
+<br>
+# Changing text case<br>
+<br>
+There is another group of 3 yellow/blue control points just above the upper-right corner of the auto shape.  Clicking one of these will set the text's case to *sentence* (the first word of each sentence is capitalized), *title* (every word is capitalized) or *upper* (every letter is capitalized).  <br>
+<br>
+<br>
+# Editing multiple shapes<br>
+<br>
+When multiple Lorem Ipsum auto shapes are selected, resizing one will cause all of them to resize by the same amount in the same direction.  This lets you select three columns of text and make them all, say, 20px taller.  Clicking the crosshair icon will also set all of the shapes to the size specified in the dialog.<br>
+<br>
+In addition, you can change the text alignment, paragraph, and text case settings for all of the selected shapes by clicking the appropriate control point on any of the Lorem Ipsum shapes.  The other selected shapes will update to match the changed settings.<br>
+<br>
+Note that the last settings you use will become the defaults for the next Lorem Ipsum auto shape that you drag from the *Shapes* panel.<br>
+<br>
+<br>
+# Changing text formatting<br>
+<br>
+When you drag a Lorem Ipsum auto shape into your document, its font family, size, color, etc. will default to the last text formatting you selected in the Properties panel.  If you want to change the text style after you've created the auto shape, choose the subselection tool and then click the element containing the dummy text.  You should then be able to change the formatting using the Properties panel.  <br>
+<br>
+After you change the selected text block's style, a warning dialog will likely appear telling you that "Editing sub-elements of an Auto Shape may cause it to behave unpredictably."  That's often true with auto shapes, but changing the text formatting in the Lorem Ipsum shape is fine.  You'll probably want to select "Don't show again" and then click OK.<br>
+<br>
+The shape should then immediately update to ensure that it fits within the desired size.  So if you make the font size larger, for instance, the number of words in the auto shape should be reduced.  If you apply a text style to the sub-selected text block and then later update the style, the auto shapes to which the style has been applied should respond to the change by adding or removing words as necessary.  (If you have a lot of these styled auto shapes, updating them all may take awhile, as the API calls for editing text are very slow.)<br>
+<br>
+Note that you cannot style individual words in the dummy text, nor edit the text in any way.  Any changes you make to the text block will be lost.  If you'd like to use the auto shape's dummy text as a starting point for further editing, select the shape and then select *Modify > Ungroup*.  You'll be left with an invisible rectangle, which you can delete, and a text block, on which you can perform further edits.  <br>
+<br>
+<br>
+# Lorem Ipsum auto shape tool<br>
+<br>
+In addition to dragging a Lorem Ipsum auto shape from the *Auto Shapes* panel, you can also use the Lorem Ipsum tool in the *Tools* panel to create dummy text.  Click and hold the Rectangle button in the panel to show a list of other shape tools, then select *Lorem Ipsum tool*.  With the tool selected, dragging out a rectangle and then releasing the mouse will insert a text block with the same size and position. <br>
+<br>
+![Lorem Ipsum tool](http://johndunning.com/fireworks/inc/loremipsum/lorem-ipsum-tool.png)<br>
+<br>
+<br>
+# Compatibility<br>
+<br>
+Due to bugs in earlier versions of the application, the Lorem Ipsum auto shape works only with Fireworks CS4 or later.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.1.2<br>
+  : 2012-06-08: Renamed the shape in the Auto Shape Tools folder to work around a Fireworks bug.  Fixed a typo in an alert.<br>
+<br>
+0.1.1<br>
+  : 2011-02-27: Added support for the auto shape tool and changed the minimum Fireworks version requirement.<br>
+<br>
+0.1.0<br>
+  : 2011-02-17: Initial release.<br>
+<br>
+<br>
+[1]: http://johndunning.com/fireworks/about/GreekedText<br>
+[2]: http://en.wikipedia.org/wiki/Lorem_ipsum<br>
+]]></description>
+	<ui-access>
+<![CDATA[To add a Lorem Ipsum auto shape to your document, drag it from the Shapes panel into your document.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="auto/Lorem Ipsum.gif" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file name="auto/Lorem Ipsum.jsf" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file name="tool/Lorem Ipsum tool.jsf" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+					<file name="tool/Lorem Ipsum tool.png" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/LoremIpsum"/>
+	<summary>
+<![CDATA[When designers want to display actual formatted text before the final content is decided upon, they often use some form of "lorem ipsum" as a placeholder.  The Lorem Ipsum auto shape makes inserting any amount of dummy text a breeze.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

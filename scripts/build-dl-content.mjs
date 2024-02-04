@@ -60,13 +60,16 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 		"@": metadata,
 		files,
 		summary,
-		description: {
-			"#text": description
-		},
+		description,
 	} = extension;
-	const filePaths = files.file.map((file) => file["@"].source);
+		// if there's only one file element in the <files> tag, it won't be an array,
+		// so convert if necessary.  and older .mxi files may have just a name
+		// attribute, not a source.
+	const filePaths = [].concat(files.file).map((file) => file["@"].source || file["@"].name);
 	const mdPath = path.join(CommandsPath, slug + ".md");
-	const md = description
+		// if there are no other attributes on the <description> tag, it doesn't
+		// seem to get a #text attribute
+	const md = (description["#text"] || description)
 		.replace(HashPattern, "##")
 		.replaceAll("<br>", "")
 		.replaceAll(IncPathMXI, IncPathLocal);

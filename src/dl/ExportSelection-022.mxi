@@ -1,0 +1,50 @@
+<macromedia-extension name="Export Selection" version="0.2.2" type="command" requires-restart="false" date="2012-05-09 11:01:43 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/ExportSelection">
+<![CDATA[If you have a complicated document and want to export individual elements from it, using slices often doesn't work.  The elements you want to export may overlap, or you may want to prevent the background pixels from appearing in the exported images.  Your only choice is to either hide every other element and then export the document, or else copy each element to its own document, and then export that.<br>
+<br>
+The *Export Selection* commands make this process much more convenient.  Select one or more elements and then run *Commands > Export > Export Selection - Background Transparent*.  In the resulting dialog, choose a name and location for the exported file.  This file will be exactly the same size as the selection, will have a transparent background (even if the source document doesn't), and will use the same export options as the source document.  For example, if your document's Optimize panel is set to 24bit PNG, the selected elements will be exported as a 32bit PNG.  Note that image formats like JPEG or 24bit BMP will be forced to 32bit PNG, and 8bit BMP and TIFF formats will be forced to 8bit PNG, since BMP and TIFF don't support transparency.<br>
+<br>
+If you'd prefer that the exported image have the same background color as your source document, run *Export Selection - Background Same* instead.  The source document's transparency will be maintained in that case (e.g., if the source is 24bit, the exported image will be as well). <br>
+<br>
+You can also specify different background colors simply by changing the name of the scripts, which are stored in `C:\Program Files\Adobe\Adobe Fireworks CS5\Configuration\Commands\Export\` or `/Applications/Adobe Fireworks CS5/ Configuration/Commands/Export/`.  For example, if you want to export the selection with a magenta background, you can make a copy of one of the scripts and then change its name to *Export Selection - Background #FF00FF.jsf*.  You can specify whatever hex color value you'd like in place of the `#FF00FF`.<br>
+<br>
+<br>
+# Using slices<br>
+<br>
+Although this extension provides some improvements over exporting a slice, you can still use slices to control the size of the export.  If you select a slice along with one or more elements, the exported elements will be cropped to the size and position of the slice.  For example, draw a circle and then create a square slice over the top-left quarter of the circle.  Select the circle and the slice, then run *Export Selection - Background Transparent*.  The exported image will be square and contain just the top-left quarter of the circle. <br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.2.2<br>
+  : 2012-05-09: Better error messages.  Small fix to forcing background transparency.<br>
+<br>
+0.2.1<br>
+  : 2010-05-17: Exporting with a transparent background now forces 8bit BMP and TIFF images to 8bit PNG, and JPEG and 24bit BMP images to 32bit PNG.<br>
+<br>
+0.2.0<br>
+  : 2010-05-12: The exported image will be forced to have a transparent background, if needed.  Now supports using slices to control the export area. <br>
+<br>
+0.1.0<br>
+  : 2010-05-11: Initial release. <br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Export.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Export Selection - Background #FFFFFF.jsf" destination="$fireworks/Configuration/Commands/Export/"/>
+					<file name="src/Export Selection - Background Same.jsf" destination="$fireworks/Configuration/Commands/Export/"/>
+					<file name="src/Export Selection - Background Transparent.jsf" destination="$fireworks/Configuration/Commands/Export/"/>
+					<file name="src/Export Selection Utils.js" destination="$fireworks/Configuration/Commands/Export/"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/ExportSelection"/>
+	<summary>
+<![CDATA[If you have a complicated document and want to export individual elements from it, using slices often doesn't work.  The elements you want to export may overlap, or you may want to prevent the background pixels from appearing in the exported images.  Your only choice is to either hide every other element and then export the document, or else copy each element to its own document, and then export that.  The Export Selection commands make this process much more convenient.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

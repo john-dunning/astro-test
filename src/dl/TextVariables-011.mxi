@@ -1,0 +1,193 @@
+<macromedia-extension name="Text Variables" version="0.1.1" id="com.johndunning.fireworks.TextVariables" type="command" requires-restart="false" date="2013-05-15 10:06:13 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/TextVariables"/>
+	<description href="http://johndunning.com/fireworks/description/TextVariables">
+<![CDATA[The Text Variables extension enables you to include variables in text elements that can then be automatically updated.  This makes it possible to easily update a text label that displays, say, the current name of the page it's on, or the name of a product you're designing.  The extension can update just the selected elements or every text variable in the document. <br>
+<br>
+<br>
+# Inserting variables into text elements<br>
+<br>
+Variables are represented in a text element by a name surrounded by double curly braces, like `{{pageName}}`.  Text elements can contain multiple variables, so you can write something like `Page {{pageNum}} of {{pageCount}}` and both variables will be replaced with the current values when they're refreshed.<br>
+<br>
+Once you've inserted a variable into a text element, select the element and run *Commands > Text > Variables - Refresh Selection*.  Or open the *Text Variables* panel from the *Window* menu and click the refresh button in the upper-left corner.  This will replace any variables in the text with their current values.  If a value for a string wrapped in double curly braces can't be found, the variable text is left unchanged.  <br>
+<br>
+Note that when the variables are replaced with their values, the length of the text is likely to change.  To ensure that the text wraps the way you want, you may need to create the element as area text even if takes up only one line when it's holding just the variable.  <br>
+<br>
+![Text Variables panel](http://johndunning.com/fireworks/inc/textvars/panel-callouts.png)<br>
+<br>
+<br>
+# Modifying text elements containing variables<br>
+<br>
+When a text element containing a variable is refreshed, its text is replaced with the current values of those variables.  Any changes you make to the text from that point on will be lost the next time it is refreshed.  If you want to change the underlying template, select the element and open the *Text Variables* panel.  The upper portion of the panel will display the template for the selected text element, including the variables.  If you change the template, click the update button to apply the changes, or press *ctrl-S*.  <br>
+<br>
+In a text element that's been refreshed, you can put the variables back into the text by clicking the reset button next to the update button.  To leave the current values in the text element while breaking the link to the variables, click the remove button.  This element will no longer be modified when the variables are refreshed. <br>
+<br>
+<br>
+# Built-in variables<br>
+<br>
+There are a number of built-in variables that provide information about the current state of the Fireworks document:<br>
+<br>
+{{pageName}}<br>
+  : The name of the page containing the text element.<br>
+<br>
+{{pageNum}}<br>
+  : The index of the page containing the text element, starting from 1.<br>
+<br>
+{{pageCount}}<br>
+  : The number of pages in the document.<br>
+<br>
+{{page1Name}}, {{page2Name}}, etc.<br>
+  : The name of the page specified in the variable.  This numbering skips the master page, if any, so the first normal page is always `{{page1Name}}`.<br>
+<br>
+{{pageNames}}<br>
+  : The name of all the pages, separated by newlines.  This can be used to create a quick table of contents of the current document.  <br>
+<br>
+{{stateName}}<br>
+  : The name of the state containing the text element.<br>
+<br>
+{{stateNum}}<br>
+  : The index of the state containing the text element, starting from 1.<br>
+<br>
+{{stateCount}}<br>
+  : The number of states in the page containing the text element.<br>
+<br>
+{{state1Name}}, {{state2Name}}, etc.<br>
+  : The name of the state specified in the variable.  <br>
+<br>
+{{stateNames}}<br>
+  : The name of all the states in the page, separated by newlines.  This can be used to create a quick table of contents of the current page.  <br>
+<br>
+{{docTitle}}<br>
+  : The name of the document without the file extension, if it's been saved.<br>
+<br>
+{{docFilename}}<br>
+  : The file name of the document, if it's been saved.<br>
+<br>
+{{docPath}}<br>
+  : The file path to the document, if it's been saved.<br>
+<br>
+{{docModDate}}<br>
+  : The modification date of the file, in `YYYY-MM-DD HH:MM AM/PM` format.<br>
+<br>
+{{docModDate24}}<br>
+  : The modification date of the file, in 24-hour `YYYY-MM-DD HH:MM` format.<br>
+<br>
+{{currentTime}}<br>
+  : The date and time when the variable was last refreshed, in `YYYY-MM-DD HH:MM AM/PM` format.<br>
+<br>
+{{currentTime24}}<br>
+  : The date and time when the variable was last refreshed, in 24-hour `YYYY-MM-DD HH:MM` format.<br>
+<br>
+Note that variable values are re-calculated only when the refresh button is clicked, not automatically when the state of the document changes.  So if you have a one-page document, a text element containing `Page {{pageNum}} of {{pageCount}}` will display `Page 1 of 1` when you refresh it.  If you then add a new page, that text element will continue to display `Page 1 of 1` until you manually refresh it.  <br>
+<br>
+The document variables, like `{{docTitle}}` will be empty strings unless the current file has been saved. <br>
+<br>
+Keep in mind that the variable names are case-sensitive, so `{{pagenum}}` will not match any built-in variable.<br>
+<br>
+<br>
+# Custom variables<br>
+<br>
+To add a custom variable, click the add button in the upper-right of the *Text Variables* panel.  A new row in the table will be added, letting you type the name of the custom variable.  Do not include the `{{ }}` in the variable name.  Press tab to jump to the *Value* column and enter the value you want the variable to have.  <br>
+<br>
+Once you've created a custom variable, it will be available for replacement the next time you refresh a text element.  Custom variables are saved in a hidden area of the first page of the document, so if you delete that page, the variables will be lost.  The custom variables should be retained if you just move the first page to a different location in the page order.<br>
+<br>
+To edit a variable's name or value, click in one of its cells and enter a new string.  To remove a variable, click on its row and then click the delete button in the upper-right of the panel. <br>
+<br>
+<br>
+# Random variables<br>
+<br>
+In addition to custom variables that always represent the same string, you can also create variables that will return a random string each time an element containing them is refreshed.  This can be quite useful if you are mocking up a column of data and want to have a random set of typical strings appear, rather than *lorem ipsum* filler text.<br>
+<br>
+To create a random variable, start its name with `*`, like `{{*names}}`.  In the value field, type multiple values, separated by commas.  For instance:<br>
+<br>
+	Bob, Mary, Alice, Don, Barry, Joe<br>
+<br>
+When you refresh a text element containing `{{*names}}`, one of these names will be returned, rather than the whole list.  If you include the variable multiple times in an element, each one will get a random value from the list:<br>
+<br>
+>![Random variables](http://johndunning.com/fireworks/inc/textvars/random-example.png)<br>
+<br>
+Any spaces before or after the commas will not be included in the returned value.  If you want to include a comma in a value, prefix it with a backslash, like `San Francisco\, CA, Chicago\, IL, New York\, NY`.<br>
+<br>
+<br>
+# Refreshing variables<br>
+<br>
+To refresh the variables in the selected text elements, click the refresh button in the panel.  Shift-click the button to refresh all the elements on the current page. <br>
+<br>
+You can also refresh all the elements on the current state, page or document by clicking the drop-down arrow to the right of the refresh button and selecting one of the options.  Or you can select one of the commands under *Commands > Text* that begin with *Variables - *.  Adding a keyboard shortcut to these commands can make them more convenient.  <br>
+<br>
+Note that text elements in a group will be updated, no matter how deeply nested the group is.  Text elements in symbols are not updated. <br>
+<br>
+<br>
+# Referring to other variables<br>
+<br>
+In addition to plain strings, a variable's value can include another variable.  That variable can in turn reference other variables, and so on, up to 10 levels deep.  The final string that is created when you click the refresh button will be the result of all of those replacements. <br>
+<br>
+As an example, consider these variables and their associated values:<br>
+<br>
+	*maleFirstName: John, Dave, Luke, Steve<br>
+	*maleLastName: Foo, Fuu<br>
+	maleFullName: {{*maleFirstName}} {{*maleLastName}}<br>
+<br>
+	*femaleFirstName: Jeane, Eve, Carol<br>
+	*femaleLastName: Bar, Baz<br>
+	femaleFullName: {{*femaleFirstName}} {{*femaleLastName}}<br>
+<br>
+	*fullName: {{maleFullName}}, {{femaleFullName}}<br>
+<br>
+If your text element contains `{{*fullName}}`, then refreshing it might turn it into `Dave Foo` or `Carol Baz`.  This can be a handy way to build up a random-looking list of names without having to specify all the values for each one.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.1.1<br>
+  : 2013-05-15: Added the ability for variables to refer to other variables.<br>
+<br>
+0.1.0<br>
+  : 2013-03-21: Initial public release.  Added new variables.  Fixed some bugs with master pages. <br>
+<br>
+0.0.3<br>
+  : 2013-03-03: Added the ability to reset text elements to show the variables again.  Added new built-in variables and the ability to have variables that return random values.  Cleaned up the UI.  <br>
+<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the these commands, look under Commands > Text.  To access the panel, look under the Window menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Command Panel/Text Variables.js" destination="$fireworks/Configuration/Command Panel"/>
+					<file source="src/Command Panel/Text Variables.swf" destination="$fireworks/Configuration/Command Panel"/>
+					<file source="src/Command Panel/Text Variables/add-icon-disabled.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/add-icon.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/delete-icon-disabled.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/delete-icon.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/refresh-icon.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/remove-icon-disabled.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/remove-icon.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/reset-icon-disabled.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/reset-icon.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/update-icon-disabled.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Command Panel/Text Variables/update-icon.png" destination="$fireworks/Configuration/Command Panel/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/Variables - Refresh All in Document.jsf" destination="$fireworks/Configuration/Commands/Text/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/Variables - Refresh All on Page.jsf" destination="$fireworks/Configuration/Commands/Text/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/Variables - Refresh All on State.jsf" destination="$fireworks/Configuration/Commands/Text/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/Variables - Refresh Selection.jsf" destination="$fireworks/Configuration/Commands/Text/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/Variables - Remove Variables.jsf" destination="$fireworks/Configuration/Commands/Text/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/Variables - Reset Variables .jsf" destination="$fireworks/Configuration/Commands/Text/Text Variables"/>
+					<file source="src/Commands/Text/Text Variables/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib"/>
+					<file source="src/Commands/Text/Text Variables/lib/moment.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib"/>
+					<file source="src/Commands/Text/Text Variables/lib/require.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib"/>
+					<file source="src/Commands/Text/Text Variables/lib/textvars.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib"/>
+					<file source="src/Commands/Text/Text Variables/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib/dojo"/>
+					<file source="src/Commands/Text/Text Variables/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib/dojo"/>
+					<file source="src/Commands/Text/Text Variables/lib/fwlib/DomStorage.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib/fwlib"/>
+					<file source="src/Commands/Text/Text Variables/lib/fwlib/files.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib/fwlib"/>
+					<file source="src/Commands/Text/Text Variables/lib/fwlib/underscore.js" destination="$fireworks/Configuration/Commands/Text/Text Variables/lib/fwlib"/>
+	</files>
+	<summary>
+<![CDATA[The Text Variables extension enables you to include variables in text elements that can then be automatically updated.  This makes it possible to easily update a text label that displays, say, the current name of the page it's on, or the name of a product you're designing.  The extension can update just the selected elements or every text variable in the document. ]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

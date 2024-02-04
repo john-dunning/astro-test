@@ -1,0 +1,112 @@
+<macromedia-extension name="Multi-Border Rectangle" version="0.2.0" id="com.johndunning.fireworks.MultiBorderRect" type="autoshape" requires-restart="false" date="2013-01-12 15:39:35 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="10" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/MultiBorderRect"/>
+	<description href="http://johndunning.com/fireworks/description/MultiBorderRect">
+<![CDATA[CSS allows a different width and color to be applied to the border on each side of an HTML element, but Fireworks' rectangles are limited to a single border color and thickness.  The Multi-Border Rectangle auto shape addresses this limitation, making it easy to mock up CSS-style borders.<br>
+<br>
+![Multi-Border Rectangle control points](http://johndunning.com/fireworks/inc/multiborder/control-point-callouts.png)<br>
+<br>
+<br>
+# Changing border sizes<br>
+<br>
+Drag any of the blue control points to change the corresponding border's width.  As you drag, the current width will appear in a tooltip.  To make it easier to make small adjustments, you can press and hold the *ctrl* key (*command* on the Mac) before starting the drag to make the border width change only half as fast as you move the mouse.  If you drag the border control point right to the edge of the rectangle, no border will be drawn on that side.  You can't drag the border widths so that they overlap with the border on the opposite side of the rectangle. <br>
+<br>
+To set all of the borders to the same width, hold down shift as you drag.  The other non-zero borders will resize along with the border whose control point you're dragging.<br>
+<br>
+<br>
+# Changing border and fill colors<br>
+<br>
+Click the crosshair next to a border to open its color picker.  If you hold down shift while picking the color, all of the borders will get the selected color.<br>
+<br>
+To change the background color of the rectangle, click the upper crosshair in the middle of the rectangle.<br>
+<br>
+Note that if you want to use the Color Mixer panel to adjust colors, you can use the subselect tool to select the individual border elements and then modify the sliders in the panel.  You can also use the Properties panel to apply a texture or pattern to the border.  You could even give the border its own border, if you wanted to go completely meta.<br>
+<br>
+<br>
+# Resizing the rectangle<br>
+<br>
+Drag any of the yellow control points to resize the rectangle.  Hold down shift and drag diagonally to resize the shape proportionally, or drag vertically or horizontally to limit the change to a single axis.  <br>
+<br>
+Note that resizing the rectangle with the scale tool or the *Properties* panel will distort the borders.  If you want to specify the rectangle's size numerically, click the center crosshair to open the properties dialog.<br>
+<br>
+<br>
+# Properties dialog<br>
+<br>
+![Properties dialog](http://johndunning.com/fireworks/inc/multiborder/properties-dialog.png)<br>
+<br>
+To change the border widths or the rectangle size numerically, click the lower crosshair in the middle of the rectangle.  In this properties dialog, you can enter new border widths in any of the numeric fields, or use a color picker to change the border color.  Use the color picker in the middle of the dialog to change the rectangle's background color.  You can also specify the width and height of the rectangle using the fields at the bottom of the dialog. <br>
+<br>
+When a numeric entry field has keyboard focus, pressing the up- or down-arrow key will adjust the number up or down by 1.  Hold down the *shift* key while pressing the arrow to adjust the number by 10.<br>
+<br>
+Note that the rectangle shown in the middle of the dialog is just an icon; it won't update as you change border widths or colors. <br>
+<br>
+<br>
+# Editing multiple shapes<br>
+<br>
+When several Multi-Border Rectangle auto shapes are selected, resizing one will cause all of them to resize by the same amount in the same direction.  This lets you select three rectangles and make them all, say, 20px taller.  Opening the properties dialog from one of the rectangles and then clicking OK will apply the width, color and size settings to all of the selected shapes.<br>
+<br>
+In addition, you can change the border width or color for all of the selected shapes by clicking the appropriate control point on any of the Multi-Border rectangles.  The other selected shapes will update to match the changed settings.<br>
+<br>
+Note that the last settings you use will become the defaults for the next Multi-Border Rectangle auto shape that you drag from the *Auto Shapes* panel.<br>
+<br>
+<br>
+# Auto shape tool<br>
+<br>
+In addition to dragging a Multi-Border Rectangle auto shape from the *Auto Shapes* panel, you can also use the Multi-Border Rectangle tool in the *Tools* panel to create a rectangle.  Click and hold the Rectangle button in the panel to show a list of other shape tools, then select *Multi-Border Rectangle tool*.  With the tool selected, dragging out a rectangle and then releasing the mouse will insert a rectangle with the same border widths and colors as the last shape you edited. <br>
+<br>
+![Multi-Border Rectangle tool](http://johndunning.com/fireworks/inc/multiborder/multi-border-tool.png)<br>
+<br>
+<br>
+# Copying and pasting rectangle attributes<br>
+<br>
+In addition to selecting multiple shapes and opening the propeties dialog for one of them, you can copy and paste the attributes of one Multi-Border Rectangle to another.  Select one and copy it to the clipboard.  Select one or more other Multi-Border Rectangle shapes and then run the *Objects > Paste Multi-Border Attributes* command.  That will apply the attributes of the copied rectangle to the selected ones, including the original shape's effects, opacity and blend mode.  <br>
+<br>
+If there are any elements that aren't Multi-Border Rectangles selected when you run the command, then the regular *Paste Attributes* command is applied to that element.  This lets you use the *Paste Multi-Border Attributes* command as a replacement for the *Paste Attributes* command.  Just assign a keyboard shortcut to the *Paste Multi-Border Attributes* command start pasting attributes.<br>
+<br>
+<br>
+# Limitations<br>
+<br>
+While the Multi-Border Rectangle auto shape provides much more flexibility than the standard rectangle, it can't simulate all of the CSS3 border attributes.  Notably, it supports only the `border-style: solid` style and can't show rounded corners.  The rectangle shape will also not be output as a styled div if you export the document to HTML.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.2.0<br>
+  : 2013-01-12: Added support for pasting attributes from one shape to another.  Cleaned up the dialog.  Slow the border control points only when the ctrl key is pressed.  Press shift-up/down-arrow to adjust the borders and size by 10.  Fixed up border and shape resizing.<br>
+<br>
+0.1.2<br>
+  : 2012-06-08: Renamed the shape in the Auto Shape Tools folder to work around a Fireworks bug.<br>
+<br>
+0.1.1<br>
+  : 2011-04-16: Minor update to make the Multi-Border Rectangle auto shape compatible with the Tables panel. <br>
+<br>
+0.1.0<br>
+  : 2011-01-11: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To add a Multi-Border Rectangle auto shape to your document, drag it from the Shapes panel into your document.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Objects/Paste Multi-Border Attributes.jsf" destination="$fireworks/Configuration/Commands/Objects"/>
+					<file source="auto/Multi-Border Rectangle.gif" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file source="auto/Multi-Border Rectangle.jsf" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file source="auto/Multi-Border Rectangle/Multi-Border Rectangle.js" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle"/>
+					<file source="auto/Multi-Border Rectangle/lib/fwrequire.js" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib"/>
+					<file source="auto/Multi-Border Rectangle/lib/require.js" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib"/>
+					<file source="auto/Multi-Border Rectangle/lib/dojo/has.js" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib/dojo"/>
+					<file source="auto/Multi-Border Rectangle/lib/dojo/json.js" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib/dojo"/>
+					<file source="auto/Multi-Border Rectangle/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib/fwlib"/>
+					<file source="auto/Multi-Border Rectangle/lib/fwlib/dialog-swfs/JSMLDialog.swf" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib/fwlib/dialog-swfs"/>
+					<file source="auto/Multi-Border Rectangle/lib/fwlib/dialog-swfs/Multi-Border Rectangle.swf" destination="$fireworks/Configuration/Auto Shapes/Multi-Border Rectangle/lib/fwlib/dialog-swfs"/>
+					<file source="tool/Multi-Border Rectangle tool.jsf" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+					<file source="tool/Multi-Border Rectangle tool.png" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+	</files>
+	<summary>
+<![CDATA[CSS allows a different width and color to be applied to the border on each side of an HTML element, but Fireworks' rectangles are limited to a single border color and thickness.  The Multi-Border Rectangle auto shape addresses this limitation, making it easy to mock up CSS-style borders.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

@@ -1,0 +1,46 @@
+<macromedia-extension name="Smart Punch" version="0.3.1" type="command" requires-restart="false" date="2009-09-26 19:13:44">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The *Smart Punch* command simplifies the task of punching one or more vector shapes into another.  Normally, selecting several shapes and then clicking *Modify > Combine Paths > Punch* results in just the topmost path being punched into the bottommost one.  The other selected paths are ignored.  And punching a path into a bitmap, or vice versa, just doesn't work at all.  <br>
+<br>
+With this command, simply select two or more objects and run *Smart Punch*.  The bottommost object will be punched by the upper ones, even if they're blocks of text or groups of paths.  The punch target can also be a block of text, which will automatically be turned into a path before punching.<br>
+<br>
+<br>
+# Punching bitmaps<br>
+<br>
+*Smart Punch* goes beyond just paths and also allows you to punch into, and with, bitmaps.  For instance, select a block of text and a background bitmap, run the command, and transparent pixels in the shape of the text will be "punched" into the bitmap.  Or create an image with the bitmap brush tool, position it over a vector rectangle, select both and run *Smart Punch*.  The opaque pixels of the bitmap will be punched out of the rectangle path, leaving behind a fully editable vector path.<br>
+<br>
+If the "punchee" is a group, it will first be ungrouped and combined into a single composite path or bitmap, depending on what's in the group.  This may not always produce the desired results if the paths overlap, so you may want to ungroup the elements and punch each one individually.  Also, sub-selecting the children of a group and using them to punch may produce unexpected results.<br>
+<br>
+Note that the puncher objects are deleted in the process, so make copies of them before running the command if you want to keep them around.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.3.1<br>
+: Fixed a bug where effects like drop shadows were lost when a text block was punched.<br>
+<br>
+0.3.0<br>
+: Punching into and with symbols now works.  Fixed a bug that would unnecessarily flatten a single bitmap when punching into it.  <br>
+<br>
+0.2.0<br>
+: The command can now punch into auto shapes like rounded rectangles, which previously didn't work.  Punching into a group now also works.  <br>
+<br>
+0.1.0<br>
+: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the command, look under Commands > Objects.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Smart Punch.jsf" destination="$fireworks/Configuration/Commands/Objects/"/>
+	</files>
+	<summary>
+<![CDATA[The "Smart Punch" command goes far beyond Fireworks' basic punch functionality, letting you punch vector or bitmap objects out of another vector or bitmap. Even text blocks can be used as the "puncher" or the "punchee".  The possibilities for punching mayhem are endless. ]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

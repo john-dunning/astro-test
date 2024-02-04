@@ -1,0 +1,21 @@
+<macromedia-extension name="Update Symbols" version="1.0.0" type="command" requires-restart="false" date="2003-03-16 18:45:00">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[Importing symbols from another file is one of Fireworks' most powerful functions. But if you have a lot of files that use imported symbols, it can be a hassle to update them in every file. The Update Symbols extension lets you batch-update the imported symbols in multiple files with just one step.<br>
+<br>
+Running the extension displays the "Files to Open" dialog. In this dialog's "Files to Process" menu you can choose to update all of the open files, some or all of the files in the Project Log, or a manual selection of files. To select the files manually, click the ... button to display a file selection dialog. Use ctrl and shift to select multiple files. When you're done, click Done, and then OK.<br>
+<br>
+The command will open each selected file in turn, update its symbols, save it, close it, re-open it, save it again, and then close it one last time. The double open and save is necessary to force the preview that's saved in the PNG file to be in sync with the updated symbols.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access Update Symbols, look under Commands.]]></ui-access>
+	<files>
+					<file name="src/Update Symbols.jsf" destination="$fireworks/configuration/commands/"/>
+	</files>
+	<summary>
+<![CDATA[Importing symbols from another file is one of Fireworks' most powerful functions. But if you have a lot of files that use imported symbols, it can be a hassle to update them in every file. The Update Symbols extension lets you batch-update the imported symbols in multiple files with just one step.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

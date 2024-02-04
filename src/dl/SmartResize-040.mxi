@@ -1,0 +1,58 @@
+<macromedia-extension name="Smart Resize" version="0.4.0" type="command" requires-restart="false" date="2010-03-24 20:21:00">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The Smart Resize auto shape helps you resize a group without distorting its elements or disrupting its layout.  Imagine you have a group that contains all the elements of a dialog box: a colored background and border, an icon in the upper-left, a close box in the upper-right, some text across the full width of the dialog, and some buttons in the bottom-right.  If you want to make the dialog wider and taller, you'll have to resize the background element, move the close box to the right, move the buttons down and to the right, etc.  <br>
+<br>
+Instead of doing all this manual labor, just select your group and run *Commands > Smart Resize > Toggle*.  A Smart Resize auto shape will be inserted and grouped with your selection.  (The new group will have the original group's name suffixed with "(Smart Resize)".)  Drag one of the auto shape's 8 yellow handles to resize the group in any direction.  As you drag, the current width and height of the overall group is shown in a tooltip.  When you release the mouse, the elements in the group will be moved to maintain their previous relationship to the group boundaries.  For instance, if an element is 10px from the bottom-right corner of a group and you make the group larger by dragging a resize handle, that element will be moved so that it is still 10px from the new location of the group's bottom-right corner. <br>
+<br>
+Elements that extend across more than 50% of the width and/or height of the group when you attach the Smart Resize will be resized so that their edges maintain the same relationship to the group's borders.  For example, if a text block's edges are inset 20px from the left and right edges of a background rectangle, the text block will be stretched or shrunk to maintain that relationship as the group is resized.  The resizing is smart so that text blocks, rounded rectangles, etc. are not distorted.  <br>
+<br>
+To override this default resizing and snapping behavior, you can use the other commands in this extension.  For instance, to force an element to be resized horizontally, even if its initial width is less than 50% of the group's width, sub-select the element and run *Smart Resize > X Anchor - Both*.  The next time the auto shape is resized, the element's width will be resized as well (i.e., it will be anchored to both the left and right sides of the group).  Overrides like this are maintained even if you detach the Smart Resize shape and then attach a new one.  If you want to reset these overrides and return to the default behavior, select the group and run the *Reset Anchors* command.<br>
+<br>
+When you're done resizing, you can run the *Toggle* command again to detach the Smart Resize shape.  This command tries to do the right thing depending on what's selected.  If the selected group already contains a Smart Resize shape, then the sub-group and the shape are selected (the same result you'd get using the Subselect menu item), which displays the yellow resize handles.  If the Smart Resize shape is already selected and visible when you run *Toggle*, then the shape is removed from your group.  And if your selected group doesn't contain a Smart Resize shape at all, then one is attached.  To facilitate quick resizing, it's helpful to assign a keyboard shortcut to the *Toggle* command.<br>
+<br>
+If you need to reposition a child in the group, move it, select the group and run the *Toggle* command to remove the Smart Resize shape, and then again to add a new one.  This will update the positions of all the children so that they're maintained when the Smart Resize shape is resized.  You should also attach a new shape if you add or delete elements in your group.  <br>
+<br>
+Note that the elements you want to resize don't have to be already grouped together when you attach the Smart Resize shape.  If you select several non-group elements and run *Toggle*, a single Smart Resize shape will be attached to the elements.  If you run *Toggle* again, the elements will return to their ungrouped state.  However, if every selected item is a group, then running *Toggle* will attach a separate shape to each group. <br>
+<br>
+If your group contains auto shapes, the *Toggle* and *Attach* commands will offer to convert them to paths before adding the auto shape.  Also, dragging the Smart Resize auto shape from the Shapes panel into your document will generate an error dialog, as the shape isn't useful on its own.  <br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.4.0<br>
+: Made Smart Resize work better with ungrouped elements.  Added Toggle and Reset Anchors commands. <br>
+<br>
+0.3.2<br>
+: Fixed a bug where duplicating elements after attaching a Smart Resize auto shape would cause the duplicates to always move to the same position, even if the shape was reattached. <br>
+<br>
+0.3.0<br>
+: Initial public release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To add a smart resize auto shape to the current selection, click Commands > Smart Resize > Toggle.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Attach.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/Detach.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/Reset Anchors.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/Toggle.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/X Anchor - Both.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/X Anchor - Left.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/X Anchor - Right.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/Y Anchor - Both.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/Y Anchor - Bottom.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/Y Anchor - Top.jsf" destination="$fireworks/Configuration/Commands/Smart Resize/"/>
+					<file name="src/lib/SmartResizeUtil.js" destination="$fireworks/Configuration/Commands/Smart Resize/lib"/>
+					<file name="auto/Smart Resize.gif" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file name="auto/Smart Resize.jsf" destination="$fireworks/Configuration/Auto Shapes/"/>
+	</files>
+	<summary>
+<![CDATA[The Smart Resize auto shape helps you automatically adjust the layout of grouped elements to a new size without distorting the elements in the process.  This makes it easy to quickly resize a mock up of a dialog box, for instance.  Just drag the shape's yellow handles to move the grouped elements around to match the shape's size.  See the screencast for an example of how the auto shape works.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

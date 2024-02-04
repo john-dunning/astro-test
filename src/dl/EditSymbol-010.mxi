@@ -1,0 +1,20 @@
+<macromedia-extension name="Toggle Symbol Edit Mode" version="0.1.0" type="command" requires-restart="false" date="2011-10-16 13:35:48 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/EditSymbol">
+<![CDATA[Annoyingly, Fireworks has never offered a keyboard shortcut for editing a symbol or exiting edit mode once you were in it.  This command does just that: it enters edit mode if you've selected a symbol or exits exit mode if you're already editing a symbol.  Assign a keyboard shortcut to quickly jump in and out of symbol edit mode.]]></description>
+	<ui-access>
+<![CDATA[To access the command, look under Commands > Symbols.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Toggle Symbol Edit Mode.jsf" destination="$fireworks/Configuration/Commands/Symbols/"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/EditSymbol"/>
+	<summary>
+<![CDATA[Annoyingly, Fireworks has never offered a keyboard shortcut for editing a symbol or exiting edit mode once you were in it.  This command does just that: it enters edit mode if you've selected a symbol or exits exit mode if you're already editing a symbol.  Assign a keyboard shortcut to quickly jump in and out of symbol edit mode.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

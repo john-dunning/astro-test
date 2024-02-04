@@ -1,0 +1,19 @@
+<macromedia-extension name="Toggle Opacity" version="0.1.0" type="command" requires-restart="false" date="2007-08-31 10:37:09">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The "Toggle Opacity" commands simply toggle the selected objects between 50% and 100% opacity, or between 0% and 100%.  If you assign a keyboard shortcut to the commands, you'll have a handy way of quickly seeing behind the selected objects.<br>
+<br>
+You can also change the level of opacity that's toggled by just changing the number in the script's file name.  For instance, duplicate one of the scripts, change its name to "Toggle Opacity - 25%.jsf", and then that command will toggle the selection between 25% and 100% opacity.]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Objects.]]></ui-access>
+	<files>
+					<file name="src/Toggle Opacity - 0%.jsf" destination="$fireworks/configuration/commands/Objects/"/>
+					<file name="src/Toggle Opacity - 50%.jsf" destination="$fireworks/configuration/commands/Objects/"/>
+	</files>
+	<summary>
+<![CDATA[The "Toggle Opacity" commands simply toggle the selected objects between 50% and 100% opacity, or between 0% and 100%.  If you assign a keyboard shortcut to the commands, you'll have a handy way of quickly seeing behind the selected objects.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

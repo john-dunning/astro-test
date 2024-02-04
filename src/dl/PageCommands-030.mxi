@@ -1,0 +1,82 @@
+<macromedia-extension name="Page Commands" version="0.3.0" id="com.johndunning.fireworks.PageCommands" type="command" requires-restart="false" date="2012-07-13 11:35:01 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="9" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/PageCommands"/>
+	<description href="http://johndunning.com/fireworks/description/PageCommands">
+<![CDATA[The commands in this extension are intended to perform some common tasks when working with pages in Fireworks. Some of the commands, like *Delete* and *Rename*, replicate existing functionality but are useful if you want to assign a keyboard shortcut to that feature. <br>
+<br>
+The other commands include:<br>
+<br>
+Distribute Frames to Pages<br>
+  : This command moves the content from each frame in a document to a new page, named the same as the frame. <br>
+<br>
+Distribute Layers to Pages<br>
+  : This command moves each top-level layer on the current page to a new page, named the same as the layer.  The original page is left intact.<br>
+<br>
+Import Files into Pages<br>
+  : This command is useful for combining several existing files as pages in a new document. When the command is run, it displays a dialog in which you can select the files you want to combine. Select one or more PNG files and click OK. A new document will be created and each file will be imported into a new page that has the same dimensions as the original file. Note that because Fireworks requires layer names to be unique across pages, the layers from the source files may be renamed.<br>
+<br>
+Apply Export Settings to All Pages<br>
+  : This command takes the export settings on the current page and applies them to all pages in the document.<br>
+<br>
+Crop All Pages to Selection<br>
+  : This command makes it easy to apply the same cropping area to all pages in the document. To specify the crop area, select some elements whose bounding box will be used for the crop, or else make a selection with the bitmap marquee tool. When you then run the command, all the pages will be cropped to that area. <br>
+<br>
+Go to <1 - 10><br>
+  : These commands are useful for creating keyboard shortcuts to jump directly to the first through tenth pages. *Go to First* jumps to the first page in the document, and *Go to Last* jumps to the last.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.3.0 <br>
+  : Distribute Frames to Pages now supports sublayers.  Added Distribute Layers to Pages command.<br>
+<br>
+0.2.3<br>
+  : Added Crop All Pages to Selection command. <br>
+<br>
+0.2.2<br>
+  : Revamped JS code so it wouldn't interfere with other commands.<br>
+<br>
+0.2.1<br>
+  : Fixed stray alert() in layers_1.5.js.<br>
+<br>
+0.2.0<br>
+  : Fixed issues with visibility state of layers not being copied between pages.  Maintain frame info when applying export settings to all pages.  Allow any image type to be imported into pages. <br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the page commands, look under Commands > Pages.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Apply Export Settings to All Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Crop All Pages to Selection.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Delete.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Distribute Frames to Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Distribute Layers to Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Duplicate.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  1.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  2.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  3.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  4.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  5.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  6.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  7.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  8.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to  9.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to 10.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to First.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Go to Last.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Import Files into Pages.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/Rename.jsf" destination="$fireworks/Configuration/Commands/Pages/"/>
+					<file source="src/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Pages/lib"/>
+					<file source="src/lib/require.js" destination="$fireworks/Configuration/Commands/Pages/lib"/>
+					<file source="src/lib/utils.js" destination="$fireworks/Configuration/Commands/Pages/lib"/>
+					<file source="src/lib/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Pages/lib/fwlib"/>
+	</files>
+	<summary>
+<![CDATA[The commands in this extension perform some common tasks when working with pages in Fireworks. The "Distribute Frames to Pages" command moves the content from each frame in a document to a new page. The "Distribute Layers to Pages" command does the same for top-level layers. The "Import Files into Pages" command is useful for combining several existing files as pages in a new document. The "Apply Export Settings to All Pages" command takes the export settings on the current page and applies them to all pages in the document.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

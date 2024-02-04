@@ -1,0 +1,20 @@
+<macromedia-extension name="Change Text Size" version="1.0.1" type="command" requires-restart="false" date="2002-06-28 8:43:00">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[This package consists of two commands, one of which increases the font size of the selected text block(s) by 2, and the other which decreases it. If the text block consists of multiple sizes, then the size of each run is increased or decreased by 2. So if your text block contains text with sizes of 12, 18, and 14 when you run "Text Size - Increase by 2", then afterwards the sizes would be 14, 20, and 16. You can run the command repeatedly to keep increasing or decreasing the font size.<br>
+<br>
+These commands are most useful if you assign a keyboard shortcut to them.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To increase the text size, choose Commands > johndunning > Text Size - Increase by 2. To decrease the text size, choose Commands > johndunning > Text Size - Decrease by 2.]]></ui-access>
+	<files>
+					<file name="src/Text Size - Decrease by 2.jsf" destination="$fireworks/configuration/commands/johndunning/"/>
+					<file name="src/Text Size - Increase by 2.jsf" destination="$fireworks/configuration/commands/johndunning/"/>
+	</files>
+	<summary>
+<![CDATA[This package consists of two commands for increasing or decreasing the font size of the selected text block(s).]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

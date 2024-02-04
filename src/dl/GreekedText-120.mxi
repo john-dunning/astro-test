@@ -1,0 +1,174 @@
+<macromedia-extension name="Greeked Text" version="1.2.0" id="com.johndunning.fireworks.GreekedText" type="command" requires-restart="false" date="2013-02-23 22:30:29 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/GreekedText"/>
+	<description href="http://johndunning.com/fireworks/description/GreekedText">
+<![CDATA[When creating wireframes, it's often useful to suggest the presence of text without using actual words, which can distract the viewer from the overall layout.  Even "lorem ipsum" dummy text requires the selection of a typeface and size, which may be too much detail for the mockup.  In hand-drawn mockups (does anyone still draw by hand?) you could use a marker to draw lines of different lengths to suggest text, but this effect has always been a pain to create with software.  The Greeked Text[^1] auto shape makes it easy.<br>
+<br>
+<br>
+# Creating a Greeked Text auto shape<br>
+<br>
+To create a Greeked Text shape, find it in the *Shapes* panel and drag it to the canvas.  Horizontal rectangles of varying widths are displayed within the bounds of the shape to simulate a block of left-justified text.  The auto shape has 8 yellow control points around its perimeter.  Dragging one of these resizes the shape from that edge or corner.  As you drag, rectangles are added or removed to fill the shape, and each rectangle's width is re-randomized.  If you want a different rag on the text, just click a yellow control point without dragging to randomize the lines again.<br>
+<br>
+![Greeked Text callouts](http://johndunning.com/fireworks/inc/greekedtext/greeked-text-callouts.png)<br>
+<br>
+<br>
+# Controlling line height, spacing and length<br>
+<br>
+The two blue control points on the upper-left side of the shape (the blue diamonds, not the blue squares) control the size and spacing of the lines.  The upper control point adjusts the line height and the one below and slightly to the right of that adjusts the line spacing.  As you drag the height or spacing control point, the number of lines in the auto shape will adjust to accommodate the new values.  <br>
+<br>
+The control point on the bottom-right of the shape adjusts how random the line lengths are. Drag it to the left to let the lengths vary widely and to the right to keep them more even.  You can drag it all the way to the right to force the lines to all be the same width. <br>
+<br>
+If you press and hold *ctrl* (*command* on OS X) before clicking one of these points, they will move only half as fast as the speed at which you drag the mouse, making it easier to make precise adjustments.<br>
+<br>
+To have the Greeked Text auto shape match a particular font size and line spacing, such as 11px Tahoma with 16px leading, set the value of its line height + line spacing equal to the text block's leading (16 in this case).  Setting the shape's line height to the distance from the font's baseline to the top of the ascenders (9px for 11px Tahoma) usually gives a good approximation of that text size. <br>
+<br>
+<br>
+# Controlling text alignment<br>
+<br>
+The three control points above the upper-left corner of the shape control the "text" alignment.  The blue control point indicates which alignment is currently selected.<br>
+<br>
+You will likely want to have more random line widths when the alignment is centered vs. left or right.  <br>
+<br>
+<br>
+# Simulating paragraphs<br>
+<br>
+To the right of the 3 text alignment control points is a fourth point.  Clicking it will toggle paragraphs on (the control point turns blue) or off (the point turns yellow).  When paragraphs are on, a blank space is inserted every few lines in the shape to simulate a paragraph break.  The first line of each paragraph can optionally be indented.  You can control the number of lines per paragraph and the size of the spacing and indent by clicking the central control point to open the properties dialog, as described below.<br>
+<br>
+Here is an example of Greeked Text auto shapes with paragraphs turned on to simulate a multi-column text layout:<br>
+<br>
+![Paragraphs](http://johndunning.com/fireworks/inc/greekedtext/greeked-text-paragraphs.png)<br>
+<br>
+<br>
+# Properties dialog<br>
+<br>
+![Properties dialog](http://johndunning.com/fireworks/inc/greekedtext/greeked-text-properties.png)<br>
+<br>
+Click the crosshair in the middle of the Greeked Text shape to open its properties dialog, which offers precise numeric control over the shape's attributes, as well as additional options that are not available as control points.  <br>
+<br>
+<br>
+## Size and Position<br>
+<br>
+In the upper section of the dialog, you can enter a specific size or position for the shape.  While you can use the *Properties* panel to adjust the shape's X/Y position, you should always adjust its size by directly dragging its control points or by opening its properties dialog.  Using the *Properties* panel or the scale tool to resize the shape will distort it.<br>
+<br>
+<br>
+## Lines<br>
+<br>
+The line height, spacing, randomness and alignment controls described above are also available in the dialog.<br>
+<br>
+<br>
+## Paragraphs<br>
+<br>
+The bottom section of the dialog offers controls that are not available as control points around the edges of the shape.  <br>
+<br>
+<br>
+Variation<br>
+  : The *Min lines* and *Max lines* fields specify how many lines can appear in each paragraph.  The shape picks a random number between these two values as it creates each paragraph.  Make the numbers farther apart to create more random paragraphs.  You can also make them the same value to force every paragraph to have the same number of lines.  <br>
+<br>
+Indent<br>
+  : The *Indent first one* checkbox controls whether the first line of the very first paragraph in a shape should be indented.  This is checked by default, but you might want to uncheck it to simulate multi-column text, where a paragraph in the first column flows into the second, which then wouldn't indent its first line. <br>
+<br>
+  The *Indent* field specifies how many pixels the first line of each paragraph should be indented.  This value can be negative, which lets you create an outdented effect.<br>
+<br>
+  Note that paragraph indentation only works when the paragraphs are aligned to the left.  Setting center or right alignment will disable the checkbox and field. <br>
+<br>
+<br>
+Spacing<br>
+  : The *Spacing* field specifies how many blank lines should be left after a paragraph break.  This is a multiple of the line height and line spacing values, so as they change, the space between paragraphs also changes.  Set this field to 0 if you do not want any spaces between paragraphs.  <br>
+<br>
+<br>
+# Adjusting multiple Greeked Text shapes at once<br>
+<br>
+After creating several Greeked Text auto shapes, you may want to adjust, say, the line spacing on all of them.  There are a couple different ways to do this.  One is to select the shapes, then drag the line spacing control point on one of them.  This will update the shape whose control point you dragged, as well as the control points on the other selected shapes.  Unfortunately, due to a bug in Fireworks, the other selected shapes won't redraw to display the new line spacing.  To redraw them, you can click a control point on each shape in turn.  Or you can run *Commands > Greeked Text > Redraw Selection*, which updates all of the Greeked Text shapes in the selection.  <br>
+<br>
+Another way to edit multiple shapes at once is to select them and then run *Commands > Greeked Text > Edit Properties*.  This opens the *Greeked Text Properties* dialog showing the properties of the top-most shape in the selection.  Change one or more properties and then click *OK*.  All of the shapes in the selection will immediately update to show the new properties, since this command can work around the abovementioned Fireworks bug.<br>
+<br>
+<br>
+# Changing the default values<br>
+<br>
+Every time you modify a Greeked Text shape, its current settings are saved as the default for the next one that's created.  So if you drag in one shape, change its line height to 10, then drag in a second shape, the second one will also have a line height of 10.  These defaults will persist across Fireworks sessions. <br>
+<br>
+<br>
+# Pre-defined Greeked Text shapes<br>
+<br>
+There are a few pre-defined Greeked Text auto shapes that come with the extension and can be inserted by running a command, such as *Insert - Grey - Height 9px - Spacing 7px*.  This inserts a 50% grey shape with the line height already set to 9px and the spacing to 7px.  The *Insert - Hatched - Height 9px - Spacing 7px* command inserts a shape that has some textures and effects applied to it to make the bars look more like actual lines of text.<br>
+<br>
+<br>
+# Greeked Text auto shape tool<br>
+<br>
+In addition to dragging a Greeked Text auto shape from the *Auto Shapes* panel, you can also use the Greeked Text tool in the *Tools* panel to create dummy text.  Click and hold the Rectangle button in the panel to show a list of other shape tools, then select *Greeked Text*.  With the tool selected, drag out a rectangle and then release the mouse to insert a block of lines with the same size and position as the dragged rectangle. <br>
+<br>
+![Greeked Text tool](http://johndunning.com/fireworks/inc/greekedtext/greeked-text-tool.png)<br>
+<br>
+<br>
+# Other uses for the auto shape<br>
+<br>
+If you need a series of evenly spaced rectangles or squares, the Greeked Text auto shape can be of help, especially if you want to directly manipulate the size, spacing and number of rectangles.  Just drag the line randomness control point all the way to the right to make every line the same width.  Use the line height control to adjust the height of each rectangle, and drag a side control point to adjust the width of the each rectangle.  If you want a horizontal series of rectangles, rotate the shape 90 degrees.<br>
+<br>
+You can also make a quick-and-dirty mockup for a bar graph just by rotating the Greeked Text shape 90 degrees counter-clockwise.  Or if you needed to mock up a ruler for some reason, you could use two shapes with negative paragraph outdents and a fixed set of lines per paragraph to draw the millimeter and centimeter markings.  <br>
+<br>
+![Other uses for the Greeked Text auto shape](http://johndunning.com/fireworks/inc/greekedtext/greeked-text-examples.png)<br>
+<br>
+<br>
+#Lorem Ipsum auto shape<br>
+<br>
+If you really do want Lorem Ipsum-style dummy text, the [Lorem Ipsum][2] auto shape provides similar functionality to the Greeked Text shape.  Resizing the auto shape adds or removes text to fill the size of the rectangle, which makes it much easier to adjust the size of a block of dummy text without having to manually add or remove the words. <br>
+<br>
+<br>
+# Release notes<br>
+<br>
+1.2.0<br>
+  : 2013-02-23: New version supports simulating left-aligned paragraphs, each with bottom margins, optional indents and a random number of lines.  Added a dialog to set all of the properties of a shape.  Added an *Edit Properties* command to edit multiple shapes at once.<br>
+<br>
+1.1.1<br>
+  : 2012-05-27: Minor update to fix error dialog that could appear when dragging the shape onto the canvas.<br>
+<br>
+1.1.0<br>
+  : 2012-05-14: Added a Greeked Text auto shape tool.  Enabled the [Keyboard Resize][1] extension to resize Greeked Text shapes.  Added controls for aligning the lines of "text" to the left, right or center.  The last-used settings are now saved automatically for the next auto shape that's created. <br>
+<br>
+1.0.0<br>
+  : 2009-04-28: Initial release.<br>
+<br>
+<br>
+[^1]: Note that by "Greeked text" I'm referring to the representation of lines of text by plain bars, rather than actual typographical characters.  This has commonly been done in word processors and desktop publishing programs when there is too much text to render quickly, as well as in hand-drawn mockups using markers.  The "lorem ipsum" text that is often used as a placeholder is derived from a passage of Latin by Cicero, and is more properly called dummy text.  More can be found at: <http://www.creativeglossary.com/graphic-design/greeked-text.html><br>
+<br>
+[1]: http://johndunning.com/fireworks/about/KeyboardResize<br>
+[2]: http://johndunning.com/fireworks/about/LoremIpsum<br>
+]]></description>
+	<ui-access>
+<![CDATA[To add a Greeked Test auto shape to your document, drag it from the Shapes panel.  Additional utility commands are available in Commands > Greeked Text.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Edit Properties.jsf" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Insert - Black - Height 9px - Spacing 7px.jsf" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Insert - Black - Height 9px - Spacing 7px.png" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Insert - Grey - Height 9px - Spacing 7px.jsf" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Insert - Grey - Height 9px - Spacing 7px.png" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Insert - Hatched - Height 9px - Spacing 7px.jsf" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Insert - Hatched - Height 9px - Spacing 7px.png" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/Redraw Selection.jsf" destination="$fireworks/Configuration/Commands/Greeked Text/"/>
+					<file source="src/lib/Insert Item.js" destination="$fireworks/Configuration/Commands/Greeked Text/lib"/>
+					<file source="auto/Greeked Text.gif" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file source="auto/Greeked Text.jsf" destination="$fireworks/Configuration/Auto Shapes/"/>
+					<file source="auto/Greeked Text/Greeked Text.js" destination="$fireworks/Configuration/Auto Shapes/Greeked Text"/>
+					<file source="auto/Greeked Text/img/align-center.png" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/img"/>
+					<file source="auto/Greeked Text/img/align-left.png" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/img"/>
+					<file source="auto/Greeked Text/img/align-right.png" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/img"/>
+					<file source="auto/Greeked Text/lib/fwrequire.js" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib"/>
+					<file source="auto/Greeked Text/lib/require.js" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib"/>
+					<file source="auto/Greeked Text/lib/dojo/has.js" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib/dojo"/>
+					<file source="auto/Greeked Text/lib/dojo/json.js" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib/dojo"/>
+					<file source="auto/Greeked Text/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib/fwlib"/>
+					<file source="auto/Greeked Text/lib/fwlib/dialog-swfs/Greeked Text Properties.swf" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib/fwlib/dialog-swfs"/>
+					<file source="auto/Greeked Text/lib/fwlib/dialog-swfs/JSMLDialog.swf" destination="$fireworks/Configuration/Auto Shapes/Greeked Text/lib/fwlib/dialog-swfs"/>
+					<file source="tool/Greeked Text tool.jsf" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+					<file source="tool/Greeked Text tool.png" destination="$fireworks/Configuration/Auto Shape Tools/"/>
+	</files>
+	<summary>
+<![CDATA[When creating wireframes, it's often useful to suggest the presence of text without using actual words, which can distract the viewer from the overall layout.  Even "lorem ipsum" dummy text requires the selection of a typeface and size, which may be too much detail for the mockup.  In hand-drawn mockups (does anyone still draw by hand?) you could use a marker to draw lines of different lengths to suggest text, but this effect has always been a pain to create with software.  The Greeked Text auto shape makes it easy.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

@@ -1,0 +1,46 @@
+<macromedia-extension name="Generate Web Assets" version="0.1.0" id="com.johndunning.fireworks.GenerateWebAssets" type="command" requires-restart="false" date="2013-05-20 15:58:42 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/GenerateWebAssets"/>
+	<description href="http://johndunning.com/fireworks/description/GenerateWebAssets">
+<![CDATA[While you can easily export slices from a mockup, it's a pain to create an individual slice for each element that you want to export.  And if the elements overlap, the slices won't output cleanly.  The *Generate Web Assets* command makes exporting different parts of your document a breeze.  <br>
+<br>
+To specify how you want an element to be exported, just change its name to include an image file extension, like `header.png`.  The command will look for elements whose names end in `.png`, `.gif`, `.jpg`, or `.jpeg`.  <br>
+<br>
+It also looks for layers or sub-layers whose names end in an extension.  So if you have several button elements on a sub-layer called `toolbar.png`, all of the button elements will be exported as a single, flattened PNG.  Unlike a slice, which you have to resize each time the elements below it change size, the PNG that's exported for the named sub-layer will always be the exact size of all the child elements.  <br>
+<br>
+When you run *Commands > Export > Generate Web Assets*, a dialog will appear to let you select the destination folder for the exported images.  All of the named elements and layers will then be exported to that folder.  <br>
+<br>
+The last-used destination folder is stored in the document, so the next time you run *Generate Web Assets*, the images will be automatically exported to the same folder.  To select a different folder, run the *Generate Web Assets - Change Export Location* command.<br>
+<br>
+PNGs are exported as 32-bit PNGs, JPEGs are exported using the *JPEG - Better Quality* export settings, and GIFs are exported with the *GIF Adaptive 256* settings.  <br>
+<br>
+Note that if a layer name ends in an image extension, all of the children of that layer are exported as a single image.  Any file extensions on the children or sub-layers of that layer will be ignored. <br>
+<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Export.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Generate Web Assets - Change Export Location.jsf" destination="$fireworks/Configuration/Commands/Export/"/>
+					<file source="src/Generate Web Assets.jsf" destination="$fireworks/Configuration/Commands/Export/"/>
+					<file source="src/Generate Web Assets/fwrequire.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets"/>
+					<file source="src/Generate Web Assets/require.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets"/>
+					<file source="src/Generate Web Assets/dojo/has.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/dojo"/>
+					<file source="src/Generate Web Assets/dojo/json.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/dojo"/>
+					<file source="src/Generate Web Assets/export/exportOptions.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/export"/>
+					<file source="src/Generate Web Assets/export/web-assets.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/export"/>
+					<file source="src/Generate Web Assets/fwlib/DomStorage.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/fwlib"/>
+					<file source="src/Generate Web Assets/fwlib/files.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/fwlib"/>
+					<file source="src/Generate Web Assets/fwlib/layers.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/fwlib"/>
+					<file source="src/Generate Web Assets/fwlib/prefs.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/fwlib"/>
+					<file source="src/Generate Web Assets/fwlib/underscore.js" destination="$fireworks/Configuration/Commands/Export/Generate Web Assets/fwlib"/>
+	</files>
+	<summary>
+<![CDATA[While you can easily export slices from a mockup, it's a pain to create an individual slice for each element that you want to export.  And if the elements overlap, the slices won't output cleanly.  The Generate Web Assets command makes exporting different parts of your document a breeze.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

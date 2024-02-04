@@ -1,0 +1,83 @@
+<macromedia-extension name="FlickrFire" version="0.1.3" type="command" requires-restart="false" date="2010-10-04 12:52:18 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[FlickrFire lets you easily upload the image you're currently working on to Flickr, without ever leaving Fireworks.  <br>
+<br>
+The first time you run the command, it will open a browser page to Flickr where you can give FlickrFire authorization to upload images to your account.  After doing that, come back to Fireworks and click the _I've Authorized FlickrFire_ button.  The token that Flickr sends back will be stored in the Fireworks preferences, so you won't need to re-authorize the next time you want to use FlickrFire.  If you ever want to revoke authorization, just go to the [App's You're Using][3] page on Flickr and remove the permissions from FlickrFire.<br>
+<br>
+Once authorization is complete, the upload window will appear.  Here you can enter a title for the image (it defaults to the Fireworks filename), a description, and tags.  You can also change the privacy settings and the type of content in the image.  The tags, privacy settings and content type are remembered across invocations of the command, so if you want the images to always be visible only to friends, for instance, the option will remain checked. <br>
+<br>
+When you're ready, just click the Upload button.  Another dialog will open with a progress bar, and will remain open until your image is exported and posted to Flickr.  Once your image is live, a dialog will display the URL to its page on Flickr.  This URL is also automatically copied to the clipboard, so you can easily paste it into a browser to view the page.<br>
+<br>
+<br>
+# Exporting part of the image<br>
+<br>
+By default, your entire image will be uploaded to Flickr.  If you'd prefer to upload only a portion of your image, select the elements you want to include and then choose _Selection With Background_ in the _Export_ combobox.  This will crop the image to the bounds of the selection and export just that area.<br>
+<br>
+If you don't want to include the background pixels, then choose _Selection Without Background_.  The selected elements will be copied to a new document and exported on a plain white background, which can be useful if you want to share just a logo or icon that's part of a larger design.<br>
+<br>
+You can also use a slice to define the portion of the image to export.  Just select the slice and choose either of the _Selection_ options in the _Export_ menu.  The selected elements, or the entire image if nothing but the slice is selected, will be cropped to the bounds of the slice.<br>
+<br>
+<br>
+# Notes<br>
+<br>
+The document's current export settings are used to create the image that is sent to Flickr, which supports only GIF, JPG and PNG files.  If your current document is set to export as a TIFF, say, you'll need to change the export format before uploading it.<br>
+<br>
+FlickrFire uses the [FWXHR][1] library to upload images to Flickr.  It also uses the [Command Dialog][2] library to create the Flex dialog using only JavaScript.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.1.3<br>
+  : Worked around the encodeURIComponent() bug in Fireworks CS4/5 on Windows, which caused the extension to not work.<br>
+<br>
+0.1.2<br>
+  : Fixed a bug that prevented extension from running on OS X.<br>
+<br>
+0.1.1<br>
+  : Added option to export only part of the image.  Included updated fwlib.dialog library to show the command name in the dialog title.  Fixed bug where it could interfere with other commands.<br>
+<br>
+0.1.0<br>
+  : Initial release. <br>
+<br>
+<br>
+[1]: http://johndunning.com/fireworks/about/FWXHR<br>
+[2]: http://johndunning.com/fireworks/about/CommandDialog<br>
+[3]: http://www.flickr.com/services/auth/list.gne<br>
+]]></description>
+	<ui-access>
+<![CDATA[To use this command, look under Commands > FlickrFire.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/FlickrFire.jsf" destination="$fireworks/Configuration/Commands/FlickrFire/"/>
+					<file name="src/lib/module.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib"/>
+					<file name="src/lib/dojo/dojo.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo"/>
+					<file name="src/lib/dojo/string.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo"/>
+					<file name="src/lib/dojo/_base.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo"/>
+					<file name="src/lib/dojo/_base/array.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/json.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/lang.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap_fireworks.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/hostenv_fireworks.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/loader.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojox/encoding/digests/MD5.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojox/encoding/digests"/>
+					<file name="src/lib/dojox/encoding/digests/SHA1.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojox/encoding/digests"/>
+					<file name="src/lib/dojox/encoding/digests/_base.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/dojox/encoding/digests"/>
+					<file name="src/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib"/>
+					<file name="src/lib/fwlib/flickr.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib"/>
+					<file name="src/lib/fwlib/FWXHR.swf" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib"/>
+					<file name="src/lib/fwlib/io.js" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib"/>
+					<file name="src/lib/fwlib/dialog-swfs/Authorize FlickrFire.swf" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/FlickrFire.swf" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/JSONDialog.swf" destination="$fireworks/Configuration/Commands/FlickrFire/lib/fwlib/dialog-swfs"/>
+	</files>
+	<summary>
+<![CDATA[FlickrFire lets you easily upload the image you're currently working on to Flickr, without ever leaving Fireworks.  Just enter a title and description, click Upload, and a flattened copy of your image will be posted to Flickr.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

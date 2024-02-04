@@ -1,0 +1,49 @@
+<macromedia-extension name="Fake Underline" version="0.1.1" type="command" requires-restart="false" date="2009-02-22 17:28:33">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[The commands in this extension help make it a little easier to create styled underlines like those available in web browsers.  The standard underline style in Fireworks always draws the line in the same color as the text, which may not always be what you want.  The Fake Underline commands will automatically draw an underline for you, creating a line that can be styled like any other.<br>
+<br>
+<br>
+# Adding styled underlines<br>
+<br>
+To create the styled underline, first create a line, style it how ever you want, select it, and run *Commands > Text > Fake Underline - Set Style from Selection*.  This sets the default underline style to that of the selection's stroke.  This style should be saved along with the document, so you should need to run this command only when you want to change to a new style.  <br>
+<br>
+Then run *Fake Underline - Set Offset* and specify the offset in pixels from the bottom of the text block to the underline.<br>
+<br>
+Create one or more single-line text blocks and select them (the commands assume the text is on a single line; they don't handle wrapping).  Then run *Fake Underline - Add* to add the styled underline at the offset you specified.  The underline will be grouped with the text block and resized to match the width of the text.  It can then be manipulated like any other line.<br>
+<br>
+<br>
+# Updating the line style<br>
+<br>
+If you have several text/line groups and want to change the styles, first select a line with the desired style and run *Fake Underline - Set Style from Selection*.  Then select the text/line groups you already created and run *Fake Underline - Add*.  The command will detect that the text block already has an underline and will remove the existing one before adding the new one with the new style or offset.  You can also run *Add* again if the width of the text changes; the line will be resized to match the text's new width.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.1.1<br>
+  : Revamped JS code so it wouldn't interfere with other commands.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > Text.]]></ui-access>
+	<files>
+					<file name="src/Fake Underline/Fake Underline - Add.jsf" destination="$fireworks/configuration/commands/Text/Fake Underline"/>
+					<file name="src/Fake Underline/Fake Underline - Set Offset.jsf" destination="$fireworks/configuration/commands/Text/Fake Underline"/>
+					<file name="src/Fake Underline/Fake Underline - Set Style from Selection.jsf" destination="$fireworks/configuration/commands/Text/Fake Underline"/>
+					<file name="src/Fake Underline/lib/lib.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib"/>
+					<file name="src/Fake Underline/lib/dojo/dojo.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo"/>
+					<file name="src/Fake Underline/lib/dojo/_base.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo"/>
+					<file name="src/Fake Underline/lib/dojo/_base/array.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo/_base"/>
+					<file name="src/Fake Underline/lib/dojo/_base/lang.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo/_base"/>
+					<file name="src/Fake Underline/lib/dojo/_base/_loader/bootstrap.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo/_base/_loader"/>
+					<file name="src/Fake Underline/lib/dojo/_base/_loader/bootstrap_fireworks.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo/_base/_loader"/>
+					<file name="src/Fake Underline/lib/dojo/_base/_loader/hostenv_fireworks.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo/_base/_loader"/>
+					<file name="src/Fake Underline/lib/dojo/_base/_loader/loader.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/dojo/_base/_loader"/>
+					<file name="src/Fake Underline/lib/fwlib/util/pngText.js" destination="$fireworks/configuration/commands/Text/Fake Underline/lib/fwlib/util"/>
+	</files>
+	<summary>
+<![CDATA[The commands in this extension help make it a little easier to create styled underlines like those available in web browsers.  The standard underline style in Fireworks always draws the line in the same color as the text, which may not always be what you want.  The Fake Underline commands will automatically draw an underline for you, creating a line that can be styled like any other.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

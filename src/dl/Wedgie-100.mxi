@@ -1,0 +1,30 @@
+<macromedia-extension
+	name="Wedgie"
+	version="1.0.0"
+	type="command"
+	date="2002-09-02 19:41:00"
+	requires-restart="false">
+	<products>
+		<product name="Fireworks" version="6" primary="true" /> 
+	</products> 
+	<author name="John Dunning" />
+	<description>
+<![CDATA[The (perhaps unfortunately named) *Wedgie* command breaks the selected object into 2 or more wedges.  This can be handy if you need to get, say, 4 rounded corners for a table frame by splitting a circle into 4 parts.  The wedges are centered on the middle of the selected object.  If you select several objects, they are merged into a single bitmap that is then sliced into wedges.  The wedges	always start at the 12:00 position and then work their way around the object clockwise.<br>
+<br>
+Note that the selected object is deleted in the process of breaking it into wedges, so you may want to clone it before running the command.	
+]]>
+	</description>
+	<ui-access>
+	<![CDATA[
+	To run this command, choose Commands > Objects > Wedgie.
+	]]>
+	</ui-access>
+	<files>
+		<file name="Wedgie.jsf" destination="$fireworks/configuration/commands/Objects" />
+	</files>
+	<summary>
+<![CDATA[The (perhaps unfortunately named) Wedgie command breaks the selected object into 2 or more wedges.]]></summary>	
+	<configuration-changes>
+	</configuration-changes>
+
+</macromedia-extension>

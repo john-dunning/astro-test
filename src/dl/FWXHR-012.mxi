@@ -1,0 +1,230 @@
+<macromedia-extension name="FWXHR" version="0.1.2" type="command" requires-restart="false" date="2010-07-26 14:32:35 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[Since Fireworks is used so heavily for web graphics production, it's quite likely that there'll be times when you developers out there would like your JSF commands to interact with a web service.  Unlike a browser's JS environment, unfortunately, Fireworks doesn't offer any XmlHttpRequest functionality.  Flash panels can make HTTP calls, but there hasn't been easy way to integrate Flash with JSF commands.  Until now.<br>
+<br>
+<br>
+# Installation<br>
+<br>
+After installing the extension, you should have a `FWXHR` directory in your commands folder, which will look like:<br>
+<br>
+	/Adobe Fireworks CS4<br>
+		/Configuration<br>
+			/Commands<br>
+				/FWXHR<br>
+					Example - Insert Stock Price.jsf<br>
+					Example - Translate Text.jsf<br>
+					/lib<br>
+						lib.js<br>
+						/dojo<br>
+							...<br>
+						/fwlib<br>
+							FWXHR.swf<br>
+							io.js<br>
+<br>
+The `lib` sub-folder contains all the files necessary to make XHR-style calls from your JavaScript commands.  The `io.js` file implements an API for making requests, and the `FWXHR.swf` Flash file provides the XHR functionality.<br>
+<br>
+To use the library in your .jsf commands, copy the entire `lib` sub-folder to the folder that contains your .jsf.  Your folder hierarchy should look something like:<br>
+<br>
+	/Adobe Fireworks CS4<br>
+		/Configuration<br>
+			/Commands<br>
+				/My XHR Commands<br>
+					XHR Command 1.jsf<br>
+					XHR Command 2.jsf<br>
+					/lib<br>
+						...<br>
+<br>
+<br>
+# Loading the fwlib.io library<br>
+<br>
+From within `XHR Command 1.jsf` in the example above, you can load the API by including this code:<br>
+<br>
+	try { dojo.require; } catch (e)<br>
+		{ fw.runScript(fw.currentScriptDir + "/lib/lib.js"); }<br>
+<br>
+	dojo.require("fwlib.io");<br>
+<br>
+This first loads the `dojo` API, if it's not already loaded, and then loads the `fwlib.io` library, which is what you'll use to make the XHR calls.<br>
+<br>
+<br>
+# A simple GET <br>
+<br>
+To make a simple HTTP GET request, call `fwlib.io.request()` with a URL.  The following example looks up the current price of Adobe stock using Yahoo!'s Finance API:<br>
+<br>
+	var response = fwlib.io.request(<br>
+		"http://download.finance.yahoo.com/d/quotes.csv?f=snl1c1p2d1t5&s=ADBE"<br>
+	);<br>
+<br>
+The call to `request()` is always synchronous, so by the time the next line in your script executes, the request has either succeeded or failed and will have returned the response as an object.  <br>
+<br>
+When your script calls `request()`, a Flash dialog is opened.  It's a pretty simple dialog, consisting of a Cancel button, a progress bar and a few text fields showing the current request method and the URL.  The dialog will remain open until the HTTP request succeeds, fails, times out, or is canceled by the user.  If you're making a `GET` request, the loaded and total bytes will be shown next to the progress bar.  For a `POST` request, an indeterminate progress bar is shown, as Flex doesn't provide any information about the progress of the request.  Either way, if the request works, the dialog usually opens and closes too fast to interact with.<br>
+<br>
+<br>
+# The response object<br>
+<br>
+When the HTTP transaction is complete, the response is returned from `request()` as an object with the following fields:<br>
+<br>
+status<br>
+  : The HTTP status code as a number, such as `200` for a successful transaction. <br>
+<br>
+statusText<br>
+  : The HTTP status code as a string, such as `OK` for a successful transaction. <br>
+<br>
+responseText<br>
+  : The data returned from the web service endpoint as a string.  If the HTTP request failed for some reason, this will contain the resulting error message.  If the response is in some structured format like XML or JSON, it's up to you to convert it from text to that format. <br>
+<br>
+If the user cancels the dialog before the transaction can complete, then `request()` returns `null`, so your code should check for that.<br>
+<br>
+The response from the previous example can be handled like this:<br>
+<br>
+	var response = fwlib.io.request(<br>
+		"http://download.finance.yahoo.com/d/quotes.csv?f=snl1c1p2d1t5&s=ADBE"<br>
+	);<br>
+<br>
+	if (!response) {<br>
+		alert("The request was canceled.");<br>
+	} else if (response.status != 200) {<br>
+		alert("The request failed: " + response.responseText);<br>
+	} else {<br>
+		var dom = fw.getDocumentDOM();<br>
+<br>
+			// the stock data fields are comma-separated<br>
+		var data = response.responseText.split(",");<br>
+		var currentStock = data[0] + " is at $" + data[2];<br>
+<br>
+			// insert the stock price as a text element centered in the document<br>
+		dom.addNewText({ left: 0, top: 0, right: 150, bottom: 10 }, true);<br>
+		dom.align("center vertical", true);<br>
+		dom.align("center horizontal", true);<br>
+		dom.setTextRuns({ initialAttrs: { alignment: "center" },<br>
+			textRuns: [{ changedAttrs: {}, characters: currentStock }] });<br>
+	}<br>
+<br>
+This script extracts the comma-separated stock price data from the response and then uses that data to create a text element. <br>
+<br>
+<br>
+# The request configuration object<br>
+<br>
+Similar to the `io()` method of YUI3, the second parameter to `request()` can be an object that defines the parameters of the transaction.  This parameter and all of its fields are optional:<br>
+<br>
+method<br>
+  : Specifies the HTTP method of the transaction, either `GET` (the default) or `POST`.<br>
+<br>
+headers<br>
+  : An object containing key-value pairs of headers to supply with the transaction, e.g., `{ "Content-Type": "application/xml; charset=utf-8" }`.  Due to a limitation in Flex, custom headers work only with `POST` requests.  They will be ignored by `GET` requests.<br>
+<br>
+data<br>
+  : Data to be sent with the transaction, defined as either a string of key-value pairs (e.g., `"foo=bar&baz=42"`) or an object (e.g., `{ foo: "bar", baz: 42 }`), which will be serialized into a URI-encoded string.  <br>
+<br>
+  If the method is `GET`, then `data` will be appended to the URL after a `?` (the question mark is added automatically if the URL doesn't end with one).  If the method is `POST`, then the data will be sent as the body of the request.<br>
+<br>
+fileData<br>
+  : An object containing key-value pairs of form field names and local file paths.  If specified, the local files are loaded into memory and then posted as a multi-part form submission.  The files are combined with the key-value pairs in the `data` parameter, if any, and the method is set to `POST`.  See below for more information on posting local files. <br>
+<br>
+The `data` parameter can make it more convenient to build up a complicated set of query parameters.  Here's another way to look up stock price data in the previous example:<br>
+<br>
+	var symbol = prompt("Enter the stock symbol to look up.");<br>
+<br>
+	var response = fwlib.io.request(<br>
+		"http://download.finance.yahoo.com/d/quotes.csv",<br>
+		{<br>
+			data: {<br>
+				f: "snl1c1p2d1t5",<br>
+				s: symbol<br>
+			}<br>
+		}<br>
+	);<br>
+<br>
+<br>
+# Posting local files<br>
+<br>
+Normally, a web page can't upload arbitrary files from the local computer without the user's interaction.  But since Fireworks and its commands already have access to the local filesystem, it's possible to upload files directly from a JSF command. <br>
+<br>
+A typical scenario might be to `POST` the current document to a file server.  How exactly this request should be constructed will depend on the web service you are posting to, but an example might look something like this:<br>
+<br>
+	var tempPath = Files.getTempFilePath(null) + ".png";<br>
+	var dom = fw.getDocumentDOM();<br>
+	dom.exportTo(tempPath, null);<br>
+<br>
+	var response = fwlib.io.request(<br>
+		"http://your.domain.com/upload.php",<br>
+		{<br>
+			method: "POST",<br>
+			data: {<br>
+				username: "myuser",<br>
+				password: "mypass",<br>
+				pageName: dom.pageName<br>
+			},<br>
+			fileData: {<br>
+				pageImage: tempPath<br>
+			}<br>
+		}<br>
+	);<br>
+<br>
+In this example, the current document is exported to a temp file, and the path to that temp file is passed to `request()` in the `fileData` parameter of the request configuration object.  This causes the file to be loaded into memory and then combined with the `data` parameter to form the body of the `POST`.  To the server page receiving this post, it will look like a regular form submission.<br>
+<br>
+The `Content-Type` of each file is determined by its extension.  An image type of `PNG`, for instance, is given a content type of `image/png`.  All other file types default to `application/octet-stream`. <br>
+<br>
+<br>
+# Example scripts<br>
+<br>
+There are two example .jsf scripts in the installation folder, one that demonstrates using a `GET` request to access Yahoo's stock price API, and another that uses a `POST` request to access Google's translation API.  (The latter is a simplified version of the [Translate Text][3] extension.)  The scripts are well-commented and should help you get started making your own HTTP requests from Fireworks.<br>
+<br>
+<br>
+# Future directions<br>
+<br>
+The FWXHR extension is still pretty basic, so let me know if you run into any problems and how you'd like to see it extended. <br>
+<br>
+<br>
+# Credits<br>
+<br>
+The FWXHR extension uses a slightly modified version of the [URLRequestBuilder][1] AS3 library ([Copyright (c) Mike Stead 2009][2]) to create the multi-part form requests when posting file data.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.1.2<br>
+  : Added an example that uses Google's translation API.<br>
+<br>
+0.1.1<br>
+  : Added progress bar for `GET` requests, and an indeterminate bar for `POST` requests.  Enlarged area showing requested URL.  Added support for multiple dojo installations.<br>
+<br>
+0.1.0<br>
+  : Initial release.<br>
+<br>
+<br>
+[1]: http://github.com/mikestead/as3urlrequestbuilder<br>
+[2]: http://blog.mikestead.me/upload-multiple-files-with-a-single-request-in-flash/<br>
+[3]: http://johndunning.com/fireworks/about/TranslateText<br>
+]]></description>
+	<ui-access>
+<![CDATA[To try a sample HTTP request command, look under Commands > FWXHR.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Example - Insert Stock Price.jsf" destination="$fireworks/Configuration/Commands/FWXHR/"/>
+					<file name="src/Example - Translate Text.jsf" destination="$fireworks/Configuration/Commands/FWXHR/"/>
+					<file name="src/lib/lib.js" destination="$fireworks/Configuration/Commands/FWXHR/lib"/>
+					<file name="src/lib/dojo/dojo.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo"/>
+					<file name="src/lib/dojo/_base.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo"/>
+					<file name="src/lib/dojo/_base/array.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/json.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/lang.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap_fireworks.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/hostenv_fireworks.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/loader.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/dojo/_base/_loader"/>
+					<file name="src/lib/fwlib/FWXHR.swf" destination="$fireworks/Configuration/Commands/FWXHR/lib/fwlib"/>
+					<file name="src/lib/fwlib/io.js" destination="$fireworks/Configuration/Commands/FWXHR/lib/fwlib"/>
+	</files>
+	<summary>
+<![CDATA[Since Fireworks is used so heavily for web graphics production, it's quite likely that there'll be times when you developers out there would like your JSF commands to interact with a web service.  Unlike a browser's JS environment, unfortunately, Fireworks doesn't offer any XmlHttpRequest functionality.  Flash panels can make HTTP calls, but there hasn't been easy way to integrate Flash with JSF commands.  Until now.<br>
+<br>
+This extension will be of interest only to developers of Fireworks extensions. ]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

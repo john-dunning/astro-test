@@ -1,0 +1,123 @@
+<macromedia-extension name="Commands" version="2.1.1" type="command" requires-restart="false" date="2012-06-07 15:32:50 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/Commands">
+<![CDATA[The *Commands* panel was the first Flash panel I created for Fireworks, almost 10 years ago.  The original panel has always worked fine on Windows, but with the last couple releases of Fireworks, it's been causing problems on OS X.  This new version is a complete rewrite, built from the groupnd up using Flex 3, and should work on both Windows and Mac.<br>
+<br>
+This panel provides quick access to your favorite Fireworks commands, panels, symbols, auto shapes, textures and patterns.  While keyboard shortcuts are useful, you may not want to create a shortcut for every command you use frequently, and the *Common Library* and *Shapes* panels don't provide any shortcuts at all.  With the *Commands* panel, you can create a set of toolbar buttons for your frequently used commands and assets so that they're always right at hand.<br>
+<br>
+The panel has two tabs, *Favorites* (labeled with a star) and *All Commands* (labeled with "All").  Both tabs contain an alphabetical list of commands, panels, symbols and auto shapes.  Click an item in the list to launch the corresponding command.<br>
+<br>
+<br>
+# Commands list<br>
+<br>
+The *All Commands* list includes all of the commands, panels, symbols and so on that are currently installed on your system.  Each item has a different icon:<br>
+<br>
+Commands ![C icon](http://johndunning.com/fireworks/inc/qf/CommandIcon.png)<br>
+  : Any items listed in the *Commands* menu are included in the panel.<br>
+<br>
+Command panels ![P icon](http://johndunning.com/fireworks/inc/qf/PanelIcon.png)<br>
+  : Clicking an item like *Pages* will open that panel and bring it to the front if it's in a group.<br>
+<br>
+Symbols ![G icon](http://johndunning.com/fireworks/inc/qf/GraphicIcon.png) ![B icon](http://johndunning.com/fireworks/inc/qf/ButtonIcon.png) ![A icon](http://johndunning.com/fireworks/inc/qf/AnimationIcon.png)<br>
+  : Any symbol files installed in the *Common Library* folder will be available for insertion.  Clicking a symbol like *HScrollBar* is equivalent to dragging that symbol into your document from the *Common Library*.  Different symbol types have different icons, though they all have the same color: G for graphic symbols, B for buttons, A for animations. <br>
+<br>
+Auto shapes ![S icon](http://johndunning.com/fireworks/inc/qf/AutoShapeIcon.png)<br>
+  : Auto shapes that are available in the *Shapes* panel (like *Ruler*) and those in the *Toolbox* (like *Rounded Rectangle*) will be inserted into the middle of the document when clicked.<br>
+<br>
+Built-in menu commands ![M icon](http://johndunning.com/fireworks/inc/qf/MenuIcon.png)<br>
+  : Many of the standard Fireworks menu items are available in the command list.  For example, the *Text > Align > Right* menu command is available as *Text Align Right*.  Note that while the corresponding menu item may be disabled in its source menu, it's still available within the *Commands* panel.  Using a menu command that is not valid for the current selection will have no effect. <br>
+<br>
+Textures and patterns ![T icon](http://johndunning.com/fireworks/inc/qf/TextureIcon.png)<br>
+  : The names of all the installed textures and patterns are included in the list of commands.  Textures are listed twice, once for applying that texture to the selected item's fill and once for its border.  So, clicking an item like *Wood Fill Texture* will apply the *Wood* texture to the selected element's fill.  You can also apply pattern fills to the selection by selecting a command such as *Bubbles Pattern*.<br>
+  <br>
+  If the element already has a non-zero texture opacity, then that opacity will be unchanged when you apply the new texture.  Otherwise, the opacity will default to 100.  Note that applying a texture to a group or to text does not work.  <br>
+<br>
+Pressing a letter key will scroll the *All Commands* list to items beginning with that letter.  Pressing the Page Up/Down keys will scroll the list up/down.  You can also launch a command or insert a symbol directly from the *All Commands* list by clicking its name, rather than its star icon.<br>
+<br>
+<br>
+# Managing the Favorites list<br>
+<br>
+The *Favorites* list starts out empty.  To add an item to this list, switch to the *All Commands* tab, which contains an alphabetical list of all the installed command scripts, panels, symbols, auto shapes, textures, patterns and some built-in menu commands.  (The list of items on this tab is the same as that shown in my *[QuickFire][1]* extension.)  Click the star icon next to an item to add it to the *Favorites* list.  The star will turn dark grey, indicating that the item is now listed on the *Favorites* tab.  <br>
+<br>
+To remove an item from the *Favorites* list, simply click the star icon again, turning it white.  From the *Favorites* tab itself, you can also ctrl-click an item to remove it, without having to find it on the *All Commands* tab.  To clear the entire favorites list, click the gear button in the upper-right corner and select *Clear Favorites List*.<br>
+<br>
+<br>
+# Filter bar<br>
+<br>
+Next to the tabs is a button bar that lets you filter the current list to show items of a certain type, which can help you find just the command, symbol, etc. that you're looking for:  <br>
+<br>
+![Filter bar](http://johndunning.com/fireworks/inc/commands/filter-bar.png)<br>
+<br>
+Click a button to filter the current list to show only items of that type.  The selected filter is indicated by an orange border.  Click the same button again to remove the filter.  The filter will be applied to both the "all" and "favorites" lists. <br>
+<br>
+The filter buttons correspond to the following types:<br>
+<br>
+* ![C icon](http://johndunning.com/fireworks/inc/qf/CommandIcon.png) Commands<br>
+* ![G icon](http://johndunning.com/fireworks/inc/qf/GraphicIcon.png) Symbols<br>
+* ![M icon](http://johndunning.com/fireworks/inc/qf/MenuIcon.png) Built-in menu commands<br>
+* ![P icon](http://johndunning.com/fireworks/inc/qf/PanelIcon.png) Command panels<br>
+* ![S icon](http://johndunning.com/fireworks/inc/qf/AutoShapeIcon.png) Auto shapes<br>
+* ![T icon](http://johndunning.com/fireworks/inc/qf/TextureIcon.png) Textures and patterns<br>
+<br>
+<br>
+# Refreshing the All Commands list<br>
+<br>
+The first time *Commands* runs, it scans your *Commands*, *Command Panels*, *Auto Shapes*, *Auto Shape Tools*, *Common Library*, *Textures* and *Patterns* folders to build up a list of available items.  From then on, *Commands* will automatically re-scan these folders every 3 weeks when it's opened.  <br>
+<br>
+If you've added a command or symbol since the last time you opened the panel, click the gear button in the upper-right corner and select *Refresh Commands List* from the menu.  The panel will immediately re-scan your Fireworks folders and update the list of commands, panels, symbols and so on.<br>
+<br>
+<br>
+# Limitations<br>
+<br>
+Note that there are a couple of limitations in the Fireworks API that affect how the *Commands* panel inserts symbols.  The first is that once you've added a symbol to a document, you can't add a symbol with the same name from a different folder.  Doing so will just insert another instance of the first symbol instead.<br>
+<br>
+The second limitation is that adding a new rich symbol to a document usually doesn't maintain the symbol's "richness".  In other words, if you use the *Commands* panel to add a Windows CheckBox rich symbol, nothing will show up in the *Symbol Properties* panel when you select the symbol instance.  (This is not true for all of the symbols that ship with Fireworks, however.  Most of the symbols in the Flex Components folder, for instance, can be inserted by the panel and still work with the *Symbol Properties* panel.)<br>
+<br>
+<br>
+## Workarounds <br>
+<br>
+There are two workarounds for this.  The simplest is to first manually drag a rich symbol from the *Common Library* panel into your document, then use the *Commands* panel to insert new instances of that symbol.  These new instances will work correctly with the *Symbol Properties* panel.  If there are existing instances of that symbol that you had inserted with the panel, select *Replace existing items* in the dialog that appears when you drag the symbol from the *Common Library*. <br>
+<br>
+The second workaround is more complicated but can make a particular symbol always maintain its richness when inserted by the *Commands* panel.  First, open the symbol's PNG file.  For example, open `ComboBox.graphic.png` in the `Configuration/Common Library/Win` folder.  In the *Document Library* panel, delete the symbol.  Now locate the Windows ComboBox symbol in the *Common Library* panel and drag it into the document.  Finally, save the `ComboBox.graphic.png` file.<br>
+<br>
+Now you should be able to insert a Windows ComboBox symbol by clicking in the panel without losing its interactivity and without having to first drag the symbol in manually.  Unfortunately, you'll need to repeat these steps on every symbol that you want to make compatible with *Commands*. <br>
+<br>
+<br>
+# Flash dialogs<br>
+<br>
+Another issue occurs with commands that open a Flash dialog and preview their effect, such as the *Add Arrowheads* command.  If you cancel the dialog, the previewed effect may still be applied to the selection.  Manually selecting undo by pressing ctrl-Z should remove the effect. <br>
+<br>
+<br>
+# Release history:<br>
+<br>
+2.1.1<br>
+  : 2012-06-07: Fixed an error that occurred when refreshing the command list in Fireworks CS6.  Fixed a problem that could cause the panel to rescan the commands list every time it's opened.<br>
+<br>
+2.1.0<br>
+  : 2011-08-13: Fixed a problem where the command folders would be rescanned every time the panel opened.  Doubled the number of supported menu items.  Added the ability to apply a texture or pattern to the selection.  Added a toolbar to filter the list to show different types of items.<br>
+<br>
+2.0.0<br>
+  : 2010-07-19: Complete rewrite in Flex 3 that works on both Windows and Mac.  Now supports inserting symbols and auto shapes, as well as some built-in menu commands.<br>
+<br>
+1.2.1<br>
+  : 2002-07-14: Initial release written in Flash MX. <br>
+<br>
+<br>
+[1]: http://johndunning.com/fireworks/about/QuickFire<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the Commands panel, look under the Windows menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Commands.swf" destination="$fireworks/Configuration/Command Panels/"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/Commands"/>
+	<summary>
+<![CDATA[The Commands panel provides quick access to your favorite Fireworks commands, panels, symbols, auto shapes, textures and patterns.  While keyboard shortcuts are useful, you may not want to create a shortcut for every command you use frequently, and the Common Library and Shapes panels don't provide any shortcuts at all.  With the Commands panel, you can create a set of toolbar buttons for your frequently used commands and assets so that they're always right at hand.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

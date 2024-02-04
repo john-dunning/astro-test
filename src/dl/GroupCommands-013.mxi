@@ -1,0 +1,64 @@
+<macromedia-extension name="Group Commands" version="0.1.3" id="com.johndunning.fireworks.GroupCommands" type="command" requires-restart="false" date="2012-12-11 10:55:45 -0800">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/GroupCommands"/>
+	<description href="http://johndunning.com/fireworks/description/GroupCommands">
+<![CDATA[The commands in this extension make it a little easier to manipulate groups. <br>
+<br>
+<br>
+# Adding elements to existing groups<br>
+<br>
+The *Paste into Group* command pastes the contents of the clipboard into the selected group without losing any effects that were applied to the group, as would happen if you ungrouped the group, pasted, then regrouped it with the new element.  The pasted element maintains its original position. <br>
+<br>
+<br>
+# Copying and pasting group attributes<br>
+<br>
+The *Group Attributes - Copy* command copies the attributes of all the sub-elements of the selected group. You can then select one or more other groups that have the same internal structure and run *Group Attributes - Paste* to apply the attributes to the selected groups.<br>
+<br>
+For instance, say you make a group of a button background, an icon and a label, then copy the button group many times. Then you decide you want the background to be a different color and the label to be a different font. Instead of changing the attributes of each sub-element separately, change one button group, run *Group Attributes - Copy*, select the other button groups and run *Group Attributes - Paste*. This works only if the selected groups have the same sub-element structure as the original group, e.g., they all have a text element and a sub-group, and the sub-group contains a path and two bitmaps.  However, the sub-elements can have different positions, sizes, text, etc.<br>
+<br>
+<br>
+# Ungrouping without losing attributes<br>
+<br>
+Normally, if you apply live effects to a group, e.g., a drop shadow, and then ungroup that group, the effect will be lost.  If you later recreate the group, you'll need to re-apply all the effects.  The same goes for the group's name, blend modes, styles, opacity, custom data, etc.<br>
+<br>
+The *Smart Ungroup* command makes it easier to work with complicated groups that have styles or effects applied to them.  Instead of using the *Modify > Ungroup* command, run *Smart Ungroup*.  If the current selection is a group, it will ungroup it, but store its attributes on its children.  You can then manipulate the children, move them around, delete some, duplicate others, etc.  When you want to recreate the previous group, select one of the children that were in the group (you don't need to select them all) and run *Smart Ungroup* again.  It will find all of the elements that were in the group, regroup them, and then reapply all the styles and effects that had been applied to the group.<br>
+<br>
+Note that *Smart Ungroup* can only regroup the original members of the group and any of their duplicates.  Say the group has sub-elements A, B and C when you run *Smart Ungroup*.  You then delete B and make two copies of C.  You select a copy of C, C1, and run *Smart Ungroup*.  The recreated group will contain A, C, C1 and C2.  All of the group's members must be on the same layer to be included in the reconstituted group.<br>
+<br>
+If you want to add an element to an existing group without losing its styles, use the *Paste into Group* command.  Also note that the command works only on the first selected element.  Other elements in the current selection are ignored.  <br>
+<br>
+Assigning a keyboard shortcut to the command will make it convenient to quickly toggle groups on and off without losing any attributes.<br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.1.3<br>
+  : 2012-12-11: Fixed a bug in the Smart Ungroup command.<br>
+<br>
+0.1.2<br>
+  : 2009-03-01: Revamped JS code so it wouldn't interfere with other commands.  <br>
+<br>
+0.1.1<br>
+  : 2007-07-29: Added Paste into Group and Smart Ungroup commands.<br>
+<br>
+0.1.0<br>
+  : 2007-03-18: Initial release of Group Attributes - Copy/Paste.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the group commands, look under Commands > Groups.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Group Attributes - Copy.jsf" destination="$fireworks/Configuration/Commands/Groups/"/>
+					<file source="src/Group Attributes - Paste.jsf" destination="$fireworks/Configuration/Commands/Groups/"/>
+					<file source="src/Paste into Group.jsf" destination="$fireworks/Configuration/Commands/Groups/"/>
+					<file source="src/Smart Ungroup.jsf" destination="$fireworks/Configuration/Commands/Groups/"/>
+	</files>
+	<summary>
+<![CDATA[The commands in this extension make it a little easier to manipulate groups, including the ability to paste elements into a group or ungroup and regroup it without losing any effects that had been applied to it. The "Group Attributes - Copy/Paste" commands let you copy the styles of all the sub-elements of one group to another.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

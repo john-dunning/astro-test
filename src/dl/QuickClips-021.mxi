@@ -1,0 +1,71 @@
+<macromedia-extension name="QuickClips" version="0.2.1" type="command" requires-restart="false" date="2012-04-30 18:48:48 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description href="http://johndunning.com/fireworks/description/QuickClips">
+<![CDATA[The *QuickClips* extension makes it easy to quickly insert frequently used elements into your document, such as icons, background graphics, blocks of text, etc.  To create a clip, select one or more items, then run the *Commands > QuickClips - Save New Clip* command.  Enter a name for the clip and click OK. Because Fireworks doesn't immediately update the *Commands* menu, you'll need to switch to a different app and immediately switch back.  You should then be able to see the newly created item in the *Commands > QuickClips* sub-menu.<br>
+<br>
+If there are multiple elements selected when you run the *Save New Clip* command, they'll all become part of the clip and will be inserted as individual elements.  If you want them to be inserted as a group, you should group them before running the *Save New Clip* command.<br>
+<br>
+<br>
+# Inserting a clip<br>
+<br>
+To insert a clip, simply select it from the *Commands > QuickClips* menu. It will be inserted at the top of the current layer and will be aligned with the top-left corner of the current selection, or the top-left corner of the document if there's no selection. Note that inserting a clip is equivalent to simply copying and pasting the elements from another document. Unlike symbols, there is no connection to the original clip file.<br>
+<br>
+<br>
+# Editing a clip<br>
+<br>
+To edit a previously saved clip, find its `.png` file in the `QuickClips` folder under `C:\Program Files (x86)\Adobe\Adobe Fireworks CS5.1\Configuration\Commands\` (or the Mac equivalent).  Open the file, edit it and then save it back to the same location.  Leave the clip's associated `.jsf` file alone.  <br>
+<br>
+To delete a clip, remove both the `.png` and `.jsf` files.<br>
+<br>
+<br>
+# Creating new libraries<br>
+<br>
+Since the Commands menu can have only one level of sub-menus, you may want to create multiple libraries to store clips.  To do so, run the *QuickClips - Create New Library* command.  Enter a name for the library, like "Icons", and click OK.  To add a clip to this library, run its associated *Save New Clip* command, in this case, *Icons - Save New Clip*.  The clip will then appear under *Commands > Icons*.<br>
+<br>
+The extension comes with a few Windows cursor icons in the QuickClips library.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.2.1<br>
+  : 2012-04-30: Fix to make sure the inserted clip is positioned at a whole pixel.  Added some additional error handling for missing clip files or overwiting existing clips. <br>
+<br>
+0.2.0<br>
+  : 2007-03-25: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the QuickClips commands, look under the Commands menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/QuickClips - Create New Library.jsf" destination="$fireworks/Configuration/Commands/"/>
+					<file name="src/QuickClips - Insert Item.js" destination="$fireworks/Configuration/Commands/"/>
+					<file name="src/QuickClips - Save New Clip.jsf" destination="$fireworks/Configuration/Commands/"/>
+					<file name="src/QuickClips/Cursor - arrow hourglass.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - arrow hourglass.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - crosshair.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - crosshair.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - default.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - default.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - finger.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - finger.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - hourglass.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - hourglass.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - no drop.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - no drop.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - resize H.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - resize H.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - resize V.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - resize V.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - text I-beam.jsf" destination="$fireworks/Configuration/Commands/QuickClips"/>
+					<file name="src/QuickClips/Cursor - text I-beam.png" destination="$fireworks/Configuration/Commands/QuickClips"/>
+	</files>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/QuickClips"/>
+	<summary>
+<![CDATA[The QuickClips extension makes it easy to quickly insert frequently used elements into your document, such as icons, background graphics, blocks of text, etc.  When you save a new clip, it will become available from the Commands > QuickClips submenu.  Selecting a saved clip will insert it into the current layer of the current document.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

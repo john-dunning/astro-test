@@ -1,0 +1,83 @@
+<macromedia-extension name="Bookmarks" version="0.1.0" id="com.johndunning.fireworks.Bookmarks" type="command" requires-restart="false" date="2012-10-21 18:52:32 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/Bookmarks"/>
+	<description href="http://johndunning.com/fireworks/description/Bookmarks">
+<![CDATA[The *Bookmarks* extension lets you set a bookmark on different pages and states in your document and then quickly jump between them.  This can be handy for exploring the flow through a website or quickly toggling between variations of a design.<br>
+<br>
+<br>
+# Bookmarks commands<br>
+<br>
+After installing the extension, there will be a number of bookmarks-related commands under the *Commands > Document* sub-menu.  These commands will be more convenient if you assign each a keyboard shortcut.<br>
+<br>
+*Bookmarks - Save*<br>
+  : Adds the current page and state to the end of the list of bookmarks.  Up to 10 bookmarks can be saved; the first one that was saved will be removed to make room for a new bookmark. <br>
+<br>
+*Bookmarks - Toggle*<br>
+  : Toggles between the last two bookmarks to be saved.<br>
+<br>
+*Bookmarks - Next*<br>
+*Bookmarks - Previous*<br>
+  : Navigates to the next or previous bookmark, based on the order in which they were saved.  These commands will wrap around when the end of the bookmark list is reached.<br>
+<br>
+*Bookmarks - Clear All*<br>
+  : Clears the list of bookmarks.<br>
+<br>
+The bookmarks are saved along with the document, so they will be available the next time you open it.  If you give the document to someone else who has the extension installed, they will be able to navigate the bookmarks as well.  Note that adding or navigating bookmarks will dirty the document.<br>
+<br>
+<br>
+# Navigating to rearranged bookmark locations<br>
+<br>
+The names of the page and state are recorded along with their index positions when the bookmark is saved.  If you rearrange the order of the pages or states and then try to navigate to a bookmark, the command will try to find the page and state in their new locations based on their names.  If their names have changed or they have been deleted altogther, then the command will navigate to the bookmark based on the index positions.  If the bookmark refers to a page or state whose position is beyond the end of the current page and state list, then the command will display an error dialog. <br>
+<br>
+For instance, if you save a bookmark on the first page called *Default*, and then rename that to *Home*, toggling back to that bookmark will simply return to the first page.  If instead you move the *Default* page to be the second page in the document, then toggling back will jump to the second page, since the name is still the same.<br>
+<br>
+<br>
+# Bookmarks panel<br>
+<br>
+In addition to the commands, you can also use the *Bookmarks* panel to navigate and manage the document's bookmarks.  Open it via *Window > Bookmarks*.<br>
+<br>
+![Bookmarks panel](http://johndunning.com/fireworks/inc/bookmarks/bookmarks-panel-callouts.png)<br>
+<br>
+The list shows the page and state index for each bookmark, along with the page's and state's name.  If there is only one state on the page, its name is not shown.  Or if there's only one page in the document, the page's name is not shown.<br>
+<br>
+Click a bookmark in the list to jump to that page and state.  Click the forward and back buttons to navigate through the list.  Click the toggle button to jump between the last two bookmarks.  <br>
+<br>
+When a bookmark is selected, you can click the up/down arrows to rearrange it in the list.  Click the minus button to delete the selected bookmark.  Shift-click that button to delete all the bookmarks.  <br>
+<br>
+While the *Bookmarks* panel is open, navigating the bookmarks using the commands should also update the panel to highlight the current bookmark.  Note that navigating the document using the *Pages* and *States* panels will not change the highlighted item in the *Bookmarks* panel. <br>
+]]></description>
+	<ui-access>
+<![CDATA[To use these commands, look under Commands > Document > Bookmarks.  To use the panel, look under Window > Bookmarks.<br>
+<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Command Panels/Bookmarks.js" destination="$fireworks/Configuration/Command Panels"/>
+					<file source="src/Command Panels/Bookmarks.swf" destination="$fireworks/Configuration/Command Panels"/>
+					<file source="src/Command Panels/Bookmarks/add-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Command Panels/Bookmarks/delete-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Command Panels/Bookmarks/down-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Command Panels/Bookmarks/next-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Command Panels/Bookmarks/previous-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Command Panels/Bookmarks/toggle-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Command Panels/Bookmarks/up-icon.png" destination="$fireworks/Configuration/Command Panels/Bookmarks"/>
+					<file source="src/Commands/Document/Bookmarks/Bookmarks - Clear All.jsf" destination="$fireworks/Configuration/Commands/Document/Bookmarks"/>
+					<file source="src/Commands/Document/Bookmarks/Bookmarks - Next.jsf" destination="$fireworks/Configuration/Commands/Document/Bookmarks"/>
+					<file source="src/Commands/Document/Bookmarks/Bookmarks - Previous.jsf" destination="$fireworks/Configuration/Commands/Document/Bookmarks"/>
+					<file source="src/Commands/Document/Bookmarks/Bookmarks - Save.jsf" destination="$fireworks/Configuration/Commands/Document/Bookmarks"/>
+					<file source="src/Commands/Document/Bookmarks/Bookmarks - Toggle.jsf" destination="$fireworks/Configuration/Commands/Document/Bookmarks"/>
+					<file source="src/Commands/Document/Bookmarks/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/Document/Bookmarks/lib"/>
+					<file source="src/Commands/Document/Bookmarks/lib/require.js" destination="$fireworks/Configuration/Commands/Document/Bookmarks/lib"/>
+					<file source="src/Commands/Document/Bookmarks/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/Document/Bookmarks/lib/dojo"/>
+					<file source="src/Commands/Document/Bookmarks/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/Document/Bookmarks/lib/dojo"/>
+					<file source="src/Commands/Document/Bookmarks/lib/fwlib/bookmarks.js" destination="$fireworks/Configuration/Commands/Document/Bookmarks/lib/fwlib"/>
+					<file source="src/Commands/Document/Bookmarks/lib/fwlib/DomStorage.js" destination="$fireworks/Configuration/Commands/Document/Bookmarks/lib/fwlib"/>
+	</files>
+	<summary>
+<![CDATA[The Bookmarks extension lets you set a bookmark on different pages and states in your document and then quickly jump between them.  This can be handy for exploring the flow through a website or quickly toggling between variations of a design.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

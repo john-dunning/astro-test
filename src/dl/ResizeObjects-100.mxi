@@ -1,0 +1,19 @@
+<macromedia-extension name="Resize Selected Objects" version="1.0.0" type="command" requires-restart="false" date="2002-03-09 18:33:17 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[This panel ships with Fireworks MX, so you should already have it. If I create new versions, though, I'll make them available here. Resize Selected Objects lets you make precise, single-pixel adjustments to the size of a selected object without using the Scale tool. It resizes each selected object independently, which the Scale tool cannot do.]]></description>
+	<ui-access>
+<![CDATA[To access the panel, look under the Windows menu.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Resize Selected Objects.swf" destination="$fireworks/Configuration/Command Panels/"/>
+	</files>
+	<summary>
+<![CDATA[This panel ships with Fireworks MX, so you should already have it. If I create new versions, though, I'll make them available here. Resize Selected Objects lets you make precise, single-pixel adjustments to the size of a selected object without using the Scale tool. It resizes each selected object independently, which the Scale tool cannot do.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

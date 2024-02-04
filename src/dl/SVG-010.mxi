@@ -1,0 +1,127 @@
+<macromedia-extension name="SVG" version="0.1.0" id="com.johndunning.fireworks.SVG" type="command" requires-restart="false" date="2013-05-03 12:15:57 -0700">
+	<author name="John Dunning"/>
+	<products>
+		<product name="Fireworks" version="12" primary="true"/>
+	</products>
+	<update method="directlink" url="http://johndunning.com/fireworks/version/SVG"/>
+	<description href="http://johndunning.com/fireworks/description/SVG">
+<![CDATA[With increasing support for `<canvas>` and SVG across browsers, many people have been creating vector images in the SVG format.  The *SVG* extension makes it possible to use these images in your Fireworks documents by parsing the XML and recreating the vectors using Fireworks elements.<br>
+<br>
+<br>
+# Opening an SVG file<br>
+<br>
+To open an SVG file, select the *Commands > SVG > Open* command.  A file dialog will open to let you select a .svg file.  When you click *OK*, a new Fireworks document will be created and the contents of the SVG file will be inserted.  The new document will be resized to try to match the viewport of the source file. <br>
+<br>
+Elements that are grouped in the SVG file will also be grouped in the Fireworks output.  Groups and elements will inherit their names from the IDs or class names of the corresponding tags in the SVG file. <br>
+<br>
+<br>
+# Inserting an SVG file<br>
+<br>
+To insert an SVG file into the current document, select *Commands > SVG > Insert*.  After selecting a file in the dialog, the SVG content will be rendered in the middle of the current document.<br>
+<br>
+<br>
+# Limitations<br>
+<br>
+SVG is an extremely complicated format, and many tools export it in slightly different ways, so what you see in Fireworks after importing a file may look quite different than what you see in the browser.  The visual fidelity will often depend on how many of SVG's features the file uses.  As long as the shapes are limited to paths, even large files with lots of complex curves should usually look pretty similar, while hand-coded SVG that uses various shortcuts and obscure features will often look very different. <br>
+<br>
+Note that importing SVG pushes the JavaScript engine in Fireworks very hard, and may sometimes leave the app in an unstable state.  Be sure to save all your work before importing SVG files.  Also, a large SVG file may take 5 - 15 seconds to parse and render.  While the command is processing the file, the Fireworks UI will be unresponsive. <br>
+<br>
+When you run into problems importing an SVG file, please add a comment below with a link to the file.<br>
+<br>
+<br>
+## Partially supported features<br>
+<br>
+* Linked PNG or JPEG images will be imported if they are available at a relative path from the location of the SVG file.  Embedded Base64 images or images at absolute URLs are not supported. <br>
+* Fireworks CS6 is required, as SVG supports separate opacities for fill and stroke. <br>
+* Fireworks requires that strokes be at least 1px in diameter, so if an SVG file specifies a sub-pixel stroke width, the stroke will be given a lower opacity to simulate a thinner stroke.<br>
+* Basic blur and drop-shadow effects generally work, but other filters are not supported.  <br>
+* Text elements will tend to shift, and may be a slightly different size.<br>
+* Some radial gradients may not look correct.<br>
+* Lines with more than 3 dashes are not supported. <br>
+* Embedded CSS styles are supported, but must be defined before the elements that use them are defined. <br>
+<br>
+<br>
+## Unsupported features<br>
+<br>
+* Fireworks doesn't support gradients on strokes, so the stroke color will default to the color of the first stop in the gradient, with an opacity calculated as the average opacities of the first and last nodes.  This may substantially change the look of the image. <br>
+* Fireworks doesn't support mitered corners or flat ends on strokes, so the outlines of shapes may look different than what a browser shows, since a round brush is used for strokes. <br>
+* Styling of individual words within a text block will be lost. <br>
+* Opening an SVG file may not always produce a correctly sized document. <br>
+* External style sheets.<br>
+* Custom SVG entities. <br>
+* Multiple SVG elements per file. <br>
+* Masks.<br>
+* Asymmetrically rounded rectangle corners. <br>
+* Clipped symbols.<br>
+* Text on a path.<br>
+* Per-character text rotations or offsets. <br>
+* Cursors, glyphs and markers. <br>
+<br>
+<br>
+# Acknowledgements<br>
+<br>
+This extension leverages a number of open source JavaScript libraries:<br>
+<br>
+* [SAX parser](https://github.com/isaacs/sax-js) is used to parse the SVG file's XML. <br>
+* [JSCSSP](http://www.glazman.org/JSCSSP/) is used to parse CSS styles embedded in the SVG.<br>
+* [PEG.js](http://pegjs.majda.cz/) is used to build a parser for the complicated path data point syntax.<br>
+* This [PEG.js grammar](http://pastie.org/pastes/1036541/), while buggy, provided a starting point for the path data parser.<br>
+* A function from [Raphael.js](https://github.com/DmitryBaranovskiy/raphael/) is used to render arcs in path shapes.
+* [glMatrix](https://github.com/toji/gl-matrix) is used to transform the fill handles of gradients. <br>
+* [Underscore.js](http://underscorejs.org/) provides ES5-equivalent array functions.<br>
+* [FWRequireJS](https://github.com/fwextensions/fwrequirejs), which enables [RequireJS](http://requirejs.org/) to run inside Fireworks, is used to separate the 500KB of JavaScript code into more manageable modules.<br>
+* While this extension doesn't let you export SVG, Aaron Beall's excellent [SVG Export](http://fireworks.abeall.com/extensions/commands/#Export) command does.<br>
+<br>
+<br>
+# Release history<br>
+<br>
+0.1.0<br>
+  : 2013-05-03: First public release.<br>
+<br>
+0.0.1<br>
+  : 2013-04-24: Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the commands, look under Commands > SVG.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file source="src/Insert.jsf" destination="$fireworks/Configuration/Commands/SVG/"/>
+					<file source="src/Open.jsf" destination="$fireworks/Configuration/Commands/SVG/"/>
+					<file source="src/lib/fwrequire.js" destination="$fireworks/Configuration/Commands/SVG/lib"/>
+					<file source="src/lib/require.js" destination="$fireworks/Configuration/Commands/SVG/lib"/>
+					<file source="src/lib/dojo/has.js" destination="$fireworks/Configuration/Commands/SVG/lib/dojo"/>
+					<file source="src/lib/dojo/json.js" destination="$fireworks/Configuration/Commands/SVG/lib/dojo"/>
+					<file source="src/lib/fwlib/files.js" destination="$fireworks/Configuration/Commands/SVG/lib/fwlib"/>
+					<file source="src/lib/fwlib/prefs.js" destination="$fireworks/Configuration/Commands/SVG/lib/fwlib"/>
+					<file source="src/lib/fwlib/underscore.js" destination="$fireworks/Configuration/Commands/SVG/lib/fwlib"/>
+					<file source="src/lib/fwlib/utils.js" destination="$fireworks/Configuration/Commands/SVG/lib/fwlib"/>
+					<file source="src/lib/sax/sax.js" destination="$fireworks/Configuration/Commands/SVG/lib/sax"/>
+					<file source="src/lib/svg/svg-file.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg"/>
+					<file source="src/lib/svg/svg.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg"/>
+					<file source="src/lib/svg/tags.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg"/>
+					<file source="src/lib/svg/fw/defaults.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/fw"/>
+					<file source="src/lib/svg/fw/soft-brush.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/fw"/>
+					<file source="src/lib/svg/fw/soft-fill.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/fw"/>
+					<file source="src/lib/svg/fw/textruns.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/fw"/>
+					<file source="src/lib/svg/tags/base.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/color.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/container.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/css-colors.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/css-parser.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/filter.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/gl-matrix.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/gradient.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/image.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/path-parser.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/path.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/regex.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/shape.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/state.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+					<file source="src/lib/svg/tags/style.js" destination="$fireworks/Configuration/Commands/SVG/lib/svg/tags"/>
+	</files>
+	<summary>
+<![CDATA[With increasing support for &lt;canvas&gt; and SVG across browsers, many people have been creating vector images in the SVG format.  The SVG extension makes it possible to use these images in your Fireworks documents by parsing the XML and recreating the vectors using Fireworks elements.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>

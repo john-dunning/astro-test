@@ -1,0 +1,98 @@
+<macromedia-extension name="Custom Nudge" version="0.4.3" type="command" requires-restart="false" date="2010-05-20 11:21:20 -0700">
+	<products>
+		<product name="Fireworks" version="8" primary="true"/>
+	</products>
+	<author name="John Dunning"/>
+	<description>
+<![CDATA[These commands nudge the selection by custom amounts, rather than just 1 or 10 pixels.  First, run the *Assign Arrow Keys to Custom Nudge* command to set up the arrow keys.  This will create a copy of your existing keyboard shortcut set and add the arrow keys as shortcuts for the *Custom Nudge - Small - Left|Right|Up|Down* commands and the shift-arrow keys for *Custom Nudge - Large - Left|Right|Up|Down* commands.<br>
+<br>
+The default nudge sizes are still 1 pixel for arrow keys and 10 pixels for shift-arrow.  If you run the *Set Custom Nudge* command, a dialog will open asking for new values.  Type the values into the *Small nudge* and *Large nudge* fields, say, "10" and "50".  Now, pressing left-arrow will move the selection 10 pixels to the left, and shift-left-arrow will move it 50 pixels.  It can be helpful to assign a keyboard shortcut to this command, so that you can quickly change the nudge values.  The values you set will be saved across Fireworks sessions.<br>
+<br>
+<br>
+# Sub-pixel nudging<br>
+<br>
+You can enter sub-pixel values in the *Set Custom Nudge* dialog as well, such as ".25" and "1".  This would move the selection .25 pixels when you pressed an arrow key, and 1 pixel when you pressed shift-arrow.  The minimum nudge value is .1.  These sub-pixel nudges can be useful for finely controlling how a path is anti-aliased, since the algorithm takes floating point values into account.  Note, however, that sub-pixel nudging works only with vector objects.  Text blocks and bitmaps always snap to whole pixels, unfortunately.<br>
+<br>
+<br>
+# Quickly switch between different nudge values<br>
+<br>
+Another way of switching between nudge values is to run *Set Custom Nudge - Create New Command*.  This opens the same nudge dialog, but when you click OK, it will create a new command that immediately sets the values to the numbers you entered without going through the dialog.  For instance, if you enter "10" and "50", it will create a command called *Set Custom Nudge - 10 50* under *Commands > Custom Nudge*.  By assigning a keyboard shortcut to these commands, you can quickly switch between different sets of nudge values.  Note that after this command is created, you'll have to switch to another application and then back to Fireworks to see the new command in the Commands menu.  <br>
+<br>
+<br>
+# Release history:<br>
+<br>
+0.4.3<br>
+  : Small fix to make the extension work better when other commands also use the dojo library.<br>
+<br>
+0.4.2<br>
+  : Added a proper dialog for entering the custom nudge values.<br>
+<br>
+0.4.1<br>
+  : The *Assign Arrow Keys* command will now work even if there are no existing shortcuts for any extensions, and will also work correctly on the Mac. <br>
+<br>
+0.4.0<br>
+  : Added support for floating point nudge values. <br>
+<br>
+0.3.0<br>
+  : Fixed commands to support nudging sub-selected points.<br>
+<br>
+0.2.0<br>
+  : Renamed the old commands.  Added ability to create commands to set nudge values.  Single dialog for setting nudge values.  Added command for setting up keyboard shortcuts.<br>
+<br>
+0.1.0<br>
+  : Initial release.<br>
+]]></description>
+	<ui-access>
+<![CDATA[To access the page commands, look under Commands > Custom Nudge.<br>
+<br>
+<br>
+See more commands at http://johndunning.com/fireworks/]]></ui-access>
+	<files>
+					<file name="src/Assign Arrow Keys to Custom Nudge.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Large - Down.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Large - Left.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Large - Right.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Large - Up.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Small - Down.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Small - Left.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Small - Right.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Custom Nudge - Small - Up.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Set Custom Nudge - Create New Command.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/Set Custom Nudge.jsf" destination="$fireworks/Configuration/Commands/Custom Nudge/"/>
+					<file name="src/lib/Custom Nudge.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib"/>
+					<file name="src/lib/lib.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib"/>
+					<file name="src/lib/Set Custom Nudge Template.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib"/>
+					<file name="src/lib/dojo/dojo.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo"/>
+					<file name="src/lib/dojo/string.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo"/>
+					<file name="src/lib/dojo/_base.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo"/>
+					<file name="src/lib/dojo/_base/array.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/json.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/lang.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/bootstrap_fireworks.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/hostenv_fireworks.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base/_loader"/>
+					<file name="src/lib/dojo/_base/_loader/loader.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/dojo/_base/_loader"/>
+					<file name="src/lib/fwlib/dialog.js" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 250x250.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 275x175.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 275x200.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 275x250.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 275x275.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 300x175.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 300x200.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 300x250.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 300x300.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 350x300.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 350x350.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 375x375.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 400x275.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 400x350.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 450x275.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 450x350.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/Command Dialog - 500x375.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+					<file name="src/lib/fwlib/dialog-swfs/JSONDialog.swf" destination="$fireworks/Configuration/Commands/Custom Nudge/lib/fwlib/dialog-swfs"/>
+	</files>
+	<summary>
+<![CDATA[These commands let you nudge the selection by custom amounts, rather than just 1 or 10 pixels.  You can even nudge elements by less than a whole pixel, like .25, in order to tweak an element's anti-aliasing.]]></summary>
+	<configuration-changes/>
+</macromedia-extension>
