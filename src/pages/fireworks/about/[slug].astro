@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import CommandsNavList from "@/components/CommandsNavList.astro";
+import { getIncImage } from "@/utils/getIncImage";
 
 export async function getStaticPaths()
 {
@@ -18,14 +20,19 @@ export async function getStaticPaths()
 	}));
 }
 
-const { entry: { render, data: { name, files } } } = Astro.props;
+const { entry: { render, slug, data: { name, files } } } = Astro.props;
 const { Content } = await render();
 const title = `${name} - Adobe Fireworks Extensions, Commands and Panels`;
+const imageData = await getIncImage(`${slug}.png`);
 ---
 
 <Layout title={title}>
 	<article>
 		<h1 class="command-name">{name}</h1>
+
+		{imageData &&
+			<Image class="inc-image" src={imageData} alt="Screenshot" />
+		}
 
 		<Content />
 	</article>
@@ -47,6 +54,11 @@ const title = `${name} - Adobe Fireworks Extensions, Commands and Panels`;
 
 	em {
 		font-style: italic;
+	}
+
+	.inc-image {
+		margin-bottom: 3rem;
+		display: block;
 	}
 
 	article :global(h2) {

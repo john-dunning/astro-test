@@ -26,11 +26,13 @@ The commands will be more convenient if you assign keyboard shortcuts to them.  
     alt-shift-Y for WHXY - Paste Y<br>
 <br>
 <br>
-Release history:<br>
+# Release history:<br>
 <br>
-1.1.0: Added proportional resizing options.<br>
+1.1.0<br>
+  : Added proportional resizing options.<br>
 <br>
-1.0.0: Initial release.  2002-09-02.<br>
+1.0.0<br>
+  : Initial release.  2002-09-02.<br>
 ]]></description>
 	<ui-access>
 <![CDATA[To access these commands, look under Commands > WHXY.<br>

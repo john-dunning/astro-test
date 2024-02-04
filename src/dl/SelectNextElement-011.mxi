@@ -12,7 +12,7 @@ The *Select Previous Element* command does the same thing in the reverse directi
 These commands are really only useful if you assign them to an easily accessible keyboard shortcut, preferably one that you can use with one hand while your other stays on the mouse.  That way, you can select an element with one hand, then use the mouse to change one of its properties in the *Properties* panel, select the next element, change its properties, and so on.  <br>
 <br>
 <br>
-# Release notes<br>
+# Release history<br>
 <br>
 0.1.1<br>
   : 2013-02-26: Added support for navigating between hotspots and slices. <br>

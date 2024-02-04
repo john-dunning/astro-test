@@ -115,7 +115,7 @@ You can also make a quick-and-dirty mockup for a bar graph just by rotating the 
 If you really do want Lorem Ipsum-style dummy text, the [Lorem Ipsum][2] auto shape provides similar functionality to the Greeked Text shape.  Resizing the auto shape adds or removes text to fill the size of the rectangle, which makes it much easier to adjust the size of a block of dummy text without having to manually add or remove the words. <br>
 <br>
 <br>
-# Release notes<br>
+# Release history<br>
 <br>
 1.2.1<br>
   : 2013-03-11: Added support for pressing shift-up/down-arrow in the numeric fields to change the value by 10.<br>

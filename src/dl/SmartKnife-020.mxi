@@ -13,11 +13,13 @@ If you are cutting a bitmap with a cutting path that is antialised, the resultin
 Note that Smart Knife always cuts a shape into two pieces, no matter how many times the path cuts across it.  Therefore, the resulting pieces may be compound paths that consist of several non-intersecting shapes.  You can break these into separate elements using the Modify > Combine Paths > Split menu command.  Also, remember that the cutting path is deleted in the process of using Smart Knife, so make a copy of it before running the command if you want to keep it around.<br>
 <br>
 <br>
-Release history:<br>
+# Release history:<br>
 <br>
-0.2.0: The cut halves of the elements are separated into two different groups, to make them easier to pull apart.<br>
+0.2.0<br>
+  : The cut halves of the elements are separated into two different groups, to make them easier to pull apart.<br>
 <br>
-0.1.0: Initial release.<br>
+0.1.0<br>
+  : Initial release.<br>
 ]]></description>
 	<ui-access>
 <![CDATA[To access the command, look under Commands > Objects.<br>
