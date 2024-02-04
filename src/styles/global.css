@@ -77,6 +77,11 @@ ol li {
 	list-style: decimal outside;
 }
 
+sup {
+	font-size: x-small;
+	font-weight: bold;
+}
+
 code {
 	font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 	Bitstream Vera Sans Mono, Courier New, monospace;

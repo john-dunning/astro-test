@@ -1,46 +1,15 @@
 ---
-import "../styles/reset.css";
-import "../styles/global.css";
+import Page from "./Page.astro";
+import Header from "./Header.astro";
 
 interface Props {
-	title: string;
+	title?: string;
 }
 
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="description" content="Astro description">
-	<meta name="viewport" content="width=device-width" />
-
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-	<title>{title}</title>
-</head>
-
-<body>
-	<header>john<strong>dunning</strong>.com/</header>
-
-	<main>
-		<slot />
-	</main>
-</body>
-
-</html>
-
-<style>
-	header {
-		color: #666;
-		font-size: 1.75rem;
-		margin-bottom: 2rem;
-	}
-
-	header strong {
-		color: black;
-	}
-</style>
+<Page title={title}>
+	<Header title={title} />
+	<slot />
+</Page>

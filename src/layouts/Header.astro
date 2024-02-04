@@ -1,0 +1,52 @@
+---
+const [section] = Astro.url.pathname.slice(1).split("/");
+---
+
+<header>
+	<div class="site-name">
+		<div>
+			<a href="/" data-disabled={section ? undefined : true}>
+				john<strong>dunning</strong>.com/
+			</a>
+		</div>
+	</div>
+	{section &&
+		<div class="section-name">{section}</div>
+	}
+</header>
+
+<style>
+	header {
+		color: #666;
+		font-size: 1.75rem;
+		font-weight: bold;
+		margin-bottom: 2rem;
+		position: relative;
+	}
+
+	header strong {
+		color: black;
+	}
+
+	.site-name {
+		width: fit-content;
+	}
+
+	.site-name div {
+		margin-left: -100%;
+	}
+
+	.site-name a[data-disabled] {
+		pointer-events: none;
+	}
+
+	.site-name a:visited {
+		color: #666;
+	}
+
+	.section-name {
+		color: var(--highlight);
+		top: 0;
+		position: absolute;
+	}
+</style>

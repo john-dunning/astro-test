@@ -4,7 +4,8 @@ import { XMLParser } from "fast-xml-parser";
 import { dump } from "js-yaml";
 import glob from "fast-glob";
 
-const BRPattern = /<br>/g;
+const IncPathMXI = "http://johndunning.com/fireworks/inc";
+const IncPathLocal = "/src/assets/inc";
 const CommandsPath = "src/content/commands";
 
 function slugVersion(
@@ -64,7 +65,7 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 	} = extension;
 	const filePaths = files.file.map((file) => file["@"].source);
 	const mdPath = path.join(CommandsPath, slug + ".md");
-	const md = description.replace(BRPattern, "");
+	const md = description.replaceAll("<br>", "").replaceAll(IncPathMXI, IncPathLocal);
 	const keyValues = {
 		slug,
 		...metadata,

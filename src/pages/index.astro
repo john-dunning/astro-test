@@ -5,67 +5,8 @@ import SectionItem from "@/components/SectionItem.astro";
 import RecentCommands from "../components/RecentCommands.astro";
 ---
 
-<Layout title="John Dunning">
+<Layout>
 	<RecentCommands />
-
-	<Section
-		title="fireworks"
-		href="fireworks/"
-	>
-		<p slot="description">
-			A collection of free productivity-enhancing extensions that I've
-			built for <a href="https://www.adobe.com/products/fireworks/">Adobe
-			Fireworks</a> using JavaScript, ActionScript and Flex. The most
-			recent ones include:
-		</p>
-
-		<SectionItem
-			title="Page Commands"
-			href="fireworks/about/PageCommands.html"
-			addMore=true
-		>
-			The commands in this extension make working with pages in
-			Fireworks more efficient and convenient. The "New Page" dialog
-			makes it easy to create a new page while simultaneously changing
-			its size or background color and giving it a name. The "Adjust
-			Page Size" command lets you make relative adjustments to the size
-			of multiple pages at once, such as moving the left and right sides
-			in by 10px on each page. The "Distribute Layers to Pages" command
-			does the same for top-level layers. The "Import Files into Pages"
-			command is useful for combining several existing files as pages in
-			a new document. The "Apply Export Settings to All Pages" command
-			takes the export settings on the current page and applies them to
-			all pages in the document.
-		</SectionItem>
-
-		<SectionItem
-			title="TweetFire"
-			href="fireworks/about/TweetFire.html"
-			addMore=true
-		>
-			TweetFire lets you easily tweet the image you're currently
-			working on, without ever leaving Fireworks. Just enter a short
-			message, click Tweet, and a flattened copy of your image will be
-			posted to Twitter. The URL to the image is automatically added to
-			your tweet.
-		</SectionItem>
-
-		<SectionItem
-			title="Edge Reflow"
-			href="fireworks/about/EdgeReflow.html"
-			addMore=true
-		>
-			The Edge Reflow extension lets you export a Fireworks layout to
-			Edge Reflow, where you can test the responsiveness of the design.
-			All of the elements on the first state of the current page will
-			appear in Reflow with more or less the same size, position, color,
-			etc. that they have in Fireworks.
-		</SectionItem>
-
-		<li>
-			<a href="fireworks/">See all the extensions</a>
-		</li>
-	</Section>
 
 	<Section
 		title="github"
