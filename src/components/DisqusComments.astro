@@ -1,0 +1,25 @@
+---
+interface Props {
+	packageName: string;
+	packageID: string;
+}
+
+const { packageName, packageID } = Astro.props;
+	// pass these values into the script below as a `vars` variable.  using define:vars
+	// will wrap the script in an IIFE, so we don't need one around the code that
+	// creates the disqus script element.
+const vars = {
+	url: `${packageID}.html`,
+	identifier: `/fireworks/about/${packageID}`,
+	title: packageName
+};
+---
+
+<div id="disqus_thread"></div>
+<script define:vars={{ vars }}>
+	window.disqus_config = function() { Object.assign(this.page, vars); };
+	const d = document, s = d.createElement("script");
+	s.src = "//johndunning.disqus.com/embed.js";
+	s.setAttribute("data-timestamp", Date.now());
+	(d.head || d.body).appendChild(s);
+</script>

@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import CommandsNavList from "@/components/CommandsNavList.astro";
+import DisqusComments from "@/components/DisqusComments.astro";
 import { getIncImage } from "@/utils/getIncImage";
 
 export async function getStaticPaths()
@@ -40,6 +41,11 @@ const imageData = await getIncImage(`${slug}.png`);
 	<PackageContents files={files} />
 
 	<CommandsNavList />
+
+	<DisqusComments
+		packageName={name}
+		packageID={slug}
+	/>
 </Layout>
 
 <style>
