@@ -7,6 +7,15 @@ export default defineConfig({
 			"remark-heading-id",
 			"remark-deflist",
 		],
+		shikiConfig: {
+			experimentalThemes: {
+				light: "github-light",
+				dark: "github-dark",
+			},
+			langs: [
+				"js"
+			]
+		}
 	},
 	vite: {
 		server: {

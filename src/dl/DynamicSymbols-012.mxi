@@ -155,10 +155,12 @@ mxml<br>
   : ![mxml property](http://johndunning.com/fireworks/inc/dynamicsymbol/type-mxml.png)<br>
   : Displays a button that copies a string to the clipboard when clicked.  This is used by the rich symbols in the *Flex Components* folder of the Common Library to enable you to copy the equivalent MXML code to the clipboard and then paste it into Flex to instantiate a similar element.<br>
   : The third item in this property array should be either a string or a function.  If you include a string, it can contain tokens that are replaced with the current values of other properties in the *Symbol Properties* panel.  The first property is `$0`, the second is `$1`, etc.  The MXML property value for the Flex ComboBox symbol would look like this:<br>
-	:	"<mx:ComboBox color='$1' disabledColor='$2' \<br>
-		editable='$3' enabled='$4' text='$5' textRollOverColor='$6' \<br>
-		textSelectedColor='$7'></mx:ComboBox>"<br>
-  : Note that there's no reason you have to use this property only for Flex components.  For instance, you could include a snippet of CSS that would produce the same styles as the symbol's properties.  <br>
+	:	```
+			"<mx:ComboBox color='$1' disabledColor='$2' \<br>
+			editable='$3' enabled='$4' text='$5' textRollOverColor='$6' \<br>
+			textSelectedColor='$7'></mx:ComboBox>"<br>
+		```
+  : Note that there's no reason you have to use this property only for Flex components.  For instance, you could include a snippet of CSS that would produce the same styles as the symbol's properties.<br>
   : If you include a function as the value instead of a string, the function is called with a single parameter, an object containing the current values of all the properties, indexed by the name of the property.  The return value of this function is used as the string that is copied to the clipboard when the user clicks the button.  This gives you full control over how the string is generated. <br>
 <br>
 A property that controls a button label element in a rich symbol might look like this: <br>
