@@ -1,13 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import { getCommands } from "@/utils/getCommands";
 
-const commands = await getCollection("commands");
-
-	// sort the commands alphabetically
-commands.sort((a, b) => {
-	return Intl.Collator().compare(a.data.name, b.data.name);
-});
-
+	// get the commands sorted alphabetically
+const commands = await getCommands()
 const fullPath = Astro.url.pathname.replace(/\/$/, "");
 const currentPage = fullPath.slice(fullPath.lastIndexOf("/") + 1);
 ---

@@ -80,6 +80,8 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 		files: filePaths
 	};
 
+	keyValues.date = new Date(keyValues.date).toISOString();
+
 	fs.ensureDirSync(path.dirname(mdPath));
 	fs.writeFileSync(mdPath, frontmatter(keyValues) + md, "utf8");
 });

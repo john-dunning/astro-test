@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import Layout from "@/layouts/Layout.astro";
+import FireworksLayout from "@/layouts/FireworksLayout.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import CommandsNavList from "@/components/CommandsNavList.astro";
 import DisqusComments from "@/components/DisqusComments.astro";
@@ -23,11 +23,10 @@ export async function getStaticPaths()
 
 const { entry: { render, slug, data: { name, files } } } = Astro.props;
 const { Content } = await render();
-const title = `${name} - Adobe Fireworks Extensions, Commands and Panels`;
 const imageData = await getIncImage(`${slug}.png`);
 ---
 
-<Layout title={title}>
+<FireworksLayout title={name}>
 	<article>
 		<h1 class="command-name">{name}</h1>
 
@@ -46,7 +45,7 @@ const imageData = await getIncImage(`${slug}.png`);
 		packageName={name}
 		packageID={slug}
 	/>
-</Layout>
+</FireworksLayout>
 
 <style lang="scss">
 	h1.command-name {
@@ -84,7 +83,7 @@ const imageData = await getIncImage(`${slug}.png`);
 		}
 
 		:global(ol) {
-			margin-left: 2.5em;
+			margin-left: var(--spacing-lg);
 			margin-bottom: 1em;
 		}
 
@@ -102,13 +101,13 @@ const imageData = await getIncImage(`${slug}.png`);
 		}
 
 		:global(dl) {
-			padding-left: 2.5em;
+			padding-left: var(--spacing-lg);
 			margin: 1em 0;
 		}
 
 		:global(dt) {
 			font-weight: bold;
-			color: #666;
+			color: var(--text-color-secondary)
 		}
 
 		:global(dd) {
@@ -136,7 +135,7 @@ const imageData = await getIncImage(`${slug}.png`);
 		}
 
 		:global(section.footnotes) {
-			padding-inline-start: 2.5rem;
+			padding-inline-start: var(--spacing-lg);
 			margin: 5rem 0;
 			color: #333;
 			font-size: smaller;

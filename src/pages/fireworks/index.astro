@@ -1,0 +1,66 @@
+---
+import FireworksLayout from "@/layouts/FireworksLayout.astro";
+import { getCommands } from "@/utils/getCommands";
+
+	// sort the commands in descending date order
+const commands = await getCommands("dateDescending")
+---
+
+<FireworksLayout>
+	<p>
+		These Adobe Fireworks extensions are mainly productivity tools. They won't
+		help you make better-looking pictures; rather, they'll help you use
+		Fireworks more efficiently. And if you're an extension developer yourself,
+		some of them will help you build your own commands and Flash panels.
+		Download them all for free!
+	</p>
+
+	<p>
+		Questions or comments? Ping me at <a href="#">fw at johndunning dot com</a>.
+		Or follow me on <a href="https://twitter.com/fwextensions">Twitter
+			(@fwextensions)</a>.
+		Or let me know if you have any <a href="requests">requests</a>.
+	</p>
+
+	<ul role="list">
+		{commands.map(({ slug, data: { name, summary, date } }) => (
+			<li>
+				<h2>
+					<a href={`/fireworks/about/${slug}`}>{name}</a>
+					<time>{date.split("T")[0]}</time>
+				</h2>
+				<p>
+					{summary}
+				</p>
+			</li>
+		))}
+	</ul>
+</FireworksLayout>
+
+<style lang="scss">
+	ul {
+		padding: 0;
+	}
+
+	li {
+		margin-bottom: var(--spacing-lg);
+
+		h2 {
+			font-size: 1.25rem;
+			margin-bottom: .5rem;
+			justify-content: space-between;
+			align-items: center;
+			display: flex;
+		}
+
+		time {
+			color: var(--text-color-secondary);
+			font-size: .8rem;
+			font-weight: normal;
+		}
+
+		p {
+			padding: 0 var(--spacing-lg);
+		}
+	}
+</style>

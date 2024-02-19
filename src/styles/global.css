@@ -1,5 +1,11 @@
 :root {
 	--highlight: #cc3300;
+	--color-accent: #cc3300;
+	--text-color-primary: #000;
+	--text-color-secondary: #666;
+	--spacing-sm: 0.75rem;
+	--spacing-md: 1.5rem;
+	--spacing-lg: 2.5rem;
 }
 
 html {
@@ -21,7 +27,7 @@ main {
 
 h1, h2, h3, h4 {
 	font-weight: bold;
-	color: #666;
+	color: var(--text-color-secondary);
 }
 
 h1 {
@@ -35,11 +41,11 @@ h2 {
 }
 
 ul, ol {
-	padding-left: 2.5rem;
+	padding-left: var(--spacing-lg);
 }
 
 p {
-	margin-bottom: 0.75rem;
+	margin-bottom: var(--spacing-sm)
 }
 
 a {
@@ -73,7 +79,7 @@ blockquote {
 }
 
 ol {
-	margin-left: 2.5em;
+	margin-left: var(--spacing-lg);
 	margin-bottom: 1em;
 }
 

@@ -1,0 +1,17 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+	title?: string;
+}
+
+const sectionTitle = "Adobe Fireworks Extensions, Commands and Panels";
+const { title } = Astro.props;
+const pageTitle = title
+	? `${title} - ${sectionTitle}`
+	: sectionTitle;
+---
+
+<Layout title={pageTitle}>
+	<slot />
+</Layout>

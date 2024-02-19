@@ -1,21 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import SectionItem from "@/components/SectionItem.astro";
 import Section from "@/components/Section.astro";
+import { getCommands } from "@/utils/getCommands";
 
-const commands = await getCollection("commands");
-
-	// sort the commands in descending order
-commands.sort((a, b) => {
-	const { data: { date: dateA } } = a;
-	const { data: { date: dateB } } = b;
-
-	return dateA > dateB
-		? -1
-		: dateB < dateA
-			? 1
-			: 0;
-});
+	// sort the commands in descending date order
+const commands = await getCommands("dateDescending")
 ---
 
 <Section
