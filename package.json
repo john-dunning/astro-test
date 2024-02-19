@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "build:dl": "node scripts/build-dl-content.mjs"
+    "prebuild": "npm run build:dl",
+    "build": "astro build",
+    "build:dl": "node scripts/build-dl-content.mjs",
+    "astro": "astro"
   },
   "dependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -19,6 +20,7 @@
     "fs-extra": "^11.2.0",
     "js-yaml": "^4.1.0",
     "remark-deflist": "^1.0.0",
-    "remark-heading-id": "^1.0.1"
+    "remark-heading-id": "^1.0.1",
+    "sass": "^1.71.0"
   }
 }

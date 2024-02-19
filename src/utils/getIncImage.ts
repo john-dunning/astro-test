@@ -13,8 +13,6 @@ export async function getIncImage(
 		if (images[imagePath]) {
 			return (await images[imagePath]()).default;
 		}
-
-		console.error(`Missing image: ${imagePath}`);
 	}
 
 	return null;
