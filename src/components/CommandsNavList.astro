@@ -13,7 +13,7 @@ const currentPage = fullPath.slice(fullPath.lastIndexOf("/") + 1);
 			<li>
 				<a
 					href={`/fireworks/about/${slug}`}
-					title={summary}
+					title={summary.replaceAll("<br>", "")}
 					aria-current={currentPage === slug ? "page" : undefined}
 				>{name}</a>
 			</li>

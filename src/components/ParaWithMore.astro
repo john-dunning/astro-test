@@ -1,0 +1,23 @@
+---
+interface Props {
+	href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<p>
+	<slot />
+	{ href && <a class="more-info" href={href}>more&hellip;</a> }
+</p>
+
+<style>
+	p {
+		padding: 0 var(--spacing-lg);
+	}
+
+	a.more-info {
+		font-size: smaller;
+		padding-left: .25rem;
+	}
+</style>

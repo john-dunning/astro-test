@@ -1,4 +1,6 @@
 ---
+import ParaWithMore from "./ParaWithMore.astro";
+
 interface Props {
 	title: string;
 	href: string;
@@ -13,12 +15,11 @@ const { title, href, addMore } = Astro.props;
 	  <a href={href}>{title}</a>
 	</h3>
 
-	<p>
+	<ParaWithMore href={addMore && href}>
 		<slot />
-		{ addMore && <a class="more-info" href={href}>more&hellip;</a> }
-	</p>
+	</ParaWithMore>
 
-	<p class="extra">
+	<p>
 		<slot name="extra" />
 	</p>
 </li>
@@ -31,18 +32,5 @@ const { title, href, addMore } = Astro.props;
 	h3 {
 		font-size: 1rem;
 		margin-bottom: .5rem;
-	}
-
-	p {
-		padding: 0 2rem;
-	}
-
-	a.more-info {
-		font-size: smaller;
-		padding-left: .25rem;
-	}
-
-	p.extra {
-	  color: red;
 	}
 </style>

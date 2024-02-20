@@ -1,9 +1,12 @@
 ---
 import FireworksLayout from "@/layouts/FireworksLayout.astro";
+import ParaWithMore from "@/components/ParaWithMore.astro";
 import { getCommands } from "@/utils/getCommands";
 
+const link = (slug: string) => `/fireworks/about/${slug}`;
+
 	// sort the commands in descending date order
-const commands = await getCommands("dateDescending")
+const commands = await getCommands("dateDescending");
 ---
 
 <FireworksLayout>
@@ -26,12 +29,14 @@ const commands = await getCommands("dateDescending")
 		{commands.map(({ slug, data: { name, summary, date } }) => (
 			<li>
 				<h2>
-					<a href={`/fireworks/about/${slug}`}>{name}</a>
+					<a href={link(slug)}>{name}</a>
 					<time>{date}</time>
 				</h2>
-				<p>
-					{summary}
-				</p>
+				<ParaWithMore href={link(slug)}>
+					{/* the summaries may contain a <br> tag, so set the innerHTML directly
+							to avoid them getting sanitized and removed */}
+					<span set:html={summary} />
+				</ParaWithMore>
 			</li>
 		))}
 	</ul>
@@ -57,10 +62,6 @@ const commands = await getCommands("dateDescending")
 			color: var(--text-color-secondary);
 			font-size: .8rem;
 			font-weight: normal;
-		}
-
-		p {
-			padding: 0 var(--spacing-lg);
 		}
 	}
 </style>
