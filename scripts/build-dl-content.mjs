@@ -73,14 +73,21 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 		.replace(HashPattern, "##")
 		.replaceAll("<br>", "")
 		.replaceAll(IncPathMXI, IncPathLocal);
+
+		// none of the dates was in a proper ISO format, so create a `timestamp` value
+		// from them, and then create a `date` string from beginning of that ISO.  we
+		// add the metadata values before creating keyValues to control the order of
+		// the keys in the frontmatter.
+	metadata.timestamp = new Date(metadata.date).toISOString();
+	metadata.date = metadata.timestamp.split("T")[0];
+	metadata["requires-restart"] = metadata["requires-restart"] === "true";
+
 	const keyValues = {
 		slug,
 		...metadata,
 		summary,
 		files: filePaths
 	};
-
-	keyValues.date = new Date(keyValues.date).toISOString();
 
 	fs.ensureDirSync(path.dirname(mdPath));
 	fs.writeFileSync(mdPath, frontmatter(keyValues) + md, "utf8");
