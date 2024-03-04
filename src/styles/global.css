@@ -6,11 +6,11 @@
 	--spacing-sm: 0.75rem;
 	--spacing-md: 1.5rem;
 	--spacing-lg: 2.5rem;
+	font-size: 16px;
 }
 
 html {
 	font-family: "Trebuchet MS", system-ui, sans-serif;
-	font-size: 16px;
 	background-color: white;
 }
 
