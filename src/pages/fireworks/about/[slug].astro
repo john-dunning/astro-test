@@ -39,7 +39,7 @@ const imageData = await getIncImage(`${slug}.png`);
 
 	<PackageContents files={files} />
 
-	<CommandsNavList />
+	<CommandsNavList slot="sidebar" />
 
 	<DisqusComments
 		packageName={name}
@@ -74,7 +74,7 @@ const imageData = await getIncImage(`${slug}.png`);
 
 		:global(h3) {
 			font-size: 1.25rem;
-			margin: 1rem 0 0.25rem 0;
+			margin: 1.5rem 0 0.5rem 0;
 		}
 
 		:global(blockquote) {

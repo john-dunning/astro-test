@@ -2,46 +2,42 @@
 const [section] = Astro.url.pathname.slice(1).split("/");
 ---
 
+<div class="site-name">
+	<a href="/" aria-current={section ? undefined : "page"}>
+		john<strong>dunning</strong>.com/
+	</a>
+</div>
+
 <header>
-	<div class="site-name">
-		<div>
-			<a href="/" aria-current={section ? undefined : "page"}>
-				john<strong>dunning</strong>.com/
-			</a>
-		</div>
-	</div>
 	{section &&
 		<div class="section-name">{section}</div>
 	}
 </header>
 
-<style>
-	header {
+<style lang="scss">
+	header, .site-name {
 		color: #666;
 		font-size: 1.75rem;
 		font-weight: bold;
 		margin: 1.25rem 0 2rem 0;
 		position: relative;
-	}
-
-	header strong {
-		color: black;
+		grid-area: header;
 	}
 
 	.site-name {
-		width: fit-content;
-	}
+		grid-area: site-name;
 
-	.site-name div {
-		margin-left: -100%;
-	}
+		strong {
+			color: black;
+		}
 
-	.site-name a[aria-current] {
-		pointer-events: none;
-	}
+		a[aria-current] {
+			pointer-events: none;
+		}
 
-	.site-name a:visited {
-		color: #666;
+		a:visited {
+			color: inherit;
+		}
 	}
 
 	.section-name {

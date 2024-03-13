@@ -18,7 +18,15 @@ body {
 	line-height: 1.25;
 	padding: 0;
 	margin: auto;
-	max-width: 50rem;
+	max-width: 55rem;
+}
+
+body > .content {
+	display: grid;
+	grid-template-areas:
+		"site-name header"
+		"sidebar main";
+	grid-template-columns: min-content 1fr;
 }
 
 main {

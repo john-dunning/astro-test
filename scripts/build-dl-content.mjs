@@ -70,6 +70,8 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 		// if there are no other attributes on the <description> tag, it doesn't
 		// seem to get a #text attribute
 	const md = (description["#text"] || description)
+			// remove the colon in the Release history header to match the other titles
+		.replaceAll("# Release history:", "# Release history")
 		.replace(HashPattern, "##")
 		.replaceAll("<br>", "")
 		.replaceAll(IncPathMXI, IncPathLocal);

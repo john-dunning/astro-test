@@ -10,14 +10,18 @@ const { title } = Astro.props;
 ---
 
 <Page title={title}>
-	<Header title={title} />
-	<main>
-		<slot />
-	</main>
+	<div class="content">
+		<Header title={title} />
+		<main>
+			<slot />
+		</main>
+		<slot name="sidebar" />
+	</div>
 </Page>
 
 <style>
 	main {
 		margin-bottom: 5rem;
+		grid-area: main;
 	}
 </style>
