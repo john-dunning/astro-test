@@ -1,5 +1,8 @@
 ---
-const [section] = Astro.url.pathname.slice(1).split("/");
+	// filter the split pathname to ignore leading or trailing slashes
+const [section, ...restOfPath] = Astro.url.pathname
+	.split("/")
+	.filter(Boolean);
 ---
 
 <div class="site-name">
@@ -10,7 +13,7 @@ const [section] = Astro.url.pathname.slice(1).split("/");
 
 <header>
 	{section &&
-		<div class="section-name">{section}</div>
+		<a href={`/${section}/`} aria-current={restOfPath.length ? undefined : "page"}>{section}</a>
 	}
 </header>
 
@@ -21,15 +24,6 @@ const [section] = Astro.url.pathname.slice(1).split("/");
 		font-weight: bold;
 		margin: 1.25rem 0 2rem 0;
 		position: relative;
-		grid-area: header;
-	}
-
-	.site-name {
-		grid-area: site-name;
-
-		strong {
-			color: black;
-		}
 
 		a[aria-current] {
 			pointer-events: none;
@@ -40,9 +34,16 @@ const [section] = Astro.url.pathname.slice(1).split("/");
 		}
 	}
 
-	.section-name {
+	.site-name {
+		grid-area: site-name;
+
+		strong {
+			color: black;
+		}
+	}
+
+	header {
 		color: var(--highlight);
-		top: 0;
-		position: absolute;
+		grid-area: header;
 	}
 </style>
