@@ -6,14 +6,12 @@ import RecentCommands from "@/components/RecentCommands.astro";
 ---
 
 <Layout>
-	<RecentCommands />
-
 	<Section
 		title="github"
 		href="https://github.com/fwextensions"
 	>
 		<p slot="description">
-			Stuff I've worked on in code form.
+			Coding side projects in various states of completion.
 		</p>
 
 		<SectionItem
@@ -29,19 +27,13 @@ import RecentCommands from "@/components/RecentCommands.astro";
 		</SectionItem>
 
 		<SectionItem
-			title="quick-score"
-			href="https://github.com/fwextensions/quick-score"
+			title="wagtail-mcp"
+			href="https://github.com/fwextensions/wagtail-mcp"
 		>
-			A string-scoring and fuzzy-matching library. It's based on the algorithm
-			used in the Quicksilver macOS utility and is designed for smart
-			auto-complete. It improves on the original algorithm by tuning the scoring
-			for long strings, such as webpage titles or URLs, so that the order of the
-			results makes more sense for a given search string.
+			A basic MCP server that provides an LLM with read-only access to a Wagtail CMS instance.
 
 			<span slot="extra">
-				<a href="https://fwextensions.github.io/quick-score-demo/">Demo</a>
-				&nbsp;&nbsp;&nbsp;
-				<a href="https://www.npmjs.com/package/quick-score">npm package</a>
+				<a href="https://www.npmjs.com/package/wagtail-mcp">npm package</a>
 			</span>
 		</SectionItem>
 
@@ -71,5 +63,28 @@ import RecentCommands from "@/components/RecentCommands.astro";
 				<a href="https://www.npmjs.com/package/figma-await-ipc">npm package</a>
 			</span>
 		</SectionItem>
+
+		<SectionItem
+			title="quick-score"
+			href="https://github.com/fwextensions/quick-score"
+		>
+			A string-scoring and fuzzy-matching library. It's based on the algorithm
+			used in the Quicksilver macOS utility and is designed for smart
+			auto-complete. It improves on the original algorithm by tuning the scoring
+			for long strings, such as webpage titles or URLs, so that the order of the
+			results makes more sense for a given search string.
+
+			<span slot="extra">
+				<a href="https://fwextensions.github.io/quick-score-demo/">Demo</a>
+				&nbsp;&nbsp;&nbsp;
+				<a href="https://www.npmjs.com/package/quick-score">npm package</a>
+			</span>
+		</SectionItem>
+
+		<li>
+			<a href="https://github.com/fwextensions?tab=repositories">See all the repos</a>
+		</li>
 	</Section>
+
+	<RecentCommands />
 </Layout>
