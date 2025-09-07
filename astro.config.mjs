@@ -24,7 +24,11 @@ export default defineConfig({
 					"**/.idea/**",
 					"**/To do.md"
 				]
-			}
+			},
+			allowedHosts: [
+					// allow a Cloudflare tunnel to access the server
+				".trycloudflare.com"
+			]
 		}
 	}
 });
