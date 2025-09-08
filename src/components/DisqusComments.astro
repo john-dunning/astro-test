@@ -1,17 +1,17 @@
 ---
 interface Props {
-	packageName: string;
-	packageID: string;
+	title: string;
+	id: string;
 }
 
-const { packageName, packageID } = Astro.props;
+const { title, id } = Astro.props;
 	// pass these values into the script below as a `vars` variable.  using define:vars
 	// will wrap the script in an IIFE, so we don't need one around the code that
 	// creates the disqus script element.
 const vars = {
-	url: `${packageID}.html`,
-	identifier: `/fireworks/about/${packageID}`,
-	title: packageName
+	url: `${id}.html`,
+	identifier: `/${id}`,
+	title
 };
 ---
 
@@ -23,3 +23,9 @@ const vars = {
 	s.setAttribute("data-timestamp", Date.now());
 	(d.head || d.body).appendChild(s);
 </script>
+
+<style lang="scss">
+	:global(#disqus_recommendations) {
+		margin-top: var(--spacing-lg);
+	}
+</style>

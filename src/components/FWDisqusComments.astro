@@ -1,0 +1,15 @@
+---
+import DisqusComments from "./DisqusComments.astro";
+
+interface Props {
+	packageName: string;
+	packageID: string;
+}
+
+const { packageName, packageID } = Astro.props;
+---
+
+<DisqusComments
+	title={packageName}
+	id={`fireworks/about/${packageID}`}
+/>

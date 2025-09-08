@@ -1,11 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
-import { Content } from "./yalpf.md";
+import DisqusComments from "@/components/DisqusComments.astro";
 import heroImage from "@/assets/yalpf/md/frame-in-london.jpg";
+import { Content } from "./yalpf.md";
+
+const title = "Yet Another Laptop Picture Frame";
 ---
 
-<Layout title="Yet Another Laptop Picture Frame">
+<Layout title={title}>
 	<article>
 		<h1>
 			Yet Another Laptop Picture Frame
@@ -15,10 +18,17 @@ import heroImage from "@/assets/yalpf/md/frame-in-london.jpg";
 
 		<Content />
 	</article>
+
+	<DisqusComments
+		title={title}
+		id="yalpf"
+	/>
 </Layout>
 
 <style lang="scss">
 	article {
+		container-type: inline-size;
+
 		h1 {
 			font-size: 2rem;
 			margin-bottom: var(--spacing-xl);
@@ -33,14 +43,9 @@ import heroImage from "@/assets/yalpf/md/frame-in-london.jpg";
 			margin: 3rem 0 0.75rem 0;
 		}
 
-		:global(img) {
-			display: block;
-			max-width: 100%;
-			height: auto;
-		}
-
 		:global(p) {
-			container-type: inline-size;
+				/* don't let the p's margins collapse with the img's */
+			overflow: auto;
 		}
 
 		:global(li) {
@@ -53,11 +58,12 @@ import heroImage from "@/assets/yalpf/md/frame-in-london.jpg";
 
 		@container (min-width: 0) {
 			:global(img) {
+				display: block;
 				max-width: 100%;
 				max-height: 100cqw;
+				height: auto;
 				object-fit: contain;
 				object-position: left;
-				height: auto;
 				margin: var(--spacing-sm) 0;
 			}
 		}

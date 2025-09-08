@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import FireworksLayout from "@/layouts/FireworksLayout.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import CommandsNavList from "@/components/CommandsNavList.astro";
-import DisqusComments from "@/components/DisqusComments.astro";
+import FWDisqusComments from "@/components/FWDisqusComments.astro";
 import { getIncImage } from "@/utils/getIncImage";
 
 export async function getStaticPaths()
@@ -41,7 +41,7 @@ const imageData = await getIncImage(`${slug}.png`);
 
 	<CommandsNavList slot="sidebar" />
 
-	<DisqusComments
+	<FWDisqusComments
 		packageName={name}
 		packageID={slug}
 	/>
