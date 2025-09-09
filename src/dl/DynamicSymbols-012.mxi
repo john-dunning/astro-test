@@ -19,10 +19,12 @@ The overall process of using this panel looks like this:<br>
 8. When the symbol works the way you want, click *Apply to Master* to copy the instance back to the master symbol document in the Common Library, making the changes permanent<br>
 <br>
 While this may look a little involved, the test and modify cycle is much faster than the typical process of writing code for a rich symbol.  You can make a change in the panel and immediately see the *Symbol Properties* panel update.  While you still have to write some syntactically valid JavaScript arrays, it's a lot simpler than writing and debugging a rich symbol script from scratch.  The panel also offers much more power than the *Create Symbol Script* dialog that comes with Fireworks. <br>
+<!--
 <br>
 This screencast shows a typical workflow:<br>
 <br>
 <iframe src="http://www.screenr.com/embed/n7l7" width="650" height="396" frameborder="0"></iframe><br>
+-->
 <br>
 <br>
 # Contents<br>

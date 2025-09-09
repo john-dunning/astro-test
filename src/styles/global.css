@@ -23,6 +23,7 @@ body {
 }
 
 body > .content {
+	max-width: var(--content-w);
 	display: grid;
 	grid-template-areas:
 		"site-name header"
