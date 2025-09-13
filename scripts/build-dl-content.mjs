@@ -6,7 +6,7 @@ import glob from "fast-glob";
 
 const HashPattern = /^#/gm;
 const IncPathMXI = "http://johndunning.com/fireworks/inc";
-const IncPathLocal = "/src/assets/inc";
+const IncPathLocal = "../../assets/inc";
 const CommandsPath = "src/content/commands";
 
 function slugVersion(
@@ -94,3 +94,5 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 	fs.ensureDirSync(path.dirname(mdPath));
 	fs.writeFileSync(mdPath, frontmatter(keyValues) + md, "utf8");
 });
+
+console.log(`Converted ${Object.keys(pathsByName).length} .mxi files to .md`);
