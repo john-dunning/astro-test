@@ -2,8 +2,9 @@
 import FireworksLayout from "@/layouts/FireworksLayout.astro";
 import ParaWithMore from "@/components/ParaWithMore.astro";
 import { getCommands } from "@/utils/getCommands";
+import { base } from "@/utils/urls";
 
-const link = (slug: string) => `/fireworks/about/${slug}`;
+const link = (slug: string) => base(`/fireworks/about/${slug}`);
 
 	// sort the commands in descending date order
 const commands = await getCommands("dateDescending");

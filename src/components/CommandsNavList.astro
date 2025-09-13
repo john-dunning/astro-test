@@ -1,5 +1,6 @@
 ---
 import { getCommands } from "@/utils/getCommands";
+import { base } from "@/utils/urls";
 
 	// get the commands sorted alphabetically
 const commands = await getCommands()
@@ -12,7 +13,7 @@ const currentPage = fullPath.slice(fullPath.lastIndexOf("/") + 1);
 		{commands.map(({ slug, data: { name, summary } }) => (
 			<li>
 				<a
-					href={`/fireworks/about/${slug}`}
+					href={base(`/fireworks/about/${slug}`)}
 					title={summary.replaceAll("<br>", "")}
 					aria-current={currentPage === slug ? "page" : undefined}
 				>{name}</a>

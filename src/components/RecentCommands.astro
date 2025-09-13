@@ -2,6 +2,7 @@
 import SectionItem from "@/components/SectionItem.astro";
 import Section from "@/components/Section.astro";
 import { getCommands } from "@/utils/getCommands";
+import { base } from "@/utils/urls";
 
 const commands = await getCommands("dateDescending")
 ---
@@ -20,7 +21,7 @@ const commands = await getCommands("dateDescending")
 	{commands.slice(0, 3).map(({ slug, data: { name, summary } }) => (
 		<SectionItem
 			title={name}
-			href={`/fireworks/about/${slug}`}
+			href={base(`/fireworks/about/${slug}`)}
 			addMore={true}
 		>
 			{summary}
