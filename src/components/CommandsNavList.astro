@@ -22,31 +22,31 @@ const currentPage = fullPath.slice(fullPath.lastIndexOf("/") + 1);
 	</ul>
 </nav>
 
-<style>
+<style lang="scss">
 	nav {
 		padding-right: 3rem;
 		grid-area: sidebar;
+
+		& > ul {
+			padding: 0;
+			margin: 9rem 0 0 0;
+		}
+
+		li {
+			font-size: smaller;
+			margin-bottom: .5em;
+		}
+
+		li a[aria-current] {
+			color: #666;
+			font-weight: bold;
+			pointer-events: none;
+		}
 	}
 
 	@media (max-width: 720px) {
 		nav {
 			display: none;
 		}
-	}
-
-	ul {
-		padding: 0;
-		margin: 9rem 0 0 0;
-	}
-
-	li {
-		font-size: smaller;
-		margin-bottom: .5em;
-	}
-
-	li a[aria-current] {
-		color: #666;
-		font-weight: bold;
-		pointer-events: none;
 	}
 </style>
