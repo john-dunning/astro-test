@@ -1,0 +1,42 @@
+---
+import SectionItem from "@/components/SectionItem.astro";
+import Section from "@/components/Section.astro";
+import { getCommands } from "@/utils/getCommands";
+import { base } from "@/utils/urls";
+
+const Highlights = [
+	"JSML Library",
+	"Tables",
+	"SVG",
+	"Spacer",
+	"Dynamic Symbols",
+];
+
+const commands = await getCommands()
+const highlights = Highlights.map((highlightName) => commands.find(({ data: { name } }) => name === highlightName));
+---
+
+<Section
+	title="fireworks"
+	href="fireworks/"
+>
+	<p slot="description">
+		A collection of free productivity-enhancing extensions that I
+		built for <a href="https://www.adobe.com/products/fireworks/">Adobe
+		Fireworks</a> using JavaScript, ActionScript and Flex. Some highlights include:
+	</p>
+
+	{highlights.map(({ slug, data: { name, summary } }) => (
+		<SectionItem
+			title={name}
+			href={base(`/fireworks/about/${slug}`)}
+			addMore={true}
+		>
+			{summary}
+		</SectionItem>
+	))}
+
+	<li>
+		<a href="fireworks/">See all the extensions</a>
+	</li>
+</Section>
