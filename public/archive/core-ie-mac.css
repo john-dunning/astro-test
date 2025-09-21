@@ -1,0 +1,13 @@
+UL { margin-top: -0.5em }
+
+.VerticalSpace { margin-top: 8px }
+//.ResumeSection { margin-top: 6px; font-size: 20pt; font-weight: bold }
+
+P.InitialPara { margin-bottom: 1em }
+P.BodyPara { margin-bottom: 1em; text-indent: 2em }
+
+.SpecialLinkRight { font-size: 16px; font-weight: bold; color: #999999; 
+	position: absolute; left: 4; top: 0; z-index: 90; visibility: hidden;
+	font-family: "trebuchet ms", trebuchet, verdana, helvetica, arial, sans-serif }
+
+Blockquote { margin-bottom: -1em }

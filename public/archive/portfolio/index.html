@@ -1,0 +1,512 @@
+<html>
+<head>
+<title>Portfolio</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link rel="stylesheet" type="text/css" href="../core.css">
+
+<script language="JavaScript1.2">
+<!-- 
+
+	// force us into the standard frames document if we're not already within it
+if (top == self) {
+	location.href = "../core-frames.html?" + escape(document.title) + "," +
+			location.href.substr(location.href.lastIndexOf("/") + 1);
+}
+
+var gTitle = "Portfolio";
+
+	// link in browser-specific stylesheet
+document.writeln("<link rel='stylesheet' type='text/css' href='../core-" + (top.gNN ? "nn" : "ie") + ".css'>");
+
+var gPixels = new Array(
+	"x0y0 1", "x1y0 1", "x2y0 1", "x3y0 0", 
+	"x0y1 1", "x1y1 0", "x2y1 0", "x3y1 1", 
+	"x0y2 1", "x1y2 1", "x2y2 1", "x3y2 0", 
+	"x0y3 1", "x1y3 0", "x2y3 0", "x3y3 0", 
+	"x0y4 1", "x1y4 0", "x2y4 0", "x3y4 0"
+);
+
+function PixelGrid_Write()
+{
+		// create a 4 X 5 grid of images, with pixels named x0y0, etc.
+	for (var y = 0; y < 5; y++) {
+		for (var x = 0; x < 4; x++) {
+			document.write("<img name='" + "x" + x + "y" + y + 
+					"' src='../images/pixel-" + Math.floor(Math.random() * 3 + 1) + ".gif' width=26 height=26>");
+		}
+
+		document.writeln("<br>");
+	}
+}
+
+function PixelGrid_Randomize()
+{
+	var inPixels = gPixels;
+
+	if (inPixels.length > 0) {
+			// pick a random pixel to set
+		var pixel = Math.floor(Math.random() * inPixels.length);
+		document.images[inPixels[pixel].split(" ")[0]].src = 
+				(inPixels[pixel].split(" ")[1] == "1") ? "../images/black-dot-26.gif" : "../images/spacer.gif";
+
+			// push it to the end of the array and chop it off
+		inPixels[pixel] = "~~~~";
+		inPixels.sort();
+		inPixels.length = inPixels.length - 1;  
+
+			// call ourselves again to set the next pixel
+		setTimeout("PixelGrid_Randomize()", 150);
+	} 
+}
+
+	// add document.all if this is Netscape
+if (!document.all) document.all = document.layers;
+
+function GetStyle(inObject, inStyle)
+{
+	if (!inObject.style) {
+		return inObject[inStyle];
+	} else {
+		return inObject.style[inStyle];
+	}
+}
+
+function SetStyle(inObject, inStyle, inNewValue)
+{
+	if (document.layers) {
+		inObject[inStyle] = inNewValue;
+	} else {
+		inObject.style[inStyle] = inNewValue;
+	}
+}
+
+function GetX(inObject)
+{
+	if (!inObject.style) {
+		return inObject.left;
+	} else {
+		return inObject.style.pixelLeft;
+	}
+}
+
+function GetY(inObject)
+{
+	if (!inObject.style) {
+		return inObject.top;
+	} else {
+		return inObject.style.pixelTop;
+	}
+}
+
+function SetX(inObject, inNewValue)
+{
+	if (!inObject.style) {
+		inObject.left = inNewValue;
+	} else {
+		inObject.style.pixelLeft = inNewValue;
+	}
+}
+
+function SetY(inObject, inNewValue)
+{
+	if (!inObject.style) {
+		inObject.top= inNewValue;
+	} else {
+		inObject.style.pixelTop = inNewValue;
+	}
+}
+
+function SetPosition(inObject, inNewX, inNewY)
+{
+	if (!inObject.style) {
+		inObject.left = inNewX;
+		inObject.top = inNewY;
+	} else {
+		inObject.style.pixelLeft = inNewX;
+		inObject.style.pixelTop = inNewY;
+	}
+}
+
+function GetPageX(inObject)
+{
+	if (inObject.pageX) {
+		return inObject.pageX;
+	} else {
+		var pageX = inObject.offsetLeft;
+		var currentObject = inObject.offsetParent;
+		
+		while (currentObject) {
+			pageX += currentObject.offsetLeft;
+			currentObject = currentObject.offsetParent;
+		}
+
+		return pageX;
+	}
+}
+
+function GetPageY(inObject)
+{
+	if (inObject.pageY) {
+		return inObject.pageY;
+	} else {
+		var pageY = inObject.offsetTop;
+		var currentObject = inObject.offsetParent;
+		
+		while (currentObject) {
+			pageY += currentObject.offsetTop;
+			currentObject = currentObject.offsetParent;
+		}
+
+		return pageY;
+	}
+}
+
+	// add some new methods to the Layer or HTMLElement prototypes
+if (top.gNN) {
+	Layer.prototype.GetPageX = function() 
+		{ return this.pageX };
+
+	Layer.prototype.GetPageY = function() 
+		{ return this.pageY };
+
+	Layer.prototype.SetPosition = function(inNewX, inNewY) 
+		{ this.left = inNewX; this.top = inNewY };
+} else if (top.gIE) {
+
+/*	Collection.prototype.GetPageX = function()
+	{
+		var pageX = this.offsetLeft;
+		var currentObject = this.offsetParent;
+		while (currentObject) {
+			pageX += currentObject.offsetLeft;
+			currentObject = currentObject.offsetParent;
+		}
+		return pageX;
+	}
+
+	HTMLElement.prototype.GetPageY = function()
+	{
+		var pageY = inObject.offsetTop;
+		var currentObject = inObject.offsetParent;
+		while (currentObject) {
+			pageY += currentObject.offsetTop;
+			currentObject = currentObject.offsetParent;
+		}
+		return pageY;
+	}
+
+	HTMLElement.prototype.SetPosition = function(inNewX, inNewY) 
+		{ this.style.pixelLeft = inNewX; this.style.pixelTop = inNewY }
+*/
+}
+
+function Circle_MouseOver(inLayerID, inAlignRight)
+{
+	inAlignRight = inAlignRight || false;
+
+	status = inLayerID;
+
+	if ((top.gIE && top.gMac) || top.gNN6) {
+			// IE on the Mac can't determine the global location of a relative layer on the page,
+			// so we can't do the circle highlighting
+		return;
+	}
+
+	if (document.images["Dot_" + inLayerID]) {
+		document.images["Dot_" + inLayerID].src = "../images/black-dot-26.gif";
+	}
+
+	var circleLayer = document.all[inLayerID];
+	var highlightLayer = document.all.Highlight;
+
+		// store the name of the page that the current link refers to, so the highlight will
+		// know where to navigate to if it's clicked
+	highlightLayer.pageName = inLayerID;
+
+	if (top.gNN && inAlignRight) {
+		highlightLayer.SetPosition(circleLayer.pageX + circleLayer.clip.width - highlightLayer.clip.width, 
+					circleLayer.pageY);
+//	} if (top.gIE55) { 
+//		SetPosition(highlightLayer, GetPageX(circleLayer), GetPageY(circleLayer) / 2);
+	} else {
+//		highlightLayer.SetPosition(circleLayer.GetPageX(), circleLayer.GetPageY());
+		SetPosition(highlightLayer, GetPageX(circleLayer), GetPageY(circleLayer));
+	}
+
+	SetStyle(highlightLayer, "visibility", "visible");
+
+	return true;
+}
+
+function Highlight_MouseOut()
+{
+	status = "";
+
+	var highlightLayer = document.all.Highlight;
+
+	SetStyle(highlightLayer, "visibility", "hidden");
+
+	var dot = document.images["Dot_" + highlightLayer.pageName];
+
+	if (dot) {
+		dot.src = "../images/grey-dot-26.gif";
+	}
+
+	return true;
+}
+
+function Highlight_Click()
+{	
+	top.GotoPage(document.all.Highlight.pageName);
+
+	return true;
+}
+
+function Highlight_MouseOver()
+{
+	status = document.all.Highlight.pageName;
+
+	return true;
+}
+
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" onLoad="PixelGrid_Randomize()">
+
+<span id="Highlight" style="position: absolute; width: 161px; height: 161px; z-index: 1000; visibility: hidden">
+	<a href="javascript:Highlight_Click()" 
+		onMouseOver="return Highlight_MouseOver()" 
+		onMouseOut="return Highlight_MouseOut()">
+		<img src="images/black-circle-p.gif" width="161" height="161" border="0"></a>
+</span>
+
+<div align="center">
+
+  <table width="75%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"> <img src="../images/spacer.gif" width="26" height="26"> 
+			</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td colspan=2 width="49%"> 
+				<script language="JavaScript1.2">
+<!-- 
+PixelGrid_Write();
+//-->
+</script>
+			<br>
+			<br>
+		</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%"> 
+			<div align="right" class="PortfolioCompany"><a href="cid-1.html" onMouseOver="return Circle_MouseOver('Cooper')" onMouseOut="Highlight_MouseOut()">Cooper</a></div>
+		</td>
+		  <td width="2%">
+			<a href="cid-1.html" onMouseOver="return Circle_MouseOver('Cooper')" onMouseOut="Highlight_MouseOut()">
+				<img name="Dot_Cooper" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+			</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%">
+			<p class="InitialPara">The first project I led at Cooper was the design of a new trading application for a large online brokerage. After we delivered the design, the very satisfied client extended our project and hired two additional Cooper teams to work on other products. Among other projects, I&#146;ve also designed a <a href="cid-2.html">golf course irrigation interface</a> and a <a href="cid-3.html">handheld glucose meter</a>.</p>
+		</td>
+		  <td width=26>&nbsp;</td>
+		  <td width="49%" valign="top"><span id="Cooper" class="PortfolioCircle"><a href="cid-1.html" onMouseOver="return Circle_MouseOver('Cooper')">
+		  <img src="images/cid-brokerage-app-circle-p.gif" width="161" height="161" border="0"></a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"> 
+				<div align="right"><img src="../images/spacer.gif" width="26" height="26"></div>
+		</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%">
+			<a href="msi-1.html" 
+				onMouseOver="return Circle_MouseOver('Moonstone Interactive', true)" 
+				onMouseOut="Highlight_MouseOut()"
+			>
+				<img name="Dot_Moonstone Interactive" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+			</td>
+		<td width="49%"><span class="PortfolioCompany"><a href="msi-1.html" onMouseOver="return Circle_MouseOver('Moonstone Interactive', true)" onMouseOut="Highlight_MouseOut()">Moonstone Interactive</a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%"> 
+			<span align="right" id="Moonstone Interactive" class="PortfolioCircle">
+				<a href="msi-1.html" 
+					onMouseOver="return Circle_MouseOver('Moonstone Interactive', true)">
+				<img src="images/msi-envelope-circle-p.gif" width="161" height="161" align="top" border="0"></a></span></td>
+		  <td width="2%">&nbsp;</td>
+		<td valign="top" width="49%"> 
+			  <p class="InitialPara">Here I worked on PhotoWise, a digital camera 
+					application for Agfa. We were hired to completely redesign the bundled 
+					software that enables the user to download, organize, edit, and print 
+					images from their digital camera. The application ships with all 
+					of their cameras and runs on both Windows and MacOS in 6 localized 
+					versions.</p>
+		</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"><img src="../images/spacer.gif" width="26" height="26"></td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%"> 
+			<div align="right" class="PortfolioCompany"><a href="mf-1.html" onMouseOver="return Circle_MouseOver('mFactory')" onMouseOut="Highlight_MouseOut()">mFactory</a></div>
+		</td>
+		  <td width="2%">
+			<a href="mf-1.html" onMouseOver="return Circle_MouseOver('mFactory')" onMouseOut="Highlight_MouseOut()">
+				<img name="Dot_mFactory" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+			</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%">
+			<p class="InitialPara">At mFactory I worked on the design of mTropolis, 
+				an object-oriented multimedia authoring tool. mTropolis was designed to 
+				empower non-programmers to create complex multimedia applications, using 
+				a drag-and-drop, icon-based environment.</p>
+		</td>
+		  <td width=26>&nbsp;</td>
+		  <td width="49%"><span id="mFactory" class="PortfolioCircle"><a href="mf-1.html" onMouseOver="return Circle_MouseOver('mFactory')">
+		  <img src="images/mf-screen-circle-p.gif" width="161" height="161" border="0"></a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"> 
+				<div align="right"><img src="../images/spacer.gif" width="26" height="26"></div>
+		</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%">
+			<a href="apple-1.html" onMouseOver="return Circle_MouseOver('Apple Computer', true)" onMouseOut="Highlight_MouseOut()">
+			  <img name="Dot_Apple Computer" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+			</td>
+		<td width="49%"><span class="PortfolioCompany"><a href="apple-1.html" onMouseOver="return Circle_MouseOver('Apple Computer', true)" onMouseOut="Highlight_MouseOut()">Apple Computer</a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%"> 
+			<span id="Apple Computer" class="PortfolioCircle" align="right"> 
+				<a href="apple-1.html" 					
+					onMouseOver="return Circle_MouseOver('Apple Computer', true)"> <img src="images/apple-sneak3view-circle-p.gif" width="161" height="161" align="top" border="0"></a></span></td>
+		  <td width="2%">&nbsp;</td>
+		<td valign="top" width="49%"> 
+			<p class="InitialPara">As an engineer at Apple I designed and implemented 
+				a tool for developers of QuickDraw 3D accelerator cards. The app was written 
+				in C++ and used the PowerPlant class library. </p>
+		</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"><img src="../images/spacer.gif" width="26" height="26"></td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%"> 
+			<div align="right" class="PortfolioCompany"><a href="do-1.html"onMouseOver="return Circle_MouseOver('Digital Objectives')" onMouseOut="Highlight_MouseOut()">Digital 
+				Objectives</a></div>
+		</td>
+		  <td width="2%">
+			<a href="do-1.html"onMouseOver="return Circle_MouseOver('Digital Objectives')" onMouseOut="Highlight_MouseOut()">
+				<img name="Dot_Digital Objectives" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+		  </td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%"> 
+			  <p class="InitialPara">Here, too, I was nominally an engineer, but I again 
+					wore both designer and implementor hats. I worked on Newton-based data 
+					collection applications for medical personnel, as well as the occasional 
+					game. </p>
+		</td>
+		<td width=26>&nbsp;</td>
+		<td width="49%">
+			<span id="Digital Objectives" class="PortfolioCircle">
+				<a href="do-1.html" 					
+					onMouseOver="return Circle_MouseOver('Digital Objectives')">
+					<img src="images/do-siren-circle-p.gif" width="161" height="161" align="top" border="0"></a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"> 
+				<div align="right"><img src="../images/spacer.gif" width="26" height="26"></div>
+		</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%">
+			<a href="vp-1.html" onMouseOver="return Circle_MouseOver('VoxelPaint', true)" onMouseOut="Highlight_MouseOut()">
+				<img name="Dot_VoxelPaint" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+			</td>
+		<td width="49%"><span class="PortfolioCompany"><a href="vp-1.html" onMouseOver="return Circle_MouseOver('VoxelPaint', true)" onMouseOut="Highlight_MouseOut()">VoxelPaint</a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%">
+			<span id="VoxelPaint" class="PortfolioCircle" align="right">
+				<a href="vp-1.html" 					
+					onMouseOver="return Circle_MouseOver('VoxelPaint', true)">
+					<img src="images/vp-logs-circle-p.gif" width="161" height="161" align="top" border="0"></a></span></td>
+		  <td width="2%">&nbsp;</td>
+		<td valign="top" width="49%"> 
+			
+        <p class="InitialPara">During a semester-long computer science project 
+          I created what was essentially a three-dimensional bitmap paint program. 
+          But instead of drawing with 2D pixels, the program uses 3D voxels.</p>
+		</td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"> 
+				<div align="right"><img src="../images/spacer.gif" width="26" height="26"></div>
+		</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td width="49%" align="right"><span class="PortfolioCompany" align="right"><a href="vis-1.html" onMouseOver="return Circle_MouseOver('VIS 315', true)" onMouseOut="Highlight_MouseOut()">VIS 315</a></span></td>
+		<td width="2%"> 
+		<a href="vis-1.html" onMouseOver="return Circle_MouseOver('VIS 315', true)" onMouseOut="Highlight_MouseOut()">
+			<img name="Dot_VIS 315" src="../images/grey-dot-26.gif" width="26" height="26" border="0"></a>
+		</td>
+		<td align="right" width="49%">&nbsp;</td>
+	</tr>
+	<tr> 
+		<td align="right" valign="top" width="49%"> 
+			<p class="InitialPara">For the final project of this Visual Arts computer 
+				graphics class, I created an installation of stereo-projections, using 
+				Alias, Photoshop, Illustrator and fishing line.</p>
+		</td>
+	  <td width="2%">&nbsp;</td>
+		<td valign="top" width="49%">
+			<span id="VIS 315" class="PortfolioCircle">
+				<a href="vis-1.html" 					
+					onMouseOver="return Circle_MouseOver('VIS 315', true)">
+					<img src="images/vis-windows-circle-p.gif" width="161" height="161" align="top" border="0"></a></span></td>
+	</tr>
+	<tr> 
+		<td align="right" width="49%">&nbsp;</td>
+		  <td width="2%"> 
+				<div align="right"><img src="../images/spacer.gif" width="26" height="26"></div>
+		</td>
+		<td width="49%">&nbsp;</td>
+	</tr>
+</table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+UL { margin-top: -1em } 
+.VerticalSpace { margin-top: 16px } 
+
+P.InitialPara { margin-bottom: 1em } 
+P.BodyPara { margin-bottom: 1em; text-indent: 2em } 
+
+.PortfolioThumbnail { margin-bottom: 18px; }
+
+Blockquote { margin-bottom: 0em } 
+
+.PortfolioArrow, .PortfolioNumber { text-decoration: none; }

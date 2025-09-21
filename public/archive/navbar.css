@@ -1,0 +1,8 @@
+A:link { text-decoration: none; color: #FFFFFF }
+A:active { text-decoration: none; color: #FFFFFF }
+A:visited { text-decoration: none; color: #FFFFFF } 
+A:hover { text-decoration: none; color: #CCCCCC } 
+
+.NavBarLink { font-size: 12px; font-family: "trebuchet ms", trebuchet, helvetica, arial, sans-serif }
+.NavBarLinkCurrent { font-weight: bold }
+body {  margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px}

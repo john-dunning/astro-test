@@ -1,0 +1,167 @@
+============================================================================
+
+
+JOHN DUNNING
+
+
+john@johndunning.com
+http://johndunning.com
+650.766.2408
+
+412 Noe St. Apt. A
+San Francisco, CA  94114
+
+
+EXPERIENCE:
+     Yahoo!
+     Senior Product Manager.
+     (September 2006 - present)
+          Leading the product definition and management of Yahoo! Messenger 
+          desktop and web clients, while maintaining its position as the #1 IM 
+          application in the US. Helping to define Yahoo!'s next-generation
+          communications products.
+            * Working with multiple agile scrum teams, some co-located and some 
+              remote, to maintain product backlogs and to prioritize user 
+              stories for each sprint.
+            * Collaborating closely with the global product team to ensure that 
+              Messenger ships simultaneously in 29 different localized versions 
+              in markets around the world.
+            * Built tools that automatically produce reports from raw data to 
+              help the product team track key engagement, usage and monetization 
+              metrics.
+     Senior Interaction Designer.
+     (August 2003 - October 2005)
+          Served as design lead for two major releases of Yahoo! Messenger, 
+          helping the product to grow from 48 million to 90 million users 
+          and to win the CNET Editor's Choice for IM clients. 
+            * Responsible for all aspects of the product design process, 
+              from collaborating with product managers on defining 
+              requirements to participating in field research to documenting 
+              designs in detailed UI specifications.
+            * Worked closely with design researchers to thoroughly usability 
+              test paper mockups, high-fidelity prototypes and working 
+              versions of Messenger with our user base. Halved the error 
+              scores of key tasks.
+            * Built and maintained a detailed prototype to work through 
+              design concepts, test interfaces in the lab and communicate 
+              design directions to other team members.
+            * Partnered with product manager to communicate to executives 
+              the design and business rationale of new features, 
+              successfully shepherding 7.0 through the product approval 
+              process to an on-time, simultaneous launch in 17 countries.
+
+      Pixar : Senior Interaction Designer.
+      (November 2005 - June 2006)
+           Helped design the next generation of in-house production tools. Met 
+           with animators, riggers, lighters and other crew members to 
+           understand user needs throughout the movie production process. 
+           Designed patent-pending tools to manage deep hierarchies of 3D 
+           elements.
+
+     Intuit : Senior User Interface Designer.
+     (February 2003 - August 2003)
+          Led the design effort on three new initiatives for the 2004 
+          version of QuickBooks Financial Software. Worked with a 
+          cross-functional team of product managers, visual designers, 
+          technical writers, engineers and QA to design features that met 
+          both user and business goals. Conducted customer site visits to 
+          better understand the accounting needs of small business owners.
+
+     Cooper : Principal Design Consultant.
+     (May 1999 - February 2003)
+          Researched, conceptualized and designed desktop applications, 
+          handheld devices, websites and other interactive products for 
+          clients ranging from startups to Fortune 500 companies. Projects 
+          included a visual programming environment for the development of 
+          Enterprise Java Beans, an online trading application for Charles 
+          Schwab, a custom hardware interface for controlling golf course 
+          irrigation, and a handheld blood glucose meter. 
+            * Led design teams whose satisfied clients consistently hired 
+              Cooper for additional work--a total of two team-year's worth 
+              of follow-on projects.
+            * Used personas, scenarios, ethnographic interviews and other 
+              elements of the Goal-Directed methodology to design products 
+              that please their users. 
+            * Conducted in-depth customer research and analysis of varied 
+              technical domains, including diabetes treatment, securities 
+              trading, and enterprise storage management. 
+            * Developed an intranet-based knowledge management tool that 
+              enabled the design and sales departments to better leverage 
+              the studio's intellectual property. 
+            * Wrote extensions to Macromedia Fireworks that helped Cooper 
+              designers create interface sketches more efficiently. Also 
+              trained staff in the use of Fireworks. 
+
+     Moonstone Interactive : Interaction Design Consultant.
+     (Aug 1998 - May 1999)
+          Designed a digital camera application for Agfa that shipped with 
+          all of its cameras. Employed usage scenarios and user interviews 
+          to design an application that would make it easy for consumers to 
+          download, organize and edit digital camera images.
+            * Developed a detailed prototype for usability testing and for 
+              demonstrating the application's design. 
+            * Designed and conducted a usability test to investigate the 
+              software's ease-of-use. 
+
+     mFactory : User Interface Designer.
+     (April 1996 - March 1998)
+          Worked on the interface design for mTropolis, an award-winning, 
+          object-oriented multimedia authoring tool. Collaborated with 
+          marketing and engineering teams to define the feature set of new 
+          versions of mTropolis. 
+            * Wrote and maintained detailed design specifications for each 
+              feature.
+            * Held participatory design sessions and site visits with users.
+            * Designed and implemented plug-in tools and libraries of 
+              reusable components for version 2.0.
+
+     Apple Computer, Inc.
+     Software Engineer.
+     (June 1995 - April 1996)
+          In the 3D Acceleration and Entertainment Group, wrote an 
+          application to simplify the testing and development of 3D 
+          graphics acceleration cards for the Macintosh. Also implemented a 
+          portion of the user interface for QuickDraw 3D 1.1. 
+     Software Engineer.
+     (Summer 1992)
+          Worked in the Electronic Media Group, which publishes and distributes 
+          information to developers through on-line services and CD-ROMs. Wrote 
+          a tool to tag Microsoft Word documents with table of contents 
+          information, which is used in the conversion to an electronic document 
+          format.
+
+     Digital Objectives : Software Engineer.
+     (November 1993 - June 1995)
+          Became first in-house programmer for Digital Objectives, a PDA 
+          software startup. Developed prototype and proof-of-concept 
+          software on the Newton platform.
+
+
+EDUCATION:
+     Princeton University.  (1989 - 1992, 1994 - 1995)
+          Major: Computer Science.  Minor: Linguistics.
+
+
+COMPUTER SKILLS:
+     Languages: 
+          JavaScript, HTML, CSS, XML, XSLT, Python, PHP, ActionScript,
+          Flex, C, C++, and some C#.
+
+     Graphics Software:
+          Fireworks, Photoshop, Illustrator, and Flash.
+
+
+CONFERENCES and ORGANIZATIONS:
+     * CHI 2004, Vienna, Austria
+     * JavaOne 2001, San Francisco, CA
+     * VB Live! 2001, San Francisco, CA
+     * CHI 2001, Seattle, WA
+     * User Interface Science and Technology '98, San Francisco, CA
+     * CHI '98, Los Angeles, CA
+     * User Interface Science and Technology '97, Banff, Alberta
+     * User Interface Science and Technology '96, Seattle, WA
+     * SIGGRAPH '96, New Orleans, LA
+     * CHI '96, Vancouver, British Columbia
+     * SIGGRAPH '95, Los Angeles, CA
+
+     * Member of ACM, SIGCHI, BayCHI, Association for Software Development.

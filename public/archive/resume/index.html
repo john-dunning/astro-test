@@ -1,0 +1,545 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">  
+<html>
+<head>
+<title>Resume</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link rel="stylesheet" type="text/css" href="../core.css">
+
+<script language="JavaScript1.2">
+<!-- 
+
+    // force us into the standard frames document if we're not already within it
+if (top == self) {
+    top.ContentURL = self.location.href;
+    self.location.href = "../core-frames.html";
+}
+
+var gTitle = "Resume";
+
+    // link in browser-specific stylesheet
+document.writeln("<link rel='stylesheet' type='text/css' href='../core-" + (parent.gNN ? "nn" : "ie") + ".css'>");
+
+var gPixels = new Array(
+    "x0y0 1", "x1y0 1", "x2y0 1", "x3y0 0", 
+    "x0y1 1", "x1y1 0", "x2y1 0", "x3y1 1", 
+    "x0y2 1", "x1y2 1", "x2y2 1", "x3y2 0", 
+    "x0y3 1", "x1y3 0", "x2y3 1", "x3y3 0", 
+    "x0y4 1", "x1y4 0", "x2y4 0", "x3y4 1"
+);
+
+function PixelGrid_Write()
+{
+        // create a 4 X 5 grid of images, with pixels named x0y0, etc.
+    for (var y = 0; y < 5; y++) {
+        for (var x = 0; x < 4; x++) {
+            document.write("<img name='" + "x" + x + "y" + y + 
+                    "' src='../images/pixel-" + Math.floor(Math.random() * 3 + 1) + ".gif' width=26 height=26>");
+        }
+
+        document.writeln("<br>");
+    }
+}
+
+function PixelGrid_Randomize()
+{
+    var inPixels = gPixels;
+
+    if (inPixels.length > 0) {
+            // pick a random pixel to set
+        var pixel = Math.floor(Math.random() * inPixels.length);
+        document.images[inPixels[pixel].split(" ")[0]].src = 
+                (inPixels[pixel].split(" ")[1] == "1") ? "../images/black-dot-26.gif" : "../images/spacer.gif";
+
+            // push it to the end of the array and chop it off
+        inPixels[pixel] = "~~~~";
+        inPixels.sort();
+        inPixels.length = inPixels.length - 1;  
+
+            // call ourselves again to set the next pixel
+        setTimeout("PixelGrid_Randomize()", 150);
+    } 
+}
+
+// figure out some other address posting here
+// href="mailto:john@johndunning.com"
+
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" onLoad="PixelGrid_Randomize()">
+<table width="98%" border="0" cellspacing="0" cellpadding="8" align="center">
+    <tr>
+        <td width="20%" valign="top" align="right">&nbsp;</td>
+        <td width="70%" valign="top"> 
+            <img src="../images/spacer.gif" width="26" height="26"><br>
+<script language="JavaScript1.2">
+<!-- 
+PixelGrid_Write();
+//-->
+</script>
+            <img src="../images/spacer.gif" width="26" height="26"> 
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top" align="right">&nbsp;</td>
+        <td width="70%" valign="top"><p><span class="MyName">John Dunning</span><br>
+            john @ johndunning . com</p>
+            <p>&nbsp;</p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="baseline" align="right"> 
+            <p><span class="Company">&nbsp;</span><span class="ResumeSection">.com</span><br>
+            &nbsp;
+            <span class="WorkDate">&nbsp;</span></p>
+        </td>
+
+        <td width="70%" valign="baseline"> 
+            <p><span class="Company">Yahoo! : </span><span class="JobTitle">Director of Product Management</span><span class="ResumeSection">&nbsp;</span><br>
+            <span class="WorkDate" style="line-height: 300%">March 2014 &#150; present</span><br>
+
+            Led product management for Yahoo Web Mail. Worked with multiple scrum teams to define, build and ship new functionality across all of the web clients while maintaining revenue targets. Leveraged detailed data analysis, A/B tests, and usability studies to validate new features. Migrated millions of users to a new client on a new tech stack without affecting retention. Built many prototypes and internal tools with JavaScript, Node and React.</p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+
+        <td width="70%" valign="baseline"> 
+            <p><span class="Company">Yahoo! : </span><span class="JobTitle">Senior Product Manager</span><span class="ResumeSection">&nbsp;</span><br>
+            <span class="WorkDate" style="line-height: 300%">September 2006 &#150; March 2014</span><br>
+
+            Led product management for Yahoo Messenger desktop and web clients. Rolled out a plug-in API that enabled third-party developers to integrate with Messenger and access our large user base. Occasionally put on my designer and coder hats to help out.</p>
+            <ul>
+                <li>Worked with multiple agile scrum teams, some co-located and 
+                some remote, to maintain product backlogs and to prioritize user 
+                stories for each sprint.</li>
+                <li>Collaborated closely with the global product team to ensure 
+                that Messenger shipped simultaneously in 29 different localized versions 
+                in markets around the world.</li>
+                <li>Built tools that automatically produce reports from raw data 
+                to help the product team track key engagement, usage and monetization metrics.</li>
+            </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+
+        <td width="70%" valign="baseline"> 
+            <p class="VerticalSpace"><span class="Company">Pixar Animation Studios : </span><span class="JobTitle">Senior Interaction Designer</span><span class="ResumeSection">&nbsp;</span><br>
+            <span class="WorkDate" style="line-height: 300%">November 2005 &#150; June 2006</span><br>
+
+            Helped design the next generation of in-house production tools. Met with animators, riggers, lighters and other crew members to understand user needs throughout the movie production process. Designed patent-pending tools to manage deep hierarchies of 3D elements.</p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+
+        <td width="70%" valign="baseline"> 
+            <p class="VerticalSpace"><span class="Company">Yahoo! : </span><span class="JobTitle">Senior Interaction Designer</span><span class="ResumeSection">&nbsp;</span><br>
+            <span class="WorkDate" style="line-height: 300%">August 2003 &#150; October 2005</span><br>
+
+            Served as design lead for two major releases of <a href="https://messenger.yahoo.com">Yahoo! Messenger</a>, helping the product grow from 48 million to 90 million users and winning the <a href="https://reviews.cnet.com/Yahoo_Messenger_6_0/4505-9237_7-30975251-2.html?partner=editchoice">CNET Editor's Choice</a> for IM clients.</p>
+            <ul>
+                <li>Responsible for all aspects of the product development process, from collaborating with product managers on defining requirements to participating in field research to documenting designs in detailed UI specifications.</li>
+                <li>Worked closely with design researchers to thoroughly usability 
+                test paper mockups, high-fidelity prototypes and working 
+                versions of Messenger with our user base. Halved the error 
+                scores of key tasks.</li>
+                <li>Built and maintained a detailed prototype to work through 
+                design concepts, test interfaces in the lab and communicate 
+                design directions to other team members.</li>
+                <li>Reviewed UI specifications and iterated on designs in response 
+                to feedback from engineers, QA, PMs and other designers 
+                throughout the development process.</li>
+                <li>Partnered with product manager to communicate to executives 
+                the design and business rationale of new features, 
+                successfully shepherding 7.0 through the product approval 
+                process to an on-time, simultaneous launch in 17 countries.</li>
+            </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+
+        <td width="70%" valign="baseline"> 
+            <p class="VerticalSpace"><span class="Company">Intuit : </span><span class="JobTitle">Senior User Interface Designer</span><span class="ResumeSection">&nbsp;</span><br>
+            <span class="WorkDate" style="line-height: 300%">February 2003 &#150; August 2003</span><br>
+
+            Led the design effort on three new initiatives for the 2004 
+            version of <a href="https://www.quickbooks.com">QuickBooks Financial Software</a>. Worked with a 
+            cross-functional team of product managers, visual designers, 
+            technical writers, engineers and QA to design features that met 
+            both user and business goals. Conducted customer site visits to 
+            better understand the accounting needs of small business owners.</p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/cid-1.html" title="Click for work samples" onMouseOver="status='Cooper'; return true" onMouseOut="status=''; return true"><img src="images/cid-brokerage-app-circle-r.gif" border="0" width="53" height="53" class="PortfolioThumbnail"></a></td>
+
+        <td width="70%" valign="baseline"> 
+            <p class="VerticalSpace"><span class="Company"><a href="../portfolio/cid-1.html" title="Click for work samples" onMouseOver="status='Cooper'; return true" onMouseOut="status=''; return true">Cooper</a> : </span><span class="JobTitle">Principal Design Consultant</span><span class="ResumeSection">&nbsp;</span><br>
+            <span class="WorkDate" style="line-height: 300%">May 1999 &#150; February 2003</span><br>
+
+            Researched, conceptualized and designed desktop applications, handheld devices, websites and 
+            other interactive products for clients ranging from startups to Fortune 
+            500 companies. Recent projects include 
+            a <a href="../portfolio/cid-1.html" title="Click to see this project">trading application</a> for a major online brokerage,
+            a custom hardware interface for controlling <a href="../portfolio/cid-2.html" title="Click to see this project">golf course irrigation</a>,
+            a <a href="../portfolio/cid-3.html" title="Click to see this project">handheld blood glucose meter</a>, 
+            and a visual programming environment for the development
+<!--            <a href="../portfolio/cid-4.html" title="Click to see this project">visual programming environment</a> for the development -->
+            of Enterprise Java Beans.</p>
+            <ul>
+                <li>Led design teams whose satisfied clients consistently hired Cooper for additional work&#151;a total of two team-year&#146;s worth of follow-on projects.</li>
+                <li>Used personas, scenarios, ethnographic interviews and other elements of the 
+                Goal-Directed methodology to design products that please their users.</li>
+                <li>Conducted in-depth customer research and analysis of varied technical domains, including diabetes treatment, securities trading, and enterprise storage resource management.</li>
+                <li>Designed a storage management application for <a href="https://www.softek.fujitsu.com" target="_blank">Fujitsu Softek</a> that won the 
+                <a href="https://www.softek.fujitsu.com/en/press/20030108-001.html"><i>Storage Management Product of the Year</i></a> award.</li>
+                <li>Developed an intranet-based knowledge management tool that enabled the design and sales 
+                departments to better leverage the studio&#146;s intellectual property.</li>
+                <li>Wrote extensions to Macromedia Fireworks that helped Cooper designers create interface 
+                sketches more efficiently. Also trained and supported the staff in the use of Fireworks.</li>
+            </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/msi-1.html" onMouseOver="status='Moonstone Interactive'; return true" onMouseOut="status=''; return true"><img src="images/msi-envelope-circle-r.gif" title="Click for work samples" border="0" width="53" height="53" class="PortfolioThumbnail"></a></td>
+
+        <td width="70%" valign="top">
+            <p class="VerticalSpace"><span class="Company"><a href="../portfolio/msi-1.html" title="Click for work samples" onMouseOver="status='Moonstone Interactive'; return true" onMouseOut="status=''; return true">Moonstone 
+            Interactive</a> : </span><span class="JobTitle">Interaction Design Consultant</span><br>
+            <span class="WorkDate">August 1998 &#150; May 1999</span><br>
+
+            Designed a digital camera application for Agfa that ships with all of 
+            its cameras. Employed usage scenarios and user interviews to design an 
+            application that would make it easy for consumers to download, organize 
+            and edit their images.</p>
+                <ul>
+                    <li>Developed a detailed prototype for usability testing and for demonstrating 
+                    the application&#146;s design.</li>
+                    <li>Designed and conducted a usability test to investigate the software&#146;s 
+                    ease-of-use.</li>
+
+                    <li>Maintained a website of screen designs and prototypes to communicate 
+                    with a team of clients and developers who were distributed over two 
+                    continents and several time-zones.</li>
+<!--
+                    <li>Wrote and maintained a detailed design specifications document.</li>
+                    <li>Managed graphic design contractors.</li>
+-->
+                </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/mf-1.html" title="Click for work samples" onMouseOver="status='mFactory'; return true" onMouseOut="status=''; return true"><img src="images/mf-screen-circle-r.gif" border="0" width="53" height="53" class="PortfolioThumbnail"></a></td>
+        <td width="70%"> 
+            
+      <p class="VerticalSpace"><span class="Company"><a href="../portfolio/mf-1.html" title="Click for work samples" onMouseOver="status='mFactory'; return true" onMouseOut="status=''; return true">mFactory</a> : </span><span class="JobTitle"> 
+        User Interface Designer</span><br>
+                <span class="WorkDate">April 1996 &#150; March 1998</span><br>
+          Worked on the interface design for mTropolis, an award-winning, 
+          object-oriented multimedia authoring tool. Collaborated with 
+          marketing and engineering teams to define the feature set of 
+          new versions of mTropolis.</p>
+                <ul>
+                    <li>Wrote and maintained detailed design specifications for each 
+              feature.</li>
+                    <li>Held participatory design sessions and site visits with users.</li>
+<!--                    <li>Answered user questions on the mTropolis mailing list.</li> -->
+                    <li>Designed and implemented plug-in tools and libraries of reusable 
+                        components for release with version 2.0.</li>
+                    <li>Edited and wrote portions of the mTropolis documentation. </li>
+                </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/apple-1.html" title="Click for work samples" onMouseOver="status='Apple'; return true" onMouseOut="status=''; return true"><img src="images/apple-sneak3view-circle-r.gif" border="0" width="53" height="53" class="PortfolioThumbnail"></a></td>
+        <td width="70%">
+            
+      <p class="VerticalSpace"><span class="Company"><a href="../portfolio/apple-1.html" title="Click for work samples" onMouseOver="status='Apple'; return true" onMouseOut="status=''; return true">Apple 
+        Computer</a> : </span><span class="JobTitle"> Software Engineer</span><br>
+                <span class="WorkDate">June 1995 &#150; April 1996</span><br>
+          In the 3D Acceleration and Entertainment Group, wrote tools 
+          to simplify the testing and development 
+          of 3D graphics acceleration cards for the Macintosh.  Also 
+          implemented portions of the user interface for QuickDraw 3D 1.1.</p>
+<!--
+                <div class="DetailList"><ul>
+                    <li>Provided developer support for QuickDraw 3D RAVE.</li>
+                    <li>Administered a mailing list for 3D hardware developers.</li>
+                </ul></div>
+-->
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/do-1.html" title="Click for work samples" onMouseOver="status='Digital Objectives'; return true" onMouseOut="status=''; return true"><img src="images/do-siren-circle-r.gif" border="0" width="53" height="53" class="PortfolioThumbnail"></a></td>
+        <td width="70%">
+            
+      <p class="VerticalSpace"><span class="Company"><a href="../portfolio/do-1.html" title="Click for work samples" onMouseOver="status='Digital Objectives'; return true" onMouseOut="status=''; return true">Digital 
+        Objectives</a> : </span><span class="JobTitle"> Software Engineer</span><br>
+                <span class="WorkDate">November 1993 &#150; June 1995</span><br>
+                Became first in-house programmer for Digital Objectives, a PDA software 
+                startup. Developed prototype and proof-of-concept software on the Newton 
+                platform.</p>
+<!--
+                <div class="DetailList"><ul>
+            <li>Worked closely with potential clients to devise systems 
+              to meet their needs.</li>
+            <li>Designed (and redesigned) the user interface for several 
+              projects, based on feedback from user testing.</li>
+            
+                    <li> Helped create products for medical personnel, such as EMS teams 
+                        and intensive care nurses.</li>
+                </ul></div>
+-->
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+        <td width="70%">
+            <p class="VerticalSpace"><span class="Company">Foundation for Student Communication : </span><span class="JobTitle"> Art Director</span><br>
+                <span class="WorkDate">September 1990 &#150; September 1992</span><br>
+          Created the position of art director at FSC, a student 
+          organization which publishes a national magazine and holds 
+          annual conferences attracting 700 students, executives and 
+          political leaders from around the world.</p>
+                <div class="DetailList"><ul>
+            
+                    <li>Completely redesigned Business Today magazine&#146;s layout.</li>
+            
+                    <li>Produced logos, cover illustrations, graphs and charts.</li>
+            <li>Redesigned and produced the post-conference booklets, 
+              which are used as promotional materials during the summer 
+              fund-raising drive.</li>
+                </ul></div>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+        <td width="70%">
+            <p class="VerticalSpace"><span class="Company">Foundation for Student Communication : </span><span class="JobTitle"> Production Manager</span><br>
+                <span class="WorkDate">December 1989 &#150; June 1992</span><br>
+                Responsible for the on-time production of Business Today, the nation&#146;s 
+                largest entirely student-run magazine with a $600,000 budget and a readership 
+                of over 500,000.</p>
+<!--
+                <div class="DetailList"><ul>
+            <li>Worked under strict deadlines and tight budget constraints.</li>
+            <li>Oversaw quality control during print runs on-site at 
+              World Color Press in Illinois.</li>
+                </ul></div>
+-->
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+<!--
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+        <td width="70%">
+            <p class="VerticalSpace"><span class="Company">Apple Computer : </span><span class="JobTitle"> Software Engineer</span><br>
+                <span class="WorkDate">Summer 1992</span><br>
+          Worked in the Electronic Media Group, which publishes and 
+          distributes information to developers through on-line 
+          services and a monthly CD-ROM. EMG also creates electronic 
+          versions of paper documents that can be read and searched 
+          on-line.</p>
+                <div class="DetailList"><ul>
+            <li>Wrote a tool using MPW that tags Microsoft Word documents 
+              with table of contents information, which is used in the 
+              conversion to the on-line format.</li>
+            <li>Created technical and user documentation to support the 
+              application.</li>
+                </ul></div>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top">&nbsp;</td>
+        <td width="70%">
+            <p class="VerticalSpace"><span class="Company">Midi : </span><span class="JobTitle"> Multimedia Developer</span><br>
+                <span class="WorkDate">Summer 1991</span><br>
+          Developed multimedia training software for DuPont and 
+          General Electric. Designed illustrations, diagrams, text 
+          screens and interfaces.</p>
+                <div class="DetailList"><ul>
+            <li>Used MS-DOS multimedia authoring and graphics software.</li>
+            <li>Worked with laserdisc and CD-ROM technology.</li>
+                </ul></div>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+-->
+    <tr>
+        <td width="20%" valign="top" align="right">
+            <p><span class="Company">&nbsp;</span><span class="ResumeSection">.edu</span><br>&nbsp;
+            <span class="WorkDate">&nbsp;</span></p>
+        </td>
+        <td width="70%" valign="top" rowspan=2>
+            <p><span class="Company">Princeton University:</span><span class="ResumeSection">&nbsp;</span><span class="Company">Major &#150; Computer Science. Minor &#150; Linguistics.</span><br>
+                <span class="WorkDate" style="line-height: 24px">1989 &#150; 1992, 1994 &#150; 1995</span></p>
+            <blockquote>
+                <p><span class="Company">Computer Science Independent Work<br>
+                        Senior Thesis</span> <span class="WorkDate"><br>
+                        September 1994 &#150; June 1995</span><br>
+                Developed an easy-to-use Hypertext Markup Language editor 
+                for the Macintosh, incorporating drag-and-drop creation of 
+                URLs and WYSIWYG editing.</p>
+            </blockquote>
+         
+            <blockquote>
+                <p><span class="Company">First Semester Project</span> <span class="WorkDate"><br>
+                    September 1991 &#150; January 1992</span><br>
+                    Created a program capable of automatically generating kerning pairs 
+                    for PostScript fonts. The algorithm worked by calculating and then adjusting 
+                    the area enclosed by pairs of letterforms rendered on-screen by the 
+                    NeWS PostScript interpreter on an Iris.</p>
+            </blockquote>
+        <td width="10%" rowspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/vp-1.html" title="Click for work samples" onMouseOver="status='VoxelPaint'; return true" onMouseOut="status=''; return true"><img src="images/vp-logs-circle-r.gif" border="0" width="53" height="53"></a></td>
+        <td>
+            <blockquote>
+                
+        <p><span class="Company"><a href="../portfolio/vp-1.html" onMouseOver="status='VoxelPaint'; return true" onMouseOut="status=''; return true">Second Semester 
+          Project</a></span> <span class="WorkDate"><br>
+          February 1992 &#150; June 1992</span><br>
+                    Wrote a voxel-based, 3D modeling system. Users could drag a &#147;paintbrush&#148; 
+                    through three-dimensional space to sketch freehand, or they could draw 
+                    polygonal lines and then convert them to voxels.</p>
+            </blockquote>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" align="right" valign="top"><a href="../portfolio/vis-1.html" title="Click for work samples" onMouseOver="status='VIS 315'; return true" onMouseOut="status=''; return true"><img src="images/vis-windows-circle-r.gif" border="0" width="53" height="53"></a></td>
+        <td>
+            <blockquote>
+             
+        <p><span class="Company"><a href="../portfolio/vis-1.html" title="Click for work samples" onMouseOver="status='VIS 315'; return true" onMouseOut="status=''; return true">Computers and 
+          Art Class</a></span> <span class="WorkDate"><br>
+          September 1992 &#150; January 1993</span><br>
+                    Created a detailed model of a gallery with Alias modeling software. 
+                    Produced several stereoscopic views of the room and output them to slides. 
+                    Then installed 3D viewers containing the slides in the actual room so 
+                    that when people looked through the viewers, they saw the room transformed 
+                    in various ways.</p>
+            </blockquote>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="10%">&nbsp;</td>
+        <td>
+      <p class="VerticalSpace"><span class="Company">Rhode Island School of Design</span> 
+                <span class="WorkDate"><br>
+                Summer 1990</span><br>
+                Refined and expanded layout and design skills in two classes: Publications 
+                Design and Typography.</p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top" align="right">
+            <p><span class="Company">&nbsp;</span><span class="ResumeSection">.net</span></p>
+        </td>
+        <td width="70%" valign="top">
+            <p><span class="Company">Computer Skills</span><span class="ResumeSection">&nbsp;</span></p>
+                
+      <ul>
+        <li>Languages: JavaScript, HTML, CSS, Python, PHP, ActionScript, 
+          C, C++, and some C#.</li>
+        <li>Graphics Software: Fireworks, Photoshop, Illustrator, and Flash.</li>
+<!--        <li>Operating Systems: Windows, MacOS and Unix.</li> -->
+      </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top" align="right">
+            <p><span class="Company">&nbsp;</span><span class="ResumeSection">.org</span></p>
+        </td>
+        <td width="70%" valign="top">
+            <p><span class="Company">Conferences</span><span class="ResumeSection">&nbsp;</span></p>
+                
+      <ul>
+        <li>CHI 2004, Vienna, Austria</li>
+        <li>JavaOne 2001, San Francisco, CA</li>
+        <li>VB Live! 2001, San Francisco, CA</li>
+        <li>CHI 2001, Seattle, WA</li>
+        <li>User Interface Science and Technology '98, San Francisco, CA</li>
+        <li>CHI '98, Los Angeles, CA</li>
+        <li>User Interface Science and Technology '97, Banff, Alberta</li>
+        <li>User Interface Science and Technology '96, Seattle, WA</li>
+        <li>SIGGRAPH '96, New Orleans, LA</li>
+        <li>CHI '96, Vancouver, British Columbia</li>
+        <li>SIGGRAPH '95, Los Angeles, CA</li>
+      </ul>
+
+            <p><span class="Company">Organizations</span></p>
+                <ul>
+                    <li>SIGCHI</li>
+                    <li>BayCHI</li>
+                    <li>Association for Software Development</li>
+                     <li>Association for Computing Machinery</li>
+                </ul>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top" align="right">
+            <p><span class="Company">&nbsp;</span><span class="ResumeSection">.doc</span></p>
+        </td>
+        <td width="70%" valign="top">
+            <p><a class="Company" style="font-size: x-small;" href="John%20Dunning%20Resume.doc" target="_blank">R&eacute;sum&eacute; in Microsoft Word format.</a><span class="ResumeSection"> </span></p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top" align="right">
+            <p><span class="Company">&nbsp;</span><span class="ResumeSection">.txt</span></p>
+        </td>
+        <td width="70%" valign="top">
+            <p><a class="Company" style="font-size: x-small;" href="John%20Dunning%20Resume.txt" target="_blank">R&eacute;sum&eacute; in text format.</a><span class="ResumeSection"> </span></p>
+        </td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="20%" valign="top" align="right">&nbsp;</td>
+        <td width="70%" valign="top"><img src="../images/spacer.gif" width="26" height="26"></td>
+        <td width="10%">&nbsp;</td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "https://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3380390-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+
+</html>

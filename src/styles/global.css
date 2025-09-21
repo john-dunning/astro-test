@@ -36,7 +36,7 @@ body > .content {
 		grid-template-areas:
 			"site-name header"
 			"main main";
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: auto 1fr;
 	}
 }
 

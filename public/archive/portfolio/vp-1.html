@@ -1,0 +1,94 @@
+<html><!-- #BeginTemplate "/Templates/PortfolioPage.dwt" -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>VoxelPaint</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+<link rel="stylesheet" type="text/css" href="../core.css">
+
+
+<script language="JavaScript1.2">
+<!-- 
+
+	// force us into the standard frames document if we're not already within it
+if (top == self) {
+	location.href = "../core-frames.html?" + escape(document.title) + "," +
+			location.href.substr(location.href.lastIndexOf("/") + 1);
+}
+
+	// link in browser-specific stylesheet
+document.writeln("<link rel='stylesheet' type='text/css' href='../core-" + (top.gNN ? "nn" : "ie") + ".css'>");
+
+//-->
+</script>
+
+</head>
+<body bgcolor="#FFFFFF">
+<!-- #BeginEditable "gTitle" --> 
+<script language="JavaScript1.2">
+<!-- 
+
+var gTitle = "VoxelPaint";
+
+//-->
+</script>
+<!-- #EndEditable --> 
+<table width="90%" align="center" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td><img src="../images/spacer.gif" width=26 height=1></td>
+		<td width="45%"><img src="../images/spacer.gif" width=200 height=1></td>
+		<td width="26"><img src="../images/spacer.gif" width="26" height="26"></td>
+		<td width="45%">&nbsp;</td>
+		<td><img src="../images/spacer.gif" width=26 height=1></td>
+	</tr>
+	<tr> 
+		<td>&nbsp;</td>
+		<td valign="middle"><!-- #BeginEditable "CompanyName" --> 
+			<div class="PortfolioCompany" align="right">VoxelPaint</div>
+			<!-- #EndEditable --></td>
+		<td width="26"><img src="../images/grey-dot-26.gif" width="26" height="26"></td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr valign="top"> 
+		<td>&nbsp;</td>
+		<td><!-- #BeginEditable "Description" --> 
+			
+      <p class="InitialPara"> During a semester-long computer science project 
+        I created what was essentially a three-dimensional bitmap paint program. 
+        But instead of drawing with 2D pixels, the program uses 3D voxels. </p>
+			<p class="BodyPara">The most difficult part of the project was finding a 
+				way to map the two-dimensional motion of the mouse into three-dimensional 
+				motion inside the drawing space. </p>
+			<p class="BodyPara">I did this by displaying a 3D crosshair when the user 
+				clicks inside the &#147;canvas&#148; (although it is not shown in this 
+				screen shot). If the mouse pointer traces along one of the cross-hair 
+				axes, that axis remains stationary while the other two move along it. 
+				In this way, the 2D mouse movements are constrained to movement along 
+				a single 3D axis. </p>
+			<!-- #EndEditable --></td>
+		<td width=26>&nbsp;</td>
+		<td><!-- #BeginEditable "Image" --><img src="images/vp-logs-50.jpg" width="409" height="421"><br>
+			<!-- #BeginLibraryItem "/Library/PortfolioPageController.lbi" -->
+<img src="../images/spacer.gif" width="26" height="26"><br>
+<table>
+	<tr align="center" valign="middle"> 
+<script language="JavaScript1.2">
+<!-- 
+	if (top.PageController_Write) {
+		top.PageController_Write(document, gTitle);
+	}
+//-->
+</script>
+	</tr>
+</table>
+<!-- #EndLibraryItem --> <!-- #EndEditable --></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<p>&nbsp;</p>
+</body>
+<!-- #EndTemplate --></html>

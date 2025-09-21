@@ -1,0 +1,8 @@
+UL { margin-top: -1em }
+
+.ResumeSection { margin-top: 8px; font-size: 24px; font-weight: bold }
+
+.MyName { font-size: 20px; font-weight: bold; line-height: 22px;
+		font-family: "trebuchet ms", trebuchet, helvetica, arial, sans-serif }
+
+.PortfolioCircle { z-index: 100 }

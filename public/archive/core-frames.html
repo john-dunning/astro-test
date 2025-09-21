@@ -1,0 +1,253 @@
+<html>
+<head>
+
+<title>John Dunning</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script language="JavaScript1.2">
+<!--
+
+    // determine browser vendor and version
+var gVer4 = parseInt(navigator.appVersion) >= 4;
+var gVer5 = ((parseInt(navigator.appVersion) >= 5) || 
+        (parseInt(navigator.appVersion.slice(navigator.appVersion.indexOf("MSIE ") + 5)) >= 5));
+var gVer55 = parseFloat(navigator.appVersion.slice(navigator.appVersion.indexOf("MSIE ") + 5)) >= 5.5;
+var gNN = (navigator.appName == "Netscape");
+var gIE = (navigator.userAgent.indexOf("MSIE") != -1);
+var gNN4 = ((navigator.appName == "Netscape") && gVer4);
+var gNN6 = ((navigator.appName == "Netscape") && gVer5);
+var gIE4 = ((navigator.userAgent.indexOf("MSIE") != -1) && gVer4);
+var gIE5 = ((navigator.userAgent.indexOf("MSIE") != -1) && gVer5);
+var gIE55 = ((navigator.userAgent.indexOf("MSIE") != -1) && gVer55);
+var gMac = (navigator.userAgent.indexOf("Mac") != -1);
+
+    // setup the list of pages and urls
+var gPagesByTitle = new Array;
+gPagesByTitle.count = 0;
+
+function Page(
+    inURL, 
+    inTitle, 
+    inSubPageCount, 
+    inParentFolder,
+    inBaseName,
+    inLoadAsTop)
+{
+        // initialize properties
+    this.url = inURL;
+    this.title = inTitle || "";
+    this.subPageCount = inSubPageCount || 0;
+    this.loadAsTop = inLoadAsTop || false;
+    this.index = gPagesByTitle.count++;
+    this.parentFolder = inParentFolder;
+    this.baseName = inBaseName;
+
+        // add a reference to this page, indexed by its title, in gPageTitles so we can look it up 
+        // via its title as well as its numeric index 
+    gPagesByTitle[this.title] = this;
+}
+
+var gPages = new Array(
+    new Page("index.html", "Home", 0, "", "", true),
+    new Page("resume/index.html", "Resume"),
+    new Page("portfolio/index.html", "Portfolio"),
+    new Page("portfolio/cid-1.html", "Cooper", 3, "portfolio", "cid"),
+    new Page("portfolio/msi-1.html", "Moonstone Interactive", 4, "portfolio", "msi"),
+    new Page("portfolio/mf-1.html", "mFactory", 3, "portfolio", "mf"),
+    new Page("portfolio/apple-1.html", "Apple Computer", 1, "portfolio", "apple"),
+    new Page("portfolio/do-1.html", "Digital Objectives", 9, "portfolio", "do"),
+    new Page("portfolio/vp-1.html", "VoxelPaint", 1, "portfolio", "vp"),
+    new Page("portfolio/vis-1.html", "VIS 315", 4, "portfolio", "vis")
+);
+
+function GotoPage(inPageRef)
+{
+    var page = null;
+//alert(inPageRef);
+
+    if (typeof inPageRef == "string") {
+        page = gPagesByTitle[inPageRef];
+    } else {
+        if (inPageRef < gPages.length && inPageRef >= 0) {
+            page = gPages[inPageRef];
+        }
+    }
+
+    if (page) {
+        if (gIE4) {
+            top.NavBar.NextPage.title = (page.index + 1 < gPages.length) ? gPages[page.index + 1].title : "";
+            top.NavBar.PreviousPage.title = (page.index - 1 >= 0) ? gPages[page.index - 1].title : "";
+        }
+
+        if (page.loadAsTop) {    
+            top.location.href = page.url;
+        } else {
+                // append the page's url to our own, minus our filename
+            Content.location.href = location.href.substr(0, location.href.lastIndexOf("/") + 1) + page.url;
+        }
+    }
+}
+
+function GotoSubPage(
+    inDirection)
+{
+    var currentContentURL = Content.location.pathname;
+    var currentSubPageIndex = parseInt(currentContentURL.charAt(currentContentURL.length - 6));
+    var currentPageTitle = Content.document.title;
+    var currentPage = gPagesByTitle[currentPageTitle];
+
+    if (isNaN(currentSubPageIndex)) {
+        top.GotoPage(currentPage.index + inDirection);
+    } else {
+        var onFirstSubPage = (currentSubPageIndex == 1);
+        var onLastSubPage = (currentSubPageIndex >= gPagesByTitle[currentPageTitle].subPageCount);
+
+        if (onFirstSubPage && inDirection == -1) {
+            var previousPageIndex = currentPage.index - 1;
+
+            if (previousPageIndex >= 0) {
+                var previousPage = gPages[previousPageIndex];
+
+                if (previousPage.subPageCount >= 1) {
+                    Content.location.href = previousPage.parentFolder + "/" + 
+                            previousPage.baseName + "-" + previousPage.subPageCount + ".html";
+
+                    if (gIE4) {
+                        top.NavBar.NextPage.title = currentPageTitle;
+                        top.NavBar.PreviousPage.title = (currentPage.index - 2 < gPages.length) ? gPages[currentPage.index - 2].title : "";
+                    }
+                } else {
+                    top.GotoPage(previousPageIndex);
+                }
+            }
+        } else if (onLastSubPage && inDirection == 1) {
+            var nextPageIndex = currentPage.index + 1;
+
+            if (nextPageIndex < gPages.length) {
+                Content.location.href = gPages[nextPageIndex].url;
+
+                if (gIE4) {
+                    top.NavBar.NextPage.title = (currentPage.index + 2 < gPages.length) ? gPages[currentPage.index + 2].title : "";
+                    top.NavBar.PreviousPage.title = currentPageTitle;
+                }
+            }
+        } else {
+            Content.location.href = currentPage.parentFolder + "/" + 
+                    currentPage.baseName + "-" + (currentSubPageIndex + inDirection) + ".html";
+        }
+    }
+}
+
+
+function PageController_Write(inDocument, inTitle)
+{
+    if (gPagesByTitle[inTitle].subPageCount > 1) {
+        var currentPageNumber = parseInt(inDocument.location.pathname.charAt(inDocument.location.pathname.length - 6));
+        var onFirstPage = (currentPageNumber == 1);
+        var onLastPage = (currentPageNumber == gPagesByTitle[inTitle].subPageCount);
+
+        var nextPageURL = gPagesByTitle[inTitle].url.split("/")[1];
+        nextPageURL = nextPageURL.substring(0, nextPageURL.indexOf("-") + 1) + (currentPageNumber + 1) + ".html";
+
+        var previousPageURL = gPagesByTitle[inTitle].url.split("/")[1];
+        previousPageURL = previousPageURL.substring(0, previousPageURL.indexOf("-") + 1) + (currentPageNumber - 1) + ".html";
+
+        inDocument.write("<td width=14 align='center' title='Previous Page' " + 
+                (onFirstPage ? "" : "onclick='location.href=\"" + previousPageURL + "\"'") + 
+                (onFirstPage ? "" : "onmouseover='this.style.backgroundColor=\"#CCCCCC\"; this.children[0].style.color=\"#999999\"'") + 
+                (onFirstPage ? "" : "onmouseout='this.style.backgroundColor=\"white\"; this.children[0].style.color=\"black\"'"));
+    //            (onFirstPage ? "" : "onmouseout='this.style.backgroundColor=\"white\"; this.children[0].children[0].style.color=\"black\"'") + ">");
+        inDocument.write(" class='PortfolioArrow" + (onFirstPage ? "Disabled" : "") + "'>");
+    //    inDocument.write("<span class='PortfolioArrow" + (onFirstPage ? "Disabled" : "") + "'>");
+        inDocument.write(onFirstPage ? "" : ("<a href='" + previousPageURL + "' onMouseOver='status=\"Previous Page\"; return true'>"));
+        inDocument.writeln("&lt;" + (onFirstPage ? "" : "</a>") + "</td>\n");
+    //    inDocument.writeln("&lt;" + (onFirstPage ? "" : "</a>") + "</span></td>\n");
+
+        inDocument.write("<td width=14 align='center' title='Next Page' " + 
+                (onLastPage ? "" : "onclick='location.href=\"" + nextPageURL + "\"'") + 
+                (onLastPage ? "" : "onmouseover='this.style.backgroundColor=\"#CCCCCC\"; this.children[0].style.color=\"#999999\"'") + 
+                (onLastPage ? "" : "onmouseout='this.style.backgroundColor=\"white\"; this.children[0].style.color=\"black\"'"));
+    //            (onLastPage ? "" : "onmouseout='this.style.backgroundColor=\"white\"; this.children[0].children[0].style.color=\"black\"'") + ">");
+        inDocument.write(" class='PortfolioArrow" + (onLastPage ? "Disabled" : "") + "'>");
+    //    inDocument.write("<span class='PortfolioArrow" + (onLastPage ? "Disabled" : "") + "'>");
+        inDocument.write(onLastPage ? "" : ("<a href='" + nextPageURL + "' onMouseOver='status=\"Next Page\"; return true'>"));
+        inDocument.writeln("&gt;" + (onLastPage ? "" : "</a>") + "</td>\n");
+    //    inDocument.writeln("&gt;" + (onLastPage ? "" : "</a>") + "</span></td>\n");
+        
+        for (var i = 1; i <= gPagesByTitle[inTitle].subPageCount; i++) {
+                // the urls have the form aaa-X.html, so we're on the current page if "X" == i
+            var onCurrentPage = (inDocument.location.pathname.charAt(inDocument.location.pathname.length - 6) == String(i));
+            var subPageURL = gPagesByTitle[inTitle].url;
+            subPageURL = subPageURL.substring(subPageURL.indexOf("/") + 1);
+            subPageURL = subPageURL.substring(0, subPageURL.indexOf("-") + 1) + String(i) + ".html";
+
+            inDocument.write("<td width=14 align='center' style='cursor: hand;' " + (onCurrentPage ? "bgcolor='#000000'" : "") + 
+                    (onCurrentPage ? "" : "onclick='location.href=\"" + subPageURL + "\"'") + 
+                    (onCurrentPage ? "" : "onmouseover='this.style.backgroundColor=\"#CCCCCC\"; this.children[0].children[0].style.color=\"#999999\"'") + 
+                    (onCurrentPage ? "" : "onmouseout='this.style.backgroundColor=\"white\"; this.children[0].children[0].style.color=\"black\"'") + ">");
+            inDocument.write("<span class='PortfolioNumber" + (onCurrentPage ? "Current" : "") + "'>");
+            inDocument.write(onCurrentPage ? "" : ("<a href='" + subPageURL + "' onMouseOver='status=\"" + 
+                inTitle + "  " + i + "\"; return true'>"));
+            inDocument.writeln(i + (onCurrentPage ? "" : "</a>") + "</span></td>\n");
+        }
+    }
+}
+
+function ReloadWindow()
+{
+    if (gNN) {
+        Content.location.reload();
+        NavBar.location.reload();
+    }
+}
+
+function RedirectPage()
+{
+    if (frames["Content"]) {
+        if (location.search != "") {
+                // a page was loaded outside of the frameset and passed some info to us in 
+                // the search part of the url, so switch the Content frame to the original page
+            var searchString = unescape(location.search.substr(1));
+            var originalPageTitle = searchString.split(",")[0];
+
+            if (gPagesByTitle[originalPageTitle]) {
+                var originalURL = gPagesByTitle[originalPageTitle].url;
+
+                if (gPagesByTitle[originalPageTitle].subPageCount > 0) {
+                        // the original page may have been one of the subpages like do-1.html, so replace the filename
+                        // in the page's url with the one passed in the search string
+                    originalURL = originalURL.substr(0, originalURL.lastIndexOf("/") + 1) + 
+                            searchString.split(",")[1];
+                }
+
+                    // go back to the original page
+                Content.location.href = originalURL;
+            }
+        }
+    } else {
+            // the frameset hasn't been created yet, so try again in .1 seconds
+        setTimeout("RedirectPage()", 100);
+    }
+}
+
+    // hack to execute code after the frameset has been defined
+setTimeout("RedirectPage()", 100);
+
+//-->
+</script>
+
+</head>
+
+<frameset rows="*,26" border=0 frameborder=0 framespacing=0 onResize="ReloadWindow()">
+    <frame name="Content" src="resume/index.html" marginwidth="0" marginheight="0">
+    <frame name="NavBar" src="navbar.html" scrolling="no" marginwidth="0" marginheight="0">
+</frameset>
+
+<noframes>
+<body bgcolor="#FFFFFF">
+
+</body>
+</noframes>
+
+</html>

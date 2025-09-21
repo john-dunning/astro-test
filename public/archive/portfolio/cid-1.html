@@ -1,0 +1,105 @@
+<html><!-- #BeginTemplate "/Templates/PortfolioPage.dwt" -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Cooper</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link rel="stylesheet" type="text/css" href="../core.css">
+
+<script language="JavaScript1.2">
+<!-- 
+
+	// force us into the standard frames document if we're not already within it
+if (top == self) {
+	location.href = "../core-frames.html?" + escape(document.title) + "," +
+			location.href.substr(location.href.lastIndexOf("/") + 1);
+}
+
+	// link in browser-specific stylesheet
+document.writeln("<link rel='stylesheet' type='text/css' href='../core-" + (top.gNN ? "nn" : "ie") + ".css'>");
+
+//-->
+</script>
+
+</head>
+<body bgcolor="#FFFFFF">
+<!-- #BeginEditable "gTitle" --> 
+<script language="JavaScript1.2">
+<!-- 
+
+var gTitle = "Cooper";
+
+//-->
+</script>
+<!-- #EndEditable --> 
+<table width="90%" align="center" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td><img src="../images/spacer.gif" width=26 height=1></td>
+		<td width="45%"><img src="../images/spacer.gif" width=200 height=1></td>
+		<td width="26"><img src="../images/spacer.gif" width="26" height="26"></td>
+		<td width="45%">&nbsp;</td>
+		<td><img src="../images/spacer.gif" width=26 height=1></td>
+	</tr>
+	<tr> 
+		<td>&nbsp;</td>
+		<td valign="middle"><!-- #BeginEditable "CompanyName" --><div class="PortfolioCompany" align="right">Cooper</div><!-- #EndEditable --></td>
+		<td width="26"><img src="../images/grey-dot-26.gif" width="26" height="26"></td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr valign="top"> 
+		<td>&nbsp;</td>
+		<td><!-- #BeginEditable "Description" -->
+
+		<p class="InitialPara">The goal of the first project I led at <a href="http://www.cooper.com" target="_blank">Cooper</a> was to design a new trading application for a large online brokerage. After my teammate and I delivered the initial design, the very satisfied client extended our project and hired two additional Cooper teams to work on other products. </p>
+
+		<p class="BodyPara">With the new application, the brokerage wanted to better serve their most lucrative customers&#151;affluent, active investors who traded at least 100 times a year and who had at least $100,000 in their accounts. After interviewing customers and thoroughly researching the domain, it became clear that what these active investors needed was not more data and faster trades but more information and better tools for managing their complex accounts and tax liabilities.</p>
+
+		<p class="BodyPara">One objective of our subsequent design work was to condense the many sources of information consulted by the investors into just a handful of screens. We also wanted to leverage the client&#146;s knowledge of their customers&#146; past trades and current account balances in order to contextualize the information displayed by the application.</p>
+
+		<p class="BodyPara">The screenshot to the right shows the Securities tab, where investors could track in rich detail the realtime behavior of stocks on their watchlists.</p>
+
+		<p class="BodyPara">Instead of displaying long columns of undifferentiated numbers, the application design offered a visual representation of the data, helping investors quickly see outliers and trends in the data.</p>
+
+		<p class="BodyPara">In order to help both the client and the design team better visualize how this dynamic interface would behave, I built a working prototype using HTML, JavaScript and PHP. As it was just a prototype, it works only in IE 5+ on Windows.  If you are using that browser, you can launch the prototype to see the interface update with real&#151;albeit 20-minute delayed&#151;stock market data.</p>
+
+			<!-- #EndEditable --></td>
+		<td width=26>&nbsp;</td>
+		<td><!-- #BeginEditable "Image" --> 
+			<p><img id="BrokerageScreenshot" src="images/cid-brokerage-app.gif" width="512" height="384"></p>
+<div id="PrototypeLauncher" style="display: none;">
+	<button id="PrototypeLauncherButton" title="Launch the HTML prototype of this application" style="width: 140px; height: 23px; padding: 0px 0px 2px 0px; font-family: tahoma, verdana, sans-serif; font-size: 11px;" onclick='window.open("brokerage-prototype/brokerage-prototype.html", "Prototype", "width=1031,height=749,location=no,status=no,menubar=no,toolbar=no")'>Launch HTML Prototype</button>
+</div>
+<script language="JavaScript1.2">
+<!--
+if (top.gIE5) {
+	document.all.PrototypeLauncher.style.display = "block";
+	document.all.BrokerageScreenshot.style.cursor = "hand";
+	document.all.BrokerageScreenshot.title = document.all.PrototypeLauncherButton.title;
+	document.all.BrokerageScreenshot.onclick = document.all.PrototypeLauncherButton.onclick;
+}
+//-->
+</script>
+				<!-- #BeginLibraryItem "/Library/PortfolioPageController.lbi" -->
+<img src="../images/spacer.gif" width="26" height="26"><br>
+<table>
+	<tr align="center" valign="middle"> 
+<script language="JavaScript1.2">
+<!-- 
+	if (top.PageController_Write) {
+		top.PageController_Write(document, gTitle);
+	}
+//-->
+</script>
+	</tr>
+</table>
+<!-- #EndLibraryItem --><p></p>
+			<!-- #EndEditable --></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<p>&nbsp;</p>
+</body>
+<!-- #EndTemplate --></html>
