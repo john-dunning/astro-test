@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-	base: "astro-test",
+	base: "/astro-test/",
 	compressHTML: false,
 	markdown: {
 		remarkPlugins: [

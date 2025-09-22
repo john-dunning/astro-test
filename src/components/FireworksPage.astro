@@ -1,0 +1,161 @@
+---
+import { Image } from "astro:assets";
+import FireworksLayout from "@/layouts/FireworksLayout.astro";
+import PackageContents from "@/components/PackageContents.astro";
+import CommandsNavList from "@/components/CommandsNavList.astro";
+import { getIncImage } from "@/utils/getIncImage";
+import DisqusComments from "@/components/DisqusComments.astro";
+
+interface Props {
+	name: string;
+	slug: string;
+	files?: string[];
+}
+
+const { name, slug, files } = Astro.props;
+const disqusID = files?.length
+	? `fireworks/about/${slug}`
+	: slug;
+const imageData = !!slug && await getIncImage(`${slug}.png`);
+---
+
+<FireworksLayout title={name}>
+	<article>
+		<h1 class="command-name">{name}</h1>
+
+		{imageData &&
+			<Image class="inc-image" src={imageData} alt="Screenshot" />
+		}
+
+		<slot />
+	</article>
+
+	<PackageContents files={files} />
+
+	<CommandsNavList slot="sidebar" />
+
+	<DisqusComments
+		title={name}
+		id={disqusID}
+	/>
+</FireworksLayout>
+
+<style lang="scss">
+	h1.command-name {
+		font-size: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	em {
+		font-style: italic;
+	}
+
+	.inc-image {
+		margin-bottom: 3rem;
+		object-fit: contain;
+		display: block;
+	}
+
+	article {
+		container-type: inline-size;
+
+		:global(h2) {
+			font-size: 1.5rem;
+			margin: 3rem 0 0.75rem 0;
+		}
+
+		:global(h3) {
+			font-size: 1.25rem;
+			margin: 1.5rem 0 0.5rem 0;
+		}
+
+		:global(blockquote) {
+			margin: 1em 0 1em 2.5em;
+			font-size: inherit;
+		}
+
+		:global(p) {
+			overflow: auto;
+		}
+
+		:global(ol) {
+			margin-left: var(--spacing-lg);
+			margin-bottom: 1em;
+		}
+
+		:global(ol li) {
+			list-style: decimal outside;
+		}
+
+		:global(table) {
+			margin: 1em 0;
+		}
+
+		:global(td) {
+			vertical-align: top;
+			padding: 0 1em .5em 0;
+		}
+
+		:global(dl) {
+			padding-left: var(--spacing-lg);
+			margin: 1em 0;
+		}
+
+		:global(dt) {
+			font-weight: bold;
+			color: var(--text-color-secondary)
+		}
+
+		:global(dd) {
+			margin: 0 0 1em 0;
+		}
+
+		:global(p code), :global(dd code) {
+			font-weight: normal;
+			color: #333;
+		}
+
+		:global(pre) {
+			color: #1c1d1f !important;
+			background-color: #f3f3f3 !important;
+			border-left: 3px solid #ccc;
+			line-height: 1.3;
+			padding: 1em 1em 1em 2em;
+			margin: 1em 0 1em 2.5em;
+		}
+
+		:global(pre code) {
+			line-height: 1.2;
+			font-size: .85rem;
+			tab-size: 4;
+		}
+
+		:global(section.footnotes) {
+			padding-inline-start: var(--spacing-lg);
+			margin: 5rem 0;
+			color: #333;
+			font-size: smaller;
+		}
+
+		:global(section.footnotes ol) {
+			padding-left: 0;
+			margin: 0;
+		}
+
+		@container (min-width: 0) {
+			:global(img) {
+				display: block;
+				max-width: 100%;
+				max-height: 100cqw;
+				height: auto;
+				object-fit: contain;
+				object-position: left;
+				margin: var(--spacing-sm) 0;
+			}
+		}
+	}
+</style>

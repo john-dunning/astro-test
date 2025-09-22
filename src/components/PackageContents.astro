@@ -9,16 +9,18 @@ const AllowedFilesPattern = /\.(jsf|swf)$/;
 
 const { files } = Astro.props;
 const names = files
-	.filter(path => AllowedFilesPattern.test(path))
+	?.filter(path => AllowedFilesPattern.test(path))
 	.map(path => path.split("/").pop().replace(/\.[^.]+$/, ""));
 const uniqueNames = [...new Set(names)].sort(Intl.Collator().compare);
 ---
 
-<h2>Package contents</h2>
+{files?.length > 0 &&
+	<h2>Package contents</h2>
 
-<ul role="list">
-	{uniqueNames.map((name) => <li>{name}</li>)}
-</ul>
+	<ul role="list">
+		{uniqueNames.map((name) => <li>{name}</li>)}
+	</ul>
+}
 
 <style>
 	h2 {

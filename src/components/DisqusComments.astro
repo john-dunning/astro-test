@@ -2,21 +2,22 @@
 interface Props {
 	title: string;
 	id: string;
+	url?: string;
 }
 
-const { title, id } = Astro.props;
+const { title, id, url } = Astro.props;
 	// pass these values into the script below as a `vars` variable.  using define:vars
 	// will wrap the script in an IIFE, so we don't need one around the code that
 	// creates the disqus script element.
 const vars = {
-	url: `${id}.html`,
+	url: url ?? `${id}.html`,
 	identifier: `/${id}`,
 	title
 };
 ---
 
 <div id="disqus_thread"></div>
-<script define:vars={{ vars }}>
+<script is:inline define:vars={{ vars }}>
 	window.disqus_config = function() { Object.assign(this.page, vars); };
 	const d = document, s = d.createElement("script");
 	s.src = "//johndunning.disqus.com/embed.js";

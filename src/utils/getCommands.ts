@@ -1,4 +1,7 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type CommandEntry = CollectionEntry<"commands">;
+type Sorter = (a: CommandEntry, b: CommandEntry) => number;
 
 const SortFunctions = {
 	alphabetical(a, b)
@@ -17,7 +20,7 @@ const SortFunctions = {
 				? 1
 				: 0;
 	},
-} as const;
+} satisfies Record<string, Sorter>;
 
 export async function getCommands(
 	sort: keyof typeof SortFunctions = "alphabetical")
