@@ -14,6 +14,7 @@ const Highlights = [
 
 const commands = await getCommands()
 const highlights = Highlights.map((highlightName) => commands.find(({ data: { name } }) => name === highlightName));
+// use set:html below so that HTML entities are not escaped, like in the SVG command
 ---
 
 <Section
@@ -31,9 +32,8 @@ const highlights = Highlights.map((highlightName) => commands.find(({ data: { na
 			title={name}
 			href={base(`/fireworks/about/${slug}`)}
 			addMore={true}
-		>
-			{summary}
-		</SectionItem>
+			set:html={summary}
+		/>
 	))}
 
 	<li>
