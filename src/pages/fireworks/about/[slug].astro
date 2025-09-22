@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import FireworksPage from "@/components/FireworksPage.astro";
+import FireworksPage from "@/layouts/FireworksPage.astro";
+import FireworksArticle from "@/components/FireworksArticle.astro";
+import PackageContents from "@/components/PackageContents.astro";
+import { getIncImage } from "@/utils/getIncImage";
 
 export async function getStaticPaths()
 {
@@ -18,12 +21,19 @@ export async function getStaticPaths()
 
 const { entry: { render, slug, data: { name, files } } } = Astro.props;
 const { Content } = await render();
+const imageData = !!slug && await getIncImage(`${slug}.png`);
 ---
 
 <FireworksPage
-	name={name}
-	slug={slug}
-	files={files}
+	title={name}
+	disqusID={`fireworks/about/${slug}`}
 >
-	<Content />
+	<FireworksArticle
+		title={name}
+		heroImage={imageData}
+	>
+		<Content />
+	</FireworksArticle>
+
+	<PackageContents files={files} />
 </FireworksPage>

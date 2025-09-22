@@ -1,5 +1,6 @@
 ---
-import FireworksPage from "@/components/FireworksPage.astro";
+import FireworksPage from "@/layouts/FireworksPage.astro";
+import FireworksArticle from "@/components/FireworksArticle.astro";
 import { getCommands } from "@/utils/getCommands";
 import { base } from "@/utils/urls";
 
@@ -22,6 +23,7 @@ const Requested = [
 	"TweetFire",
 ];
 
+const title = "Requests";
 const commands = await getCommands();
 const items = Requested
 	.map((name) => commands.find((c) => c.data.name === name))
@@ -29,24 +31,26 @@ const items = Requested
 ---
 
 <FireworksPage
-    name="Requests"
-    slug="fireworks/requests"
+	title={title}
+	disqusID="fireworks/requests"
 >
-	<p>Have you ever wished Fireworks worked differently or had a new feature?
-		Well, I take requests (sometimes). A number of the commands available for
-		download here were suggested or inspired by Fireworks users,
-		including:</p>
+	<FireworksArticle title={title}>
+		<p>Have you ever wished Fireworks worked differently or had a new feature?
+			Well, I take requests (sometimes). A number of the commands available for
+			download here were suggested or inspired by Fireworks users,
+			including:</p>
 
-	<ul>
-		{items.map(({ slug, data: { name }}) =>
-			<li>
-				<a href={base(`/fireworks/about/${slug}`)}>{name}</a>
-			</li>
-		)}
-	</ul>
+		<ul>
+			{items.map(({ slug, data: { name } }) =>
+				<li>
+					<a href={base(`/fireworks/about/${slug}`)}>{name}</a>
+				</li>
+			)}
+		</ul>
 
-	<p>So leave a comment below and let me know what new functionality you'd
-		like to see in Fireworks. The time I have to work on Fireworks extensions
-		waxes and wanes, so I can't promise when or if I'd ever get to a
-		particular request. But feel free to ask away!</p>
+		<p>So leave a comment below and let me know what new functionality you'd
+			like to see in Fireworks. The time I have to work on Fireworks extensions
+			waxes and wanes, so I can't promise when or if I'd ever get to a
+			particular request. But feel free to ask away!</p>
+	</FireworksArticle>
 </FireworksPage>

@@ -1,60 +1,32 @@
 ---
 import { Image } from "astro:assets";
-import FireworksLayout from "@/layouts/FireworksLayout.astro";
-import PackageContents from "@/components/PackageContents.astro";
-import CommandsNavList from "@/components/CommandsNavList.astro";
-import { getIncImage } from "@/utils/getIncImage";
-import DisqusComments from "@/components/DisqusComments.astro";
+import type { ImageMetadata } from "astro";
 
 interface Props {
-	name: string;
-	slug: string;
-	files?: string[];
+	title: string;
+	heroImage?: ImageMetadata;
 }
 
-const { name, slug, files } = Astro.props;
-const disqusID = files?.length
-	? `fireworks/about/${slug}`
-	: slug;
-const imageData = !!slug && await getIncImage(`${slug}.png`);
+const { title, heroImage } = Astro.props;
 ---
 
-<FireworksLayout title={name}>
-	<article>
-		<h1 class="command-name">{name}</h1>
+<article>
+	<h1>{title}</h1>
 
-		{imageData &&
-			<Image class="inc-image" src={imageData} alt="Screenshot" />
-		}
+	{heroImage &&
+		<Image class="hero-image" src={heroImage} alt="Screenshot" />
+	}
 
-		<slot />
-	</article>
-
-	<PackageContents files={files} />
-
-	<CommandsNavList slot="sidebar" />
-
-	<DisqusComments
-		title={name}
-		id={disqusID}
-	/>
-</FireworksLayout>
+	<slot />
+</article>
 
 <style lang="scss">
-	h1.command-name {
+	h1:first-of-type {
 		font-size: 2rem;
 		margin-bottom: 3rem;
 	}
 
-	strong {
-		font-weight: bold;
-	}
-
-	em {
-		font-style: italic;
-	}
-
-	.inc-image {
+	.hero-image {
 		margin-bottom: 3rem;
 		object-fit: contain;
 		display: block;
@@ -114,12 +86,12 @@ const imageData = !!slug && await getIncImage(`${slug}.png`);
 			margin: 0 0 1em 0;
 		}
 
-		:global(p code), :global(dd code) {
+		:global(p code, dd code) {
 			font-weight: normal;
 			color: #333;
 		}
 
-		:global(pre) {
+		:global(pre, blockquote:not(:has(img))) {
 			color: #1c1d1f !important;
 			background-color: #f3f3f3 !important;
 			border-left: 3px solid #ccc;

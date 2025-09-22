@@ -1,0 +1,16 @@
+---
+import FireworksPage from "@/layouts/FireworksPage.astro";
+import FireworksArticle from "@/components/FireworksArticle.astro";
+import Colophon, { frontmatter } from "@/content/colophon.md";
+
+const { title } = frontmatter;
+---
+
+<FireworksPage
+	title={title}
+	disqusID="fireworks/colophon"
+>
+	<FireworksArticle title={title}>
+		<Colophon />
+	</FireworksArticle>
+</FireworksPage>
