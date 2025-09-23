@@ -22,6 +22,8 @@ concurrency:
 
 env:
   BUILD_PATH: "." # default value when not using subfolders
+  GDRIVE_DL_FOLDER: ${{ secrets.GDRIVE_DL_FOLDER }}
+  GDRIVE_API_KEY: ${{ secrets.GDRIVE_API_KEY }}
 
 jobs:
   build:
