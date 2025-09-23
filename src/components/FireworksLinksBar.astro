@@ -1,0 +1,46 @@
+---
+interface Props {
+	downloadHref?: string;
+	version?: string;
+	date?: string;
+}
+
+const {
+	downloadHref,
+	version,
+	date,
+} = Astro.props satisfies Props;
+
+const downloadLabel = version
+	? `Download ${version}.mxp`
+	: "Download";
+---
+
+<div class="links">
+	{downloadHref && (
+		<span>
+			<a href={downloadHref}>{downloadLabel}</a>
+			{date && <time>{date}</time>}
+		</span>
+	)}
+	<a href="#disqus_thread">Comment</a>
+</div>
+
+<style lang="scss">
+	.links {
+		margin-bottom: 3rem;
+		display: flex;
+		justify-content: space-between;
+
+		a {
+			font-weight: bold;
+		}
+
+		time {
+			color: var(--text-color-secondary);
+			font-weight: normal;
+			display: inline-block;
+			margin-left: 1rem;
+		}
+	}
+</style>

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import FireworksCommandLayout from "@/layouts/FireworksCommandLayout.astro";
 import FireworksArticle from "@/components/FireworksArticle.astro";
+import FireworksLinksBar from "@/components/FireworksLinksBar.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import { getIncImage } from "@/utils/getIncImage";
 import { getMxpLinks } from "@/utils/getMxpLinks.ts";
@@ -35,34 +36,13 @@ const downloadLink = mxpLinks.get(fileVersion);
 		title={name}
 		heroImage={imageData}
 	>
-		<div class="links">
-			<span>
-				<a href={downloadLink}>Download {version}.mxp</a>
-				<time>{date}</time>
-			</span>
-			<a href="#disqus_thread">Comment</a>
-		</div>
+		<FireworksLinksBar
+			downloadHref={downloadLink}
+			version={version}
+			date={date}
+		/>
 		<Content />
 	</FireworksArticle>
 
 	<PackageContents files={files} />
 </FireworksCommandLayout>
-
-<style lang="scss">
-	.links {
-	  margin-bottom: 3rem;
-		display: flex;
-		justify-content: space-between;
-
-		a {
-		  font-weight: bold;
-	  }
-
-		time {
-			color: var(--text-color-secondary);
-			font-weight: normal;
-			display: inline-block;
-			margin-left: 1rem;
-		}
-  }
-</style>
