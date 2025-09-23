@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import FireworksPage from "@/layouts/FireworksPage.astro";
+import FireworksCommandLayout from "@/layouts/FireworksCommandLayout.astro";
 import FireworksArticle from "@/components/FireworksArticle.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import { getIncImage } from "@/utils/getIncImage";
@@ -24,7 +24,7 @@ const { Content } = await render();
 const imageData = !!slug && await getIncImage(`${slug}.png`);
 ---
 
-<FireworksPage
+<FireworksCommandLayout
 	title={name}
 	disqusID={`fireworks/about/${slug}`}
 >
@@ -36,4 +36,4 @@ const imageData = !!slug && await getIncImage(`${slug}.png`);
 	</FireworksArticle>
 
 	<PackageContents files={files} />
-</FireworksPage>
+</FireworksCommandLayout>

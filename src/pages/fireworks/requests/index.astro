@@ -1,5 +1,5 @@
 ---
-import FireworksPage from "@/layouts/FireworksPage.astro";
+import FireworksCommandLayout from "@/layouts/FireworksCommandLayout.astro";
 import FireworksArticle from "@/components/FireworksArticle.astro";
 import { getCommands } from "@/utils/getCommands";
 import { base } from "@/utils/urls";
@@ -30,7 +30,7 @@ const items = Requested
 	.filter(Boolean);
 ---
 
-<FireworksPage
+<FireworksCommandLayout
 	title={title}
 	disqusID="fireworks/requests"
 >
@@ -53,4 +53,4 @@ const items = Requested
 			waxes and wanes, so I can't promise when or if I'd ever get to a
 			particular request. But feel free to ask away!</p>
 	</FireworksArticle>
-</FireworksPage>
+</FireworksCommandLayout>
