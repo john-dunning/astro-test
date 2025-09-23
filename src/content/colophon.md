@@ -2,7 +2,7 @@
 title: Colophon
 ---
 
-> **Note:** This is how the site used to be built, using good ol' php.  It's now generated statically with Astro and hosted on GitHub Pages.  The pages for Fireworks commands are still generated from the original `.mxi` files, though.
+> **Note:** This is how the site *used* to be built, using good ol' php.  It's now generated statically with Astro and hosted on GitHub Pages.  The pages for Fireworks commands are still generated from the original `.mxi` files, though.
 
 The Fireworks section of my site is dynamically generated using just a few custom php templates.  When I first started distributing Fireworks extensions years ago, I simply listed them all on a single, static page.  I had to hand-edit the HTML whenever I wanted to post something new.  This was obviously somewhat inconvenient, so it often took me awhile to get around to updating the site.  
 

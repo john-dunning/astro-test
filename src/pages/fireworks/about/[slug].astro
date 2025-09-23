@@ -4,6 +4,7 @@ import FireworksCommandLayout from "@/layouts/FireworksCommandLayout.astro";
 import FireworksArticle from "@/components/FireworksArticle.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import { getIncImage } from "@/utils/getIncImage";
+import { getMxpLinks } from "@/utils/getMxpLinks.ts";
 
 export async function getStaticPaths()
 {
@@ -19,9 +20,11 @@ export async function getStaticPaths()
 	}));
 }
 
-const { entry: { render, slug, data: { name, files } } } = Astro.props;
+const { entry: { render, slug, data: { name, files, fileVersion, version, date } } } = Astro.props;
 const { Content } = await render();
 const imageData = !!slug && await getIncImage(`${slug}.png`);
+const mxpLinks = await getMxpLinks();
+const downloadLink = mxpLinks.get(fileVersion);
 ---
 
 <FireworksCommandLayout
@@ -32,8 +35,34 @@ const imageData = !!slug && await getIncImage(`${slug}.png`);
 		title={name}
 		heroImage={imageData}
 	>
+		<div class="links">
+			<span>
+				<a href={downloadLink}>Download {version}.mxp</a>
+				<time>{date}</time>
+			</span>
+			<a href="#disqus_thread">Comment</a>
+		</div>
 		<Content />
 	</FireworksArticle>
 
 	<PackageContents files={files} />
 </FireworksCommandLayout>
+
+<style lang="scss">
+	.links {
+	  margin-bottom: 3rem;
+		display: flex;
+		justify-content: space-between;
+
+		a {
+		  font-weight: bold;
+	  }
+
+		time {
+			color: var(--text-color-secondary);
+			font-weight: normal;
+			display: inline-block;
+			margin-left: 1rem;
+		}
+  }
+</style>
