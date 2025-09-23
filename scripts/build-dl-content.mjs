@@ -86,6 +86,7 @@ Object.entries(pathsByName).forEach(([slug, mxiPath]) => {
 
 	const keyValues = {
 		slug,
+		fileVersion: path.basename(mxiPath, ".mxi"),
 		...metadata,
 		summary,
 		files: filePaths

@@ -3,11 +3,13 @@ import FireworksLayout from "@/layouts/FireworksLayout.astro";
 import ParaWithMore from "@/components/ParaWithMore.astro";
 import { getCommands } from "@/utils/getCommands";
 import { base } from "@/utils/urls";
+import { getMxpLinks } from "@/utils/getMxpLinks.ts";
 
 const link = (slug: string) => base(`/fireworks/about/${slug}`);
 
 	// sort the commands in descending date order
 const commands = await getCommands("dateDescending");
+const mxpLinks = await getMxpLinks();
 ---
 
 <FireworksLayout>
@@ -27,11 +29,14 @@ const commands = await getCommands("dateDescending");
 	</p>
 
 	<ul role="list">
-		{commands.map(({ slug, data: { name, summary, date } }) => (
+		{commands.map(({ slug, data: { name, summary, date, fileVersion, version } }) => (
 			<li>
 				<h2>
 					<a href={link(slug)}>{name}</a>
-					<time>{date}</time>
+					<span>
+						<a href={mxpLinks.get(fileVersion)}>Download {version}</a>
+						<time>{date}</time>
+					</span>
 				</h2>
 				<ParaWithMore href={link(slug)}>
 					{/* the summaries may contain a <br> tag, so set the innerHTML directly
@@ -58,12 +63,16 @@ const commands = await getCommands("dateDescending");
 			justify-content: space-between;
 			align-items: center;
 			display: flex;
-		}
 
-		time {
-			color: var(--text-color-secondary);
-			font-size: .8rem;
-			font-weight: normal;
+			& > span {
+				font-size: .8rem;
+
+				time {
+					color: var(--text-color-secondary);
+					font-weight: normal;
+					margin-left: .5rem;
+				}
+			}
 		}
 	}
 </style>
