@@ -2,19 +2,26 @@ import { GoogleDriveAPI } from "./GoogleDriveAPI.ts";
 
 const baseName = (name: string) => name.replace(/\.mxp$/, "");
 
-const credentials = JSON.parse(import.meta.env.GDRIVE_API_KEY);
-const folderID = import.meta.env.GDRIVE_DL_FOLDER;
-
-let drive = new GoogleDriveAPI({ credentials });
 let linkMap: Map<string, string>;
 
 export async function getMxpLinks()
 {
-	if (!folderID) {
-		throw new Error("GDRIVE_DL_FOLDER not set");
-	}
-
 	if (!linkMap) {
+		const folderID = import.meta.env.GDRIVE_DL_FOLDER;
+
+		if (!folderID) {
+			throw new Error("GDRIVE_DL_FOLDER not set");
+		}
+
+		let credentials: object;
+
+		try {
+			credentials = JSON.parse(import.meta.env.GDRIVE_API_KEY);
+		} catch (e) {
+			throw new Error("GDRIVE_API_KEY is not a valid JSON object", { cause: e });
+		}
+
+		const drive = new GoogleDriveAPI({ credentials });
 		const files = await drive.getFiles({
 			folders: [folderID],
 			fields: ["id", "name", "webContentLink"]
