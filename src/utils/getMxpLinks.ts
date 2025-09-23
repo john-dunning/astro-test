@@ -18,7 +18,7 @@ export async function getMxpLinks()
 		try {
 			credentials = JSON.parse(import.meta.env.GDRIVE_API_KEY);
 		} catch (e) {
-			throw new Error("GDRIVE_API_KEY is not a valid JSON object", { cause: e });
+			throw new Error("GDRIVE_API_KEY is not set or is not a valid JSON object", { cause: e });
 		}
 
 		const drive = new GoogleDriveAPI({ credentials });
