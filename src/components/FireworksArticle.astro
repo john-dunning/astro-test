@@ -14,22 +14,25 @@ const { title, heroImage } = Astro.props;
 	<h1>{title}</h1>
 
 	{heroImage &&
-		<Image class="hero-image" src={heroImage} alt="Screenshot" />
+		<Image class="hero-image" src={heroImage} alt="" />
 	}
 
 	<slot />
 </article>
 
+<style is:global>
+	/* make the hero-image class more specific than the img selector below */
+	article img.hero-image {
+		margin-bottom: 3rem;
+		object-fit: contain;
+		display: block;
+	}
+</style>
+
 <style lang="scss">
 	h1:first-of-type {
 		font-size: 2rem;
 		margin-bottom: 3rem;
-	}
-
-	.hero-image {
-		margin-bottom: 3rem;
-		object-fit: contain;
-		display: block;
 	}
 
 	article {

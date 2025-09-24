@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import FireworksCommandLayout from "@/layouts/FireworksCommandLayout.astro";
 import FireworksArticle from "@/components/FireworksArticle.astro";
@@ -32,15 +33,17 @@ const downloadLink = mxpLinks.get(fileVersion);
 	title={name}
 	disqusID={`fireworks/about/${slug}`}
 >
-	<FireworksArticle
-		title={name}
-		heroImage={imageData}
-	>
+	<FireworksArticle title={name}>
 		<FireworksLinksBar
 			downloadHref={downloadLink}
 			version={version}
 			date={date}
 		/>
+
+		{imageData &&
+			<Image class="hero-image" src={imageData} alt="Screenshot" />
+		}
+
 		<Content />
 	</FireworksArticle>
 
