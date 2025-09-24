@@ -7,6 +7,7 @@ import FireworksLinksBar from "@/components/FireworksLinksBar.astro";
 import PackageContents from "@/components/PackageContents.astro";
 import { getIncImage } from "@/utils/getIncImage";
 import { getMxpLinks } from "@/utils/getMxpLinks.ts";
+import type { MetadataProp } from "@/components/Metadata.astro";
 
 export async function getStaticPaths()
 {
@@ -22,16 +23,30 @@ export async function getStaticPaths()
 	}));
 }
 
-const { entry: { render, slug, data: { name, files, fileVersion, version, date } } } = Astro.props;
+const {
+	entry: {
+		render,
+		slug,
+		data: { name, files, fileVersion, version, date, summary }
+	}
+} = Astro.props;
 const { Content } = await render();
 const imageData = !!slug && await getIncImage(`${slug}.png`);
 const mxpLinks = await getMxpLinks();
 const downloadLink = mxpLinks.get(fileVersion);
+const meta: MetadataProp = {
+	description: summary
+};
+
+if (imageData) {
+	meta.image = String(new URL(imageData.src, Astro.site ?? Astro.url))
+}
 ---
 
 <FireworksCommandLayout
 	title={name}
 	disqusID={`fireworks/about/${slug}`}
+	meta={meta}
 >
 	<FireworksArticle title={name}>
 		<FireworksLinksBar

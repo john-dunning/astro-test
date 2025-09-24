@@ -61,10 +61,6 @@ h2 {
 	margin: 1rem 0 0.25rem 0;
 }
 
-ul, ol {
-	padding-left: var(--spacing-lg);
-}
-
 p {
 	margin-bottom: var(--spacing-sm)
 }
@@ -103,13 +99,23 @@ blockquote {
 	font-size: smaller;
 }
 
-ol {
-	margin-left: var(--spacing-lg);
+ol, ul {
+	margin-left: 1.5em;
 	margin-bottom: 1em;
+	padding-inline-start: 1.5em;
 }
 
 ol li {
 	list-style: decimal outside;
+}
+
+li > ul {
+	margin: .25em 0 0 0;
+}
+
+li::marker {
+	color: var(--text-color-secondary);
+	font-weight: bold;
 }
 
 sup {

@@ -1,16 +1,27 @@
 ---
 import "../styles/reset.css";
 import "../styles/global.css";
+import Metadata, { type MetadataProp } from "@/components/Metadata.astro";
 import { base } from "@/utils/urls.ts";
 
 interface Props {
 	title?: string;
+	meta?: MetadataProp;
 }
 
-const { title } = Astro.props;
+const { title, meta: propMeta } = Astro.props;
 const pageTitle = title
 	? `${title} - johndunning.com`
 	: "John Dunning";
+const defaultMeta: MetadataProp = {
+	title: pageTitle,
+	description: "John Dunning's home on the information superhighway.",
+	url: Astro.url.href,
+};
+const meta = {
+	...defaultMeta,
+	...propMeta
+};
 ---
 
 <!doctype html>
@@ -18,11 +29,12 @@ const pageTitle = title
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="description" content="Astro description">
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<link rel="icon" href={base("/favicon.ico")} type="image/x-icon">
 	<link rel="shortcut icon" href={base("/favicon.ico")} type="image/x-icon">
+
+	<Metadata meta={meta} />
 
 	<title>{pageTitle}</title>
 </head>

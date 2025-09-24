@@ -2,16 +2,21 @@
 import FireworksLayout from "@/layouts/FireworksLayout.astro";
 import CommandsNavList from "@/components/CommandsNavList.astro";
 import DisqusComments from "@/components/DisqusComments.astro";
+import type { MetadataProp } from "@/components/Metadata.astro";
 
 interface Props {
 	title: string;
 	disqusID?: string;
+	meta?: MetadataProp;
 }
 
-const { title, disqusID } = Astro.props;
+const { title, disqusID, meta } = Astro.props;
 ---
 
-<FireworksLayout title={title}>
+<FireworksLayout
+	title={title}
+	meta={meta}
+>
 	<slot />
 
 	<CommandsNavList slot="sidebar" />

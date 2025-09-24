@@ -340,8 +340,7 @@ size<br>
 <br>
 title<br>
   : A string that's shown at the top part of the Flex `Panel`, below the dialog title bar.  Unfortunately, there's no way to change the actual title bar at runtime, so it'll always show the name of the SWF file that's loaded, such as "Dialog [300x250]".<br>
-<br>
-  However, it is possible to rename the SWF to the name of your command.  For instance, if you wanted a 300x250 dialog, you could rename the `Dialog [300x250].swf` file inside `lib/fwlib/dialog-swfs` to `My Dialog.swf`.  Then pass `"My Dialog"` as the title string.  In that case, "My Dialog" would appear as the actual title of the dialog, and that would also appear as the title of the Flex panel.  The next option can change the Flex panel's string in that scenario. <br>
+  : However, it is possible to rename the SWF to the name of your command.  For instance, if you wanted a 300x250 dialog, you could rename the `Dialog [300x250].swf` file inside `lib/fwlib/dialog-swfs` to `My Dialog.swf`.  Then pass `"My Dialog"` as the title string.  In that case, "My Dialog" would appear as the actual title of the dialog, and that would also appear as the title of the Flex panel.  The next option can change the Flex panel's string in that scenario. <br>
 <br>
 subtitle<br>
   : A string that is shown at the top of the Flex `Panel` element when the `title` string matches the name of the SWF.  In the example above, you might specify `"Choose an option below"` as the `subtitle` string.  <br>
