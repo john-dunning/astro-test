@@ -30,3 +30,13 @@ export function ogMetaTag(
 		content: value
 	});
 }
+
+export function twitterMetaTag(
+	key: string,
+	value: string | number | URL)
+{
+	return tag("meta", {
+		property: "twitter:" + key,
+		content: value
+	});
+}

@@ -2,7 +2,7 @@ import type { ImageMetadata } from "astro";
 
 	// this Vite import method requires that its parameter be a literal string,
 	// not even one assembled from other literals
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/inc/*.{jpeg,jpg,png,gif}");
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/inc/*.{jpeg,jpg,png,gif,webp}");
 
 export async function getIncImage(
 	filename: string = ""): Promise<ImageMetadata | null>

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "preview": "astro preview",
+    "preview": "astro preview --host",
     "prebuild": "npm run build:dl",
     "build": "astro build",
     "build:dl": "node scripts/build-dl-content.mjs",

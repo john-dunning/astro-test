@@ -1,5 +1,16 @@
 ---
-import { metaTag, ogMetaTag } from "@/utils/meta";
+import { metaTag, ogMetaTag, twitterMetaTag } from "@/utils/meta";
+
+function createTags(
+	data: MetadataProp,
+	generator: (key: keyof typeof data, value: typeof data[typeof key]) => string,
+	allowList: string[])
+{
+	return Object.entries(data)
+		.filter(([key, value]) => allowList.includes(key) && value)
+		.map(([key, value]) => generator(key, value))
+		.join("\n\t") + "\n";
+}
 
 export type MetadataProp = Record<string, string | number>;
 
@@ -7,30 +18,48 @@ interface Props {
 	meta: MetadataProp;
 }
 
-const { meta: {
-	title,
-	url,
-	image,
-	...meta }
-} = Astro.props;
+const BaseKeys = [
+	"description"
+];
+const OGKeys = [
+	"title",
+	"description",
+	"url",
+	"image",
+	"image:width",
+	"image:height",
+	"type",
+];
+const TwitterKeys = [
+	"title",
+	"description",
+	"url",
+	"image",
+	"domain",
+	"card",
+];
 
-const tags = Object.entries(meta)
-	.map(([key, value]) => metaTag(key, value))
-	.join("\n\t\t");
-const ogTags = Object.entries({
-	title,
-	url,
-	// make sure the image metadata is an absolute URL, not just a relative path,
-	// and only include the key if it's truthy, so we don't include an `undefined`
-	// og:image tag
+const domain = new URL(Astro.site).hostname.split(".").slice(-2).join(".");
+const { meta } = Astro.props;
+const { meta: { url, image } } = Astro.props;
+const ogData = {
+	...meta,
+		// make sure the image metadata is an absolute URL, not just a relative path,
 	image: image && new URL(image as string, import.meta.env.SITE),
-	...meta
-})
-	.map(([key, value]) => value ? ogMetaTag(key, value) : null)
-	.filter(Boolean)
-	.join("\n\t\t");
+};
+const twitterData = {
+	domain,
+	card: image ? "summary_large_image" : "summary",
+	...meta,
+	image: image && new URL(image as string, import.meta.env.SITE),
+};
+
+const tags = createTags(meta, metaTag, BaseKeys);
+const ogTags = createTags(ogData, ogMetaTag, OGKeys);
+const twitterTags = createTags(twitterData, twitterMetaTag, TwitterKeys);
 ---
 
 <link rel="canonical" href={String(url)} />
-		<Fragment set:html={tags} />
-		<Fragment set:html={ogTags} />
+	<Fragment set:html={tags} />
+	<Fragment set:html={ogTags} />
+	<Fragment set:html={twitterTags} />

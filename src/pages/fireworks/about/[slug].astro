@@ -40,6 +40,8 @@ const meta: MetadataProp = {
 
 if (imageData) {
 	meta.image = String(new URL(imageData.src, Astro.site ?? Astro.url))
+	meta["image:width"] = imageData.width;
+	meta["image:height"] = imageData.height;
 }
 ---
 

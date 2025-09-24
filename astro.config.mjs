@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
+	site: "https://www.johndunning.com",
 	base: "/astro-test/",
 	compressHTML: false,
 	markdown: {
@@ -27,7 +28,13 @@ export default defineConfig({
 				]
 			},
 			allowedHosts: [
-					// allow a Cloudflare tunnel to access the server
+					// allow a Cloudflare tunnel to access the dev server
+				".trycloudflare.com"
+			],
+		},
+		preview: {
+			allowedHosts: [
+					// allow a Cloudflare tunnel to access the preview server
 				".trycloudflare.com"
 			]
 		}

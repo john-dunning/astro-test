@@ -4,15 +4,27 @@ import ParaWithMore from "@/components/ParaWithMore.astro";
 import { getCommands } from "@/utils/getCommands";
 import { base } from "@/utils/urls";
 import { getMxpLinks } from "@/utils/getMxpLinks.ts";
+import { getIncImage } from "@/utils/getIncImage.ts";
+import type { MetadataProp } from "@/components/Metadata.astro";
 
 const link = (slug: string) => base(`/fireworks/about/${slug}`);
 
 	// sort the commands in descending date order
 const commands = await getCommands("dateDescending");
 const mxpLinks = await getMxpLinks();
+const meta: MetadataProp = {
+	description: "Download these free labor-saving extensions, commands and panels for Adobe Fireworks.",
+};
+const imageData = await getIncImage("fireworks-site.png");
+
+if (imageData) {
+	meta.image = String(new URL(imageData.src, Astro.site ?? Astro.url))
+	meta["image:width"] = imageData.width;
+	meta["image:height"] = imageData.height;
+}
 ---
 
-<FireworksLayout>
+<FireworksLayout meta={meta}>
 	<p>
 		These Adobe Fireworks extensions are mainly productivity tools. They won't
 		help you make better-looking pictures; rather, they'll help you use
