@@ -1,12 +1,14 @@
 type Attributes = Record<string, string | number | URL>;
 
+const DoubleQuotePattern = /"/g;
+
 function tag(
 	name: string,
 	attrs: Attributes = {})
 {
 	return `<${name} ${
 		Object.entries(attrs)
-			.map(([key, value]) => `${key}="${String(value)}"`)
+			.map(([key, value]) => `${key}="${String(value).replace(DoubleQuotePattern, "'")}"`)
 			.join(" ")
 	} />`;
 }

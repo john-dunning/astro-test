@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import type { MetadataProp } from "@/components/Metadata.astro";
+import { getIncImage } from "@/utils/getIncImage.ts";
 
 interface Props {
 	title?: string;
@@ -12,6 +13,16 @@ const { title, meta } = Astro.props;
 const pageTitle = title
 	? `${title} - ${sectionTitle}`
 	: sectionTitle;
+
+if (!meta.image) {
+	const imageData = await getIncImage("fireworks-site.png");
+
+	if (imageData) {
+		meta.image = String(new URL(imageData.src, Astro.site ?? Astro.url))
+		meta["image:width"] = imageData.width;
+		meta["image:height"] = imageData.height;
+	}
+}
 ---
 
 <Layout

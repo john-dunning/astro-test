@@ -2,6 +2,7 @@
 import "../styles/reset.css";
 import "../styles/global.css";
 import Metadata, { type MetadataProp } from "@/components/Metadata.astro";
+import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
 import { base } from "@/utils/urls.ts";
 
 interface Props {
@@ -35,10 +36,11 @@ const meta = {
 	<link rel="icon" href={base("/favicon.ico")} type="image/x-icon">
 	<link rel="shortcut icon" href={base("/favicon.ico")} type="image/x-icon">
 
-	<meta name="color-scheme" content="light dark" />
-	<Metadata meta={meta} />
-
+	<meta name="color-scheme" content="dark light" />
 	<title>{pageTitle}</title>
+
+	<Metadata meta={meta} />
+	<GoogleAnalytics />
 </head>
 
 <body>

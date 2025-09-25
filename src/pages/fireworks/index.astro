@@ -4,7 +4,6 @@ import ParaWithMore from "@/components/ParaWithMore.astro";
 import { getCommands } from "@/utils/getCommands";
 import { base } from "@/utils/urls";
 import { getMxpLinks } from "@/utils/getMxpLinks.ts";
-import { getIncImage } from "@/utils/getIncImage.ts";
 import type { MetadataProp } from "@/components/Metadata.astro";
 
 const link = (slug: string) => base(`/fireworks/about/${slug}`);
@@ -15,13 +14,6 @@ const mxpLinks = await getMxpLinks();
 const meta: MetadataProp = {
 	description: "Download these free labor-saving extensions, commands and panels for Adobe Fireworks.",
 };
-const imageData = await getIncImage("fireworks-site.png");
-
-if (imageData) {
-	meta.image = String(new URL(imageData.src, Astro.site ?? Astro.url))
-	meta["image:width"] = imageData.width;
-	meta["image:height"] = imageData.height;
-}
 ---
 
 <FireworksLayout meta={meta}>
