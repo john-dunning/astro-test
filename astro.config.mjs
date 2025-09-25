@@ -1,9 +1,11 @@
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
 	site: "https://www.johndunning.com",
 	base: "/",
 	compressHTML: false,
+
 	markdown: {
 		remarkPlugins: [
 			"remark-heading-id",
@@ -19,6 +21,11 @@ export default defineConfig({
 			]
 		}
 	},
+
+	integrations: [
+    sitemap()
+  ],
+
 	vite: {
 		server: {
 			watch: {
@@ -28,13 +35,13 @@ export default defineConfig({
 				]
 			},
 			allowedHosts: [
-					// allow a Cloudflare tunnel to access the dev server
+				// allow a Cloudflare tunnel to access the dev server
 				".trycloudflare.com"
 			],
 		},
 		preview: {
 			allowedHosts: [
-					// allow a Cloudflare tunnel to access the preview server
+				// allow a Cloudflare tunnel to access the preview server
 				".trycloudflare.com"
 			]
 		}
