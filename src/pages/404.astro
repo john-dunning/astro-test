@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const title = "404 - Page Not Found";
+---
+
+<Layout title={title}>
+	<h1>Sorry, the page you requested was not found.</h1>
+	<p>Start over from the <a href="/">home page</a>.</p>
+</Layout>
+
+<style>
+	p:first-of-type {
+		margin-top: var(--spacing-xl);
+	}
+
+	a {
+		color: var(--text-color-accent);
+	}
+</style>
