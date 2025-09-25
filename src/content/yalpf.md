@@ -17,9 +17,9 @@ So the solution I settled on was to strip down an old laptop, build it into a cu
 
 Actually, not anymore, sadly.  After they moved back to the States, my parents had the frame in their house in New Jersey, and this is what Hurricane Sandy did to it in 2012:
 
-![Sandy killed it](../../assets/yalpf/sm/sandy-aftermath.jpg)
+![Sandy killed it](../assets/yalpf/sm/sandy-aftermath.jpg)
 
-![That bitch](../../assets/yalpf/sm/sandy-aftermath-back.jpg)
+![That bitch](../assets/yalpf/sm/sandy-aftermath-back.jpg)
 
 Unfortunately, waterproofing was not one of the features I’d thought to add.  So no more LCD picture frame.
 
@@ -33,7 +33,7 @@ At first I thought I’d need to build the picture frame from individual compone
 As it happened, I had an eight-year-old old Dell Latitude CSx lying around unused. It wasn’t terribly useful as a laptop since its battery didn’t hold much of a charge, but the picture frame would be plugged in all the time, so power wouldn’t be an issue.
 
 
-![Image 008](../../assets/yalpf/sm/pf-008.jpg)
+![Image 008](../assets/yalpf/sm/pf-008.jpg)
 
 The laptop had a number of advantages for this project:
 
@@ -68,7 +68,7 @@ As well as some disadvantages:
 Still, the “free” part tipped the balance, and even with only 256MB of RAM and a 500Mhz P3, the laptop had sufficient horsepower to download photos and display them.
 
 
-![Image 276](../../assets/yalpf/sm/pf-276.jpg)
+![Image 276](../assets/yalpf/sm/pf-276.jpg)
 
 (Note that this picture was taken after the laptop was already installed in the frame.  To get into the BIOS, I had to reattach the original keyboard, which was flopping out the back of the frame.)
 
@@ -127,7 +127,7 @@ There wouldn’t be any pretty transitions because I didn’t want to stress the
 
 
 ## Using the on-screen interface
-![Photo info menu](../../assets/yalpf/sm/photo-info-menu.jpg)
+![Photo info menu](../assets/yalpf/sm/photo-info-menu.jpg)
 
 The on-screen UI and remote control support was some of the last functionality I added, but I’m not sure why I ever thought it might be unnecessary.  If you’re looking at a photo and want to pause for a moment, or skip over a boring photo, or delete an ugly one, it’s incredibly handy to quickly bring up a menu without having to fiddle with a mouse or keyboard.  It makes the frame feel like an appliance rather than a computer.
 
@@ -138,14 +138,14 @@ The first remote I tried was a cheapie Targus, because I wasn’t sure I was goi
 This is the remote I end up using:
 
 
-![Remote control](../../assets/yalpf/sm/remote-front.jpg)
+![Remote control](../assets/yalpf/sm/remote-front.jpg)
 
 It has 5 buttons, no laser, no off switch and apparently has pretty efficient battery usage.  In reality, though, it only has 4 useful buttons, since the ESC button, while it does send an esc key event, does so only after you hold it down for 3 seconds.  That makes sense in a PowerPoint preso (you don’t want to accidentally exit the presentation), but isn’t useful as a regular button.  I end up assigning it a shutdown function: when held down for 3 seconds, it’ll shut down the entire frame.
 
 I use the bottom button, which sends a “b” keycode (to switch to a blank frame in a preso), to bring up and dismiss the menus.  When the menu is visible, the left and right buttons (page up and page down keycodes) move horizontally through the menu options.  The middle button (an F5 keycode) selects the highlighted menu item, which may bring up a second level of menus or activate the highlighted command.  While a slideshow is active and the menu is not shown, the middle button does double-duty as a pause button.
 
 
-![Image 267](../../assets/yalpf/sm/pf-267.jpg)
+![Image 267](../assets/yalpf/sm/pf-267.jpg)
 
 The hierarchical menus are specified with a JavaScript object.  Each menu object can have a submenu, submenus can have submenus, and so on.  When an item that has a submenu is highlighted, the submenu items are displayed semi-transparently.  When it’s selected with the middle button on the remote, the submenu becomes fully visible and its first item is highlighted.  The user interface is pretty barebones, but it gets the job done.
 
@@ -164,57 +164,57 @@ So that pretty much does it for the software.  The next step was to put the lapt
 First things first.  Let’s peel off the little rubber bumpers around the edges of the lid and see what we’ll need to do to get the screen off.
 
 
-![Image 012](../../assets/yalpf/sm/pf-012.jpg)
+![Image 012](../assets/yalpf/sm/pf-012.jpg)
 
 
-![Image 013](../../assets/yalpf/sm/pf-013.jpg)
+![Image 013](../assets/yalpf/sm/pf-013.jpg)
 
 Just your basic Philips head screws.  Guess I won’t need that Torx screwdriver bit set I just got at Fry’s. :|
 
 Okay, that wasn’t too bad.  Next up are the screen hinges.  Pulling off a little plastic piece reveals the mic and the screws that attach the hinge to the base of the laptop.
 
 
-![Image 018](../../assets/yalpf/sm/pf-018.jpg)
+![Image 018](../assets/yalpf/sm/pf-018.jpg)
 
 Another plastic bit snaps off between hinges, revealing some LEDs and the screen power, display and keyboard connectors.
 
 
-![Image 020](../../assets/yalpf/sm/pf-020.jpg)
+![Image 020](../assets/yalpf/sm/pf-020.jpg)
 
 Removing a couple of screws releases the keyboard, which can then be unplugged from the motherboard.
 
 
-![Image 030](../../assets/yalpf/sm/pf-030.jpg)
+![Image 030](../assets/yalpf/sm/pf-030.jpg)
 
 I keep rough track of all those little screws, since so far I haven’t done anything irreversible to the laptop, and I might want to put it back together.
 
 
-![Image 035](../../assets/yalpf/sm/pf-035.jpg)
+![Image 035](../assets/yalpf/sm/pf-035.jpg)
 
 Here’s a close-up of the screen display data connector, to the left of the keyboard connector:
 
 
-![Image 021](../../assets/yalpf/sm/pf-021.jpg)
+![Image 021](../assets/yalpf/sm/pf-021.jpg)
 
 The screen data and power connectors will get a real work out over the next couple weeks as I disassemble and reassemble the components inside the frame several times.
 
 Once these cables are disconnected, it’s just a matter of removing the 4 screws that hold the hinges to the base, and the laptop is now successfully decapitated.
 
 
-![Image 052](../../assets/yalpf/sm/pf-052.jpg)
+![Image 052](../assets/yalpf/sm/pf-052.jpg)
 
 
-![Image 041](../../assets/yalpf/sm/pf-041.jpg)
+![Image 041](../assets/yalpf/sm/pf-041.jpg)
 
 The plastic frame that forms the top part of the laptop base has been unscrewed.  The speaker and mic cables are still connected in the top-right corner.
 
 
-![Image 046](../../assets/yalpf/sm/pf-046.jpg)
+![Image 046](../assets/yalpf/sm/pf-046.jpg)
 
 The laptop’s naked bottom:
 
 
-![Image 050](../../assets/yalpf/sm/pf-050.jpg)
+![Image 050](../assets/yalpf/sm/pf-050.jpg)
 
 
 ## Disaster strikes
@@ -222,17 +222,17 @@ The laptop’s naked bottom:
 Before I do any more damage, I reconnect the screen, put the WiFi card back in and power up the laptop to see if it still works.
 
 
-![Image 057](../../assets/yalpf/sm/pf-057.jpg)
+![Image 057](../assets/yalpf/sm/pf-057.jpg)
 
 Indeed it does.  The slideshow software runs fine.  I take a couple pictures for posterity, first without a flash...
 
 
-![Image 060](../../assets/yalpf/sm/pf-060.jpg)
+![Image 060](../assets/yalpf/sm/pf-060.jpg)
 
 ...and then one with...
 
 
-![Image 061](../../assets/yalpf/sm/pf-061.jpg)
+![Image 061](../assets/yalpf/sm/pf-061.jpg)
 
 ...which immediately causes the screen to turn milky white.  Holy crap, what did I do?  I really wish I’d taken a picture of the screen in its screwed up state, but I’m too busy cursing my stupidity, although who knew a camera flash could harm an LCD?  (I still haven’t been able to find any information online about such a phenomenon.)  The display is still running, since you can sort of see the colors shifting as the slideshow changes pictures, but it’s mostly a cloudy white.
 
@@ -241,7 +241,7 @@ I’m sure I’ve killed the screen, which would put a quick end to the project.
 Phew.  It still works!
 
 
-![Image 062](../../assets/yalpf/sm/pf-062.jpg)
+![Image 062](../assets/yalpf/sm/pf-062.jpg)
 
 I still have no idea what happened, since I’d taken previous flash pictures with the screen on and it was unaffected.  I can only guess that the bright light overloaded something in the circuitry that was usually covered by the frame around the display, which caused it to turn on all the pixels, or something.  Anyway, the moral of the story seems to be to not take flash pictures of your naked LCD screen.
 
@@ -261,7 +261,7 @@ I end up with internal measurements for the frame of 13 1/8" wide by 11 3/4" tal
 I don’t love the idea of an asymmetric mat, so I go home and mock it up with some cardboard for the frame and construction paper for the mat (it’s craft time!).
 
 
-![Image 079](../../assets/yalpf/sm/pf-079.jpg)
+![Image 079](../assets/yalpf/sm/pf-079.jpg)
 
 The asymmetry doesn’t look too bad, but mocking it up helps me realize that I was wrong about some of the measurements.  I left 1 1/4" around the screen opening (10 5/8" wide), but the lid is actually 12" wide.  Then again, I only need the extra space on the right side, where the WiFi card sticks out.  I also need 1 1/2" only on the bottom of the laptop base, whereas the top (normally the front of the laptop) can be right up against the inner part of the frame.  It’s time to do some more prototyping.
 
@@ -274,18 +274,18 @@ The problem is that the screen cables are too short to simply wrap around from t
 To be sure I have the measurements right, I cut out a piece of cardboard exactly the same size as the lid and cut some notches into it for the cables.  I pull the lid off the screen (there’s some double-sided tape holding the two together) and place the screen face down on a soft microfiber cloth.
 
 
-![Image 082](../../assets/yalpf/sm/pf-082.jpg)
+![Image 082](../assets/yalpf/sm/pf-082.jpg)
 
 Then I put the cardboard on top where the lid would go, and the laptop’s base on top of that.  I center the width of the base plus the WiFi antenna on the width of the screen and the height of the base plus space for the power cord on the height of the screen.
 
 
-![Image 086](../../assets/yalpf/sm/pf-086.jpg)
+![Image 086](../assets/yalpf/sm/pf-086.jpg)
 
 With the notches cut into the prototype lid, the power cable reaches its plug on the motherboard, but the display cable doesn’t quite reach.  I’m going to have to cut part of the base away.  Removing the metal above the rear connectors will reduce the distance the data cable has to travel, letting it reach from the screen to the base.
 
 At this point I redo all the measurements and draw a basic blueprint in Illustrator to make sure everything will fit together correctly right this time.
 
-![Frame layout](../../assets/yalpf/sm/frame-layout.png)
+![Frame layout](../assets/yalpf/sm/frame-layout.png)
 
 The blueprint confirms that the frame can be made shorter and slightly wider, which means that the border around the mat opening can be symmetric.  If I cut away part of the base, I should be able to make the laptop components fit within the 1.5" rabbet of the black frame stock I’d originally wanted to use.
 
@@ -299,18 +299,18 @@ Now that the frame is in production with just a couple weeks before the trip, it
 Ah, the Dremel.  Every case modder’s favorite tool.  I manage to cut the first notch, next to the hinge, without losing any fingers, but damn is dremeling metal loud.
 
 
-![Image 092](../../assets/yalpf/sm/pf-092.jpg)
+![Image 092](../assets/yalpf/sm/pf-092.jpg)
 
 So I try cutting the notch for the power cable using a nibbler, which is slow but quiet, and actually produces a somewhat cleaner cut (which may be due simply to a lack of Dremel skillz).
 
 
-![Image 093](../../assets/yalpf/sm/pf-093.jpg)
+![Image 093](../assets/yalpf/sm/pf-093.jpg)
 
 A little rough but acceptable.  I file the notches and wrap them in electrical tape, and then reassemble the screen and base.
 
 
 
-![Image 094](../../assets/yalpf/sm/pf-094.jpg)
+![Image 094](../assets/yalpf/sm/pf-094.jpg)
 
 The power cable does indeed reach now.
 
@@ -320,37 +320,37 @@ The power cable does indeed reach now.
 Next I need to cut away part of the base, both to help the display cable reach the base and to make the base thinner.  Of course, I’ll need to remove the motherboard from the base before making any cuts, which involves removing a whole bunch of screws.  All those screws will have to be put back in the right place to reattach the motherboard, so I keep track of where they go by taping them to a sheet of paper, with callouts labeling their original locations.
 
 
-![Image 149](../../assets/yalpf/sm/pf-149.jpg)
+![Image 149](../assets/yalpf/sm/pf-149.jpg)
 
 Connected to the metal RF shield are some heat sinks for the CPU and some other chip (the southbridge?).  The heat sinks are connected to the chips with some junky thermal pads, bits of which remain on the CPU.  A little rubbing alcohol will remove the pads, but I’ll need to apply some thermal compound before reattaching everything.
 
 
-![Image 108](../../assets/yalpf/sm/pf-108.jpg)
+![Image 108](../assets/yalpf/sm/pf-108.jpg)
 
 The trackpad plugs in to the motherboard via a short cable and a weird little connector.
 
 
-![Image 118](../../assets/yalpf/sm/pf-118.jpg)
+![Image 118](../assets/yalpf/sm/pf-118.jpg)
 
 Here’s what the back of an old Synaptics trackpad looks like.  It’s got a snazzy brown-and-gold motif.
 
 
-![Image 134](../../assets/yalpf/sm/pf-134.jpg)
+![Image 134](../assets/yalpf/sm/pf-134.jpg)
 
 33 screws later, the motherboard is separated from the base.  It’s surprisingly small and compact compared to the multiple boards often used in more modern laptops.
 
 
-![Image 154](../../assets/yalpf/sm/pf-154.jpg)
+![Image 154](../assets/yalpf/sm/pf-154.jpg)
 
 Here’s the base sans motherboard:
 
 
-![Image 141](../../assets/yalpf/sm/pf-141.jpg)
+![Image 141](../assets/yalpf/sm/pf-141.jpg)
 
 Note the handwritten revision number:
 
 
-![Image 146](../../assets/yalpf/sm/pf-146.jpg)
+![Image 146](../assets/yalpf/sm/pf-146.jpg)
 
 The battery compartment (the raised bit on top of which the trackpad sat) is another part of the base that I want to cut away.  I won’t use the battery in the frame and the compartment is taller than any of the components on the motherboard.  So removing it should make the base thinner and will also free up some space to add a couple small USB devices as described below.
 
@@ -364,63 +364,63 @@ In the Tech Shop’s metal shop, cutting the base and lid isn’t too hard, but 
 Here’s the base after an hour or so of cutting:
 
 
-![Image 156](../../assets/yalpf/sm/pf-156.jpg)
+![Image 156](../assets/yalpf/sm/pf-156.jpg)
 
 The battery compartment has been removed, leaving an L-shaped base beneath the motherboard and the hard drive.  I’ve also cut away the frame around the rear connectors and lopped off the little “towers” into which the screen hinges were screwed, on the right side facing the back of the laptop.  I thought they’d be hard to cut since they’re so thick, but the Dremel conquers all.
 
 
-![Image 105](../../assets/yalpf/sm/pf-105.jpg)
+![Image 105](../assets/yalpf/sm/pf-105.jpg)
 
 
-![Image 161](../../assets/yalpf/sm/pf-161.jpg)
+![Image 161](../assets/yalpf/sm/pf-161.jpg)
 
 The base is now only as tall as the components on the motherboard and doesn’t have any extraneous metal bits sticking up.
 
 
-![Image 160](../../assets/yalpf/sm/pf-160.jpg)
+![Image 160](../assets/yalpf/sm/pf-160.jpg)
 
 I also decided I need to cut further into the lid to reduce the distance the display cable has to travel.  Here’s the lid after enlarging the notch near the hinge and wrapping it electrical tape:
 
 
-![Image 187](../../assets/yalpf/sm/pf-187.jpg)
+![Image 187](../assets/yalpf/sm/pf-187.jpg)
 
 This is another bit of dremeling I needed to do.  The over-designed Dell power connector has a flange sticking up from the top, I guess to make it easier to pull out.  The flange would add about 1/4" to the height of the base, so it’s got to go.
 
 
-![Image 279](../../assets/yalpf/sm/pf-279.jpg)
+![Image 279](../assets/yalpf/sm/pf-279.jpg)
 
 After thoroughly cleaning the filings off the base and lid (metal dust and PCBs are not friends), I put almost all the screws back in to reconnect the motherboard to the base (“almost all” because I leave off a few extraneous case bits).
 
 Before reattaching the heat sink/RF shield, I apply some Arctic Silver thermal compound to the CPU and whatever the other chip is.  Unlike modern heat sink mounting brackets, the only thing pressing the heat sinks to the chips are some screws that don’t seem to apply much pressure.  Once they’re all tightened, there still seems to be a small gap between the heat sink the mystery chip (I can see the RF shield bend slightly when pressing where the heat sink is attached).  I should probably use a thermal pad instead of compound to bridge the gap, but Fry’s didn’t have any (who uses thermal pads anymore?) and I’m running out of time, so I’ll just hope that the chip can survive without tight contact with the heat sink.
 
 
-![Image 179](../../assets/yalpf/sm/pf-179.jpg)
+![Image 179](../assets/yalpf/sm/pf-179.jpg)
 
 I put the screen back into the lid, face down.  With the notches cut, the power and display cables can now exit the back of the lid instead of through the hinges.  Hopefully they’ll reach the connectors now.
 
 
-![Image 189](../../assets/yalpf/sm/pf-189.jpg)
+![Image 189](../assets/yalpf/sm/pf-189.jpg)
 
 
-![Image 188](../../assets/yalpf/sm/pf-188.jpg)
+![Image 188](../assets/yalpf/sm/pf-188.jpg)
 
 I screw in the hard drive caddy and pop in the WiFi card.  Then I position the base on top of the lid where it’ll be in the frame.
 
 
-![Image 200](../../assets/yalpf/sm/pf-197.jpg)
+![Image 200](../assets/yalpf/sm/pf-197.jpg)
 
 Success!  The power and display cables from the screen now reach the connectors.
 
 
-![Image 194](../../assets/yalpf/sm/pf-194.jpg)
+![Image 194](../assets/yalpf/sm/pf-194.jpg)
 
 
-![Image 193](../../assets/yalpf/sm/pf-193.jpg)
+![Image 193](../assets/yalpf/sm/pf-193.jpg)
 
 I disconnect the cables, flip the lid over, reconnect everything, plug in the power and boot her up.  Fortunately, the laptop seems to still be in working order.
 
 
-![Image 204](../../assets/yalpf/sm/pf-204.jpg)
+![Image 204](../assets/yalpf/sm/pf-204.jpg)
 
 Now I need to figure out how to secure the screen and base inside the frame.  The Channel 9 article suggested cutting a piece of foam core to surround the screen and support it right behind the mat board.  They screwed the motherboard to a large piece of particle board, but I figure I can use foam core to support the base as well.  With the foam supporting the pieces vertically, I’ll also need to devise some way of preventing them from flopping out the back of the frame.  There’ll be a backing on the frame, but the screen needs to be pressed up tight against the mat board, even when the frame is angled back a bit on the [Easelmates](https://www.unitedmfrs.com/cart/detail.cfm?item=4894) that will be attached to the frame’s bottom.
 
@@ -429,28 +429,28 @@ First I get a piece of black foam core and cut out a rectangle exactly the same 
 Here’s the plastic inner part of the lid placed in the foam core to check sizing:
 
 
-![Image 211](../../assets/yalpf/sm/pf-211.jpg)
+![Image 211](../assets/yalpf/sm/pf-211.jpg)
 
 Looks pretty good.  Once I get the frame back and make sure everything fits, I’ll tape the screen to the foam so it doesn’t slide around.
 
 I decide to use foam core to support the base as well.  The cuts here don’t have to as precise, since no one will see the base.
 
 
-![Image 283](../../assets/yalpf/sm/pf-283a.jpg)
+![Image 283](../assets/yalpf/sm/pf-283a.jpg)
 
 The little notch cut out of the lower-left corner of the L-shape is to let the power cable pass through from the screen to the base.  The weird angled notch on the lower-right is to accommodate the round noise filter on the power cable, which is about 3/4" thick.  I don’t want it to stick above the base, so the notch lets it sit lower.
 
 I bring these pieces and the laptop base into the frame store because they want to make sure everything fits in the frame.  A couple days later, I eagerly pick up the finished frame &mdash; and immediately notice a couple things wrong.
 
 
-![Image 258](../../assets/yalpf/sm/pf-258.jpg)
+![Image 258](../assets/yalpf/sm/pf-258.jpg)
 
 They fixed the glass, mat board *and* my carefully cut foam core support into the frame, so it can’t be removed.  They also cut the bevel on the mat board opening so that it wouldn’t be visible from the front.  This was because the mat board is a very light gray, but the interior of the board is noticeably whiter, and they thought it might be distracting to have the white line around the display.  Hmm.  And finally, they screwed the particle board on the back of the frame to the frame itself.  The original idea was to attach a metal rim to the frame that would allow the back to slide down into the rim, so it wouldn’t be permanently attached.
 
 Anyway, I leave those issues aside for now and bring home the frame for a trial run.  Here’s a shot of the frame from the back, looking out through the glass:
 
 
-![Image 260](../../assets/yalpf/sm/pf-260.jpg)
+![Image 260](../assets/yalpf/sm/pf-260.jpg)
 
 You can see the staples holding the foam core, mat board and glass into the frame.  The black straps are pieces of elastic bands that are intended to press the screen and base up against the glass, while still allowing them to be inserted and removed.
 
@@ -460,34 +460,34 @@ You can see the staples holding the foam core, mat board and glass into the fram
 First I use electrical tape to attach the screen to the lid so they don’t come part.  It should also avoid any further issues with camera flashes messing up the screen.
 
 
-![Image 217](../../assets/yalpf/sm/pf-217.jpg)
+![Image 217](../assets/yalpf/sm/pf-217.jpg)
 
 Naturally, the screen goes in first.
 
 
-![Image 220](../../assets/yalpf/sm/pf-220.jpg)
+![Image 220](../assets/yalpf/sm/pf-220.jpg)
 
 Then the white foam core and the motherboard.
 
 
-![Image 225](../../assets/yalpf/sm/pf-225.jpg)
+![Image 225](../assets/yalpf/sm/pf-225.jpg)
 
 The elastic bands aren’t quite tight enough to hold everything in firmly, hence the cardboard kludge over the hard drive to keep the pieces pressed against the mat board.
 
 Everything’s connected and plugged in.  Time to fire her up.
 
 
-![Image 229](../../assets/yalpf/sm/pf-229.jpg)
+![Image 229](../assets/yalpf/sm/pf-229.jpg)
 
 Ah, yes.  The Windows 2000 progress bar has never looked so good.
 
 
-![Image 230](../../assets/yalpf/sm/pf-230.jpg)
+![Image 230](../assets/yalpf/sm/pf-230.jpg)
 
 One issue that’s immediately apparent is that the screen is sitting too low, leaving a black bar above the image.  Since it’s not attached to the foam core, it must have shifted down a bit.
 
 
-![Image 256](../../assets/yalpf/sm/pf-256.jpg)
+![Image 256](../assets/yalpf/sm/pf-256.jpg)
 
 I’m also not loving the reverse bevel since you can see black around the screen if you look at the frame from an angle.  So the next day I bring the frame back to the store and ask them to recut the mat board with the bevel facing front, which they do for free.  They also tack just the mat board and glass into the frame, leaving the foam core separate, and tighten up the elastic bands.  With just a couple days to go, I’m ready for final assembly.
 
@@ -496,64 +496,64 @@ I’m also not loving the reverse bevel since you can see black around the scree
 
 I use more electrical tape to secure the screen to its foam core support to keep it from sliding off.
 
-![Image 311](../../assets/yalpf/sm/pf-308.jpg)
+![Image 311](../assets/yalpf/sm/pf-308.jpg)
 
 I also place some foam spacers on the back of the screen to hopefully give it a little breathing room.  The back of the base (facing the screen) seems to get pretty hot after it’s been sitting in the frame for awhile.  I’m hoping that the extra foam core won’t make the stack of components too thick.
 
 
-![Image 311](../../assets/yalpf/sm/pf-311.jpg)
+![Image 311](../assets/yalpf/sm/pf-311.jpg)
 
 The foam core support for the base has been getting a work out and the couple places where it gets very narrow have started to bend.  So I cut an identical piece from the black foam, which looks cooler anyway.
 
 
-![Image 283](../../assets/yalpf/sm/pf-283.jpg)
+![Image 283](../assets/yalpf/sm/pf-283.jpg)
 
 The base’s support goes in next.  I cut a couple notches at the top to hopefully let some of the heat from the screen to escape, but who knows how effective they’ll be.  I don’t just cut away the entire upper-right corner because I want to attach a USB hub there.
 
 
-![Image 313](../../assets/yalpf/sm/pf-313.jpg)
+![Image 313](../assets/yalpf/sm/pf-313.jpg)
 
 The motherboard and laptop base are now nicely cradled by the foam core.
 
 
-![Image 315](../../assets/yalpf/sm/pf-315.jpg)
+![Image 315](../assets/yalpf/sm/pf-315.jpg)
 
 The laptop has just a single USB 1.0 jack, so I need to add a small hub to accommodate the RF dongles for the wireless mouse and the presentation remote that will be used for controlling the slideshow.  I attach the silver USB to the foam core with some double-sided tape.  Due to heat rising from the CPU, the tape turns out to be wholly inadequate.  I eventually end up wrapping electrical tape completely around the hub and the foam core in order to secure it.
 
 
-![Image 320](../../assets/yalpf/sm/pf-320.jpg)
+![Image 320](../assets/yalpf/sm/pf-320.jpg)
 
 The plugs on most USB cables are close to 1 1/2" long, which would be a tight fit at the bottom of the frame.  So I go to Pacific Custom Cables to look for a solution.  Their [right angle connector](https://www.pacificcable.com/Picture_Page.asp?DataName=USBAMRAF-3IN) is exactly what I need; too bad it came in a ginormous DHL box.  The connector is just visible peeking out from under the elastic band at the bottom of the frame.
 
 I probably should have ordered a custom version of the right-angle cable that would be long enough to reach all the way from the USB jack to the hub, but I didn’t think I’d get a custom part in time.  To avoid having a lot of excess wire stuffed into the frame, I use a ZipLinq cable adjusted to the length I need.  The lower-right corner of the frame is a little crowded, with the USB connector, ZipLinq spool and power cable, but everything ends up fitting.  This picture also shows the round noise filter on the power cord fitting into the notch in the foam core.
 
 
-![Image 321](../../assets/yalpf/sm/pf-321.jpg)
+![Image 321](../assets/yalpf/sm/pf-321.jpg)
 
 To keep the Easelmates from scratching whatever they’re sitting on, I stick some little self-adhesive cork pads to the bottom.
 
 
-![Image 327](../../assets/yalpf/sm/pf-327.jpg)
+![Image 327](../assets/yalpf/sm/pf-327.jpg)
 
 I notice that the Easelmates do a good job of keeping the frame from tipping backwards, but nothing is stopping it from tipping forwards, which would make a mess of things.  So after poking around Home Depot, I buy a couple of small rubber doorstops, chop them down so they’re just the right height to fit under the frame, and spraypaint them black.
 
-![Doorstop](../../assets/yalpf/sm/door-stop.jpg)
+![Doorstop](../assets/yalpf/sm/door-stop.jpg)
 
 When the doorstops are tucked under the black frame, they’re hardly noticeable.  The frame would now need a pretty serious shove to topple forwards.
 
-![Doorstops under frame](../../assets/yalpf/sm/pfl-025.jpg)
+![Doorstops under frame](../assets/yalpf/sm/pfl-025.jpg)
 
 The elastic straps do a decent job of pressing the stack of components up against the mat board, but they’re a little awkward to work around when getting things in and out of the frame.  A better idea would probably have been to use some sort of Velcro strap and buckle affair.  The buckle would be attached to one side and the strap to the other.  The strap would go through the buckle and then fold back against itself.  This would enable the strap to be tightened up against the components but would also let it stay completely out of the way when putting things into the frame.  In any case, not having the components be permanently attached is definitely a good thing; I’ve already inserted and removed them a couple times, and will have to do so a few times more.
 
 With everything in place, I plug in the frame and power it up.  The screen looks like it’s centered vertically now, which is a good thing.  But looking more closely, it’s a hair too far to the right.
 
 
-![Image 271](../../assets/yalpf/sm/pf-271.jpg)
+![Image 271](../assets/yalpf/sm/pf-271.jpg)
 
 And I notice in the upper-right corner that I covered a few pixels with electrical tape.  Gah.
 
 
-![Image 268](../../assets/yalpf/sm/pf-268.jpg)
+![Image 268](../assets/yalpf/sm/pf-268.jpg)
 
 
 ## Final, final assembly (I hope)
@@ -565,7 +565,7 @@ Something I’ve avoided dealing with up to this point is figuring out how I’m
 I’ve viciously hacked the button out of the plastic frame with the Dremel (as can be seen by the jagged hole it left), but careful application of the sanding wheel smoothes off the rough bits.
 
 
-![Image 288](../../assets/yalpf/sm/pf-288.jpg)
+![Image 288](../assets/yalpf/sm/pf-288.jpg)
 
 The question now is how to position the button precisely over the switch on the motherboard, which is only about 2mm wide (“2mm?  No one can hit an exhaust port that small!” “We used to bullseye wombats back in Beggar’s Canyon....”).  The button’s plunger has to not only be right over the switch but also suspended at the right height.  Too high and the plunger won’t reach the switch.  Too low and it’ll depress it all the time.
 
@@ -574,46 +574,46 @@ With all the components in the frame, I eyeball the height of the button positio
 Time to get my triangulation on.  First I tape a sheet of paper to the bottom right of the particleboard back.  Then I whip out my trusty Kooh-i-noor compass from 10th-grade mechanical drawing class.  In one of the screw holes at the bottom right I position the pointy end of the compass and adjust it so the pencil end is right over the switch.  Then I position the compass in the corresponding screw hole in the back and draw an arc on the paper.  I repeat the process for two more screw holes.  Where the arcs intersect should hopefully indicate the center of the switch.
 
 
-![Image 294](../../assets/yalpf/sm/pf-294.jpg)
+![Image 294](../assets/yalpf/sm/pf-294.jpg)
 
 I do loves me some geometry.
 
 With X marking the spot, I use a 1/2" bit to drill a hole through the back.  Looks like a bullet went through the particleboard, but it’ll do the job.
 
 
-![Image 296](../../assets/yalpf/sm/pf-296.jpg)
+![Image 296](../assets/yalpf/sm/pf-296.jpg)
 
 According to my trusty Stanley calipers, the plastic surrounding the button is .6" in diameter, so I need to widen the hole.  I use the sanding wheel on the Dremel to slowly enlarge it a bit at a time, frequently checking if I can push the button into it.
 
 
-![Image 299](../../assets/yalpf/sm/pf-299.jpg)
+![Image 299](../assets/yalpf/sm/pf-299.jpg)
 
 Finally the hole is just large enough that I can squeeze in the button.  It’s a tight enough fit that no glue is required.  A little permanent marker cleans up the missing paint around the hole.
 
 
-![Image 302](../../assets/yalpf/sm/pf-302.jpg)
+![Image 302](../assets/yalpf/sm/pf-302.jpg)
 
 
-![Image 306](../../assets/yalpf/sm/pf-306.jpg)
+![Image 306](../assets/yalpf/sm/pf-306.jpg)
 
 I screw the back on to the frame, careful to thread the power cord through the slot for it at the bottom.  Not too shabby, if I do say so myself.  Almost looks like an actual, if retro, product (when was the last time you saw an electronic gadget sitting in a wood cabinet?).
 
 
-![Image 330](../../assets/yalpf/sm/pf-330.jpg)
+![Image 330](../assets/yalpf/sm/pf-330.jpg)
 
 Now we’ll see how well that business with the triangulation worked.  I stand the frame up and press the power button on the back.  At the bottom of its range I can feel it click the switch on the motherboard, so it should work.  The laptop base actually looks like it sticks above the frame about 1/8", which is probably due to the strips of foam core I put between the screen and the base.  But since the back is a bit warped at the bottom, it all comes together okay.
 
 
-![Image 334](../../assets/yalpf/sm/pf-334.jpg)
+![Image 334](../assets/yalpf/sm/pf-334.jpg)
 
 Et voilà.  All of the components are tucked into the frame, the back is screwed on and the power button works.  The screen looks nicely centered vertically, but I notice a line of black on the right side: I’d shifted the screen too far to the left when I shoved the construction paper in.  So I’ll need to fix that.
 
 
-![Image 336](../../assets/yalpf/sm/pf-336.jpg)
+![Image 336](../assets/yalpf/sm/pf-336.jpg)
 
 And as I look closer, I see a little foam core turd sitting at the bottom between the mat and the glass.  I’m going to have to pull everything out of the frame once again to remove that little bastard.  Grr.  Argh.
 
-![Image 336a](../../assets/yalpf/sm/pf-336a.jpg)
+![Image 336a](../assets/yalpf/sm/pf-336a.jpg)
 
 
 ## Final, final, final assembly (for reals, this time)
@@ -631,4 +631,4 @@ Once that’s all sorted, I need to get the frame to connect to the wireless net
 
 With the WEP key entered, the frame finally makes contact with the network.  I check the log files on my server and see that the frame is sending its heartbeat pings and is checking for new photos to download.  Success!
 
-![Photo info menu](../../assets/yalpf/sm/photo-info-menu.jpg)
+![Photo info menu](../assets/yalpf/sm/photo-info-menu.jpg)
