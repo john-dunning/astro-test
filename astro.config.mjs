@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
 	site: "https://www.johndunning.com",
-	base: "/astro-test/",
+	base: "/",
 	compressHTML: false,
 	markdown: {
 		remarkPlugins: [
