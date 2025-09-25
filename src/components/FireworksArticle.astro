@@ -53,6 +53,10 @@ const { title, heroImage } = Astro.props;
 			font-size: inherit;
 		}
 
+		:global(blockquote:first-of-type) {
+			margin: 2em 0 2em 2.5em;
+		}
+
 		:global(p) {
 			overflow: auto;
 		}
@@ -86,7 +90,7 @@ const { title, heroImage } = Astro.props;
 
 		:global(dt) {
 			font-weight: bold;
-			color: var(--text-color-secondary)
+			color: var(--text-color-secondary);
 		}
 
 		:global(dd) {
@@ -95,27 +99,29 @@ const { title, heroImage } = Astro.props;
 
 		:global(p code, dd code) {
 			font-weight: normal;
-			color: #333;
+			color: var(--color-inline-code);
 		}
 
 		:global(pre, blockquote:not(:has(img)):not(:has(table)):not(:has(p))) {
-			color: #1c1d1f !important;
-			background-color: #f3f3f3 !important;
-			border-left: 3px solid #ccc;
+			color: var(--color-code-text) !important;
+			background-color: var(--color-surface) !important;
+			border-left: 3px solid var(--color-border);
 			padding: 1em 1em 1em 2em;
 			margin: 1em 0 1em var(--spacing-lg);
+			border-radius: unset;
 		}
 
 		:global(pre code) {
-			line-height: 1.1;
-			font-size: .85em;
+			background-color: var(--color-surface) !important;
+			display: block;
+			line-height: 1.4;
 			tab-size: 2;
 		}
 
 		:global(section.footnotes) {
 			padding-inline-start: var(--spacing-lg);
 			margin: 5rem 0;
-			color: #333;
+			color: var(--text-color-muted);
 			font-size: smaller;
 		}
 
