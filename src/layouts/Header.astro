@@ -25,32 +25,34 @@ const [section, ...restOfPath] = Astro.url.pathname
 <style lang="scss">
 	header, .site-name {
 		color: var(--header-secondary);
-		/*color: var(--text-color-secondary);*/
 		font-size: 1.75rem;
 		font-weight: bold;
 		margin: 1.25rem 0 2rem 0;
 		position: relative;
 
-		a[aria-current] {
+		& a[aria-current] {
 			pointer-events: none;
-		}
-
-		a:visited {
-			color: inherit;
 		}
 	}
 
 	.site-name {
 		grid-area: site-name;
 
-		strong {
-			color: var(--header-primary);
-			/*color: var(--text-color-primary);*/
+		& a {
+			color: var(--header-secondary);
+
+			& strong {
+				color: var(--header-primary);
+			}
 		}
 	}
 
 	header {
 		color: var(--text-color-accent);
 		grid-area: header;
+
+		& a:visited {
+			color: inherit;
+		}
 	}
 </style>
