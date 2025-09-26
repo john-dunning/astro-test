@@ -2,13 +2,22 @@
 import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import DisqusComments from "@/components/DisqusComments.astro";
-import heroImage from "@/assets/yalpf/md/frame-in-london.jpg";
 import { Content } from "@/content/yalpf.md";
+import heroImage from "@/assets/yalpf/md/frame-in-london.jpg";
 
 const title = "Yet Another Laptop Picture Frame";
+const meta = {
+	description: "A build log of constructing a DIY digital picture frame using an old laptop and custom software.",
+	image: String(new URL(heroImage.src, Astro.site ?? Astro.url)),
+	"image:width": heroImage.width,
+	"image:height": heroImage.height
+};
 ---
 
-<Layout title={title}>
+<Layout
+	title={title}
+	meta={meta}
+>
 	<article>
 		<h1>
 			Yet Another Laptop Picture Frame
